@@ -1,1 +1,4 @@
-Compiling WebKit for windows is a pain in the ass so here we are
+# WebKit for Windows
+A pre compiled version of WebKit for Windows to save you time
+# Current version
+2.49.4
