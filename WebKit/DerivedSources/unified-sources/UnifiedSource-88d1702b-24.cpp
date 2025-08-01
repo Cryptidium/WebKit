@@ -1,0 +1,8 @@
+#include "UIProcess/Extensions/API/WebExtensionContextAPIStorage.cpp"
+#include "UIProcess/GPU/GPUProcessProxy.cpp"
+#include "UIProcess/Gamepad/UIGamepad.cpp"
+#include "UIProcess/Gamepad/UIGamepadProvider.cpp"
+#include "UIProcess/Inspector/InspectorTargetProxy.cpp"
+#include "UIProcess/Inspector/RemoteWebInspectorUIProxy.cpp"
+#include "UIProcess/Inspector/WebInspectorBackendProxy.cpp"
+#include "UIProcess/Inspector/WebInspectorUIExtensionControllerProxy.cpp"

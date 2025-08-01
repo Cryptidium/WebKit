@@ -1,0 +1,8 @@
+#include "Modules/model-element/LazyLoadModelObserver.cpp"
+#include "Modules/model-element/ModelPlayer.cpp"
+#include "Modules/model-element/ModelPlayerAnimationState.cpp"
+#include "Modules/model-element/ModelPlayerClient.cpp"
+#include "Modules/model-element/ModelPlayerProvider.cpp"
+#include "Modules/model-element/PlaceholderModelPlayer.cpp"
+#include "Modules/model-element/dummy/DummyModelPlayer.cpp"
+#include "Modules/model-element/dummy/DummyModelPlayerProvider.cpp"

@@ -1,0 +1,8 @@
+#include "JSMediaStream.cpp"
+#include "JSMediaStreamAudioDestinationNode.cpp"
+#include "JSMediaStreamAudioSourceNode.cpp"
+#include "JSMediaStreamAudioSourceOptions.cpp"
+#include "JSMediaStreamTrack.cpp"
+#include "JSMediaStreamTrackEvent.cpp"
+#include "JSMediaStreamTrackProcessor.cpp"
+#include "JSMediaTrackCapabilities.cpp"

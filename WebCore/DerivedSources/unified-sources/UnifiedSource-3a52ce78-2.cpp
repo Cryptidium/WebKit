@@ -1,0 +1,8 @@
+#include "HTMLElementFactory.cpp"
+#include "HTMLEntityTable.cpp"
+#include "JSANGLEInstancedArrays.cpp"
+#include "JSAacEncoderConfig.cpp"
+#include "JSAbortAlgorithm.cpp"
+#include "JSAbortController.cpp"
+#include "JSAbortSignal.cpp"
+#include "JSAbstractRange.cpp"

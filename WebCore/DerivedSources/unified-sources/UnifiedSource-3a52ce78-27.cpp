@@ -1,0 +1,8 @@
+#include "JSCanvasTextAlign.cpp"
+#include "JSCanvasTextBaseline.cpp"
+#include "JSCanvasTextDrawingStyles.cpp"
+#include "JSCanvasTransform.cpp"
+#include "JSCanvasUserInterface.cpp"
+#include "JSCaretPosition.cpp"
+#include "JSCaretPositionFromPointOptions.cpp"
+#include "JSChannelCountMode.cpp"

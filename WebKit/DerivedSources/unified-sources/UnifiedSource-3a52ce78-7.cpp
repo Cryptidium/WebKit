@@ -1,0 +1,8 @@
+#include "RemoteWebLockRegistryMessageReceiver.cpp"
+#include "RemoteXRBindingMessageReceiver.cpp"
+#include "RemoteXRProjectionLayerMessageReceiver.cpp"
+#include "RemoteXRSubImageMessageReceiver.cpp"
+#include "RemoteXRViewMessageReceiver.cpp"
+#include "ServiceWorkerDownloadTaskMessageReceiver.cpp"
+#include "WebBroadcastChannelRegistryMessageReceiver.cpp"
+#include "WebFrameMessageReceiver.cpp"

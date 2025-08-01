@@ -1,0 +1,8 @@
+#include "JSImportNodeOptions.cpp"
+#include "JSInputDeviceInfo.cpp"
+#include "JSInputEvent.cpp"
+#include "JSInspectorAuditAccessibilityObject.cpp"
+#include "JSInspectorAuditDOMObject.cpp"
+#include "JSInspectorAuditResourcesObject.cpp"
+#include "JSInspectorFrontendHost.cpp"
+#include "JSInstallEvent.cpp"

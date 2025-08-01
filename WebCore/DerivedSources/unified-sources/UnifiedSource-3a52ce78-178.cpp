@@ -1,0 +1,8 @@
+#include "JSWebGLPolygonMode.cpp"
+#include "JSWebGLProgram.cpp"
+#include "JSWebGLProvokingVertex.cpp"
+#include "JSWebGLQuery.cpp"
+#include "JSWebGLRenderSharedExponent.cpp"
+#include "JSWebGLRenderbuffer.cpp"
+#include "JSWebGLRenderingContext.cpp"
+#include "JSWebGLRenderingContextBase.cpp"

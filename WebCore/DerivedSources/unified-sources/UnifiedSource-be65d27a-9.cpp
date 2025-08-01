@@ -1,0 +1,8 @@
+#include "dom/DragEvent.cpp"
+#include "dom/Element.cpp"
+#include "dom/ElementData.cpp"
+#include "dom/ElementInternals.cpp"
+#include "dom/ElementRareData.cpp"
+#include "dom/ElementTextDirection.cpp"
+#include "dom/ErrorEvent.cpp"
+#include "dom/Event.cpp"

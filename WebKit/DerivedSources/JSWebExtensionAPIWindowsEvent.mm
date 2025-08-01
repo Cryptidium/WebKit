@@ -1,0 +1,246 @@
+/*
+ * Copyright (C) 2023 Apple Inc. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS''
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS
+ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+ * THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+#if !__has_feature(objc_arc)
+#error This file requires ARC. Add the "-fobjc-arc" compiler flag for this file.
+#endif
+
+#include "config.h"
+
+#if ENABLE(WK_WEB_EXTENSIONS)
+
+#include "JSWebExtensionAPIWindowsEvent.h"
+#include "Logging.h"
+#include "WebExtensionAPIWindowsEvent.h"
+#include "WebExtensionUtilities.h"
+#include "WebFrame.h"
+#include "WebPage.h"
+#include <wtf/GetPtr.h>
+
+namespace WebKit {
+
+WebExtensionAPIWindowsEvent* toWebExtensionAPIWindowsEvent(JSContextRef context, JSValueRef value)
+{
+    if (!context || !value || !JSWebExtensionAPIWindowsEvent::windowsEventClass() || !JSValueIsObjectOfClass(context, value, JSWebExtensionAPIWindowsEvent::windowsEventClass()))
+        return nullptr;
+    return static_cast<WebExtensionAPIWindowsEvent*>(JSWebExtensionWrapper::unwrap(context, value));
+}
+
+JSClassRef JSWebExtensionAPIWindowsEvent::windowsEventClass()
+{
+    static JSClassRef jsClass;
+    if (!jsClass) {
+        JSClassDefinition definition = kJSClassDefinitionEmpty;
+        definition.className = "WindowsEvent";
+        definition.parentClass = nullptr;
+        definition.staticValues = staticValues();
+        definition.staticFunctions = staticFunctions();
+        definition.initialize = initialize;
+        definition.finalize = finalize;
+        jsClass = JSClassCreate(&definition);
+    }
+
+    return jsClass;
+}
+
+JSClassRef JSWebExtensionAPIWindowsEvent::windowsEventGlobalObjectClass()
+{
+    static JSClassRef jsClass;
+    if (!jsClass) {
+        JSClassDefinition definition = kJSClassDefinitionEmpty;
+        definition.className = "WindowsEvent";
+        definition.staticValues = staticConstants();
+        definition.hasInstance = hasInstance;
+        jsClass = JSClassCreate(&definition);
+    }
+
+    return jsClass;
+}
+
+const JSStaticFunction* JSWebExtensionAPIWindowsEvent::staticFunctions()
+{
+    static const JSStaticFunction functions[] = {
+        { "addListener", addListener, kJSPropertyAttributeNone },
+        { "removeListener", removeListener, kJSPropertyAttributeNone },
+        { "hasListener", hasListener, kJSPropertyAttributeNone },
+        { nullptr, nullptr, kJSPropertyAttributeNone },
+    };
+
+    return functions;
+}
+
+const JSStaticValue* JSWebExtensionAPIWindowsEvent::staticValues()
+{
+    return nullptr;
+}
+
+const JSStaticValue* JSWebExtensionAPIWindowsEvent::staticConstants()
+{
+    return nullptr;
+}
+
+bool JSWebExtensionAPIWindowsEvent::hasInstance(JSContextRef ctx, JSObjectRef constructor, JSValueRef possibleInstance, JSValueRef* exception)
+{
+    return JSValueIsObjectOfClass(ctx, possibleInstance, windowsEventClass());
+}
+
+// Functions
+
+JSValueRef JSWebExtensionAPIWindowsEvent::addListener(JSContextRef context, JSObjectRef, JSObjectRef thisObject, size_t argumentCount, const JSValueRef unsafeArguments[], JSValueRef* exception)
+{
+    RefPtr impl = toWebExtensionAPIWindowsEvent(context, thisObject);
+    if (!impl || !impl->isForMainWorld()) [[unlikely]]
+        return JSValueMakeUndefined(context);
+
+    RELEASE_LOG_DEBUG(Extensions, "Called function windowsEvent.addListener() (%{public}lu %{public}s) in %{public}s world", argumentCount, argumentCount == 1 ? "argument" : "arguments", toDebugString(impl->contentWorldType()).utf8().data());
+
+    auto arguments = unsafeMakeSpan(unsafeArguments, argumentCount);
+
+    constexpr size_t requiredArgumentCount = 1;
+    if (argumentCount < requiredArgumentCount) [[unlikely]] {
+        *exception = toJSError(context, @"windowsEvent.addListener()", nil, @"a required argument is missing");
+        return JSValueMakeUndefined(context);
+    }
+
+    RefPtr<WebExtensionCallbackHandler> listener;
+    NSDictionary *filter;
+
+    if (argumentCount == 2) {
+        if (!((JSValueIsObject(context, arguments[0]) && JSObjectIsFunction(context, JSValueToObject(context, arguments[0], nullptr))))) [[unlikely]] {
+            *exception = toJSError(context, @"windowsEvent.addListener()", @"listener", @"a function is expected");
+            return JSValueMakeUndefined(context);
+        }
+
+        if (!(isDictionary(context, arguments[1]) || JSValueIsNull(context, arguments[1]) || JSValueIsUndefined(context, arguments[1]))) [[unlikely]] {
+            *exception = toJSError(context, @"windowsEvent.addListener()", @"filter", @"an object is expected");
+            return JSValueMakeUndefined(context);
+        }
+
+        listener = toJSCallbackHandler(context, arguments[0], impl->runtime());
+        filter = toNSDictionary(context, arguments[1], NullValuePolicy::NotAllowed);
+    } else if (argumentCount == 1) {
+        if (!((JSValueIsObject(context, arguments[0]) && JSObjectIsFunction(context, JSValueToObject(context, arguments[0], nullptr))))) [[unlikely]] {
+            *exception = toJSError(context, @"windowsEvent.addListener()", @"listener", @"a function is expected");
+            return JSValueMakeUndefined(context);
+        }
+
+        listener = toJSCallbackHandler(context, arguments[0], impl->runtime());
+    }
+
+    if (!listener) [[unlikely]] {
+        *exception = toJSError(context, @"windowsEvent.addListener()", @"listener", @"a function is expected");
+        return JSValueMakeUndefined(context);
+    }
+
+    RefPtr frame = toWebFrame(context);
+    if (!frame) [[unlikely]] {
+        RELEASE_LOG_ERROR(Extensions, "Frame could not be found for JSContextRef");
+        return JSValueMakeUndefined(context);
+    }
+
+    NSString *exceptionString;
+    impl->addListener(frame->frameID(), listener, filter, &exceptionString);
+
+    if (exceptionString) [[unlikely]] {
+        *exception = toJSError(context, @"windowsEvent.addListener()", nil, exceptionString);
+        return JSValueMakeUndefined(context);
+    }
+
+    return JSValueMakeUndefined(context);
+}
+
+JSValueRef JSWebExtensionAPIWindowsEvent::removeListener(JSContextRef context, JSObjectRef, JSObjectRef thisObject, size_t argumentCount, const JSValueRef unsafeArguments[], JSValueRef* exception)
+{
+    RefPtr impl = toWebExtensionAPIWindowsEvent(context, thisObject);
+    if (!impl || !impl->isForMainWorld()) [[unlikely]]
+        return JSValueMakeUndefined(context);
+
+    RELEASE_LOG_DEBUG(Extensions, "Called function windowsEvent.removeListener() (%{public}lu %{public}s) in %{public}s world", argumentCount, argumentCount == 1 ? "argument" : "arguments", toDebugString(impl->contentWorldType()).utf8().data());
+
+    auto arguments = unsafeMakeSpan(unsafeArguments, argumentCount);
+
+    constexpr size_t requiredArgumentCount = 1;
+    if (argumentCount < requiredArgumentCount) [[unlikely]] {
+        *exception = toJSError(context, @"windowsEvent.removeListener()", nil, @"a required argument is missing");
+        return JSValueMakeUndefined(context);
+    }
+
+    if (!((JSValueIsObject(context, arguments[0]) && JSObjectIsFunction(context, JSValueToObject(context, arguments[0], nullptr))))) [[unlikely]] {
+        *exception = toJSError(context, @"windowsEvent.removeListener()", @"listener", @"a function is expected");
+        return JSValueMakeUndefined(context);
+    }
+
+    RefPtr<WebExtensionCallbackHandler> listener = toJSCallbackHandler(context, arguments[0], impl->runtime());
+
+    if (!listener) [[unlikely]] {
+        *exception = toJSError(context, @"windowsEvent.removeListener()", @"listener", @"a function is expected");
+        return JSValueMakeUndefined(context);
+    }
+
+    RefPtr frame = toWebFrame(context);
+    if (!frame) [[unlikely]] {
+        RELEASE_LOG_ERROR(Extensions, "Frame could not be found for JSContextRef");
+        return JSValueMakeUndefined(context);
+    }
+
+    impl->removeListener(frame->frameID(), listener);
+
+    return JSValueMakeUndefined(context);
+}
+
+JSValueRef JSWebExtensionAPIWindowsEvent::hasListener(JSContextRef context, JSObjectRef, JSObjectRef thisObject, size_t argumentCount, const JSValueRef unsafeArguments[], JSValueRef* exception)
+{
+    RefPtr impl = toWebExtensionAPIWindowsEvent(context, thisObject);
+    if (!impl || !impl->isForMainWorld()) [[unlikely]]
+        return JSValueMakeUndefined(context);
+
+    RELEASE_LOG_DEBUG(Extensions, "Called function windowsEvent.hasListener() (%{public}lu %{public}s) in %{public}s world", argumentCount, argumentCount == 1 ? "argument" : "arguments", toDebugString(impl->contentWorldType()).utf8().data());
+
+    auto arguments = unsafeMakeSpan(unsafeArguments, argumentCount);
+
+    constexpr size_t requiredArgumentCount = 1;
+    if (argumentCount < requiredArgumentCount) [[unlikely]] {
+        *exception = toJSError(context, @"windowsEvent.hasListener()", nil, @"a required argument is missing");
+        return JSValueMakeUndefined(context);
+    }
+
+    if (!((JSValueIsObject(context, arguments[0]) && JSObjectIsFunction(context, JSValueToObject(context, arguments[0], nullptr))))) [[unlikely]] {
+        *exception = toJSError(context, @"windowsEvent.hasListener()", @"listener", @"a function is expected");
+        return JSValueMakeUndefined(context);
+    }
+
+    RefPtr<WebExtensionCallbackHandler> listener = toJSCallbackHandler(context, arguments[0], impl->runtime());
+
+    if (!listener) [[unlikely]] {
+        *exception = toJSError(context, @"windowsEvent.hasListener()", @"listener", @"a function is expected");
+        return JSValueMakeUndefined(context);
+    }
+
+    return JSValueMakeBoolean(context, impl->hasListener(listener));
+}
+
+} // namespace WebKit
+
+#endif // ENABLE(WK_WEB_EXTENSIONS)

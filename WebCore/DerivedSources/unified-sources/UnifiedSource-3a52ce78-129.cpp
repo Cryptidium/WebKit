@@ -1,0 +1,8 @@
+#include "JSRTCRtpHeaderExtensionParameters.cpp"
+#include "JSRTCRtpParameters.cpp"
+#include "JSRTCRtpReceiver.cpp"
+#include "JSRTCRtpSFrameTransform.cpp"
+#include "JSRTCRtpSFrameTransformErrorEvent.cpp"
+#include "JSRTCRtpScriptTransform.cpp"
+#include "JSRTCRtpScriptTransformer.cpp"
+#include "JSRTCRtpSendParameters.cpp"

@@ -1,0 +1,8 @@
+#include "platform/graphics/skia/FontSkia.cpp"
+#include "platform/graphics/skia/FontVariationsSkia.cpp"
+#include "platform/graphics/skia/GlyphPageSkia.cpp"
+#include "platform/graphics/skia/GradientSkia.cpp"
+#include "platform/graphics/skia/GraphicsContextGLSkia.cpp"
+#include "platform/graphics/skia/GraphicsContextSkia.cpp"
+#include "platform/graphics/skia/ImageBufferSkiaAcceleratedBackend.cpp"
+#include "platform/graphics/skia/ImageBufferSkiaBackend.cpp"

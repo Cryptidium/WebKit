@@ -1,0 +1,8 @@
+#include "Shared/WebGPU/WebGPUCompilationMessage.cpp"
+#include "Shared/WebGPU/WebGPUComputePassDescriptor.cpp"
+#include "Shared/WebGPU/WebGPUComputePassTimestampWrites.cpp"
+#include "Shared/WebGPU/WebGPUComputePipelineDescriptor.cpp"
+#include "Shared/WebGPU/WebGPUDepthStencilState.cpp"
+#include "Shared/WebGPU/WebGPUDeviceDescriptor.cpp"
+#include "Shared/WebGPU/WebGPUError.cpp"
+#include "Shared/WebGPU/WebGPUExtent3D.cpp"

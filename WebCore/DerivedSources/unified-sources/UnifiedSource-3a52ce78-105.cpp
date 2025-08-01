@@ -1,0 +1,8 @@
+#include "JSNavigationNavigationType.cpp"
+#include "JSNavigationPreloadManager.cpp"
+#include "JSNavigationPreloadState.cpp"
+#include "JSNavigationTransition.cpp"
+#include "JSNavigator.cpp"
+#include "JSNavigatorGPU.cpp"
+#include "JSNavigatorUA.cpp"
+#include "JSNavigatorUABrandVersion.cpp"

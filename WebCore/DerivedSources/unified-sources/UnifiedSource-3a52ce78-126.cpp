@@ -1,0 +1,8 @@
+#include "JSRTCIceConnectionState.cpp"
+#include "JSRTCIceGatheringState.cpp"
+#include "JSRTCIceProtocol.cpp"
+#include "JSRTCIceRole.cpp"
+#include "JSRTCIceServer.cpp"
+#include "JSRTCIceServerTransportProtocol.cpp"
+#include "JSRTCIceTcpCandidateType.cpp"
+#include "JSRTCIceTransport.cpp"

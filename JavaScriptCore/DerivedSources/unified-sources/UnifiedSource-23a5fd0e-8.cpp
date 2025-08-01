@@ -1,0 +1,8 @@
+#include "b3/B3PureCSE.cpp"
+#include "b3/B3ReduceDoubleToFloat.cpp"
+#include "b3/B3ReduceStrength.cpp"
+#include "b3/B3SIMDValue.cpp"
+#include "b3/B3SSACalculator.cpp"
+#include "b3/B3SlotBaseValue.cpp"
+#include "b3/B3StackmapGenerationParams.cpp"
+#include "b3/B3StackmapSpecial.cpp"

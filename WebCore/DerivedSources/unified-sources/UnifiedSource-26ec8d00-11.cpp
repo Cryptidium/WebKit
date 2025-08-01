@@ -1,0 +1,8 @@
+#include "style/values/filter-effects/StyleHueRotateFunction.cpp"
+#include "style/values/filter-effects/StyleInvertFunction.cpp"
+#include "style/values/filter-effects/StyleOpacityFunction.cpp"
+#include "style/values/filter-effects/StyleSaturateFunction.cpp"
+#include "style/values/filter-effects/StyleSepiaFunction.cpp"
+#include "style/values/flexbox/StyleFlexBasis.cpp"
+#include "style/values/grid/StyleGridNamedLinesMap.cpp"
+#include "style/values/grid/StyleGridPosition.cpp"

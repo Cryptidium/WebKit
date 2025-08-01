@@ -1,0 +1,8 @@
+#include "platform/audio/PlatformMediaSessionManager.cpp"
+#include "platform/audio/PlatformRawAudioData.cpp"
+#include "platform/audio/PushPullFIFO.cpp"
+#include "platform/audio/RealtimeAudioThread.cpp"
+#include "platform/audio/Reverb.cpp"
+#include "platform/audio/ReverbAccumulationBuffer.cpp"
+#include "platform/audio/ReverbConvolver.cpp"
+#include "platform/audio/ReverbConvolverStage.cpp"

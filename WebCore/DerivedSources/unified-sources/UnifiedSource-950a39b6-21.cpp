@@ -1,0 +1,8 @@
+#include "html/TextFieldInputType.cpp"
+#include "html/TextInputType.cpp"
+#include "html/TimeInputType.cpp"
+#include "html/TimeRanges.cpp"
+#include "html/TypeAhead.cpp"
+#include "html/URLDecomposition.cpp"
+#include "html/URLInputType.cpp"
+#include "html/URLRegistry.cpp"

@@ -1,0 +1,8 @@
+#include "JSPublicKeyCredentialDescriptorJSON.cpp"
+#include "JSPublicKeyCredentialEntity.cpp"
+#include "JSPublicKeyCredentialParameters.cpp"
+#include "JSPublicKeyCredentialRequestOptions.cpp"
+#include "JSPublicKeyCredentialRequestOptionsJSON.cpp"
+#include "JSPublicKeyCredentialRpEntity.cpp"
+#include "JSPublicKeyCredentialType.cpp"
+#include "JSPublicKeyCredentialUserEntity.cpp"

@@ -1,0 +1,8 @@
+#include "Modules/speech/SpeechSynthesisUtterance.cpp"
+#include "Modules/speech/SpeechSynthesisVoice.cpp"
+#include "Modules/storage/StorageManager.cpp"
+#include "Modules/storage/WorkerStorageConnection.cpp"
+#include "Modules/streams/ReadableStream.cpp"
+#include "Modules/streams/ReadableStreamSink.cpp"
+#include "Modules/streams/ReadableStreamSource.cpp"
+#include "Modules/streams/TransformStream.cpp"

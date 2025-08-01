@@ -1,0 +1,8 @@
+#include "platform/graphics/skia/ShareableBitmapSkia.cpp"
+#include "platform/graphics/skia/SkiaHarfBuzzFont.cpp"
+#include "platform/graphics/skia/SkiaHarfBuzzFontCache.cpp"
+#include "platform/graphics/skia/SkiaPaintingEngine.cpp"
+#include "platform/graphics/skia/SkiaRecordingResult.cpp"
+#include "platform/graphics/skia/SkiaReplayCanvas.cpp"
+#include "platform/graphics/skia/SkiaSystemFallbackFontCache.cpp"
+#include "platform/graphics/skia/TransformationMatrixSkia.cpp"

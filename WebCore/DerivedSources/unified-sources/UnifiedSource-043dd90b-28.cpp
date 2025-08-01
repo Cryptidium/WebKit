@@ -1,0 +1,8 @@
+#include "rendering/style/StyleTransformData.cpp"
+#include "rendering/style/StyleVisitedLinkColorData.cpp"
+#include "rendering/style/WillChangeData.cpp"
+#include "rendering/svg/RenderSVGBlock.cpp"
+#include "rendering/svg/RenderSVGContainer.cpp"
+#include "rendering/svg/RenderSVGEllipse.cpp"
+#include "rendering/svg/RenderSVGForeignObject.cpp"
+#include "rendering/svg/RenderSVGGradientStop.cpp"

@@ -1,0 +1,4014 @@
+/*
+ * THIS FILE WAS AUTOMATICALLY GENERATED, DO NOT EDIT.
+ *
+ * Copyright (C) 2017-2020 Apple Inc. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS''
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS
+ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+ * THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+#include "config.h"
+#include "Settings.h"
+
+#include "DeprecatedGlobalSettings.h"
+#include "InspectorInstrumentation.h"
+#include "Page.h"
+
+// Default values.
+
+#if HAVE(AVKIT_CONTENT_SOURCE)
+#define SETTING_DEFAULT_VALUE_FOR_aVKitContentSourceEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_acceleratedCompositingEnabled true
+#if PLATFORM(IOS_FAMILY)
+#define SETTING_DEFAULT_VALUE_FOR_acceleratedCompositingForFixedPositionEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_acceleratedCompositingForFixedPositionEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_acceleratedDrawingEnabled false
+#if USE(CORE_IMAGE)
+#define SETTING_DEFAULT_VALUE_FOR_acceleratedFiltersEnabled false
+#endif
+#if PLATFORM(COCOA) || USE(THEME_ADWAITA)
+#define SETTING_DEFAULT_VALUE_FOR_accentColorEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_accentColorEnabled false
+#endif
+#if PLATFORM(COCOA)
+#define SETTING_DEFAULT_VALUE_FOR_accessHandleEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_accessHandleEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_aggressiveTileRetentionEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_allowAnimationControlsOverride false
+#define SETTING_DEFAULT_VALUE_FOR_allowContentSecurityPolicySourceStarToMatchAnyProtocol false
+#define SETTING_DEFAULT_VALUE_FOR_allowDisplayOfInsecureContent false
+#define SETTING_DEFAULT_VALUE_FOR_allowFileAccessFromFileURLs true
+#define SETTING_DEFAULT_VALUE_FOR_allowMediaContentTypesRequiringHardwareSupportAsFallback false
+#define SETTING_DEFAULT_VALUE_FOR_allowMultiElementImplicitSubmission false
+#define SETTING_DEFAULT_VALUE_FOR_allowPrivacySensitiveOperationsInNonPersistentDataStores false
+#define SETTING_DEFAULT_VALUE_FOR_allowRunningOfInsecureContent false
+#define SETTING_DEFAULT_VALUE_FOR_allowTopNavigationToDataURLs false
+#define SETTING_DEFAULT_VALUE_FOR_allowUniversalAccessFromFileURLs true
+#if PLATFORM(IOS_FAMILY)
+#define SETTING_DEFAULT_VALUE_FOR_allowViewportShrinkToFitContent true
+#endif
+#if ENABLE(WEBGL)
+#if ENABLE(WEBGL_IN_WORKERS)
+#define SETTING_DEFAULT_VALUE_FOR_allowWebGLInWorkers true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_allowWebGLInWorkers false
+#endif
+#endif
+#if ENABLE(WIRELESS_PLAYBACK_TARGET)
+#define SETTING_DEFAULT_VALUE_FOR_allowsAirPlayForMediaPlayback true
+#endif
+#if PLATFORM(IOS_FAMILY)
+#define SETTING_DEFAULT_VALUE_FOR_allowsInlineMediaPlayback false
+#else
+#define SETTING_DEFAULT_VALUE_FOR_allowsInlineMediaPlayback true
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_allowsInlineMediaPlaybackAfterFullscreen true
+#if PLATFORM(VISION)
+#define SETTING_DEFAULT_VALUE_FOR_allowsPictureInPictureMediaPlayback false
+#else
+#define SETTING_DEFAULT_VALUE_FOR_allowsPictureInPictureMediaPlayback true
+#endif
+#if PLATFORM(IOS_FAMILY)
+#define SETTING_DEFAULT_VALUE_FOR_alternateFullScreenControlDesignEnabled false
+#endif
+#if PLATFORM(COCOA)
+#define SETTING_DEFAULT_VALUE_FOR_altitudeAngleEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_altitudeAngleEnabled false
+#endif
+#if ENABLE(WEB_ARCHIVE)
+#define SETTING_DEFAULT_VALUE_FOR_alwaysAllowLocalWebarchive false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_animatedImageAsyncDecodingEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_animatedImageDebugCanvasDrawingEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_appBadgeEnabled false
+#if ENABLE(APP_HIGHLIGHTS)
+#define SETTING_DEFAULT_VALUE_FOR_appHighlightsEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_appleMailPaginationQuirkEnabled false
+#if ENABLE(APPLE_PAY)
+#define SETTING_DEFAULT_VALUE_FOR_applePayCapabilityDisclosureAllowed true
+#endif
+#if ENABLE(APPLE_PAY)
+#if ENABLE(APPLE_PAY_REMOTE_UI)
+#define SETTING_DEFAULT_VALUE_FOR_applePayEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_applePayEnabled false
+#endif
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_asyncClipboardAPIEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_asyncFrameScrollingEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_asyncOverflowScrollingEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_asynchronousSpellCheckingEnabled false
+#if ENABLE(ATTACHMENT_ELEMENT)
+#define SETTING_DEFAULT_VALUE_FOR_attachmentWideLayoutEnabled false
+#endif
+#if PLATFORM(VISION)
+#define SETTING_DEFAULT_VALUE_FOR_audioControlsScaleWithPageZoom true
+#elif PLATFORM(IOS_FAMILY)
+#define SETTING_DEFAULT_VALUE_FOR_audioControlsScaleWithPageZoom false
+#else
+#define SETTING_DEFAULT_VALUE_FOR_audioControlsScaleWithPageZoom true
+#endif
+#if ENABLE(VIDEO)
+#define SETTING_DEFAULT_VALUE_FOR_audioDescriptionsEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_authorAndUserStylesEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_automaticallyAdjustsViewScaleUsingMinimumEffectiveDeviceWidth false
+#define SETTING_DEFAULT_VALUE_FOR_autoscrollForDragAndDropEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_auxclickEventEnabled true
+#if PLATFORM(COCOA)
+#define SETTING_DEFAULT_VALUE_FOR_azimuthAngleEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_azimuthAngleEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_backForwardCacheExpirationInterval 30_min
+#define SETTING_DEFAULT_VALUE_FOR_backgroundFetchAPIEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_backgroundShouldExtendBeyondPage false
+#if PLATFORM(MAC) && USE(RUNNINGBOARD)
+#define SETTING_DEFAULT_VALUE_FOR_backgroundWebContentRunningBoardThrottlingEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_backspaceKeyNavigationEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_beaconAPIEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_bidiContentAwarePasteEnabled false
+#if PLATFORM(COCOA)
+#define SETTING_DEFAULT_VALUE_FOR_blobFileAccessEnforcementEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_blobFileAccessEnforcementEnabled false
+#endif
+#if ENABLE(GPU_PROCESS)
+#define SETTING_DEFAULT_VALUE_FOR_blockMediaLayerRehostingInWebContentProcess false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_broadcastChannelEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_cacheAPIEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_canvasColorSpaceEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_canvasFiltersEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_canvasFingerprintingQuirkEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_canvasLayersEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_canvasPixelFormatEnabled false
+#if USE(CA) || USE(SKIA)
+#define SETTING_DEFAULT_VALUE_FOR_canvasUsesAcceleratedDrawing false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_caretBrowsingEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_caretPositionFromPointEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_childProcessDebuggabilityEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_clearSiteDataExecutionContextsSupportEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_clearSiteDataHTTPHeaderEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_clientCoordinatesRelativeToLayoutViewport false
+#define SETTING_DEFAULT_VALUE_FOR_clipboardAccessPolicy ClipboardAccessPolicy::RequiresUserGesture
+#define SETTING_DEFAULT_VALUE_FOR_closeWatcherEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_colorFilterEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_commandAttributesEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_compressionStreamEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_contactPickerAPIEnabled false
+#if ENABLE(CONTENT_CHANGE_OBSERVER)
+#if PLATFORM(IOS_FAMILY) && !PLATFORM(MACCATALYST)
+#define SETTING_DEFAULT_VALUE_FOR_contentChangeObserverEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_contentChangeObserverEnabled false
+#endif
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_contentDispositionAttachmentSandboxEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_contentInsetBackgroundFillEnabled false
+#if ENABLE(CONTEXT_MENU_QR_CODE_DETECTION)
+#define SETTING_DEFAULT_VALUE_FOR_contextMenuQRCodeDetectionEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_cookieConsentAPIEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_cookieEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_cookieStoreAPIEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_cookieStoreAPIExtendedAttributesEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_cookieStoreManagerEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_coreMathMLEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_crossDocumentViewTransitionsEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_crossOriginCheckInGetMatchedCSSRulesDisabled false
+#define SETTING_DEFAULT_VALUE_FOR_crossOriginEmbedderPolicyEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_crossOriginOpenerPolicyEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_css3DTransformBackfaceVisibilityInteroperabilityEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_cssAnchorPositioningEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_cssAnchorPositioningPositionVisibilityEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_cssAppearanceBaseEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_cssAxisRelativePositionKeywordsEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_cssBackgroundClipBorderAreaEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_cssColorLayersEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_cssConstrainedDynamicRangeLimitEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_cssContrastColorEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_cssCornerShapeEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_cssCounterStyleAtRuleImageSymbolsEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_cssDPropertyEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_cssDynamicRangeLimitMixEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_cssFieldSizingEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_cssFontVariantEmojiEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_cssInputSecurityEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_cssLineClampEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_cssLineFitEdgeEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_cssPaintingAPIEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_cssProgressFunctionEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_cssRandomFunctionEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_cssRhythmicSizingEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_cssRubyAlignEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_cssRubyOverhangEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_cssScrollAnchoringEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_cssScrollbarColorEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_cssScrollbarGutterEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_cssScrollbarWidthEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_cssShapeFunctionEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_cssTextAutospaceEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_cssTextBoxTrimEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_cssTextGroupAlignEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_cssTextJustifyEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_cssTextSpacingTrimEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_cssTextUnderlinePositionLeftRightEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_cssTextWrapPrettyEnabled true
+#if HAVE(CORE_ANIMATION_SEPARATED_LAYERS)
+#define SETTING_DEFAULT_VALUE_FOR_cssTransformStyleSeparatedEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_cssTreeCountingFunctionsEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_cssTypedOMColorEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_cssURLIntegrityModifierEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_cssURLModifiersEnabled true
+#if ENABLE(UNPREFIXED_BACKDROP_FILTER)
+#define SETTING_DEFAULT_VALUE_FOR_cssUnprefixedBackdropFilterEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_cssUnprefixedBackdropFilterEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_cssWordBreakAutoPhraseEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_cursiveFontFamily ""_str
+#if ENABLE(DATA_DETECTION)
+#define SETTING_DEFAULT_VALUE_FOR_dataDetectorTypes static_cast<DataDetectorType>(0)
+#endif
+#if (PLATFORM(COCOA) && !PLATFORM(WATCHOS)) || PLATFORM(GTK)
+#define SETTING_DEFAULT_VALUE_FOR_dataListElementEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_dataListElementEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_dataTransferItemsEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_dateTimeInputsEditableComponentsEnabled false
+#if ENABLE(DECLARATIVE_WEB_PUSH)
+#define SETTING_DEFAULT_VALUE_FOR_declarativeWebPush false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_defaultFixedFontSize 13
+#define SETTING_DEFAULT_VALUE_FOR_defaultFontSize 16
+#define SETTING_DEFAULT_VALUE_FOR_defaultTextEncodingName { }
+#define SETTING_DEFAULT_VALUE_FOR_defaultVideoPosterURL { }
+#define SETTING_DEFAULT_VALUE_FOR_deprecationReportingEnabled false
+#if ENABLE(MEDIA_SOURCE)
+#define SETTING_DEFAULT_VALUE_FOR_detachableMediaSourceEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_detailsAutoExpandEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_developerExtrasEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_deviceHeight 0
+#if ENABLE(DEVICE_ORIENTATION)
+#define SETTING_DEFAULT_VALUE_FOR_deviceOrientationEventEnabled true
+#endif
+#if ENABLE(DEVICE_ORIENTATION)
+#define SETTING_DEFAULT_VALUE_FOR_deviceOrientationPermissionAPIEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_deviceWidth 0
+#define SETTING_DEFAULT_VALUE_FOR_devolvableWidgetsEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_diagnosticLoggingEnabled false
+#if ENABLE(WEB_AUTHN)
+#define SETTING_DEFAULT_VALUE_FOR_digitalCredentialsEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_directoryUploadEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_disabledAdaptationsMetaTagEnabled false
+#if ENABLE(DOM_AUDIO_SESSION)
+#define SETTING_DEFAULT_VALUE_FOR_domAudioSessionEnabled true
+#endif
+#if ENABLE(DOM_AUDIO_SESSION)
+#define SETTING_DEFAULT_VALUE_FOR_domAudioSessionFullEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_domPasteAccessRequestsEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_domPasteAllowed false
+#define SETTING_DEFAULT_VALUE_FOR_domTestingAPIsEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_domTimersThrottlingEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_downloadAttributeEnabled false
+#if PLATFORM(WATCHOS)
+#define SETTING_DEFAULT_VALUE_FOR_downloadableBinaryFontTrustedTypes DownloadableBinaryFontTrustedTypes::None
+#else
+#define SETTING_DEFAULT_VALUE_FOR_downloadableBinaryFontTrustedTypes DownloadableBinaryFontTrustedTypes::Any
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_dynamicSiteInterventionsEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_editableLinkBehavior EditableLinkBehavior::Default
+#if PLATFORM(IOS_FAMILY)
+#define SETTING_DEFAULT_VALUE_FOR_editingBehaviorType EditingBehaviorType::iOS
+#elif OS(DARWIN)
+#define SETTING_DEFAULT_VALUE_FOR_editingBehaviorType EditingBehaviorType::Mac
+#elif OS(WINDOWS)
+#define SETTING_DEFAULT_VALUE_FOR_editingBehaviorType EditingBehaviorType::Windows
+#elif OS(UNIX)
+#define SETTING_DEFAULT_VALUE_FOR_editingBehaviorType EditingBehaviorType::Unix
+#else
+#define SETTING_DEFAULT_VALUE_FOR_editingBehaviorType EditingBehaviorType::Mac
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_embedElementEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_enableElementCurrentCSSZoom false
+#define SETTING_DEFAULT_VALUE_FOR_enableInheritURIQueryComponent false
+#if ENABLE(ENCRYPTED_MEDIA)
+#define SETTING_DEFAULT_VALUE_FOR_encryptedMediaAPIEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_enterKeyHintEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_eventHandlerDrivenSmoothKeyboardScrollingEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_eventTimingEnabled false
+#if ENABLE(MEDIA_STREAM)
+#define SETTING_DEFAULT_VALUE_FOR_exposeCaptureDevicesAfterCaptureEnabled false
+#endif
+#if ENABLE(MEDIA_STREAM)
+#define SETTING_DEFAULT_VALUE_FOR_exposeDefaultSpeakerAsSpecificDeviceEnabled true
+#endif
+#if ENABLE(MEDIA_STREAM)
+#define SETTING_DEFAULT_VALUE_FOR_exposeSpeakersEnabled false
+#endif
+#if ENABLE(MEDIA_STREAM)
+#define SETTING_DEFAULT_VALUE_FOR_exposeSpeakersWithoutMicrophoneEnabled false
+#endif
+#if ENABLE(VIDEO)
+#define SETTING_DEFAULT_VALUE_FOR_extendedAudioDescriptionsEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_fantasyFontFamily ""_str
+#define SETTING_DEFAULT_VALUE_FOR_fileReaderAPIEnabled true
+#if PLATFORM(COCOA)
+#define SETTING_DEFAULT_VALUE_FOR_fileSystemEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_fileSystemEnabled false
+#endif
+#if PLATFORM(COCOA)
+#define SETTING_DEFAULT_VALUE_FOR_fileSystemWritableStreamEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_fileSystemWritableStreamEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_filterLinkDecorationByDefaultEnabled false
+#if PLATFORM(IOS_FAMILY)
+#define SETTING_DEFAULT_VALUE_FOR_fixedBackgroundsPaintRelativeToDocument true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_fixedBackgroundsPaintRelativeToDocument false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_fixedElementsLayoutRelativeToFrame false
+#define SETTING_DEFAULT_VALUE_FOR_fixedFontFamily ""_str
+#define SETTING_DEFAULT_VALUE_FOR_flexFormattingContextIntegrationEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_fontFallbackPrefersPictographs false
+#define SETTING_DEFAULT_VALUE_FOR_fontLoadTimingOverride FontLoadTimingOverride::None
+#define SETTING_DEFAULT_VALUE_FOR_forceCompositingMode false
+#define SETTING_DEFAULT_VALUE_FOR_forceFTPDirectoryListings false
+#define SETTING_DEFAULT_VALUE_FOR_forceLockdownFontParserEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_forceWebGLUsesLowPower false
+#define SETTING_DEFAULT_VALUE_FOR_forcedColorsAreInvertedAccessibilityValue ForcedAccessibilityValue::System
+#define SETTING_DEFAULT_VALUE_FOR_forcedDisplayIsMonochromeAccessibilityValue ForcedAccessibilityValue::System
+#define SETTING_DEFAULT_VALUE_FOR_forcedPrefersContrastAccessibilityValue ForcedAccessibilityValue::System
+#define SETTING_DEFAULT_VALUE_FOR_forcedPrefersReducedMotionAccessibilityValue ForcedAccessibilityValue::System
+#define SETTING_DEFAULT_VALUE_FOR_forcedSupportsHighDynamicRangeValue ForcedAccessibilityValue::System
+#if ENABLE(FORM_CONTROL_REFRESH)
+#define SETTING_DEFAULT_VALUE_FOR_formControlRefreshEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_ftpDirectoryTemplatePath ""_str
+#define SETTING_DEFAULT_VALUE_FOR_ftpEnabled false
+#if ENABLE(FULLSCREEN_API)
+#if PLATFORM(GTK) || PLATFORM(WPE)
+#define SETTING_DEFAULT_VALUE_FOR_fullScreenEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_fullScreenEnabled false
+#endif
+#endif
+#if ENABLE(FULLSCREEN_API)
+#define SETTING_DEFAULT_VALUE_FOR_fullScreenKeyboardLock false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_fullscreenRequirementForScreenOrientationLockingEnabled true
+#if PLATFORM(VISION)
+#define SETTING_DEFAULT_VALUE_FOR_fullscreenSceneAspectRatioLockingEnabled true
+#endif
+#if PLATFORM(VISION)
+#define SETTING_DEFAULT_VALUE_FOR_fullscreenSceneDimmingEnabled true
+#endif
+#if ENABLE(GAMEPAD)
+#define SETTING_DEFAULT_VALUE_FOR_gamepadTriggerRumbleEnabled false
+#endif
+#if ENABLE(GAMEPAD)
+#define SETTING_DEFAULT_VALUE_FOR_gamepadVibrationActuatorEnabled false
+#endif
+#if ENABLE(GAMEPAD)
+#define SETTING_DEFAULT_VALUE_FOR_gamepadsEnabled false
+#endif
+#if ENABLE(VIDEO)
+#define SETTING_DEFAULT_VALUE_FOR_genericCueAPIEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_geolocationAPIEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_geolocationFloorLevelEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_getCoalescedEventsEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_getPredictedEventsEnabled true
+#if ENABLE(MEDIA_STREAM)
+#define SETTING_DEFAULT_VALUE_FOR_getUserMediaRequiresFocus true
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_googleAntiFlickerOptimizationQuirkEnabled true
+#if USE(GRAPHICS_CONTEXT_FILTERS)
+#define SETTING_DEFAULT_VALUE_FOR_graphicsContextFiltersEnabled true
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_hiddenPageCSSAnimationSuspensionEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_hiddenPageDOMTimerThrottlingAutoIncreases false
+#define SETTING_DEFAULT_VALUE_FOR_hiddenPageDOMTimerThrottlingEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_hiddenUntilFoundEnabled false
+#if HAVE(MATERIAL_HOSTING)
+#define SETTING_DEFAULT_VALUE_FOR_hostedBlurMaterialInMediaControlsEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_htmlLegacyAttributeValueSerializationEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_htmlParserScriptingFlagPolicy HTMLParserScriptingFlagPolicy::OnlyIfScriptIsEnabled
+#define SETTING_DEFAULT_VALUE_FOR_httpEquivEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_httpsByDefault false
+#if ENABLE(CONTENT_EXTENSIONS)
+#define SETTING_DEFAULT_VALUE_FOR_iFrameResourceMonitoringEnabled false
+#endif
+#if ENABLE(CONTENT_EXTENSIONS)
+#define SETTING_DEFAULT_VALUE_FOR_iFrameResourceMonitoringTestingSettingsEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_iOSurfaceLosslessCompressionEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_iPAddressAndLocalhostMixedContentUpgradeTestingEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_iceCandidateFilteringEnabled true
+#if ENABLE(TEXT_AUTOSIZING)
+#define SETTING_DEFAULT_VALUE_FOR_idempotentModeAutosizingOnlyHonorsPercentages false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_ignoreIframeEmbeddingProtectionsEnabled false
+#if ENABLE(IMAGE_ANALYSIS)
+#define SETTING_DEFAULT_VALUE_FOR_imageAnalysisDuringFindInPageEnabled false
+#endif
+#if ENABLE(ACCESSIBILITY_ANIMATION_CONTROL)
+#define SETTING_DEFAULT_VALUE_FOR_imageAnimationControlEnabled true
+#endif
+#if ENABLE(MEDIA_STREAM)
+#if PLATFORM(COCOA)
+#define SETTING_DEFAULT_VALUE_FOR_imageCaptureEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_imageCaptureEnabled false
+#endif
+#endif
+#if ENABLE(SERVICE_CONTROLS)
+#define SETTING_DEFAULT_VALUE_FOR_imageControlsEnabled false
+#endif
+#if PLATFORM(COCOA)
+#define SETTING_DEFAULT_VALUE_FOR_imageSubsamplingEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_imageSubsamplingEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_imagesEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_inWindowFullscreenEnabled false
+#if ENABLE(INCLUDE_IGNORED_IN_CORE_AX_TREE)
+#define SETTING_DEFAULT_VALUE_FOR_includeIgnoredInCoreAXTree true
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_incompleteImageBorderEnabled false
+#if HAVE(INCREMENTAL_PDF_APIS)
+#if PLATFORM(MAC)
+#define SETTING_DEFAULT_VALUE_FOR_incrementalPDFLoadingEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_incrementalPDFLoadingEnabled false
+#endif
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_incrementalRenderingSuppressionTimeoutInSeconds 5
+#define SETTING_DEFAULT_VALUE_FOR_indexedDBAPIEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_inlineMediaPlaybackRequiresPlaysInlineAttribute false
+#if PLATFORM(MAC)
+#define SETTING_DEFAULT_VALUE_FOR_inputMethodUsesCorrectKeyEventOrder false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_inputTypeColorEnabled false
+#if PLATFORM(COCOA) && !PLATFORM(WATCHOS)
+#define SETTING_DEFAULT_VALUE_FOR_inputTypeColorEnhancementsEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_inputTypeColorEnhancementsEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_inputTypeDateEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_inputTypeDateTimeLocalEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_inputTypeMonthEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_inputTypeTimeEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_inputTypeWeekEnabled false
+#if PLATFORM(WPE)
+#define SETTING_DEFAULT_VALUE_FOR_inspectorMaximumResourcesContentSize 50
+#else
+#define SETTING_DEFAULT_VALUE_FOR_inspectorMaximumResourcesContentSize 200
+#endif
+#if PLATFORM(COCOA) || PLATFORM(WIN)
+#define SETTING_DEFAULT_VALUE_FOR_inspectorSupportsShowingCertificate true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_inspectorSupportsShowingCertificate false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_interactionRegionInlinePadding 4
+#define SETTING_DEFAULT_VALUE_FOR_interactionRegionMinimumCornerRadius 8
+#if ENABLE(INTERACTION_REGIONS_IN_EVENT_REGION)
+#define SETTING_DEFAULT_VALUE_FOR_interactionRegionsEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_interactiveFormValidationEnabled false
+#if ENABLE(MEDIA_STREAM)
+#define SETTING_DEFAULT_VALUE_FOR_interruptAudioOnPageVisibilityChangeEnabled false
+#endif
+#if ENABLE(MEDIA_STREAM)
+#define SETTING_DEFAULT_VALUE_FOR_interruptVideoOnPageVisibilityChangeEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_invisibleAutoplayNotPermitted false
+#define SETTING_DEFAULT_VALUE_FOR_isFirstPartyWebsiteDataRemovalDisabled false
+#define SETTING_DEFAULT_VALUE_FOR_isFirstPartyWebsiteDataRemovalLiveOnTestingEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_isFirstPartyWebsiteDataRemovalReproTestingEnabled false
+#if PLATFORM(MAC)
+#define SETTING_DEFAULT_VALUE_FOR_isPerActivityStateCPUUsageMeasurementEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_isPerActivityStateCPUUsageMeasurementEnabled false
+#endif
+#if PLATFORM(MAC)
+#define SETTING_DEFAULT_VALUE_FOR_isPostBackgroundingCPUUsageMeasurementEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_isPostBackgroundingCPUUsageMeasurementEnabled false
+#endif
+#if PLATFORM(MAC)
+#define SETTING_DEFAULT_VALUE_FOR_isPostBackgroundingMemoryUsageMeasurementEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_isPostBackgroundingMemoryUsageMeasurementEnabled false
+#endif
+#if PLATFORM(COCOA)
+#define SETTING_DEFAULT_VALUE_FOR_isPostLoadCPUUsageMeasurementEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_isPostLoadCPUUsageMeasurementEnabled false
+#endif
+#if PLATFORM(COCOA)
+#define SETTING_DEFAULT_VALUE_FOR_isPostLoadMemoryUsageMeasurementEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_isPostLoadMemoryUsageMeasurementEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_isSameSiteStrictEnforcementEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_isThirdPartyCookieBlockingDisabled false
+#define SETTING_DEFAULT_VALUE_FOR_itpDebugModeEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_javaScriptCanAccessClipboard false
+#define SETTING_DEFAULT_VALUE_FOR_javaScriptCanOpenWindowsAutomatically false
+#define SETTING_DEFAULT_VALUE_FOR_javaScriptRuntimeFlags { }
+#define SETTING_DEFAULT_VALUE_FOR_langAttributeAwareFormControlUIEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_largeImageAsyncDecodingEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_layerBasedSVGEngineEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_layoutFallbackWidth 980
+#define SETTING_DEFAULT_VALUE_FOR_layoutViewportHeightExpansionFactor 0
+#define SETTING_DEFAULT_VALUE_FOR_lazyIframeLoadingEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_lazyImageLoadingEnabled false
+#if ENABLE(LEGACY_ENCRYPTED_MEDIA)
+#define SETTING_DEFAULT_VALUE_FOR_legacyEncryptedMediaAPIEnabled true
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_legacyLineLayoutVisualCoverageEnabled false
+#if ENABLE(WEBKIT_OVERFLOW_SCROLLING_CSS_PROPERTY)
+#define SETTING_DEFAULT_VALUE_FOR_legacyOverflowScrollingTouchEnabled true
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_legacyPluginQuirkForMailSignaturesEnabled false
+#if ENABLE(WEB_RTC)
+#define SETTING_DEFAULT_VALUE_FOR_legacyWebRTCOfferOptionsEnabled false
+#endif
+#if ENABLE(MEDIA_RECORDER_WEBM)
+#define SETTING_DEFAULT_VALUE_FOR_limitedMatroskaSupportEnabled false
+#endif
+#if ENABLE(LINEAR_MEDIA_PLAYER)
+#define SETTING_DEFAULT_VALUE_FOR_linearMediaPlayerEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_linkDNSPrefetchEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_linkPreconnectEarlyHintsEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_linkPreconnectEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_linkPrefetchEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_linkPreloadEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_linkSanitizerEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_loadDeferringEnabled true
+#if ENABLE(WEB_ARCHIVE)
+#define SETTING_DEFAULT_VALUE_FOR_loadWebArchiveWithEphemeralStorageEnabled true
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_loadsImagesAutomatically false
+#define SETTING_DEFAULT_VALUE_FOR_localFileContentSniffingEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_localNetworkAccessEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_localStorageDatabasePath { }
+#define SETTING_DEFAULT_VALUE_FOR_localStorageEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_lockdownFontParserEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_loginStatusAPIEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_loginStatusAPIRequiresWebAuthnEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_logsPageMessagesToSystemConsoleEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_mainContentUserGestureOverrideEnabled false
+#if ENABLE(MEDIA_STREAM) && PLATFORM(IOS_FAMILY)
+#define SETTING_DEFAULT_VALUE_FOR_manageCaptureStatusBarInGPUProcessEnabled false
+#endif
+#if ENABLE(MEDIA_SOURCE)
+#define SETTING_DEFAULT_VALUE_FOR_managedMediaSourceEnabled true
+#endif
+#if ENABLE(MEDIA_SOURCE)
+#define SETTING_DEFAULT_VALUE_FOR_managedMediaSourceHighThreshold 30
+#endif
+#if ENABLE(MEDIA_SOURCE)
+#define SETTING_DEFAULT_VALUE_FOR_managedMediaSourceLowThreshold 10
+#endif
+#if ENABLE(MEDIA_SOURCE) && ENABLE(WIRELESS_PLAYBACK_TARGET)
+#define SETTING_DEFAULT_VALUE_FOR_managedMediaSourceNeedsAirPlay false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_masonryEnabled false
+#if ENABLE(MATHML)
+#define SETTING_DEFAULT_VALUE_FOR_mathMLEnabled true
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_maxParseDuration -1
+#define SETTING_DEFAULT_VALUE_FOR_maximumHTMLParserDOMTreeDepth SettingsBase::defaultMaximumHTMLParserDOMTreeDepth
+#if ENABLE(MEDIA_SOURCE)
+#define SETTING_DEFAULT_VALUE_FOR_maximumSourceBufferSize SettingsBase::defaultMaximumSourceBufferSize()
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_mediaCapabilitiesEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_mediaCapabilitiesExtensionsEnabled false
+#if ENABLE(EXTENSION_CAPABILITIES)
+#if PLATFORM(IOS_FAMILY_SIMULATOR)
+#define SETTING_DEFAULT_VALUE_FOR_mediaCapabilityGrantsEnabled false
+#else
+#define SETTING_DEFAULT_VALUE_FOR_mediaCapabilityGrantsEnabled true
+#endif
+#endif
+#if ENABLE(MEDIA_STREAM)
+#define SETTING_DEFAULT_VALUE_FOR_mediaCaptureRequiresSecureConnection true
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_mediaContentTypesRequiringHardwareSupport ""_str
+#if ENABLE(MEDIA_CONTROLS_CONTEXT_MENUS)
+#define SETTING_DEFAULT_VALUE_FOR_mediaControlsContextMenusEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_mediaControlsScaleWithPageZoom true
+#if PLATFORM(IOS_FAMILY)
+#define SETTING_DEFAULT_VALUE_FOR_mediaDataLoadsAutomatically false
+#else
+#define SETTING_DEFAULT_VALUE_FOR_mediaDataLoadsAutomatically true
+#endif
+#if ENABLE(MEDIA_STREAM)
+#if PLATFORM(GTK) || PLATFORM(WPE)
+#define SETTING_DEFAULT_VALUE_FOR_mediaDevicesEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_mediaDevicesEnabled false
+#endif
+#endif
+#if ENABLE(VIDEO)
+#define SETTING_DEFAULT_VALUE_FOR_mediaEnabled true
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_mediaKeysStorageDirectory { }
+#define SETTING_DEFAULT_VALUE_FOR_mediaPlaybackEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_mediaPreferredFullscreenWidth 960
+#define SETTING_DEFAULT_VALUE_FOR_mediaPreloadingEnabled false
+#if ENABLE(MEDIA_RECORDER)
+#define SETTING_DEFAULT_VALUE_FOR_mediaRecorderEnabled false
+#endif
+#if ENABLE(MEDIA_RECORDER_WEBM)
+#define SETTING_DEFAULT_VALUE_FOR_mediaRecorderEnabledWebM false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_mediaSessionCaptureToggleAPIEnabled false
+#if ENABLE(MEDIA_SESSION_COORDINATOR)
+#define SETTING_DEFAULT_VALUE_FOR_mediaSessionCoordinatorEnabled true
+#endif
+#if ENABLE(MEDIA_SESSION)
+#define SETTING_DEFAULT_VALUE_FOR_mediaSessionEnabled true
+#endif
+#if ENABLE(MEDIA_SESSION_COORDINATOR) && ENABLE(MEDIA_SESSION_PLAYLIST)
+#define SETTING_DEFAULT_VALUE_FOR_mediaSessionPlaylistEnabled true
+#endif
+#if ENABLE(MEDIA_SOURCE)
+#define SETTING_DEFAULT_VALUE_FOR_mediaSourceEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_mediaSourceEnabled false
+#endif
+#if ENABLE(MEDIA_SOURCE_IN_WORKERS)
+#define SETTING_DEFAULT_VALUE_FOR_mediaSourceInWorkerEnabled true
+#endif
+#if ENABLE(MEDIA_SOURCE) && USE(AVFOUNDATION)
+#define SETTING_DEFAULT_VALUE_FOR_mediaSourcePrefersDecompressionSession true
+#endif
+#if ENABLE(MEDIA_STREAM)
+#if PLATFORM(COCOA)
+#define SETTING_DEFAULT_VALUE_FOR_mediaStreamTrackProcessingEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_mediaStreamTrackProcessingEnabled false
+#endif
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_mediaTypeOverride "screen"_s
+#define SETTING_DEFAULT_VALUE_FOR_mediaUserGestureInheritsFromDocument false
+#define SETTING_DEFAULT_VALUE_FOR_metaViewportInteractiveWidgetEnabled false
+#if USE(SKIA)
+#define SETTING_DEFAULT_VALUE_FOR_minimumAccelerated2DContextArea 128 * 129
+#else
+#define SETTING_DEFAULT_VALUE_FOR_minimumAccelerated2DContextArea 0
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_minimumFontSize 0
+#define SETTING_DEFAULT_VALUE_FOR_minimumLogicalFontSize 0
+#if ENABLE(TEXT_AUTOSIZING)
+#if PLATFORM(WATCHOS)
+#define SETTING_DEFAULT_VALUE_FOR_minimumZoomFontSize 30
+#else
+#define SETTING_DEFAULT_VALUE_FOR_minimumZoomFontSize 15
+#endif
+#endif
+#if ENABLE(MEDIA_STREAM)
+#define SETTING_DEFAULT_VALUE_FOR_mockCaptureDevicesEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_mockScrollbarsControllerEnabled false
+#if ENABLE(MODEL_ELEMENT)
+#if PLATFORM(VISION) && ENABLE(MODEL_ELEMENT)
+#define SETTING_DEFAULT_VALUE_FOR_modelElementEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_modelElementEnabled false
+#endif
+#endif
+#if PLATFORM(VISION) && ENABLE(MODEL_PROCESS)
+#define SETTING_DEFAULT_VALUE_FOR_modelNoPortalAttributeEnabled false
+#endif
+#if ENABLE(MODEL_PROCESS)
+#define SETTING_DEFAULT_VALUE_FOR_modelProcessEnabled true
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_momentumScrollingAnimatorEnabled false
+#if ENABLE(TOUCH_EVENTS)
+#define SETTING_DEFAULT_VALUE_FOR_mouseEventsSimulationEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_mutationEventsEnabled false
+#if ENABLE(MEDIA_STREAM)
+#define SETTING_DEFAULT_VALUE_FOR_muteCameraOnMicrophoneInterruptionEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_navigationAPIEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_navigatorUserAgentDataJavaScriptAPIEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_needsAdobeFrameReloadingQuirk false
+#define SETTING_DEFAULT_VALUE_FOR_needsDeferKeyDownAndKeyPressTimersUntilNextEditingCommandQuirk false
+#define SETTING_DEFAULT_VALUE_FOR_needsFrameNameFallbackToIdQuirk false
+#define SETTING_DEFAULT_VALUE_FOR_needsKeyboardEventDisambiguationQuirks false
+#define SETTING_DEFAULT_VALUE_FOR_needsSiteSpecificQuirks false
+#define SETTING_DEFAULT_VALUE_FOR_needsStorageAccessFromFileURLsQuirk true
+#if ENABLE(NOTIFICATION_EVENT)
+#if ENABLE(NOTIFICATION_EVENT) && !PLATFORM(IOS_FAMILY)
+#define SETTING_DEFAULT_VALUE_FOR_notificationEventEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_notificationEventEnabled false
+#endif
+#endif
+#if ENABLE(NOTIFICATIONS)
+#if PLATFORM(IOS_FAMILY)
+#define SETTING_DEFAULT_VALUE_FOR_notificationsEnabled false
+#else
+#define SETTING_DEFAULT_VALUE_FOR_notificationsEnabled true
+#endif
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_observableEnabled false
+#if ENABLE(OFFSCREEN_CANVAS)
+#if PLATFORM(COCOA) || PLATFORM(GTK) || PLATFORM(WPE)
+#define SETTING_DEFAULT_VALUE_FOR_offscreenCanvasEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_offscreenCanvasEnabled false
+#endif
+#endif
+#if ENABLE(OFFSCREEN_CANVAS_IN_WORKERS)
+#if PLATFORM(COCOA) || PLATFORM(GTK) || PLATFORM(WPE)
+#define SETTING_DEFAULT_VALUE_FOR_offscreenCanvasInWorkersEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_offscreenCanvasInWorkersEnabled false
+#endif
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_opportunisticSweepingAndGarbageCollectionEnabled false
+#if HAVE(ALLOW_ONLY_PARTITIONED_COOKIES) && 0
+#define SETTING_DEFAULT_VALUE_FOR_optInPartitionedCookiesEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_overlappingBackingStoreProvidersEnabled true
+#if PLATFORM(WIN)
+#define SETTING_DEFAULT_VALUE_FOR_overscrollBehaviorEnabled false
+#else
+#define SETTING_DEFAULT_VALUE_FOR_overscrollBehaviorEnabled true
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_pageAtRuleMarginDescriptorsEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_passiveTouchListenersAsDefaultOnDocument true
+#define SETTING_DEFAULT_VALUE_FOR_passiveWheelListenersAsDefaultOnDocument true
+#define SETTING_DEFAULT_VALUE_FOR_passwordEchoDurationInSeconds 1
+#define SETTING_DEFAULT_VALUE_FOR_passwordEchoEnabled false
+#if ENABLE(PAYMENT_REQUEST)
+#define SETTING_DEFAULT_VALUE_FOR_paymentRequestEnabled false
+#endif
+#if ENABLE(PDFJS)
+#define SETTING_DEFAULT_VALUE_FOR_pdfJSViewerEnabled false
+#endif
+#if PLATFORM(COCOA)
+#define SETTING_DEFAULT_VALUE_FOR_pdfPluginEnabled false
+#endif
+#if PLATFORM(COCOA)
+#define SETTING_DEFAULT_VALUE_FOR_pdfPluginHUDEnabled false
+#endif
+#if ENABLE(PDF_PAGE_NUMBER_INDICATOR)
+#define SETTING_DEFAULT_VALUE_FOR_pdfPluginPageNumberIndicatorEnabled false
+#endif
+#if ENABLE(WEB_RTC)
+#define SETTING_DEFAULT_VALUE_FOR_peerConnectionEnabled true
+#endif
+#if ENABLE(WEB_RTC)
+#define SETTING_DEFAULT_VALUE_FOR_peerConnectionVideoScalingAdaptationDisabled false
+#endif
+#if ENABLE(MEDIA_STREAM)
+#define SETTING_DEFAULT_VALUE_FOR_perElementSpeakerSelectionEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_permissionsAPIEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_pictographFontFamily ""_str
+#if ENABLE(PICTURE_IN_PICTURE_API)
+#if PLATFORM(VISION)
+#define SETTING_DEFAULT_VALUE_FOR_pictureInPictureAPIEnabled false
+#else
+#define SETTING_DEFAULT_VALUE_FOR_pictureInPictureAPIEnabled true
+#endif
+#endif
+#if HAVE(PIP_SKIP_PREROLL)
+#define SETTING_DEFAULT_VALUE_FOR_pictureInPicturePlaybackStateEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_pitchCorrectionAlgorithm MediaPlayerEnums::PitchCorrectionAlgorithm::BestAllAround
+#if ENABLE(POINTER_LOCK)
+#define SETTING_DEFAULT_VALUE_FOR_pointerLockEnabled false
+#endif
+#if ENABLE(POINTER_LOCK)
+#define SETTING_DEFAULT_VALUE_FOR_pointerLockOptionsEnabled true
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_popoverAttributeEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_preferMIMETypeForImages false
+#if PLATFORM(VISION)
+#define SETTING_DEFAULT_VALUE_FOR_preferPageRenderingUpdatesNear60FPSEnabled false
+#else
+#define SETTING_DEFAULT_VALUE_FOR_preferPageRenderingUpdatesNear60FPSEnabled true
+#endif
+#if HAVE(SPATIAL_AUDIO_EXPERIENCE)
+#define SETTING_DEFAULT_VALUE_FOR_preferSpatialAudioExperience false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_preventKeyboardDOMEventDispatch false
+#define SETTING_DEFAULT_VALUE_FOR_privateClickMeasurementDebugModeEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_privateClickMeasurementEnabled true
+#if HAVE(RSA_BSSA)
+#define SETTING_DEFAULT_VALUE_FOR_privateClickMeasurementFraudPreventionEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_privateClickMeasurementFraudPreventionEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_privateTokenUsageByThirdPartyEnabled true
+#if ENABLE(DAMAGE_TRACKING)
+#define SETTING_DEFAULT_VALUE_FOR_propagateDamagingInformation false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_punchOutWhiteBackgroundsInDarkMode false
+#define SETTING_DEFAULT_VALUE_FOR_pushAPIEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_remoteMediaSessionManagerEnabled false
+#if ENABLE(WIRELESS_PLAYBACK_TARGET)
+#if PLATFORM(VISION)
+#define SETTING_DEFAULT_VALUE_FOR_remotePlaybackEnabled false
+#else
+#define SETTING_DEFAULT_VALUE_FOR_remotePlaybackEnabled true
+#endif
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_remoteSnapshottingEnabled false
+#if ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)
+#define SETTING_DEFAULT_VALUE_FOR_removeBackgroundEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_requestIdleCallbackEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_requestStorageAccessThrowsExceptionUntilReload false
+#if PLATFORM(COCOA) && HAVE(AVSAMPLEBUFFERVIDEOOUTPUT)
+#define SETTING_DEFAULT_VALUE_FOR_requestVideoFrameCallbackEnabled true
+#elif USE(GSTREAMER)
+#define SETTING_DEFAULT_VALUE_FOR_requestVideoFrameCallbackEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_requestVideoFrameCallbackEnabled false
+#endif
+#if HAVE(SC_CONTENT_SHARING_PICKER)
+#define SETTING_DEFAULT_VALUE_FOR_requireUAGetDisplayMediaPrompt true
+#endif
+#if ENABLE(REQUIRES_PAGE_VISIBILITY_FOR_NOW_PLAYING)
+#define SETTING_DEFAULT_VALUE_FOR_requiresPageVisibilityForVideoToBeNowPlaying false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_requiresPageVisibilityToPlayAudio false
+#if PLATFORM(IOS_FAMILY)
+#define SETTING_DEFAULT_VALUE_FOR_requiresUserGestureForAudioPlayback true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_requiresUserGestureForAudioPlayback false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_requiresUserGestureForVideoPlayback false
+#if PLATFORM(IOS_FAMILY)
+#define SETTING_DEFAULT_VALUE_FOR_requiresUserGestureToLoadVideo true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_requiresUserGestureToLoadVideo false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_resourceLoadSchedulingEnabled true
+#if ENABLE(RESOURCE_USAGE)
+#define SETTING_DEFAULT_VALUE_FOR_resourceUsageOverlayVisible false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_respondToThermalPressureAggressively false
+#if HAVE(RUBBER_BANDING)
+#define SETTING_DEFAULT_VALUE_FOR_rubberBandingForSubScrollableRegionsEnabled true
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_sKAttributionEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_sampledPageTopColorMaxDifference 0
+#define SETTING_DEFAULT_VALUE_FOR_sampledPageTopColorMinHeight 0
+#define SETTING_DEFAULT_VALUE_FOR_sansSerifFontFamily ""_str
+#if PLATFORM(COCOA)
+#define SETTING_DEFAULT_VALUE_FOR_scopedCustomElementRegistryEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_scopedCustomElementRegistryEnabled false
+#endif
+#if ENABLE(MEDIA_STREAM)
+#define SETTING_DEFAULT_VALUE_FOR_screenCaptureEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_screenOrientationAPIEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_screenOrientationLockingAPIEnabled false
+#if ENABLE(SCREEN_TIME)
+#define SETTING_DEFAULT_VALUE_FOR_screenTimeEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_screenWakeLockAPIEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_scriptEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_scriptMarkupEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_scriptTrackingPrivacyLoggingEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_scrollAnimatorEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_scrollDrivenAnimationsEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_scrollToTextFragmentEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_scrollToTextFragmentFeatureDetectionEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_scrollToTextFragmentGenerationEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_scrollToTextFragmentIndicatorEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_scrollToTextFragmentMarkingEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_scrollendEventEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_scrollingCoordinatorEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_scrollingPerformanceTestingEnabled false
+#if PLATFORM(IOS_FAMILY)
+#define SETTING_DEFAULT_VALUE_FOR_scrollingTreeIncludesFrames true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_scrollingTreeIncludesFrames false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_secureContextChecksEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_selectShowPickerEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_selectTrailingWhitespaceEnabled false
+#if PLATFORM(IOS_FAMILY)
+#define SETTING_DEFAULT_VALUE_FOR_selectionHonorsOverflowScrolling false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_serifFontFamily ""_str
+#if ENABLE(SERVICE_CONTROLS)
+#define SETTING_DEFAULT_VALUE_FOR_serviceControlsEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_serviceWorkerInstallEventEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_serviceWorkerNavigationPreloadEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_serviceWorkersEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_serviceWorkersUserGestureEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_sessionStorageQuota 5242880
+#define SETTING_DEFAULT_VALUE_FOR_shadowRootReferenceTargetEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_shadowRootReferenceTargetEnabledForAriaOwns false
+#define SETTING_DEFAULT_VALUE_FOR_shapeDetection false
+#define SETTING_DEFAULT_VALUE_FOR_sharedWorkerEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_shouldAllowUserInstalledFonts true
+#define SETTING_DEFAULT_VALUE_FOR_shouldConvertInvalidURLsToBlank true
+#define SETTING_DEFAULT_VALUE_FOR_shouldConvertPositionStyleOnCopy false
+#define SETTING_DEFAULT_VALUE_FOR_shouldDecidePolicyBeforeLoadingQuickLookPreview false
+#define SETTING_DEFAULT_VALUE_FOR_shouldDeferAsynchronousScriptsUntilAfterDocumentLoadOrFirstPaint true
+#define SETTING_DEFAULT_VALUE_FOR_shouldDispatchSyntheticMouseEventsWhenModifyingSelection false
+#define SETTING_DEFAULT_VALUE_FOR_shouldDispatchSyntheticMouseOutAfterSyntheticClick false
+#if ENABLE(VIDEO)
+#define SETTING_DEFAULT_VALUE_FOR_shouldDisplayCaptions false
+#endif
+#if ENABLE(VIDEO)
+#define SETTING_DEFAULT_VALUE_FOR_shouldDisplaySubtitles false
+#endif
+#if ENABLE(VIDEO)
+#define SETTING_DEFAULT_VALUE_FOR_shouldDisplayTextDescriptions false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_shouldDropNearSuspendedAssertionAfterDelay false
+#if ENABLE(TEXT_AUTOSIZING)
+#define SETTING_DEFAULT_VALUE_FOR_shouldEnableTextAutosizingBoost false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_shouldIgnoreFontLoadCompletions false
+#define SETTING_DEFAULT_VALUE_FOR_shouldIgnoreMetaViewport false
+#define SETTING_DEFAULT_VALUE_FOR_shouldInjectUserScriptsInInitialEmptyDocument false
+#define SETTING_DEFAULT_VALUE_FOR_shouldPrintBackgrounds false
+#if PLATFORM(IOS_FAMILY) || PLATFORM(GTK) || PLATFORM(WPE)
+#define SETTING_DEFAULT_VALUE_FOR_shouldRespectImageOrientation true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_shouldRespectImageOrientation false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_shouldRestrictBaseURLSchemes true
+#define SETTING_DEFAULT_VALUE_FOR_shouldSuppressTextInputFromEditingDuringProvisionalNavigation false
+#define SETTING_DEFAULT_VALUE_FOR_shouldTakeNearSuspendedAssertions true
+#if USE(MODERN_AVCONTENTKEYSESSION)
+#define SETTING_DEFAULT_VALUE_FOR_shouldUseModernAVContentKeySession true
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_shouldUseServiceWorkerShortTimeout false
+#define SETTING_DEFAULT_VALUE_FOR_showDebugBorders false
+#define SETTING_DEFAULT_VALUE_FOR_showFrameProcessBorders false
+#define SETTING_DEFAULT_VALUE_FOR_showMediaStatsContextMenuItemEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_showModalDialogEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_showRepaintCounter false
+#define SETTING_DEFAULT_VALUE_FOR_showTiledScrollingIndicator false
+#define SETTING_DEFAULT_VALUE_FOR_showsToolTipOverTruncatedText false
+#define SETTING_DEFAULT_VALUE_FOR_showsURLsInToolTips false
+#define SETTING_DEFAULT_VALUE_FOR_shrinksStandaloneImagesToFit true
+#define SETTING_DEFAULT_VALUE_FOR_sidewaysWritingModesEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_siteIsolationEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_siteIsolationSharedProcessEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_smartInsertDeleteEnabled true
+#if ENABLE(MEDIA_SOURCE)
+#if USE(GSTREAMER)
+#define SETTING_DEFAULT_VALUE_FOR_sourceBufferChangeTypeEnabled false
+#else
+#define SETTING_DEFAULT_VALUE_FOR_sourceBufferChangeTypeEnabled true
+#endif
+#endif
+#if ENABLE(SPATIAL_IMAGE_CONTROLS)
+#define SETTING_DEFAULT_VALUE_FOR_spatialImageControlsEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_spatialNavigationEnabled false
+#if ENABLE(MEDIA_STREAM)
+#define SETTING_DEFAULT_VALUE_FOR_speakerSelectionRequiresUserGesture true
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_speechRecognitionEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_speechSynthesisAPIEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_springTimingFunctionEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_standalone false
+#define SETTING_DEFAULT_VALUE_FOR_standardFontFamily ""_str
+#if PLATFORM(COCOA)
+#define SETTING_DEFAULT_VALUE_FOR_storageAPIEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_storageAPIEnabled false
+#endif
+#if PLATFORM(COCOA)
+#define SETTING_DEFAULT_VALUE_FOR_storageAPIEstimateEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_storageAPIEstimateEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_storageAccessAPIPerPageScopeEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_storageBlockingPolicy StorageBlockingPolicy::AllowAll
+#define SETTING_DEFAULT_VALUE_FOR_supportHDRCompositorTonemappingEnabled false
+#if ENABLE(SUPPORT_HDR_DISPLAY_BY_DEFAULT)
+#define SETTING_DEFAULT_VALUE_FOR_supportHDRDisplayEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_supportHDRDisplayEnabled false
+#endif
+#if PLATFORM(MAC)
+#define SETTING_DEFAULT_VALUE_FOR_suppressHDRShouldBeAllowedInFullscreenVideo false
+#else
+#define SETTING_DEFAULT_VALUE_FOR_suppressHDRShouldBeAllowedInFullscreenVideo true
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_suppressesIncrementalRendering false
+#if PLATFORM(COCOA)
+#define SETTING_DEFAULT_VALUE_FOR_switchControlEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_switchControlEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_systemLayoutDirection TextDirection::LTR
+#if USE(SYSTEM_PREVIEW)
+#define SETTING_DEFAULT_VALUE_FOR_systemPreviewEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_targetTextPseudoElementEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_telephoneNumberParsingEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_temporaryTileCohortRetentionEnabled true
+#if ENABLE(WRITING_TOOLS)
+#define SETTING_DEFAULT_VALUE_FOR_textAnimationsEnabled true
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_textAreasAreResizable false
+#if ENABLE(TEXT_AUTOSIZING)
+#if PLATFORM(IOS_FAMILY)
+#define SETTING_DEFAULT_VALUE_FOR_textAutosizingEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_textAutosizingEnabled false
+#endif
+#endif
+#if ENABLE(TEXT_AUTOSIZING)
+#if ENABLE(TEXT_AUTOSIZING_BASED_ON_INITIAL_SCALE)
+#define SETTING_DEFAULT_VALUE_FOR_textAutosizingEnabledAtLargeInitialScale false
+#else
+#define SETTING_DEFAULT_VALUE_FOR_textAutosizingEnabledAtLargeInitialScale true
+#endif
+#endif
+#if ENABLE(TEXT_AUTOSIZING)
+#define SETTING_DEFAULT_VALUE_FOR_textAutosizingUsesIdempotentMode false
+#endif
+#if ENABLE(TEXT_AUTOSIZING)
+#define SETTING_DEFAULT_VALUE_FOR_textAutosizingWindowSizeOverrideHeight 0
+#endif
+#if ENABLE(TEXT_AUTOSIZING)
+#define SETTING_DEFAULT_VALUE_FOR_textAutosizingWindowSizeOverrideWidth 0
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_textDirectionSubmenuInclusionBehavior TextDirectionSubmenuInclusionBehavior::AutomaticallyIncluded
+#if PLATFORM(WATCHOS)
+#define SETTING_DEFAULT_VALUE_FOR_textInteractionEnabled false
+#else
+#define SETTING_DEFAULT_VALUE_FOR_textInteractionEnabled true
+#endif
+#if ENABLE(IMAGE_ANALYSIS) && ENABLE(VIDEO)
+#define SETTING_DEFAULT_VALUE_FOR_textRecognitionInVideosEnabled false
+#endif
+#if ENABLE(MEDIA_SOURCE)
+#define SETTING_DEFAULT_VALUE_FOR_textTracksInMSEEnabled false
+#endif
+#if ENABLE(THREADED_ANIMATION_RESOLUTION)
+#define SETTING_DEFAULT_VALUE_FOR_threadedAnimationResolutionEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_thumbAndTrackPseudoElementsEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_timeWithoutMouseMovementBeforeHidingControls 3_s
+#define SETTING_DEFAULT_VALUE_FOR_topContentInsetBackgroundCanChangeAfterScrolling false
+#if ENABLE(TOUCH_EVENTS)
+#define SETTING_DEFAULT_VALUE_FOR_touchEventDOMAttributesEnabled WebCore::screenHasTouchDevice()
+#endif
+#if ENABLE(TOUCH_EVENTS)
+#define SETTING_DEFAULT_VALUE_FOR_touchEventEmulationEnabled false
+#endif
+#if ENABLE(WEBXR)
+#define SETTING_DEFAULT_VALUE_FOR_touchInputCompatibilityEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_trackConfigurationEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_treatIPAddressAsDomain false
+#define SETTING_DEFAULT_VALUE_FOR_treatsAnyTextCSSLinkAsStylesheet false
+#define SETTING_DEFAULT_VALUE_FOR_trustedTypesEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_uAVisualTransitionDetectionEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_undoManagerAPIEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_unhandledPromiseRejectionToConsoleEnabled true
+#if ENABLE(UNIFIED_PDF)
+#define SETTING_DEFAULT_VALUE_FOR_unifiedPDFEnabled false
+#endif
+#if USE(UNIFIED_TEXT_CHECKING)
+#define SETTING_DEFAULT_VALUE_FOR_unifiedTextCheckerEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_unifiedTextCheckerEnabled false
+#endif
+#if ENABLE(DAMAGE_TRACKING)
+#define SETTING_DEFAULT_VALUE_FOR_unifyDamagedRegions false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_upgradeMixedContentEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_urlPatternAPIEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_useAnonymousModeWhenFetchingMaskImages true
+#if PLATFORM(IOS_FAMILY)
+#define SETTING_DEFAULT_VALUE_FOR_useAsyncUIKitInteractions false
+#endif
+#if ENABLE(DAMAGE_TRACKING)
+#define SETTING_DEFAULT_VALUE_FOR_useDamagingInformationForCompositing false
+#endif
+#if ENABLE(GPU_PROCESS) && ENABLE(WEBGL)
+#if ENABLE(GPU_PROCESS_BY_DEFAULT) && ENABLE(GPU_PROCESS_WEBGL_BY_DEFAULT)
+#define SETTING_DEFAULT_VALUE_FOR_useGPUProcessForWebGLEnabled true
+#elif USE(GRAPHICS_LAYER_WC)
+#define SETTING_DEFAULT_VALUE_FOR_useGPUProcessForWebGLEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_useGPUProcessForWebGLEnabled false
+#endif
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_useGiantTiles false
+#define SETTING_DEFAULT_VALUE_FOR_useIFCForSVGText false
+#if PLATFORM(IOS_FAMILY)
+#define SETTING_DEFAULT_VALUE_FOR_useImageDocumentForSubframePDF true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_useImageDocumentForSubframePDF false
+#endif
+#if ENABLE(MEDIA_STREAM)
+#define SETTING_DEFAULT_VALUE_FOR_useMicrophoneMuteStatusAPI false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_usePreHTML5ParserQuirks false
+#define SETTING_DEFAULT_VALUE_FOR_useSystemAppearance false
+#define SETTING_DEFAULT_VALUE_FOR_userActivationAPIEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_userGesturePromisePropagationEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_userInterfaceDirectionPolicy UserInterfaceDirectionPolicy::Content
+#define SETTING_DEFAULT_VALUE_FOR_userStyleSheetLocation { }
+#define SETTING_DEFAULT_VALUE_FOR_usesBackForwardCache true
+#define SETTING_DEFAULT_VALUE_FOR_usesEncodingDetector false
+#define SETTING_DEFAULT_VALUE_FOR_validationMessageTimerMagnification 50
+#define SETTING_DEFAULT_VALUE_FOR_verifyWindowOpenUserGestureFromUIProcess false
+#if PLATFORM(COCOA)
+#define SETTING_DEFAULT_VALUE_FOR_verticalFormControlsEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_verticalFormControlsEnabled false
+#endif
+#if ENABLE(FULLSCREEN_API)
+#define SETTING_DEFAULT_VALUE_FOR_videoFullsceenPrefersMostVisibleHeuristic false
+#endif
+#if ENABLE(FULLSCREEN_API)
+#define SETTING_DEFAULT_VALUE_FOR_videoFullscreenRequiresElementFullscreen false
+#endif
+#if PLATFORM(VISION)
+#define SETTING_DEFAULT_VALUE_FOR_videoPresentationManagerEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_videoPresentationManagerEnabled false
+#endif
+#if PLATFORM(VISION)
+#define SETTING_DEFAULT_VALUE_FOR_videoPresentationModeAPIEnabled false
+#else
+#define SETTING_DEFAULT_VALUE_FOR_videoPresentationModeAPIEnabled true
+#endif
+#if ENABLE(VIDEO)
+#define SETTING_DEFAULT_VALUE_FOR_videoQualityIncludesDisplayCompositingEnabled false
+#endif
+#if USE(MODERN_AVCONTENTKEYSESSION_WITH_VTDECOMPRESSIONSESSION)
+#define SETTING_DEFAULT_VALUE_FOR_videoRendererProtectedFallbackDisabled true
+#endif
+#if USE(MODERN_AVCONTENTKEYSESSION_WITH_VTDECOMPRESSIONSESSION)
+#define SETTING_DEFAULT_VALUE_FOR_videoRendererUseDecompressionSessionForProtected false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_viewTransitionClassesEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_viewTransitionTypesEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_viewTransitionsEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_visibleDebugOverlayRegions 0
+#if ENABLE(IMAGE_ANALYSIS)
+#define SETTING_DEFAULT_VALUE_FOR_visualTranslationEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_visualViewportAPIEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_visualViewportEnabled true
+#if PLATFORM(IOS_FAMILY)
+#define SETTING_DEFAULT_VALUE_FOR_visuallyContiguousBidiTextSelectionEnabled false
+#endif
+#if ENABLE(VP9)
+#define SETTING_DEFAULT_VALUE_FOR_vp9DecoderEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_wantsBalancedSetDefersLoadingBehavior false
+#define SETTING_DEFAULT_VALUE_FOR_webAPIStatisticsEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_webAPIsInShadowRealmEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_webAnimationsCustomEffectsEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_webAnimationsCustomFrameRateEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_webAnimationsOverallProgressPropertyEnabled true
+#if ENABLE(WEB_ARCHIVE)
+#define SETTING_DEFAULT_VALUE_FOR_webArchiveDebugModeEnabled false
+#endif
+#if ENABLE(WEB_ARCHIVE)
+#define SETTING_DEFAULT_VALUE_FOR_webArchiveTestingModeEnabled false
+#endif
+#if ENABLE(WEBASSEMBLY)
+#define SETTING_DEFAULT_VALUE_FOR_webAssemblyESMIntegrationEnabled false
+#endif
+#if ENABLE(WEB_AUDIO)
+#define SETTING_DEFAULT_VALUE_FOR_webAudioEnabled false
+#endif
+#if HAVE(WEB_AUTHN_AS_MODERN)
+#define SETTING_DEFAULT_VALUE_FOR_webAuthenticationASEnabled true
+#endif
+#if ENABLE(WEB_AUTHN)
+#define SETTING_DEFAULT_VALUE_FOR_webAuthenticationEnabled true
+#endif
+#if ENABLE(WEB_CODECS)
+#if USE(GSTREAMER)
+#define SETTING_DEFAULT_VALUE_FOR_webCodecsAV1Enabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_webCodecsAV1Enabled false
+#endif
+#endif
+#if ENABLE(WEB_CODECS)
+#define SETTING_DEFAULT_VALUE_FOR_webCodecsAudioEnabled true
+#endif
+#if ENABLE(WEB_CODECS)
+#if USE(GSTREAMER)
+#define SETTING_DEFAULT_VALUE_FOR_webCodecsHEVCEnabled true
+#elif PLATFORM(COCOA)
+#define SETTING_DEFAULT_VALUE_FOR_webCodecsHEVCEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_webCodecsHEVCEnabled false
+#endif
+#endif
+#if ENABLE(WEB_CODECS)
+#if PLATFORM(COCOA)
+#define SETTING_DEFAULT_VALUE_FOR_webCodecsVideoEnabled true
+#elif USE(GSTREAMER)
+#define SETTING_DEFAULT_VALUE_FOR_webCodecsVideoEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_webCodecsVideoEnabled false
+#endif
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_webCryptoSafeCurvesEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_webCryptoX25519Enabled true
+#if ENABLE(WK_WEB_EXTENSIONS_BOOKMARKS)
+#define SETTING_DEFAULT_VALUE_FOR_webExtensionBookmarksEnabled false
+#endif
+#if ENABLE(WK_WEB_EXTENSIONS_SIDEBAR)
+#define SETTING_DEFAULT_VALUE_FOR_webExtensionSidebarEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_webGLDraftExtensionsEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_webGLEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_webGLErrorsToConsoleEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_webGLTimerQueriesEnabled false
+#if ENABLE(WEBGPU_BY_DEFAULT)
+#define SETTING_DEFAULT_VALUE_FOR_webGPUEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_webGPUEnabled false
+#endif
+#if ENABLE(WEBGPU_BY_DEFAULT) && HAVE(SUPPORT_HDR_DISPLAY)
+#define SETTING_DEFAULT_VALUE_FOR_webGPUHDREnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_webGPUHDREnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_webInspectorEngineeringSettingsAllowed false
+#define SETTING_DEFAULT_VALUE_FOR_webLocksAPIEnabled true
+#if ENABLE(WEB_PAGE_SPATIAL_BACKDROP)
+#define SETTING_DEFAULT_VALUE_FOR_webPageSpatialBackdropEnabled false
+#endif
+#if ENABLE(WEB_RTC)
+#if USE(GSTREAMER)
+#define SETTING_DEFAULT_VALUE_FOR_webRTCAV1CodecEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_webRTCAV1CodecEnabled false
+#endif
+#endif
+#if ENABLE(WEB_RTC)
+#define SETTING_DEFAULT_VALUE_FOR_webRTCDTMFEnabled true
+#endif
+#if ENABLE(WEB_RTC)
+#if USE(LIBWEBRTC)
+#define SETTING_DEFAULT_VALUE_FOR_webRTCEncodedTransformEnabled true
+#elif USE(GSTREAMER_WEBRTC)
+#define SETTING_DEFAULT_VALUE_FOR_webRTCEncodedTransformEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_webRTCEncodedTransformEnabled false
+#endif
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_webRTCEncryptionEnabled true
+#if ENABLE(WEB_RTC)
+#if PLATFORM(COCOA)
+#define SETTING_DEFAULT_VALUE_FOR_webRTCH265CodecEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_webRTCH265CodecEnabled false
+#endif
+#endif
+#if ENABLE(WEB_RTC) && PLATFORM(COCOA)
+#define SETTING_DEFAULT_VALUE_FOR_webRTCInterfaceMonitoringViaNWEnabled false
+#endif
+#if ENABLE(WEB_RTC)
+#define SETTING_DEFAULT_VALUE_FOR_webRTCL4SEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_webRTCMediaPipelineAdditionalLoggingEnabled false
+#if ENABLE(WEB_RTC)
+#define SETTING_DEFAULT_VALUE_FOR_webRTCPlatformCodecsInGPUProcessEnabled false
+#endif
+#if ENABLE(WEB_RTC)
+#define SETTING_DEFAULT_VALUE_FOR_webRTCRemoteVideoFrameEnabled false
+#endif
+#if ENABLE(WEB_RTC)
+#define SETTING_DEFAULT_VALUE_FOR_webRTCSFrameTransformEnabled false
+#endif
+#if ENABLE(WEB_RTC)
+#define SETTING_DEFAULT_VALUE_FOR_webRTCSocketsProxyingEnabled false
+#endif
+#if ENABLE(WEB_RTC)
+#define SETTING_DEFAULT_VALUE_FOR_webRTCUDPPortRange "0:0"_str
+#endif
+#if ENABLE(WEB_RTC)
+#define SETTING_DEFAULT_VALUE_FOR_webRTCVP9Profile0CodecEnabled true
+#endif
+#if ENABLE(WEB_RTC)
+#if PLATFORM(COCOA)
+#define SETTING_DEFAULT_VALUE_FOR_webRTCVP9Profile2CodecEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_webRTCVP9Profile2CodecEnabled false
+#endif
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_webSecurityEnabled true
+#define SETTING_DEFAULT_VALUE_FOR_webShareEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_webShareFileAPIEnabled false
+#if PLATFORM(WATCHOS)
+#define SETTING_DEFAULT_VALUE_FOR_webSocketEnabled false
+#else
+#define SETTING_DEFAULT_VALUE_FOR_webSocketEnabled true
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_webTransportEnabled false
+#if ENABLE(WEBXR)
+#define SETTING_DEFAULT_VALUE_FOR_webXRAugmentedRealityModuleEnabled false
+#endif
+#if ENABLE(WEBXR)
+#define SETTING_DEFAULT_VALUE_FOR_webXREnabled true
+#endif
+#if ENABLE(WEBXR)
+#define SETTING_DEFAULT_VALUE_FOR_webXRGamepadsModuleEnabled true
+#endif
+#if ENABLE(WEBXR_HANDS)
+#define SETTING_DEFAULT_VALUE_FOR_webXRHandInputModuleEnabled true
+#endif
+#if ENABLE(WEBXR_LAYERS)
+#if PLATFORM(VISION) && ENABLE(WEBXR_WEBGPU_BY_DEFAULT)
+#define SETTING_DEFAULT_VALUE_FOR_webXRLayersAPIEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_webXRLayersAPIEnabled false
+#endif
+#endif
+#if PLATFORM(VISION) && ENABLE(WEBXR_WEBGPU_BY_DEFAULT)
+#define SETTING_DEFAULT_VALUE_FOR_webXRWebGPUBindingsEnabled true
+#else
+#define SETTING_DEFAULT_VALUE_FOR_webXRWebGPUBindingsEnabled false
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_webkitImageReadyEventEnabled false
+#define SETTING_DEFAULT_VALUE_FOR_wheelEventGesturesBecomeNonBlocking true
+#define SETTING_DEFAULT_VALUE_FOR_windowFocusRestricted true
+#if PLATFORM(VISION)
+#define SETTING_DEFAULT_VALUE_FOR_wirelessPlaybackTargetAPIEnabled false
+#else
+#define SETTING_DEFAULT_VALUE_FOR_wirelessPlaybackTargetAPIEnabled true
+#endif
+#define SETTING_DEFAULT_VALUE_FOR_workerAsynchronousURLErrorHandlingEnabled false
+#if PLATFORM(COCOA)
+#define SETTING_DEFAULT_VALUE_FOR_writeRichTextDataWhenCopyingOrDragging true
+#endif
+#if ENABLE(WRITING_SUGGESTIONS)
+#define SETTING_DEFAULT_VALUE_FOR_writingSuggestionsAttributeEnabled true
+#endif
+#if ENABLE(XSLT)
+#define SETTING_DEFAULT_VALUE_FOR_xsltEnabled true
+#endif
+
+namespace WebCore {
+
+Ref<Settings> Settings::create(Page* page)
+{
+    return adoptRef(*new Settings(page));
+}
+
+Settings::Settings(Page* page)
+    : SettingsBase(page)
+{
+    m_values.initialize();
+
+    m_page = nullptr; // Page is not yet fully initialized when constructing Settings, so keeping m_page null over initializeDefaultFontFamilies() call.
+    initializeDefaultFontFamilies();
+    m_page = page;
+}
+
+void SettingsValues::initialize()
+{
+    backForwardCacheExpirationInterval = SETTING_DEFAULT_VALUE_FOR_backForwardCacheExpirationInterval;
+    clipboardAccessPolicy = SETTING_DEFAULT_VALUE_FOR_clipboardAccessPolicy;
+    defaultFixedFontSize = SETTING_DEFAULT_VALUE_FOR_defaultFixedFontSize;
+    defaultFontSize = SETTING_DEFAULT_VALUE_FOR_defaultFontSize;
+    defaultTextEncodingName = SETTING_DEFAULT_VALUE_FOR_defaultTextEncodingName;
+    defaultVideoPosterURL = SETTING_DEFAULT_VALUE_FOR_defaultVideoPosterURL;
+    deviceHeight = SETTING_DEFAULT_VALUE_FOR_deviceHeight;
+    deviceWidth = SETTING_DEFAULT_VALUE_FOR_deviceWidth;
+    downloadableBinaryFontTrustedTypes = SETTING_DEFAULT_VALUE_FOR_downloadableBinaryFontTrustedTypes;
+    editableLinkBehavior = SETTING_DEFAULT_VALUE_FOR_editableLinkBehavior;
+    editingBehaviorType = SETTING_DEFAULT_VALUE_FOR_editingBehaviorType;
+    fontLoadTimingOverride = SETTING_DEFAULT_VALUE_FOR_fontLoadTimingOverride;
+    forcedColorsAreInvertedAccessibilityValue = SETTING_DEFAULT_VALUE_FOR_forcedColorsAreInvertedAccessibilityValue;
+    forcedDisplayIsMonochromeAccessibilityValue = SETTING_DEFAULT_VALUE_FOR_forcedDisplayIsMonochromeAccessibilityValue;
+    forcedPrefersContrastAccessibilityValue = SETTING_DEFAULT_VALUE_FOR_forcedPrefersContrastAccessibilityValue;
+    forcedPrefersReducedMotionAccessibilityValue = SETTING_DEFAULT_VALUE_FOR_forcedPrefersReducedMotionAccessibilityValue;
+    forcedSupportsHighDynamicRangeValue = SETTING_DEFAULT_VALUE_FOR_forcedSupportsHighDynamicRangeValue;
+    ftpDirectoryTemplatePath = SETTING_DEFAULT_VALUE_FOR_ftpDirectoryTemplatePath;
+    htmlParserScriptingFlagPolicy = SETTING_DEFAULT_VALUE_FOR_htmlParserScriptingFlagPolicy;
+    incrementalRenderingSuppressionTimeoutInSeconds = SETTING_DEFAULT_VALUE_FOR_incrementalRenderingSuppressionTimeoutInSeconds;
+    inspectorMaximumResourcesContentSize = SETTING_DEFAULT_VALUE_FOR_inspectorMaximumResourcesContentSize;
+    interactionRegionInlinePadding = SETTING_DEFAULT_VALUE_FOR_interactionRegionInlinePadding;
+    interactionRegionMinimumCornerRadius = SETTING_DEFAULT_VALUE_FOR_interactionRegionMinimumCornerRadius;
+    javaScriptRuntimeFlags = SETTING_DEFAULT_VALUE_FOR_javaScriptRuntimeFlags;
+    layoutFallbackWidth = SETTING_DEFAULT_VALUE_FOR_layoutFallbackWidth;
+    layoutViewportHeightExpansionFactor = SETTING_DEFAULT_VALUE_FOR_layoutViewportHeightExpansionFactor;
+    localStorageDatabasePath = SETTING_DEFAULT_VALUE_FOR_localStorageDatabasePath;
+    maxParseDuration = SETTING_DEFAULT_VALUE_FOR_maxParseDuration;
+    maximumHTMLParserDOMTreeDepth = SETTING_DEFAULT_VALUE_FOR_maximumHTMLParserDOMTreeDepth;
+    mediaKeysStorageDirectory = SETTING_DEFAULT_VALUE_FOR_mediaKeysStorageDirectory;
+    mediaPreferredFullscreenWidth = SETTING_DEFAULT_VALUE_FOR_mediaPreferredFullscreenWidth;
+    mediaTypeOverride = SETTING_DEFAULT_VALUE_FOR_mediaTypeOverride;
+    minimumAccelerated2DContextArea = SETTING_DEFAULT_VALUE_FOR_minimumAccelerated2DContextArea;
+    minimumFontSize = SETTING_DEFAULT_VALUE_FOR_minimumFontSize;
+    minimumLogicalFontSize = SETTING_DEFAULT_VALUE_FOR_minimumLogicalFontSize;
+    passwordEchoDurationInSeconds = SETTING_DEFAULT_VALUE_FOR_passwordEchoDurationInSeconds;
+    pitchCorrectionAlgorithm = SETTING_DEFAULT_VALUE_FOR_pitchCorrectionAlgorithm;
+    sampledPageTopColorMaxDifference = SETTING_DEFAULT_VALUE_FOR_sampledPageTopColorMaxDifference;
+    sampledPageTopColorMinHeight = SETTING_DEFAULT_VALUE_FOR_sampledPageTopColorMinHeight;
+    sessionStorageQuota = SETTING_DEFAULT_VALUE_FOR_sessionStorageQuota;
+    storageBlockingPolicy = SETTING_DEFAULT_VALUE_FOR_storageBlockingPolicy;
+    systemLayoutDirection = SETTING_DEFAULT_VALUE_FOR_systemLayoutDirection;
+    textDirectionSubmenuInclusionBehavior = SETTING_DEFAULT_VALUE_FOR_textDirectionSubmenuInclusionBehavior;
+    timeWithoutMouseMovementBeforeHidingControls = SETTING_DEFAULT_VALUE_FOR_timeWithoutMouseMovementBeforeHidingControls;
+    userInterfaceDirectionPolicy = SETTING_DEFAULT_VALUE_FOR_userInterfaceDirectionPolicy;
+    userStyleSheetLocation = SETTING_DEFAULT_VALUE_FOR_userStyleSheetLocation;
+    validationMessageTimerMagnification = SETTING_DEFAULT_VALUE_FOR_validationMessageTimerMagnification;
+    visibleDebugOverlayRegions = SETTING_DEFAULT_VALUE_FOR_visibleDebugOverlayRegions;
+#if ENABLE(DATA_DETECTION)
+    dataDetectorTypes = SETTING_DEFAULT_VALUE_FOR_dataDetectorTypes;
+#endif
+#if ENABLE(MEDIA_SOURCE)
+    managedMediaSourceHighThreshold = SETTING_DEFAULT_VALUE_FOR_managedMediaSourceHighThreshold;
+    managedMediaSourceLowThreshold = SETTING_DEFAULT_VALUE_FOR_managedMediaSourceLowThreshold;
+    maximumSourceBufferSize = SETTING_DEFAULT_VALUE_FOR_maximumSourceBufferSize;
+#endif
+#if ENABLE(TEXT_AUTOSIZING)
+    minimumZoomFontSize = SETTING_DEFAULT_VALUE_FOR_minimumZoomFontSize;
+    textAutosizingWindowSizeOverrideHeight = SETTING_DEFAULT_VALUE_FOR_textAutosizingWindowSizeOverrideHeight;
+    textAutosizingWindowSizeOverrideWidth = SETTING_DEFAULT_VALUE_FOR_textAutosizingWindowSizeOverrideWidth;
+#endif
+#if ENABLE(WEB_RTC)
+    webRTCUDPPortRange = SETTING_DEFAULT_VALUE_FOR_webRTCUDPPortRange;
+#endif
+    acceleratedCompositingEnabled = SETTING_DEFAULT_VALUE_FOR_acceleratedCompositingEnabled;
+    acceleratedCompositingForFixedPositionEnabled = SETTING_DEFAULT_VALUE_FOR_acceleratedCompositingForFixedPositionEnabled;
+    acceleratedDrawingEnabled = SETTING_DEFAULT_VALUE_FOR_acceleratedDrawingEnabled;
+    accentColorEnabled = SETTING_DEFAULT_VALUE_FOR_accentColorEnabled;
+    accessHandleEnabled = SETTING_DEFAULT_VALUE_FOR_accessHandleEnabled;
+    aggressiveTileRetentionEnabled = SETTING_DEFAULT_VALUE_FOR_aggressiveTileRetentionEnabled;
+    allowAnimationControlsOverride = SETTING_DEFAULT_VALUE_FOR_allowAnimationControlsOverride;
+    allowContentSecurityPolicySourceStarToMatchAnyProtocol = SETTING_DEFAULT_VALUE_FOR_allowContentSecurityPolicySourceStarToMatchAnyProtocol;
+    allowDisplayOfInsecureContent = SETTING_DEFAULT_VALUE_FOR_allowDisplayOfInsecureContent;
+    allowFileAccessFromFileURLs = SETTING_DEFAULT_VALUE_FOR_allowFileAccessFromFileURLs;
+    allowMediaContentTypesRequiringHardwareSupportAsFallback = SETTING_DEFAULT_VALUE_FOR_allowMediaContentTypesRequiringHardwareSupportAsFallback;
+    allowMultiElementImplicitSubmission = SETTING_DEFAULT_VALUE_FOR_allowMultiElementImplicitSubmission;
+    allowPrivacySensitiveOperationsInNonPersistentDataStores = SETTING_DEFAULT_VALUE_FOR_allowPrivacySensitiveOperationsInNonPersistentDataStores;
+    allowRunningOfInsecureContent = SETTING_DEFAULT_VALUE_FOR_allowRunningOfInsecureContent;
+    allowTopNavigationToDataURLs = SETTING_DEFAULT_VALUE_FOR_allowTopNavigationToDataURLs;
+    allowUniversalAccessFromFileURLs = SETTING_DEFAULT_VALUE_FOR_allowUniversalAccessFromFileURLs;
+    allowsInlineMediaPlayback = SETTING_DEFAULT_VALUE_FOR_allowsInlineMediaPlayback;
+    allowsInlineMediaPlaybackAfterFullscreen = SETTING_DEFAULT_VALUE_FOR_allowsInlineMediaPlaybackAfterFullscreen;
+    allowsPictureInPictureMediaPlayback = SETTING_DEFAULT_VALUE_FOR_allowsPictureInPictureMediaPlayback;
+    altitudeAngleEnabled = SETTING_DEFAULT_VALUE_FOR_altitudeAngleEnabled;
+    animatedImageAsyncDecodingEnabled = SETTING_DEFAULT_VALUE_FOR_animatedImageAsyncDecodingEnabled;
+    animatedImageDebugCanvasDrawingEnabled = SETTING_DEFAULT_VALUE_FOR_animatedImageDebugCanvasDrawingEnabled;
+    appBadgeEnabled = SETTING_DEFAULT_VALUE_FOR_appBadgeEnabled;
+    appleMailPaginationQuirkEnabled = SETTING_DEFAULT_VALUE_FOR_appleMailPaginationQuirkEnabled;
+    asyncClipboardAPIEnabled = SETTING_DEFAULT_VALUE_FOR_asyncClipboardAPIEnabled;
+    asyncFrameScrollingEnabled = SETTING_DEFAULT_VALUE_FOR_asyncFrameScrollingEnabled;
+    asyncOverflowScrollingEnabled = SETTING_DEFAULT_VALUE_FOR_asyncOverflowScrollingEnabled;
+    asynchronousSpellCheckingEnabled = SETTING_DEFAULT_VALUE_FOR_asynchronousSpellCheckingEnabled;
+    audioControlsScaleWithPageZoom = SETTING_DEFAULT_VALUE_FOR_audioControlsScaleWithPageZoom;
+    authorAndUserStylesEnabled = SETTING_DEFAULT_VALUE_FOR_authorAndUserStylesEnabled;
+    automaticallyAdjustsViewScaleUsingMinimumEffectiveDeviceWidth = SETTING_DEFAULT_VALUE_FOR_automaticallyAdjustsViewScaleUsingMinimumEffectiveDeviceWidth;
+    autoscrollForDragAndDropEnabled = SETTING_DEFAULT_VALUE_FOR_autoscrollForDragAndDropEnabled;
+    auxclickEventEnabled = SETTING_DEFAULT_VALUE_FOR_auxclickEventEnabled;
+    azimuthAngleEnabled = SETTING_DEFAULT_VALUE_FOR_azimuthAngleEnabled;
+    backgroundFetchAPIEnabled = SETTING_DEFAULT_VALUE_FOR_backgroundFetchAPIEnabled;
+    backgroundShouldExtendBeyondPage = SETTING_DEFAULT_VALUE_FOR_backgroundShouldExtendBeyondPage;
+    backspaceKeyNavigationEnabled = SETTING_DEFAULT_VALUE_FOR_backspaceKeyNavigationEnabled;
+    beaconAPIEnabled = SETTING_DEFAULT_VALUE_FOR_beaconAPIEnabled;
+    bidiContentAwarePasteEnabled = SETTING_DEFAULT_VALUE_FOR_bidiContentAwarePasteEnabled;
+    blobFileAccessEnforcementEnabled = SETTING_DEFAULT_VALUE_FOR_blobFileAccessEnforcementEnabled;
+    broadcastChannelEnabled = SETTING_DEFAULT_VALUE_FOR_broadcastChannelEnabled;
+    cacheAPIEnabled = SETTING_DEFAULT_VALUE_FOR_cacheAPIEnabled;
+    canvasColorSpaceEnabled = SETTING_DEFAULT_VALUE_FOR_canvasColorSpaceEnabled;
+    canvasFiltersEnabled = SETTING_DEFAULT_VALUE_FOR_canvasFiltersEnabled;
+    canvasFingerprintingQuirkEnabled = SETTING_DEFAULT_VALUE_FOR_canvasFingerprintingQuirkEnabled;
+    canvasLayersEnabled = SETTING_DEFAULT_VALUE_FOR_canvasLayersEnabled;
+    canvasPixelFormatEnabled = SETTING_DEFAULT_VALUE_FOR_canvasPixelFormatEnabled;
+    caretBrowsingEnabled = SETTING_DEFAULT_VALUE_FOR_caretBrowsingEnabled;
+    caretPositionFromPointEnabled = SETTING_DEFAULT_VALUE_FOR_caretPositionFromPointEnabled;
+    childProcessDebuggabilityEnabled = SETTING_DEFAULT_VALUE_FOR_childProcessDebuggabilityEnabled;
+    clearSiteDataExecutionContextsSupportEnabled = SETTING_DEFAULT_VALUE_FOR_clearSiteDataExecutionContextsSupportEnabled;
+    clearSiteDataHTTPHeaderEnabled = SETTING_DEFAULT_VALUE_FOR_clearSiteDataHTTPHeaderEnabled;
+    clientCoordinatesRelativeToLayoutViewport = SETTING_DEFAULT_VALUE_FOR_clientCoordinatesRelativeToLayoutViewport;
+    closeWatcherEnabled = SETTING_DEFAULT_VALUE_FOR_closeWatcherEnabled;
+    colorFilterEnabled = SETTING_DEFAULT_VALUE_FOR_colorFilterEnabled;
+    commandAttributesEnabled = SETTING_DEFAULT_VALUE_FOR_commandAttributesEnabled;
+    compressionStreamEnabled = SETTING_DEFAULT_VALUE_FOR_compressionStreamEnabled;
+    contactPickerAPIEnabled = SETTING_DEFAULT_VALUE_FOR_contactPickerAPIEnabled;
+    contentDispositionAttachmentSandboxEnabled = SETTING_DEFAULT_VALUE_FOR_contentDispositionAttachmentSandboxEnabled;
+    contentInsetBackgroundFillEnabled = SETTING_DEFAULT_VALUE_FOR_contentInsetBackgroundFillEnabled;
+    cookieConsentAPIEnabled = SETTING_DEFAULT_VALUE_FOR_cookieConsentAPIEnabled;
+    cookieEnabled = SETTING_DEFAULT_VALUE_FOR_cookieEnabled;
+    cookieStoreAPIEnabled = SETTING_DEFAULT_VALUE_FOR_cookieStoreAPIEnabled;
+    cookieStoreAPIExtendedAttributesEnabled = SETTING_DEFAULT_VALUE_FOR_cookieStoreAPIExtendedAttributesEnabled;
+    cookieStoreManagerEnabled = SETTING_DEFAULT_VALUE_FOR_cookieStoreManagerEnabled;
+    coreMathMLEnabled = SETTING_DEFAULT_VALUE_FOR_coreMathMLEnabled;
+    crossDocumentViewTransitionsEnabled = SETTING_DEFAULT_VALUE_FOR_crossDocumentViewTransitionsEnabled;
+    crossOriginCheckInGetMatchedCSSRulesDisabled = SETTING_DEFAULT_VALUE_FOR_crossOriginCheckInGetMatchedCSSRulesDisabled;
+    crossOriginEmbedderPolicyEnabled = SETTING_DEFAULT_VALUE_FOR_crossOriginEmbedderPolicyEnabled;
+    crossOriginOpenerPolicyEnabled = SETTING_DEFAULT_VALUE_FOR_crossOriginOpenerPolicyEnabled;
+    css3DTransformBackfaceVisibilityInteroperabilityEnabled = SETTING_DEFAULT_VALUE_FOR_css3DTransformBackfaceVisibilityInteroperabilityEnabled;
+    cssAnchorPositioningEnabled = SETTING_DEFAULT_VALUE_FOR_cssAnchorPositioningEnabled;
+    cssAnchorPositioningPositionVisibilityEnabled = SETTING_DEFAULT_VALUE_FOR_cssAnchorPositioningPositionVisibilityEnabled;
+    cssAppearanceBaseEnabled = SETTING_DEFAULT_VALUE_FOR_cssAppearanceBaseEnabled;
+    cssAxisRelativePositionKeywordsEnabled = SETTING_DEFAULT_VALUE_FOR_cssAxisRelativePositionKeywordsEnabled;
+    cssBackgroundClipBorderAreaEnabled = SETTING_DEFAULT_VALUE_FOR_cssBackgroundClipBorderAreaEnabled;
+    cssColorLayersEnabled = SETTING_DEFAULT_VALUE_FOR_cssColorLayersEnabled;
+    cssConstrainedDynamicRangeLimitEnabled = SETTING_DEFAULT_VALUE_FOR_cssConstrainedDynamicRangeLimitEnabled;
+    cssContrastColorEnabled = SETTING_DEFAULT_VALUE_FOR_cssContrastColorEnabled;
+    cssCornerShapeEnabled = SETTING_DEFAULT_VALUE_FOR_cssCornerShapeEnabled;
+    cssCounterStyleAtRuleImageSymbolsEnabled = SETTING_DEFAULT_VALUE_FOR_cssCounterStyleAtRuleImageSymbolsEnabled;
+    cssDPropertyEnabled = SETTING_DEFAULT_VALUE_FOR_cssDPropertyEnabled;
+    cssDynamicRangeLimitMixEnabled = SETTING_DEFAULT_VALUE_FOR_cssDynamicRangeLimitMixEnabled;
+    cssFieldSizingEnabled = SETTING_DEFAULT_VALUE_FOR_cssFieldSizingEnabled;
+    cssFontVariantEmojiEnabled = SETTING_DEFAULT_VALUE_FOR_cssFontVariantEmojiEnabled;
+    cssInputSecurityEnabled = SETTING_DEFAULT_VALUE_FOR_cssInputSecurityEnabled;
+    cssLineClampEnabled = SETTING_DEFAULT_VALUE_FOR_cssLineClampEnabled;
+    cssLineFitEdgeEnabled = SETTING_DEFAULT_VALUE_FOR_cssLineFitEdgeEnabled;
+    cssPaintingAPIEnabled = SETTING_DEFAULT_VALUE_FOR_cssPaintingAPIEnabled;
+    cssProgressFunctionEnabled = SETTING_DEFAULT_VALUE_FOR_cssProgressFunctionEnabled;
+    cssRandomFunctionEnabled = SETTING_DEFAULT_VALUE_FOR_cssRandomFunctionEnabled;
+    cssRhythmicSizingEnabled = SETTING_DEFAULT_VALUE_FOR_cssRhythmicSizingEnabled;
+    cssRubyAlignEnabled = SETTING_DEFAULT_VALUE_FOR_cssRubyAlignEnabled;
+    cssRubyOverhangEnabled = SETTING_DEFAULT_VALUE_FOR_cssRubyOverhangEnabled;
+    cssScrollAnchoringEnabled = SETTING_DEFAULT_VALUE_FOR_cssScrollAnchoringEnabled;
+    cssScrollbarColorEnabled = SETTING_DEFAULT_VALUE_FOR_cssScrollbarColorEnabled;
+    cssScrollbarGutterEnabled = SETTING_DEFAULT_VALUE_FOR_cssScrollbarGutterEnabled;
+    cssScrollbarWidthEnabled = SETTING_DEFAULT_VALUE_FOR_cssScrollbarWidthEnabled;
+    cssShapeFunctionEnabled = SETTING_DEFAULT_VALUE_FOR_cssShapeFunctionEnabled;
+    cssTextAutospaceEnabled = SETTING_DEFAULT_VALUE_FOR_cssTextAutospaceEnabled;
+    cssTextBoxTrimEnabled = SETTING_DEFAULT_VALUE_FOR_cssTextBoxTrimEnabled;
+    cssTextGroupAlignEnabled = SETTING_DEFAULT_VALUE_FOR_cssTextGroupAlignEnabled;
+    cssTextJustifyEnabled = SETTING_DEFAULT_VALUE_FOR_cssTextJustifyEnabled;
+    cssTextSpacingTrimEnabled = SETTING_DEFAULT_VALUE_FOR_cssTextSpacingTrimEnabled;
+    cssTextUnderlinePositionLeftRightEnabled = SETTING_DEFAULT_VALUE_FOR_cssTextUnderlinePositionLeftRightEnabled;
+    cssTextWrapPrettyEnabled = SETTING_DEFAULT_VALUE_FOR_cssTextWrapPrettyEnabled;
+    cssTreeCountingFunctionsEnabled = SETTING_DEFAULT_VALUE_FOR_cssTreeCountingFunctionsEnabled;
+    cssTypedOMColorEnabled = SETTING_DEFAULT_VALUE_FOR_cssTypedOMColorEnabled;
+    cssURLIntegrityModifierEnabled = SETTING_DEFAULT_VALUE_FOR_cssURLIntegrityModifierEnabled;
+    cssURLModifiersEnabled = SETTING_DEFAULT_VALUE_FOR_cssURLModifiersEnabled;
+    cssUnprefixedBackdropFilterEnabled = SETTING_DEFAULT_VALUE_FOR_cssUnprefixedBackdropFilterEnabled;
+    cssWordBreakAutoPhraseEnabled = SETTING_DEFAULT_VALUE_FOR_cssWordBreakAutoPhraseEnabled;
+    dataListElementEnabled = SETTING_DEFAULT_VALUE_FOR_dataListElementEnabled;
+    dataTransferItemsEnabled = SETTING_DEFAULT_VALUE_FOR_dataTransferItemsEnabled;
+    dateTimeInputsEditableComponentsEnabled = SETTING_DEFAULT_VALUE_FOR_dateTimeInputsEditableComponentsEnabled;
+    deprecationReportingEnabled = SETTING_DEFAULT_VALUE_FOR_deprecationReportingEnabled;
+    detailsAutoExpandEnabled = SETTING_DEFAULT_VALUE_FOR_detailsAutoExpandEnabled;
+    developerExtrasEnabled = SETTING_DEFAULT_VALUE_FOR_developerExtrasEnabled;
+    devolvableWidgetsEnabled = SETTING_DEFAULT_VALUE_FOR_devolvableWidgetsEnabled;
+    diagnosticLoggingEnabled = SETTING_DEFAULT_VALUE_FOR_diagnosticLoggingEnabled;
+    directoryUploadEnabled = SETTING_DEFAULT_VALUE_FOR_directoryUploadEnabled;
+    disabledAdaptationsMetaTagEnabled = SETTING_DEFAULT_VALUE_FOR_disabledAdaptationsMetaTagEnabled;
+    domPasteAccessRequestsEnabled = SETTING_DEFAULT_VALUE_FOR_domPasteAccessRequestsEnabled;
+    domPasteAllowed = SETTING_DEFAULT_VALUE_FOR_domPasteAllowed;
+    domTestingAPIsEnabled = SETTING_DEFAULT_VALUE_FOR_domTestingAPIsEnabled;
+    domTimersThrottlingEnabled = SETTING_DEFAULT_VALUE_FOR_domTimersThrottlingEnabled;
+    downloadAttributeEnabled = SETTING_DEFAULT_VALUE_FOR_downloadAttributeEnabled;
+    dynamicSiteInterventionsEnabled = SETTING_DEFAULT_VALUE_FOR_dynamicSiteInterventionsEnabled;
+    embedElementEnabled = SETTING_DEFAULT_VALUE_FOR_embedElementEnabled;
+    enableElementCurrentCSSZoom = SETTING_DEFAULT_VALUE_FOR_enableElementCurrentCSSZoom;
+    enableInheritURIQueryComponent = SETTING_DEFAULT_VALUE_FOR_enableInheritURIQueryComponent;
+    enterKeyHintEnabled = SETTING_DEFAULT_VALUE_FOR_enterKeyHintEnabled;
+    eventHandlerDrivenSmoothKeyboardScrollingEnabled = SETTING_DEFAULT_VALUE_FOR_eventHandlerDrivenSmoothKeyboardScrollingEnabled;
+    eventTimingEnabled = SETTING_DEFAULT_VALUE_FOR_eventTimingEnabled;
+    fileReaderAPIEnabled = SETTING_DEFAULT_VALUE_FOR_fileReaderAPIEnabled;
+    fileSystemEnabled = SETTING_DEFAULT_VALUE_FOR_fileSystemEnabled;
+    fileSystemWritableStreamEnabled = SETTING_DEFAULT_VALUE_FOR_fileSystemWritableStreamEnabled;
+    filterLinkDecorationByDefaultEnabled = SETTING_DEFAULT_VALUE_FOR_filterLinkDecorationByDefaultEnabled;
+    fixedBackgroundsPaintRelativeToDocument = SETTING_DEFAULT_VALUE_FOR_fixedBackgroundsPaintRelativeToDocument;
+    fixedElementsLayoutRelativeToFrame = SETTING_DEFAULT_VALUE_FOR_fixedElementsLayoutRelativeToFrame;
+    flexFormattingContextIntegrationEnabled = SETTING_DEFAULT_VALUE_FOR_flexFormattingContextIntegrationEnabled;
+    fontFallbackPrefersPictographs = SETTING_DEFAULT_VALUE_FOR_fontFallbackPrefersPictographs;
+    forceCompositingMode = SETTING_DEFAULT_VALUE_FOR_forceCompositingMode;
+    forceFTPDirectoryListings = SETTING_DEFAULT_VALUE_FOR_forceFTPDirectoryListings;
+    forceLockdownFontParserEnabled = SETTING_DEFAULT_VALUE_FOR_forceLockdownFontParserEnabled;
+    forceWebGLUsesLowPower = SETTING_DEFAULT_VALUE_FOR_forceWebGLUsesLowPower;
+    ftpEnabled = SETTING_DEFAULT_VALUE_FOR_ftpEnabled;
+    fullscreenRequirementForScreenOrientationLockingEnabled = SETTING_DEFAULT_VALUE_FOR_fullscreenRequirementForScreenOrientationLockingEnabled;
+    geolocationAPIEnabled = SETTING_DEFAULT_VALUE_FOR_geolocationAPIEnabled;
+    geolocationFloorLevelEnabled = SETTING_DEFAULT_VALUE_FOR_geolocationFloorLevelEnabled;
+    getCoalescedEventsEnabled = SETTING_DEFAULT_VALUE_FOR_getCoalescedEventsEnabled;
+    getPredictedEventsEnabled = SETTING_DEFAULT_VALUE_FOR_getPredictedEventsEnabled;
+    googleAntiFlickerOptimizationQuirkEnabled = SETTING_DEFAULT_VALUE_FOR_googleAntiFlickerOptimizationQuirkEnabled;
+    hiddenPageCSSAnimationSuspensionEnabled = SETTING_DEFAULT_VALUE_FOR_hiddenPageCSSAnimationSuspensionEnabled;
+    hiddenPageDOMTimerThrottlingAutoIncreases = SETTING_DEFAULT_VALUE_FOR_hiddenPageDOMTimerThrottlingAutoIncreases;
+    hiddenPageDOMTimerThrottlingEnabled = SETTING_DEFAULT_VALUE_FOR_hiddenPageDOMTimerThrottlingEnabled;
+    hiddenUntilFoundEnabled = SETTING_DEFAULT_VALUE_FOR_hiddenUntilFoundEnabled;
+    htmlLegacyAttributeValueSerializationEnabled = SETTING_DEFAULT_VALUE_FOR_htmlLegacyAttributeValueSerializationEnabled;
+    httpEquivEnabled = SETTING_DEFAULT_VALUE_FOR_httpEquivEnabled;
+    httpsByDefault = SETTING_DEFAULT_VALUE_FOR_httpsByDefault;
+    iOSurfaceLosslessCompressionEnabled = SETTING_DEFAULT_VALUE_FOR_iOSurfaceLosslessCompressionEnabled;
+    iPAddressAndLocalhostMixedContentUpgradeTestingEnabled = SETTING_DEFAULT_VALUE_FOR_iPAddressAndLocalhostMixedContentUpgradeTestingEnabled;
+    iceCandidateFilteringEnabled = SETTING_DEFAULT_VALUE_FOR_iceCandidateFilteringEnabled;
+    ignoreIframeEmbeddingProtectionsEnabled = SETTING_DEFAULT_VALUE_FOR_ignoreIframeEmbeddingProtectionsEnabled;
+    imageSubsamplingEnabled = SETTING_DEFAULT_VALUE_FOR_imageSubsamplingEnabled;
+    imagesEnabled = SETTING_DEFAULT_VALUE_FOR_imagesEnabled;
+    inWindowFullscreenEnabled = SETTING_DEFAULT_VALUE_FOR_inWindowFullscreenEnabled;
+    incompleteImageBorderEnabled = SETTING_DEFAULT_VALUE_FOR_incompleteImageBorderEnabled;
+    indexedDBAPIEnabled = SETTING_DEFAULT_VALUE_FOR_indexedDBAPIEnabled;
+    inlineMediaPlaybackRequiresPlaysInlineAttribute = SETTING_DEFAULT_VALUE_FOR_inlineMediaPlaybackRequiresPlaysInlineAttribute;
+    inputTypeColorEnabled = SETTING_DEFAULT_VALUE_FOR_inputTypeColorEnabled;
+    inputTypeColorEnhancementsEnabled = SETTING_DEFAULT_VALUE_FOR_inputTypeColorEnhancementsEnabled;
+    inputTypeDateEnabled = SETTING_DEFAULT_VALUE_FOR_inputTypeDateEnabled;
+    inputTypeDateTimeLocalEnabled = SETTING_DEFAULT_VALUE_FOR_inputTypeDateTimeLocalEnabled;
+    inputTypeMonthEnabled = SETTING_DEFAULT_VALUE_FOR_inputTypeMonthEnabled;
+    inputTypeTimeEnabled = SETTING_DEFAULT_VALUE_FOR_inputTypeTimeEnabled;
+    inputTypeWeekEnabled = SETTING_DEFAULT_VALUE_FOR_inputTypeWeekEnabled;
+    inspectorSupportsShowingCertificate = SETTING_DEFAULT_VALUE_FOR_inspectorSupportsShowingCertificate;
+    interactiveFormValidationEnabled = SETTING_DEFAULT_VALUE_FOR_interactiveFormValidationEnabled;
+    invisibleAutoplayNotPermitted = SETTING_DEFAULT_VALUE_FOR_invisibleAutoplayNotPermitted;
+    isFirstPartyWebsiteDataRemovalDisabled = SETTING_DEFAULT_VALUE_FOR_isFirstPartyWebsiteDataRemovalDisabled;
+    isFirstPartyWebsiteDataRemovalLiveOnTestingEnabled = SETTING_DEFAULT_VALUE_FOR_isFirstPartyWebsiteDataRemovalLiveOnTestingEnabled;
+    isFirstPartyWebsiteDataRemovalReproTestingEnabled = SETTING_DEFAULT_VALUE_FOR_isFirstPartyWebsiteDataRemovalReproTestingEnabled;
+    isPerActivityStateCPUUsageMeasurementEnabled = SETTING_DEFAULT_VALUE_FOR_isPerActivityStateCPUUsageMeasurementEnabled;
+    isPostBackgroundingCPUUsageMeasurementEnabled = SETTING_DEFAULT_VALUE_FOR_isPostBackgroundingCPUUsageMeasurementEnabled;
+    isPostBackgroundingMemoryUsageMeasurementEnabled = SETTING_DEFAULT_VALUE_FOR_isPostBackgroundingMemoryUsageMeasurementEnabled;
+    isPostLoadCPUUsageMeasurementEnabled = SETTING_DEFAULT_VALUE_FOR_isPostLoadCPUUsageMeasurementEnabled;
+    isPostLoadMemoryUsageMeasurementEnabled = SETTING_DEFAULT_VALUE_FOR_isPostLoadMemoryUsageMeasurementEnabled;
+    isSameSiteStrictEnforcementEnabled = SETTING_DEFAULT_VALUE_FOR_isSameSiteStrictEnforcementEnabled;
+    isThirdPartyCookieBlockingDisabled = SETTING_DEFAULT_VALUE_FOR_isThirdPartyCookieBlockingDisabled;
+    itpDebugModeEnabled = SETTING_DEFAULT_VALUE_FOR_itpDebugModeEnabled;
+    javaScriptCanAccessClipboard = SETTING_DEFAULT_VALUE_FOR_javaScriptCanAccessClipboard;
+    javaScriptCanOpenWindowsAutomatically = SETTING_DEFAULT_VALUE_FOR_javaScriptCanOpenWindowsAutomatically;
+    langAttributeAwareFormControlUIEnabled = SETTING_DEFAULT_VALUE_FOR_langAttributeAwareFormControlUIEnabled;
+    largeImageAsyncDecodingEnabled = SETTING_DEFAULT_VALUE_FOR_largeImageAsyncDecodingEnabled;
+    layerBasedSVGEngineEnabled = SETTING_DEFAULT_VALUE_FOR_layerBasedSVGEngineEnabled;
+    lazyIframeLoadingEnabled = SETTING_DEFAULT_VALUE_FOR_lazyIframeLoadingEnabled;
+    lazyImageLoadingEnabled = SETTING_DEFAULT_VALUE_FOR_lazyImageLoadingEnabled;
+    legacyLineLayoutVisualCoverageEnabled = SETTING_DEFAULT_VALUE_FOR_legacyLineLayoutVisualCoverageEnabled;
+    legacyPluginQuirkForMailSignaturesEnabled = SETTING_DEFAULT_VALUE_FOR_legacyPluginQuirkForMailSignaturesEnabled;
+    linkDNSPrefetchEnabled = SETTING_DEFAULT_VALUE_FOR_linkDNSPrefetchEnabled;
+    linkPreconnectEarlyHintsEnabled = SETTING_DEFAULT_VALUE_FOR_linkPreconnectEarlyHintsEnabled;
+    linkPreconnectEnabled = SETTING_DEFAULT_VALUE_FOR_linkPreconnectEnabled;
+    linkPrefetchEnabled = SETTING_DEFAULT_VALUE_FOR_linkPrefetchEnabled;
+    linkPreloadEnabled = SETTING_DEFAULT_VALUE_FOR_linkPreloadEnabled;
+    linkSanitizerEnabled = SETTING_DEFAULT_VALUE_FOR_linkSanitizerEnabled;
+    loadDeferringEnabled = SETTING_DEFAULT_VALUE_FOR_loadDeferringEnabled;
+    loadsImagesAutomatically = SETTING_DEFAULT_VALUE_FOR_loadsImagesAutomatically;
+    localFileContentSniffingEnabled = SETTING_DEFAULT_VALUE_FOR_localFileContentSniffingEnabled;
+    localNetworkAccessEnabled = SETTING_DEFAULT_VALUE_FOR_localNetworkAccessEnabled;
+    localStorageEnabled = SETTING_DEFAULT_VALUE_FOR_localStorageEnabled;
+    lockdownFontParserEnabled = SETTING_DEFAULT_VALUE_FOR_lockdownFontParserEnabled;
+    loginStatusAPIEnabled = SETTING_DEFAULT_VALUE_FOR_loginStatusAPIEnabled;
+    loginStatusAPIRequiresWebAuthnEnabled = SETTING_DEFAULT_VALUE_FOR_loginStatusAPIRequiresWebAuthnEnabled;
+    logsPageMessagesToSystemConsoleEnabled = SETTING_DEFAULT_VALUE_FOR_logsPageMessagesToSystemConsoleEnabled;
+    mainContentUserGestureOverrideEnabled = SETTING_DEFAULT_VALUE_FOR_mainContentUserGestureOverrideEnabled;
+    masonryEnabled = SETTING_DEFAULT_VALUE_FOR_masonryEnabled;
+    mediaCapabilitiesEnabled = SETTING_DEFAULT_VALUE_FOR_mediaCapabilitiesEnabled;
+    mediaCapabilitiesExtensionsEnabled = SETTING_DEFAULT_VALUE_FOR_mediaCapabilitiesExtensionsEnabled;
+    mediaControlsScaleWithPageZoom = SETTING_DEFAULT_VALUE_FOR_mediaControlsScaleWithPageZoom;
+    mediaDataLoadsAutomatically = SETTING_DEFAULT_VALUE_FOR_mediaDataLoadsAutomatically;
+    mediaPlaybackEnabled = SETTING_DEFAULT_VALUE_FOR_mediaPlaybackEnabled;
+    mediaPreloadingEnabled = SETTING_DEFAULT_VALUE_FOR_mediaPreloadingEnabled;
+    mediaSessionCaptureToggleAPIEnabled = SETTING_DEFAULT_VALUE_FOR_mediaSessionCaptureToggleAPIEnabled;
+    mediaSourceEnabled = SETTING_DEFAULT_VALUE_FOR_mediaSourceEnabled;
+    mediaUserGestureInheritsFromDocument = SETTING_DEFAULT_VALUE_FOR_mediaUserGestureInheritsFromDocument;
+    metaViewportInteractiveWidgetEnabled = SETTING_DEFAULT_VALUE_FOR_metaViewportInteractiveWidgetEnabled;
+    mockScrollbarsControllerEnabled = SETTING_DEFAULT_VALUE_FOR_mockScrollbarsControllerEnabled;
+    momentumScrollingAnimatorEnabled = SETTING_DEFAULT_VALUE_FOR_momentumScrollingAnimatorEnabled;
+    mutationEventsEnabled = SETTING_DEFAULT_VALUE_FOR_mutationEventsEnabled;
+    navigationAPIEnabled = SETTING_DEFAULT_VALUE_FOR_navigationAPIEnabled;
+    navigatorUserAgentDataJavaScriptAPIEnabled = SETTING_DEFAULT_VALUE_FOR_navigatorUserAgentDataJavaScriptAPIEnabled;
+    needsAdobeFrameReloadingQuirk = SETTING_DEFAULT_VALUE_FOR_needsAdobeFrameReloadingQuirk;
+    needsDeferKeyDownAndKeyPressTimersUntilNextEditingCommandQuirk = SETTING_DEFAULT_VALUE_FOR_needsDeferKeyDownAndKeyPressTimersUntilNextEditingCommandQuirk;
+    needsFrameNameFallbackToIdQuirk = SETTING_DEFAULT_VALUE_FOR_needsFrameNameFallbackToIdQuirk;
+    needsKeyboardEventDisambiguationQuirks = SETTING_DEFAULT_VALUE_FOR_needsKeyboardEventDisambiguationQuirks;
+    needsSiteSpecificQuirks = SETTING_DEFAULT_VALUE_FOR_needsSiteSpecificQuirks;
+    needsStorageAccessFromFileURLsQuirk = SETTING_DEFAULT_VALUE_FOR_needsStorageAccessFromFileURLsQuirk;
+    observableEnabled = SETTING_DEFAULT_VALUE_FOR_observableEnabled;
+    opportunisticSweepingAndGarbageCollectionEnabled = SETTING_DEFAULT_VALUE_FOR_opportunisticSweepingAndGarbageCollectionEnabled;
+    overlappingBackingStoreProvidersEnabled = SETTING_DEFAULT_VALUE_FOR_overlappingBackingStoreProvidersEnabled;
+    overscrollBehaviorEnabled = SETTING_DEFAULT_VALUE_FOR_overscrollBehaviorEnabled;
+    pageAtRuleMarginDescriptorsEnabled = SETTING_DEFAULT_VALUE_FOR_pageAtRuleMarginDescriptorsEnabled;
+    passiveTouchListenersAsDefaultOnDocument = SETTING_DEFAULT_VALUE_FOR_passiveTouchListenersAsDefaultOnDocument;
+    passiveWheelListenersAsDefaultOnDocument = SETTING_DEFAULT_VALUE_FOR_passiveWheelListenersAsDefaultOnDocument;
+    passwordEchoEnabled = SETTING_DEFAULT_VALUE_FOR_passwordEchoEnabled;
+    permissionsAPIEnabled = SETTING_DEFAULT_VALUE_FOR_permissionsAPIEnabled;
+    popoverAttributeEnabled = SETTING_DEFAULT_VALUE_FOR_popoverAttributeEnabled;
+    preferMIMETypeForImages = SETTING_DEFAULT_VALUE_FOR_preferMIMETypeForImages;
+    preferPageRenderingUpdatesNear60FPSEnabled = SETTING_DEFAULT_VALUE_FOR_preferPageRenderingUpdatesNear60FPSEnabled;
+    preventKeyboardDOMEventDispatch = SETTING_DEFAULT_VALUE_FOR_preventKeyboardDOMEventDispatch;
+    privateClickMeasurementDebugModeEnabled = SETTING_DEFAULT_VALUE_FOR_privateClickMeasurementDebugModeEnabled;
+    privateClickMeasurementEnabled = SETTING_DEFAULT_VALUE_FOR_privateClickMeasurementEnabled;
+    privateClickMeasurementFraudPreventionEnabled = SETTING_DEFAULT_VALUE_FOR_privateClickMeasurementFraudPreventionEnabled;
+    privateTokenUsageByThirdPartyEnabled = SETTING_DEFAULT_VALUE_FOR_privateTokenUsageByThirdPartyEnabled;
+    punchOutWhiteBackgroundsInDarkMode = SETTING_DEFAULT_VALUE_FOR_punchOutWhiteBackgroundsInDarkMode;
+    pushAPIEnabled = SETTING_DEFAULT_VALUE_FOR_pushAPIEnabled;
+    remoteMediaSessionManagerEnabled = SETTING_DEFAULT_VALUE_FOR_remoteMediaSessionManagerEnabled;
+    remoteSnapshottingEnabled = SETTING_DEFAULT_VALUE_FOR_remoteSnapshottingEnabled;
+    requestIdleCallbackEnabled = SETTING_DEFAULT_VALUE_FOR_requestIdleCallbackEnabled;
+    requestStorageAccessThrowsExceptionUntilReload = SETTING_DEFAULT_VALUE_FOR_requestStorageAccessThrowsExceptionUntilReload;
+    requestVideoFrameCallbackEnabled = SETTING_DEFAULT_VALUE_FOR_requestVideoFrameCallbackEnabled;
+    requiresPageVisibilityToPlayAudio = SETTING_DEFAULT_VALUE_FOR_requiresPageVisibilityToPlayAudio;
+    requiresUserGestureForAudioPlayback = SETTING_DEFAULT_VALUE_FOR_requiresUserGestureForAudioPlayback;
+    requiresUserGestureForVideoPlayback = SETTING_DEFAULT_VALUE_FOR_requiresUserGestureForVideoPlayback;
+    requiresUserGestureToLoadVideo = SETTING_DEFAULT_VALUE_FOR_requiresUserGestureToLoadVideo;
+    resourceLoadSchedulingEnabled = SETTING_DEFAULT_VALUE_FOR_resourceLoadSchedulingEnabled;
+    respondToThermalPressureAggressively = SETTING_DEFAULT_VALUE_FOR_respondToThermalPressureAggressively;
+    sKAttributionEnabled = SETTING_DEFAULT_VALUE_FOR_sKAttributionEnabled;
+    scopedCustomElementRegistryEnabled = SETTING_DEFAULT_VALUE_FOR_scopedCustomElementRegistryEnabled;
+    screenOrientationAPIEnabled = SETTING_DEFAULT_VALUE_FOR_screenOrientationAPIEnabled;
+    screenOrientationLockingAPIEnabled = SETTING_DEFAULT_VALUE_FOR_screenOrientationLockingAPIEnabled;
+    screenWakeLockAPIEnabled = SETTING_DEFAULT_VALUE_FOR_screenWakeLockAPIEnabled;
+    scriptEnabled = SETTING_DEFAULT_VALUE_FOR_scriptEnabled;
+    scriptMarkupEnabled = SETTING_DEFAULT_VALUE_FOR_scriptMarkupEnabled;
+    scriptTrackingPrivacyLoggingEnabled = SETTING_DEFAULT_VALUE_FOR_scriptTrackingPrivacyLoggingEnabled;
+    scrollAnimatorEnabled = SETTING_DEFAULT_VALUE_FOR_scrollAnimatorEnabled;
+    scrollDrivenAnimationsEnabled = SETTING_DEFAULT_VALUE_FOR_scrollDrivenAnimationsEnabled;
+    scrollToTextFragmentEnabled = SETTING_DEFAULT_VALUE_FOR_scrollToTextFragmentEnabled;
+    scrollToTextFragmentFeatureDetectionEnabled = SETTING_DEFAULT_VALUE_FOR_scrollToTextFragmentFeatureDetectionEnabled;
+    scrollToTextFragmentGenerationEnabled = SETTING_DEFAULT_VALUE_FOR_scrollToTextFragmentGenerationEnabled;
+    scrollToTextFragmentIndicatorEnabled = SETTING_DEFAULT_VALUE_FOR_scrollToTextFragmentIndicatorEnabled;
+    scrollToTextFragmentMarkingEnabled = SETTING_DEFAULT_VALUE_FOR_scrollToTextFragmentMarkingEnabled;
+    scrollendEventEnabled = SETTING_DEFAULT_VALUE_FOR_scrollendEventEnabled;
+    scrollingCoordinatorEnabled = SETTING_DEFAULT_VALUE_FOR_scrollingCoordinatorEnabled;
+    scrollingPerformanceTestingEnabled = SETTING_DEFAULT_VALUE_FOR_scrollingPerformanceTestingEnabled;
+    scrollingTreeIncludesFrames = SETTING_DEFAULT_VALUE_FOR_scrollingTreeIncludesFrames;
+    secureContextChecksEnabled = SETTING_DEFAULT_VALUE_FOR_secureContextChecksEnabled;
+    selectShowPickerEnabled = SETTING_DEFAULT_VALUE_FOR_selectShowPickerEnabled;
+    selectTrailingWhitespaceEnabled = SETTING_DEFAULT_VALUE_FOR_selectTrailingWhitespaceEnabled;
+    serviceWorkerInstallEventEnabled = SETTING_DEFAULT_VALUE_FOR_serviceWorkerInstallEventEnabled;
+    serviceWorkerNavigationPreloadEnabled = SETTING_DEFAULT_VALUE_FOR_serviceWorkerNavigationPreloadEnabled;
+    serviceWorkersEnabled = SETTING_DEFAULT_VALUE_FOR_serviceWorkersEnabled;
+    serviceWorkersUserGestureEnabled = SETTING_DEFAULT_VALUE_FOR_serviceWorkersUserGestureEnabled;
+    shadowRootReferenceTargetEnabled = SETTING_DEFAULT_VALUE_FOR_shadowRootReferenceTargetEnabled;
+    shadowRootReferenceTargetEnabledForAriaOwns = SETTING_DEFAULT_VALUE_FOR_shadowRootReferenceTargetEnabledForAriaOwns;
+    shapeDetection = SETTING_DEFAULT_VALUE_FOR_shapeDetection;
+    sharedWorkerEnabled = SETTING_DEFAULT_VALUE_FOR_sharedWorkerEnabled;
+    shouldAllowUserInstalledFonts = SETTING_DEFAULT_VALUE_FOR_shouldAllowUserInstalledFonts;
+    shouldConvertInvalidURLsToBlank = SETTING_DEFAULT_VALUE_FOR_shouldConvertInvalidURLsToBlank;
+    shouldConvertPositionStyleOnCopy = SETTING_DEFAULT_VALUE_FOR_shouldConvertPositionStyleOnCopy;
+    shouldDecidePolicyBeforeLoadingQuickLookPreview = SETTING_DEFAULT_VALUE_FOR_shouldDecidePolicyBeforeLoadingQuickLookPreview;
+    shouldDeferAsynchronousScriptsUntilAfterDocumentLoadOrFirstPaint = SETTING_DEFAULT_VALUE_FOR_shouldDeferAsynchronousScriptsUntilAfterDocumentLoadOrFirstPaint;
+    shouldDispatchSyntheticMouseEventsWhenModifyingSelection = SETTING_DEFAULT_VALUE_FOR_shouldDispatchSyntheticMouseEventsWhenModifyingSelection;
+    shouldDispatchSyntheticMouseOutAfterSyntheticClick = SETTING_DEFAULT_VALUE_FOR_shouldDispatchSyntheticMouseOutAfterSyntheticClick;
+    shouldDropNearSuspendedAssertionAfterDelay = SETTING_DEFAULT_VALUE_FOR_shouldDropNearSuspendedAssertionAfterDelay;
+    shouldIgnoreFontLoadCompletions = SETTING_DEFAULT_VALUE_FOR_shouldIgnoreFontLoadCompletions;
+    shouldIgnoreMetaViewport = SETTING_DEFAULT_VALUE_FOR_shouldIgnoreMetaViewport;
+    shouldInjectUserScriptsInInitialEmptyDocument = SETTING_DEFAULT_VALUE_FOR_shouldInjectUserScriptsInInitialEmptyDocument;
+    shouldPrintBackgrounds = SETTING_DEFAULT_VALUE_FOR_shouldPrintBackgrounds;
+    shouldRespectImageOrientation = SETTING_DEFAULT_VALUE_FOR_shouldRespectImageOrientation;
+    shouldRestrictBaseURLSchemes = SETTING_DEFAULT_VALUE_FOR_shouldRestrictBaseURLSchemes;
+    shouldSuppressTextInputFromEditingDuringProvisionalNavigation = SETTING_DEFAULT_VALUE_FOR_shouldSuppressTextInputFromEditingDuringProvisionalNavigation;
+    shouldTakeNearSuspendedAssertions = SETTING_DEFAULT_VALUE_FOR_shouldTakeNearSuspendedAssertions;
+    shouldUseServiceWorkerShortTimeout = SETTING_DEFAULT_VALUE_FOR_shouldUseServiceWorkerShortTimeout;
+    showDebugBorders = SETTING_DEFAULT_VALUE_FOR_showDebugBorders;
+    showFrameProcessBorders = SETTING_DEFAULT_VALUE_FOR_showFrameProcessBorders;
+    showMediaStatsContextMenuItemEnabled = SETTING_DEFAULT_VALUE_FOR_showMediaStatsContextMenuItemEnabled;
+    showModalDialogEnabled = SETTING_DEFAULT_VALUE_FOR_showModalDialogEnabled;
+    showRepaintCounter = SETTING_DEFAULT_VALUE_FOR_showRepaintCounter;
+    showTiledScrollingIndicator = SETTING_DEFAULT_VALUE_FOR_showTiledScrollingIndicator;
+    showsToolTipOverTruncatedText = SETTING_DEFAULT_VALUE_FOR_showsToolTipOverTruncatedText;
+    showsURLsInToolTips = SETTING_DEFAULT_VALUE_FOR_showsURLsInToolTips;
+    shrinksStandaloneImagesToFit = SETTING_DEFAULT_VALUE_FOR_shrinksStandaloneImagesToFit;
+    sidewaysWritingModesEnabled = SETTING_DEFAULT_VALUE_FOR_sidewaysWritingModesEnabled;
+    siteIsolationEnabled = SETTING_DEFAULT_VALUE_FOR_siteIsolationEnabled;
+    siteIsolationSharedProcessEnabled = SETTING_DEFAULT_VALUE_FOR_siteIsolationSharedProcessEnabled;
+    smartInsertDeleteEnabled = SETTING_DEFAULT_VALUE_FOR_smartInsertDeleteEnabled;
+    spatialNavigationEnabled = SETTING_DEFAULT_VALUE_FOR_spatialNavigationEnabled;
+    speechRecognitionEnabled = SETTING_DEFAULT_VALUE_FOR_speechRecognitionEnabled;
+    speechSynthesisAPIEnabled = SETTING_DEFAULT_VALUE_FOR_speechSynthesisAPIEnabled;
+    springTimingFunctionEnabled = SETTING_DEFAULT_VALUE_FOR_springTimingFunctionEnabled;
+    standalone = SETTING_DEFAULT_VALUE_FOR_standalone;
+    storageAPIEnabled = SETTING_DEFAULT_VALUE_FOR_storageAPIEnabled;
+    storageAPIEstimateEnabled = SETTING_DEFAULT_VALUE_FOR_storageAPIEstimateEnabled;
+    storageAccessAPIPerPageScopeEnabled = SETTING_DEFAULT_VALUE_FOR_storageAccessAPIPerPageScopeEnabled;
+    supportHDRCompositorTonemappingEnabled = SETTING_DEFAULT_VALUE_FOR_supportHDRCompositorTonemappingEnabled;
+    supportHDRDisplayEnabled = SETTING_DEFAULT_VALUE_FOR_supportHDRDisplayEnabled;
+    suppressHDRShouldBeAllowedInFullscreenVideo = SETTING_DEFAULT_VALUE_FOR_suppressHDRShouldBeAllowedInFullscreenVideo;
+    suppressesIncrementalRendering = SETTING_DEFAULT_VALUE_FOR_suppressesIncrementalRendering;
+    switchControlEnabled = SETTING_DEFAULT_VALUE_FOR_switchControlEnabled;
+    targetTextPseudoElementEnabled = SETTING_DEFAULT_VALUE_FOR_targetTextPseudoElementEnabled;
+    telephoneNumberParsingEnabled = SETTING_DEFAULT_VALUE_FOR_telephoneNumberParsingEnabled;
+    temporaryTileCohortRetentionEnabled = SETTING_DEFAULT_VALUE_FOR_temporaryTileCohortRetentionEnabled;
+    textAreasAreResizable = SETTING_DEFAULT_VALUE_FOR_textAreasAreResizable;
+    textInteractionEnabled = SETTING_DEFAULT_VALUE_FOR_textInteractionEnabled;
+    thumbAndTrackPseudoElementsEnabled = SETTING_DEFAULT_VALUE_FOR_thumbAndTrackPseudoElementsEnabled;
+    topContentInsetBackgroundCanChangeAfterScrolling = SETTING_DEFAULT_VALUE_FOR_topContentInsetBackgroundCanChangeAfterScrolling;
+    trackConfigurationEnabled = SETTING_DEFAULT_VALUE_FOR_trackConfigurationEnabled;
+    treatIPAddressAsDomain = SETTING_DEFAULT_VALUE_FOR_treatIPAddressAsDomain;
+    treatsAnyTextCSSLinkAsStylesheet = SETTING_DEFAULT_VALUE_FOR_treatsAnyTextCSSLinkAsStylesheet;
+    trustedTypesEnabled = SETTING_DEFAULT_VALUE_FOR_trustedTypesEnabled;
+    uAVisualTransitionDetectionEnabled = SETTING_DEFAULT_VALUE_FOR_uAVisualTransitionDetectionEnabled;
+    undoManagerAPIEnabled = SETTING_DEFAULT_VALUE_FOR_undoManagerAPIEnabled;
+    unhandledPromiseRejectionToConsoleEnabled = SETTING_DEFAULT_VALUE_FOR_unhandledPromiseRejectionToConsoleEnabled;
+    unifiedTextCheckerEnabled = SETTING_DEFAULT_VALUE_FOR_unifiedTextCheckerEnabled;
+    upgradeMixedContentEnabled = SETTING_DEFAULT_VALUE_FOR_upgradeMixedContentEnabled;
+    urlPatternAPIEnabled = SETTING_DEFAULT_VALUE_FOR_urlPatternAPIEnabled;
+    useAnonymousModeWhenFetchingMaskImages = SETTING_DEFAULT_VALUE_FOR_useAnonymousModeWhenFetchingMaskImages;
+    useGiantTiles = SETTING_DEFAULT_VALUE_FOR_useGiantTiles;
+    useIFCForSVGText = SETTING_DEFAULT_VALUE_FOR_useIFCForSVGText;
+    useImageDocumentForSubframePDF = SETTING_DEFAULT_VALUE_FOR_useImageDocumentForSubframePDF;
+    usePreHTML5ParserQuirks = SETTING_DEFAULT_VALUE_FOR_usePreHTML5ParserQuirks;
+    useSystemAppearance = SETTING_DEFAULT_VALUE_FOR_useSystemAppearance;
+    userActivationAPIEnabled = SETTING_DEFAULT_VALUE_FOR_userActivationAPIEnabled;
+    userGesturePromisePropagationEnabled = SETTING_DEFAULT_VALUE_FOR_userGesturePromisePropagationEnabled;
+    usesBackForwardCache = SETTING_DEFAULT_VALUE_FOR_usesBackForwardCache;
+    usesEncodingDetector = SETTING_DEFAULT_VALUE_FOR_usesEncodingDetector;
+    verifyWindowOpenUserGestureFromUIProcess = SETTING_DEFAULT_VALUE_FOR_verifyWindowOpenUserGestureFromUIProcess;
+    verticalFormControlsEnabled = SETTING_DEFAULT_VALUE_FOR_verticalFormControlsEnabled;
+    videoPresentationManagerEnabled = SETTING_DEFAULT_VALUE_FOR_videoPresentationManagerEnabled;
+    videoPresentationModeAPIEnabled = SETTING_DEFAULT_VALUE_FOR_videoPresentationModeAPIEnabled;
+    viewTransitionClassesEnabled = SETTING_DEFAULT_VALUE_FOR_viewTransitionClassesEnabled;
+    viewTransitionTypesEnabled = SETTING_DEFAULT_VALUE_FOR_viewTransitionTypesEnabled;
+    viewTransitionsEnabled = SETTING_DEFAULT_VALUE_FOR_viewTransitionsEnabled;
+    visualViewportAPIEnabled = SETTING_DEFAULT_VALUE_FOR_visualViewportAPIEnabled;
+    visualViewportEnabled = SETTING_DEFAULT_VALUE_FOR_visualViewportEnabled;
+    wantsBalancedSetDefersLoadingBehavior = SETTING_DEFAULT_VALUE_FOR_wantsBalancedSetDefersLoadingBehavior;
+    webAPIStatisticsEnabled = SETTING_DEFAULT_VALUE_FOR_webAPIStatisticsEnabled;
+    webAPIsInShadowRealmEnabled = SETTING_DEFAULT_VALUE_FOR_webAPIsInShadowRealmEnabled;
+    webAnimationsCustomEffectsEnabled = SETTING_DEFAULT_VALUE_FOR_webAnimationsCustomEffectsEnabled;
+    webAnimationsCustomFrameRateEnabled = SETTING_DEFAULT_VALUE_FOR_webAnimationsCustomFrameRateEnabled;
+    webAnimationsOverallProgressPropertyEnabled = SETTING_DEFAULT_VALUE_FOR_webAnimationsOverallProgressPropertyEnabled;
+    webCryptoSafeCurvesEnabled = SETTING_DEFAULT_VALUE_FOR_webCryptoSafeCurvesEnabled;
+    webCryptoX25519Enabled = SETTING_DEFAULT_VALUE_FOR_webCryptoX25519Enabled;
+    webGLDraftExtensionsEnabled = SETTING_DEFAULT_VALUE_FOR_webGLDraftExtensionsEnabled;
+    webGLEnabled = SETTING_DEFAULT_VALUE_FOR_webGLEnabled;
+    webGLErrorsToConsoleEnabled = SETTING_DEFAULT_VALUE_FOR_webGLErrorsToConsoleEnabled;
+    webGLTimerQueriesEnabled = SETTING_DEFAULT_VALUE_FOR_webGLTimerQueriesEnabled;
+    webGPUEnabled = SETTING_DEFAULT_VALUE_FOR_webGPUEnabled;
+    webGPUHDREnabled = SETTING_DEFAULT_VALUE_FOR_webGPUHDREnabled;
+    webInspectorEngineeringSettingsAllowed = SETTING_DEFAULT_VALUE_FOR_webInspectorEngineeringSettingsAllowed;
+    webLocksAPIEnabled = SETTING_DEFAULT_VALUE_FOR_webLocksAPIEnabled;
+    webRTCEncryptionEnabled = SETTING_DEFAULT_VALUE_FOR_webRTCEncryptionEnabled;
+    webRTCMediaPipelineAdditionalLoggingEnabled = SETTING_DEFAULT_VALUE_FOR_webRTCMediaPipelineAdditionalLoggingEnabled;
+    webSecurityEnabled = SETTING_DEFAULT_VALUE_FOR_webSecurityEnabled;
+    webShareEnabled = SETTING_DEFAULT_VALUE_FOR_webShareEnabled;
+    webShareFileAPIEnabled = SETTING_DEFAULT_VALUE_FOR_webShareFileAPIEnabled;
+    webSocketEnabled = SETTING_DEFAULT_VALUE_FOR_webSocketEnabled;
+    webTransportEnabled = SETTING_DEFAULT_VALUE_FOR_webTransportEnabled;
+    webXRWebGPUBindingsEnabled = SETTING_DEFAULT_VALUE_FOR_webXRWebGPUBindingsEnabled;
+    webkitImageReadyEventEnabled = SETTING_DEFAULT_VALUE_FOR_webkitImageReadyEventEnabled;
+    wheelEventGesturesBecomeNonBlocking = SETTING_DEFAULT_VALUE_FOR_wheelEventGesturesBecomeNonBlocking;
+    windowFocusRestricted = SETTING_DEFAULT_VALUE_FOR_windowFocusRestricted;
+    wirelessPlaybackTargetAPIEnabled = SETTING_DEFAULT_VALUE_FOR_wirelessPlaybackTargetAPIEnabled;
+    workerAsynchronousURLErrorHandlingEnabled = SETTING_DEFAULT_VALUE_FOR_workerAsynchronousURLErrorHandlingEnabled;
+#if ENABLE(ACCESSIBILITY_ANIMATION_CONTROL)
+    imageAnimationControlEnabled = SETTING_DEFAULT_VALUE_FOR_imageAnimationControlEnabled;
+#endif
+#if ENABLE(APPLE_PAY)
+    applePayCapabilityDisclosureAllowed = SETTING_DEFAULT_VALUE_FOR_applePayCapabilityDisclosureAllowed;
+    applePayEnabled = SETTING_DEFAULT_VALUE_FOR_applePayEnabled;
+#endif
+#if ENABLE(APP_HIGHLIGHTS)
+    appHighlightsEnabled = SETTING_DEFAULT_VALUE_FOR_appHighlightsEnabled;
+#endif
+#if ENABLE(ATTACHMENT_ELEMENT)
+    attachmentWideLayoutEnabled = SETTING_DEFAULT_VALUE_FOR_attachmentWideLayoutEnabled;
+#endif
+#if ENABLE(CONTENT_CHANGE_OBSERVER)
+    contentChangeObserverEnabled = SETTING_DEFAULT_VALUE_FOR_contentChangeObserverEnabled;
+#endif
+#if ENABLE(CONTENT_EXTENSIONS)
+    iFrameResourceMonitoringEnabled = SETTING_DEFAULT_VALUE_FOR_iFrameResourceMonitoringEnabled;
+    iFrameResourceMonitoringTestingSettingsEnabled = SETTING_DEFAULT_VALUE_FOR_iFrameResourceMonitoringTestingSettingsEnabled;
+#endif
+#if ENABLE(CONTEXT_MENU_QR_CODE_DETECTION)
+    contextMenuQRCodeDetectionEnabled = SETTING_DEFAULT_VALUE_FOR_contextMenuQRCodeDetectionEnabled;
+#endif
+#if ENABLE(DAMAGE_TRACKING)
+    propagateDamagingInformation = SETTING_DEFAULT_VALUE_FOR_propagateDamagingInformation;
+    unifyDamagedRegions = SETTING_DEFAULT_VALUE_FOR_unifyDamagedRegions;
+    useDamagingInformationForCompositing = SETTING_DEFAULT_VALUE_FOR_useDamagingInformationForCompositing;
+#endif
+#if ENABLE(DECLARATIVE_WEB_PUSH)
+    declarativeWebPush = SETTING_DEFAULT_VALUE_FOR_declarativeWebPush;
+#endif
+#if ENABLE(DEVICE_ORIENTATION)
+    deviceOrientationEventEnabled = SETTING_DEFAULT_VALUE_FOR_deviceOrientationEventEnabled;
+    deviceOrientationPermissionAPIEnabled = SETTING_DEFAULT_VALUE_FOR_deviceOrientationPermissionAPIEnabled;
+#endif
+#if ENABLE(DOM_AUDIO_SESSION)
+    domAudioSessionEnabled = SETTING_DEFAULT_VALUE_FOR_domAudioSessionEnabled;
+    domAudioSessionFullEnabled = SETTING_DEFAULT_VALUE_FOR_domAudioSessionFullEnabled;
+#endif
+#if ENABLE(ENCRYPTED_MEDIA)
+    encryptedMediaAPIEnabled = SETTING_DEFAULT_VALUE_FOR_encryptedMediaAPIEnabled;
+#endif
+#if ENABLE(EXTENSION_CAPABILITIES)
+    mediaCapabilityGrantsEnabled = SETTING_DEFAULT_VALUE_FOR_mediaCapabilityGrantsEnabled;
+#endif
+#if ENABLE(FORM_CONTROL_REFRESH)
+    formControlRefreshEnabled = SETTING_DEFAULT_VALUE_FOR_formControlRefreshEnabled;
+#endif
+#if ENABLE(FULLSCREEN_API)
+    fullScreenEnabled = SETTING_DEFAULT_VALUE_FOR_fullScreenEnabled;
+    fullScreenKeyboardLock = SETTING_DEFAULT_VALUE_FOR_fullScreenKeyboardLock;
+    videoFullsceenPrefersMostVisibleHeuristic = SETTING_DEFAULT_VALUE_FOR_videoFullsceenPrefersMostVisibleHeuristic;
+    videoFullscreenRequiresElementFullscreen = SETTING_DEFAULT_VALUE_FOR_videoFullscreenRequiresElementFullscreen;
+#endif
+#if ENABLE(GAMEPAD)
+    gamepadTriggerRumbleEnabled = SETTING_DEFAULT_VALUE_FOR_gamepadTriggerRumbleEnabled;
+    gamepadVibrationActuatorEnabled = SETTING_DEFAULT_VALUE_FOR_gamepadVibrationActuatorEnabled;
+    gamepadsEnabled = SETTING_DEFAULT_VALUE_FOR_gamepadsEnabled;
+#endif
+#if ENABLE(GPU_PROCESS)
+    blockMediaLayerRehostingInWebContentProcess = SETTING_DEFAULT_VALUE_FOR_blockMediaLayerRehostingInWebContentProcess;
+#endif
+#if ENABLE(GPU_PROCESS) && ENABLE(WEBGL)
+    useGPUProcessForWebGLEnabled = SETTING_DEFAULT_VALUE_FOR_useGPUProcessForWebGLEnabled;
+#endif
+#if ENABLE(IMAGE_ANALYSIS)
+    imageAnalysisDuringFindInPageEnabled = SETTING_DEFAULT_VALUE_FOR_imageAnalysisDuringFindInPageEnabled;
+    visualTranslationEnabled = SETTING_DEFAULT_VALUE_FOR_visualTranslationEnabled;
+#endif
+#if ENABLE(IMAGE_ANALYSIS) && ENABLE(VIDEO)
+    textRecognitionInVideosEnabled = SETTING_DEFAULT_VALUE_FOR_textRecognitionInVideosEnabled;
+#endif
+#if ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)
+    removeBackgroundEnabled = SETTING_DEFAULT_VALUE_FOR_removeBackgroundEnabled;
+#endif
+#if ENABLE(INCLUDE_IGNORED_IN_CORE_AX_TREE)
+    includeIgnoredInCoreAXTree = SETTING_DEFAULT_VALUE_FOR_includeIgnoredInCoreAXTree;
+#endif
+#if ENABLE(INTERACTION_REGIONS_IN_EVENT_REGION)
+    interactionRegionsEnabled = SETTING_DEFAULT_VALUE_FOR_interactionRegionsEnabled;
+#endif
+#if ENABLE(LEGACY_ENCRYPTED_MEDIA)
+    legacyEncryptedMediaAPIEnabled = SETTING_DEFAULT_VALUE_FOR_legacyEncryptedMediaAPIEnabled;
+#endif
+#if ENABLE(LINEAR_MEDIA_PLAYER)
+    linearMediaPlayerEnabled = SETTING_DEFAULT_VALUE_FOR_linearMediaPlayerEnabled;
+#endif
+#if ENABLE(MATHML)
+    mathMLEnabled = SETTING_DEFAULT_VALUE_FOR_mathMLEnabled;
+#endif
+#if ENABLE(MEDIA_CONTROLS_CONTEXT_MENUS)
+    mediaControlsContextMenusEnabled = SETTING_DEFAULT_VALUE_FOR_mediaControlsContextMenusEnabled;
+#endif
+#if ENABLE(MEDIA_RECORDER)
+    mediaRecorderEnabled = SETTING_DEFAULT_VALUE_FOR_mediaRecorderEnabled;
+#endif
+#if ENABLE(MEDIA_RECORDER_WEBM)
+    limitedMatroskaSupportEnabled = SETTING_DEFAULT_VALUE_FOR_limitedMatroskaSupportEnabled;
+    mediaRecorderEnabledWebM = SETTING_DEFAULT_VALUE_FOR_mediaRecorderEnabledWebM;
+#endif
+#if ENABLE(MEDIA_SESSION)
+    mediaSessionEnabled = SETTING_DEFAULT_VALUE_FOR_mediaSessionEnabled;
+#endif
+#if ENABLE(MEDIA_SESSION_COORDINATOR)
+    mediaSessionCoordinatorEnabled = SETTING_DEFAULT_VALUE_FOR_mediaSessionCoordinatorEnabled;
+#endif
+#if ENABLE(MEDIA_SESSION_COORDINATOR) && ENABLE(MEDIA_SESSION_PLAYLIST)
+    mediaSessionPlaylistEnabled = SETTING_DEFAULT_VALUE_FOR_mediaSessionPlaylistEnabled;
+#endif
+#if ENABLE(MEDIA_SOURCE)
+    detachableMediaSourceEnabled = SETTING_DEFAULT_VALUE_FOR_detachableMediaSourceEnabled;
+    managedMediaSourceEnabled = SETTING_DEFAULT_VALUE_FOR_managedMediaSourceEnabled;
+    sourceBufferChangeTypeEnabled = SETTING_DEFAULT_VALUE_FOR_sourceBufferChangeTypeEnabled;
+    textTracksInMSEEnabled = SETTING_DEFAULT_VALUE_FOR_textTracksInMSEEnabled;
+#endif
+#if ENABLE(MEDIA_SOURCE) && ENABLE(WIRELESS_PLAYBACK_TARGET)
+    managedMediaSourceNeedsAirPlay = SETTING_DEFAULT_VALUE_FOR_managedMediaSourceNeedsAirPlay;
+#endif
+#if ENABLE(MEDIA_SOURCE) && USE(AVFOUNDATION)
+    mediaSourcePrefersDecompressionSession = SETTING_DEFAULT_VALUE_FOR_mediaSourcePrefersDecompressionSession;
+#endif
+#if ENABLE(MEDIA_SOURCE_IN_WORKERS)
+    mediaSourceInWorkerEnabled = SETTING_DEFAULT_VALUE_FOR_mediaSourceInWorkerEnabled;
+#endif
+#if ENABLE(MEDIA_STREAM)
+    exposeCaptureDevicesAfterCaptureEnabled = SETTING_DEFAULT_VALUE_FOR_exposeCaptureDevicesAfterCaptureEnabled;
+    exposeDefaultSpeakerAsSpecificDeviceEnabled = SETTING_DEFAULT_VALUE_FOR_exposeDefaultSpeakerAsSpecificDeviceEnabled;
+    exposeSpeakersEnabled = SETTING_DEFAULT_VALUE_FOR_exposeSpeakersEnabled;
+    exposeSpeakersWithoutMicrophoneEnabled = SETTING_DEFAULT_VALUE_FOR_exposeSpeakersWithoutMicrophoneEnabled;
+    getUserMediaRequiresFocus = SETTING_DEFAULT_VALUE_FOR_getUserMediaRequiresFocus;
+    imageCaptureEnabled = SETTING_DEFAULT_VALUE_FOR_imageCaptureEnabled;
+    interruptAudioOnPageVisibilityChangeEnabled = SETTING_DEFAULT_VALUE_FOR_interruptAudioOnPageVisibilityChangeEnabled;
+    interruptVideoOnPageVisibilityChangeEnabled = SETTING_DEFAULT_VALUE_FOR_interruptVideoOnPageVisibilityChangeEnabled;
+    mediaCaptureRequiresSecureConnection = SETTING_DEFAULT_VALUE_FOR_mediaCaptureRequiresSecureConnection;
+    mediaDevicesEnabled = SETTING_DEFAULT_VALUE_FOR_mediaDevicesEnabled;
+    mediaStreamTrackProcessingEnabled = SETTING_DEFAULT_VALUE_FOR_mediaStreamTrackProcessingEnabled;
+    mockCaptureDevicesEnabled = SETTING_DEFAULT_VALUE_FOR_mockCaptureDevicesEnabled;
+    muteCameraOnMicrophoneInterruptionEnabled = SETTING_DEFAULT_VALUE_FOR_muteCameraOnMicrophoneInterruptionEnabled;
+    perElementSpeakerSelectionEnabled = SETTING_DEFAULT_VALUE_FOR_perElementSpeakerSelectionEnabled;
+    screenCaptureEnabled = SETTING_DEFAULT_VALUE_FOR_screenCaptureEnabled;
+    speakerSelectionRequiresUserGesture = SETTING_DEFAULT_VALUE_FOR_speakerSelectionRequiresUserGesture;
+    useMicrophoneMuteStatusAPI = SETTING_DEFAULT_VALUE_FOR_useMicrophoneMuteStatusAPI;
+#endif
+#if ENABLE(MEDIA_STREAM) && PLATFORM(IOS_FAMILY)
+    manageCaptureStatusBarInGPUProcessEnabled = SETTING_DEFAULT_VALUE_FOR_manageCaptureStatusBarInGPUProcessEnabled;
+#endif
+#if ENABLE(MODEL_ELEMENT)
+    modelElementEnabled = SETTING_DEFAULT_VALUE_FOR_modelElementEnabled;
+#endif
+#if ENABLE(MODEL_PROCESS)
+    modelProcessEnabled = SETTING_DEFAULT_VALUE_FOR_modelProcessEnabled;
+#endif
+#if ENABLE(NOTIFICATIONS)
+    notificationsEnabled = SETTING_DEFAULT_VALUE_FOR_notificationsEnabled;
+#endif
+#if ENABLE(NOTIFICATION_EVENT)
+    notificationEventEnabled = SETTING_DEFAULT_VALUE_FOR_notificationEventEnabled;
+#endif
+#if ENABLE(OFFSCREEN_CANVAS)
+    offscreenCanvasEnabled = SETTING_DEFAULT_VALUE_FOR_offscreenCanvasEnabled;
+#endif
+#if ENABLE(OFFSCREEN_CANVAS_IN_WORKERS)
+    offscreenCanvasInWorkersEnabled = SETTING_DEFAULT_VALUE_FOR_offscreenCanvasInWorkersEnabled;
+#endif
+#if ENABLE(PAYMENT_REQUEST)
+    paymentRequestEnabled = SETTING_DEFAULT_VALUE_FOR_paymentRequestEnabled;
+#endif
+#if ENABLE(PDFJS)
+    pdfJSViewerEnabled = SETTING_DEFAULT_VALUE_FOR_pdfJSViewerEnabled;
+#endif
+#if ENABLE(PDF_PAGE_NUMBER_INDICATOR)
+    pdfPluginPageNumberIndicatorEnabled = SETTING_DEFAULT_VALUE_FOR_pdfPluginPageNumberIndicatorEnabled;
+#endif
+#if ENABLE(PICTURE_IN_PICTURE_API)
+    pictureInPictureAPIEnabled = SETTING_DEFAULT_VALUE_FOR_pictureInPictureAPIEnabled;
+#endif
+#if ENABLE(POINTER_LOCK)
+    pointerLockEnabled = SETTING_DEFAULT_VALUE_FOR_pointerLockEnabled;
+    pointerLockOptionsEnabled = SETTING_DEFAULT_VALUE_FOR_pointerLockOptionsEnabled;
+#endif
+#if ENABLE(REQUIRES_PAGE_VISIBILITY_FOR_NOW_PLAYING)
+    requiresPageVisibilityForVideoToBeNowPlaying = SETTING_DEFAULT_VALUE_FOR_requiresPageVisibilityForVideoToBeNowPlaying;
+#endif
+#if ENABLE(RESOURCE_USAGE)
+    resourceUsageOverlayVisible = SETTING_DEFAULT_VALUE_FOR_resourceUsageOverlayVisible;
+#endif
+#if ENABLE(SCREEN_TIME)
+    screenTimeEnabled = SETTING_DEFAULT_VALUE_FOR_screenTimeEnabled;
+#endif
+#if ENABLE(SERVICE_CONTROLS)
+    imageControlsEnabled = SETTING_DEFAULT_VALUE_FOR_imageControlsEnabled;
+    serviceControlsEnabled = SETTING_DEFAULT_VALUE_FOR_serviceControlsEnabled;
+#endif
+#if ENABLE(SPATIAL_IMAGE_CONTROLS)
+    spatialImageControlsEnabled = SETTING_DEFAULT_VALUE_FOR_spatialImageControlsEnabled;
+#endif
+#if ENABLE(TEXT_AUTOSIZING)
+    idempotentModeAutosizingOnlyHonorsPercentages = SETTING_DEFAULT_VALUE_FOR_idempotentModeAutosizingOnlyHonorsPercentages;
+    shouldEnableTextAutosizingBoost = SETTING_DEFAULT_VALUE_FOR_shouldEnableTextAutosizingBoost;
+    textAutosizingEnabled = SETTING_DEFAULT_VALUE_FOR_textAutosizingEnabled;
+    textAutosizingEnabledAtLargeInitialScale = SETTING_DEFAULT_VALUE_FOR_textAutosizingEnabledAtLargeInitialScale;
+    textAutosizingUsesIdempotentMode = SETTING_DEFAULT_VALUE_FOR_textAutosizingUsesIdempotentMode;
+#endif
+#if ENABLE(THREADED_ANIMATION_RESOLUTION)
+    threadedAnimationResolutionEnabled = SETTING_DEFAULT_VALUE_FOR_threadedAnimationResolutionEnabled;
+#endif
+#if ENABLE(TOUCH_EVENTS)
+    mouseEventsSimulationEnabled = SETTING_DEFAULT_VALUE_FOR_mouseEventsSimulationEnabled;
+    touchEventDOMAttributesEnabled = SETTING_DEFAULT_VALUE_FOR_touchEventDOMAttributesEnabled;
+    touchEventEmulationEnabled = SETTING_DEFAULT_VALUE_FOR_touchEventEmulationEnabled;
+#endif
+#if ENABLE(UNIFIED_PDF)
+    unifiedPDFEnabled = SETTING_DEFAULT_VALUE_FOR_unifiedPDFEnabled;
+#endif
+#if ENABLE(VIDEO)
+    audioDescriptionsEnabled = SETTING_DEFAULT_VALUE_FOR_audioDescriptionsEnabled;
+    extendedAudioDescriptionsEnabled = SETTING_DEFAULT_VALUE_FOR_extendedAudioDescriptionsEnabled;
+    genericCueAPIEnabled = SETTING_DEFAULT_VALUE_FOR_genericCueAPIEnabled;
+    mediaEnabled = SETTING_DEFAULT_VALUE_FOR_mediaEnabled;
+    shouldDisplayCaptions = SETTING_DEFAULT_VALUE_FOR_shouldDisplayCaptions;
+    shouldDisplaySubtitles = SETTING_DEFAULT_VALUE_FOR_shouldDisplaySubtitles;
+    shouldDisplayTextDescriptions = SETTING_DEFAULT_VALUE_FOR_shouldDisplayTextDescriptions;
+    videoQualityIncludesDisplayCompositingEnabled = SETTING_DEFAULT_VALUE_FOR_videoQualityIncludesDisplayCompositingEnabled;
+#endif
+#if ENABLE(VP9)
+    vp9DecoderEnabled = SETTING_DEFAULT_VALUE_FOR_vp9DecoderEnabled;
+#endif
+#if ENABLE(WEBASSEMBLY)
+    webAssemblyESMIntegrationEnabled = SETTING_DEFAULT_VALUE_FOR_webAssemblyESMIntegrationEnabled;
+#endif
+#if ENABLE(WEBGL)
+    allowWebGLInWorkers = SETTING_DEFAULT_VALUE_FOR_allowWebGLInWorkers;
+#endif
+#if ENABLE(WEBKIT_OVERFLOW_SCROLLING_CSS_PROPERTY)
+    legacyOverflowScrollingTouchEnabled = SETTING_DEFAULT_VALUE_FOR_legacyOverflowScrollingTouchEnabled;
+#endif
+#if ENABLE(WEBXR)
+    touchInputCompatibilityEnabled = SETTING_DEFAULT_VALUE_FOR_touchInputCompatibilityEnabled;
+    webXRAugmentedRealityModuleEnabled = SETTING_DEFAULT_VALUE_FOR_webXRAugmentedRealityModuleEnabled;
+    webXREnabled = SETTING_DEFAULT_VALUE_FOR_webXREnabled;
+    webXRGamepadsModuleEnabled = SETTING_DEFAULT_VALUE_FOR_webXRGamepadsModuleEnabled;
+#endif
+#if ENABLE(WEBXR_HANDS)
+    webXRHandInputModuleEnabled = SETTING_DEFAULT_VALUE_FOR_webXRHandInputModuleEnabled;
+#endif
+#if ENABLE(WEBXR_LAYERS)
+    webXRLayersAPIEnabled = SETTING_DEFAULT_VALUE_FOR_webXRLayersAPIEnabled;
+#endif
+#if ENABLE(WEB_ARCHIVE)
+    alwaysAllowLocalWebarchive = SETTING_DEFAULT_VALUE_FOR_alwaysAllowLocalWebarchive;
+    loadWebArchiveWithEphemeralStorageEnabled = SETTING_DEFAULT_VALUE_FOR_loadWebArchiveWithEphemeralStorageEnabled;
+    webArchiveDebugModeEnabled = SETTING_DEFAULT_VALUE_FOR_webArchiveDebugModeEnabled;
+    webArchiveTestingModeEnabled = SETTING_DEFAULT_VALUE_FOR_webArchiveTestingModeEnabled;
+#endif
+#if ENABLE(WEB_AUDIO)
+    webAudioEnabled = SETTING_DEFAULT_VALUE_FOR_webAudioEnabled;
+#endif
+#if ENABLE(WEB_AUTHN)
+    digitalCredentialsEnabled = SETTING_DEFAULT_VALUE_FOR_digitalCredentialsEnabled;
+    webAuthenticationEnabled = SETTING_DEFAULT_VALUE_FOR_webAuthenticationEnabled;
+#endif
+#if ENABLE(WEB_CODECS)
+    webCodecsAV1Enabled = SETTING_DEFAULT_VALUE_FOR_webCodecsAV1Enabled;
+    webCodecsAudioEnabled = SETTING_DEFAULT_VALUE_FOR_webCodecsAudioEnabled;
+    webCodecsHEVCEnabled = SETTING_DEFAULT_VALUE_FOR_webCodecsHEVCEnabled;
+    webCodecsVideoEnabled = SETTING_DEFAULT_VALUE_FOR_webCodecsVideoEnabled;
+#endif
+#if ENABLE(WEB_PAGE_SPATIAL_BACKDROP)
+    webPageSpatialBackdropEnabled = SETTING_DEFAULT_VALUE_FOR_webPageSpatialBackdropEnabled;
+#endif
+#if ENABLE(WEB_RTC)
+    legacyWebRTCOfferOptionsEnabled = SETTING_DEFAULT_VALUE_FOR_legacyWebRTCOfferOptionsEnabled;
+    peerConnectionEnabled = SETTING_DEFAULT_VALUE_FOR_peerConnectionEnabled;
+    peerConnectionVideoScalingAdaptationDisabled = SETTING_DEFAULT_VALUE_FOR_peerConnectionVideoScalingAdaptationDisabled;
+    webRTCAV1CodecEnabled = SETTING_DEFAULT_VALUE_FOR_webRTCAV1CodecEnabled;
+    webRTCDTMFEnabled = SETTING_DEFAULT_VALUE_FOR_webRTCDTMFEnabled;
+    webRTCEncodedTransformEnabled = SETTING_DEFAULT_VALUE_FOR_webRTCEncodedTransformEnabled;
+    webRTCH265CodecEnabled = SETTING_DEFAULT_VALUE_FOR_webRTCH265CodecEnabled;
+    webRTCL4SEnabled = SETTING_DEFAULT_VALUE_FOR_webRTCL4SEnabled;
+    webRTCPlatformCodecsInGPUProcessEnabled = SETTING_DEFAULT_VALUE_FOR_webRTCPlatformCodecsInGPUProcessEnabled;
+    webRTCRemoteVideoFrameEnabled = SETTING_DEFAULT_VALUE_FOR_webRTCRemoteVideoFrameEnabled;
+    webRTCSFrameTransformEnabled = SETTING_DEFAULT_VALUE_FOR_webRTCSFrameTransformEnabled;
+    webRTCSocketsProxyingEnabled = SETTING_DEFAULT_VALUE_FOR_webRTCSocketsProxyingEnabled;
+    webRTCVP9Profile0CodecEnabled = SETTING_DEFAULT_VALUE_FOR_webRTCVP9Profile0CodecEnabled;
+    webRTCVP9Profile2CodecEnabled = SETTING_DEFAULT_VALUE_FOR_webRTCVP9Profile2CodecEnabled;
+#endif
+#if ENABLE(WEB_RTC) && PLATFORM(COCOA)
+    webRTCInterfaceMonitoringViaNWEnabled = SETTING_DEFAULT_VALUE_FOR_webRTCInterfaceMonitoringViaNWEnabled;
+#endif
+#if ENABLE(WIRELESS_PLAYBACK_TARGET)
+    allowsAirPlayForMediaPlayback = SETTING_DEFAULT_VALUE_FOR_allowsAirPlayForMediaPlayback;
+    remotePlaybackEnabled = SETTING_DEFAULT_VALUE_FOR_remotePlaybackEnabled;
+#endif
+#if ENABLE(WK_WEB_EXTENSIONS_BOOKMARKS)
+    webExtensionBookmarksEnabled = SETTING_DEFAULT_VALUE_FOR_webExtensionBookmarksEnabled;
+#endif
+#if ENABLE(WK_WEB_EXTENSIONS_SIDEBAR)
+    webExtensionSidebarEnabled = SETTING_DEFAULT_VALUE_FOR_webExtensionSidebarEnabled;
+#endif
+#if ENABLE(WRITING_SUGGESTIONS)
+    writingSuggestionsAttributeEnabled = SETTING_DEFAULT_VALUE_FOR_writingSuggestionsAttributeEnabled;
+#endif
+#if ENABLE(WRITING_TOOLS)
+    textAnimationsEnabled = SETTING_DEFAULT_VALUE_FOR_textAnimationsEnabled;
+#endif
+#if ENABLE(XSLT)
+    xsltEnabled = SETTING_DEFAULT_VALUE_FOR_xsltEnabled;
+#endif
+#if HAVE(ALLOW_ONLY_PARTITIONED_COOKIES) && 0
+    optInPartitionedCookiesEnabled = SETTING_DEFAULT_VALUE_FOR_optInPartitionedCookiesEnabled;
+#endif
+#if HAVE(AVKIT_CONTENT_SOURCE)
+    aVKitContentSourceEnabled = SETTING_DEFAULT_VALUE_FOR_aVKitContentSourceEnabled;
+#endif
+#if HAVE(CORE_ANIMATION_SEPARATED_LAYERS)
+    cssTransformStyleSeparatedEnabled = SETTING_DEFAULT_VALUE_FOR_cssTransformStyleSeparatedEnabled;
+#endif
+#if HAVE(INCREMENTAL_PDF_APIS)
+    incrementalPDFLoadingEnabled = SETTING_DEFAULT_VALUE_FOR_incrementalPDFLoadingEnabled;
+#endif
+#if HAVE(MATERIAL_HOSTING)
+    hostedBlurMaterialInMediaControlsEnabled = SETTING_DEFAULT_VALUE_FOR_hostedBlurMaterialInMediaControlsEnabled;
+#endif
+#if HAVE(PIP_SKIP_PREROLL)
+    pictureInPicturePlaybackStateEnabled = SETTING_DEFAULT_VALUE_FOR_pictureInPicturePlaybackStateEnabled;
+#endif
+#if HAVE(RUBBER_BANDING)
+    rubberBandingForSubScrollableRegionsEnabled = SETTING_DEFAULT_VALUE_FOR_rubberBandingForSubScrollableRegionsEnabled;
+#endif
+#if HAVE(SC_CONTENT_SHARING_PICKER)
+    requireUAGetDisplayMediaPrompt = SETTING_DEFAULT_VALUE_FOR_requireUAGetDisplayMediaPrompt;
+#endif
+#if HAVE(SPATIAL_AUDIO_EXPERIENCE)
+    preferSpatialAudioExperience = SETTING_DEFAULT_VALUE_FOR_preferSpatialAudioExperience;
+#endif
+#if HAVE(WEB_AUTHN_AS_MODERN)
+    webAuthenticationASEnabled = SETTING_DEFAULT_VALUE_FOR_webAuthenticationASEnabled;
+#endif
+#if PLATFORM(COCOA)
+    pdfPluginEnabled = SETTING_DEFAULT_VALUE_FOR_pdfPluginEnabled;
+    pdfPluginHUDEnabled = SETTING_DEFAULT_VALUE_FOR_pdfPluginHUDEnabled;
+    writeRichTextDataWhenCopyingOrDragging = SETTING_DEFAULT_VALUE_FOR_writeRichTextDataWhenCopyingOrDragging;
+#endif
+#if PLATFORM(IOS_FAMILY)
+    allowViewportShrinkToFitContent = SETTING_DEFAULT_VALUE_FOR_allowViewportShrinkToFitContent;
+    alternateFullScreenControlDesignEnabled = SETTING_DEFAULT_VALUE_FOR_alternateFullScreenControlDesignEnabled;
+    selectionHonorsOverflowScrolling = SETTING_DEFAULT_VALUE_FOR_selectionHonorsOverflowScrolling;
+    useAsyncUIKitInteractions = SETTING_DEFAULT_VALUE_FOR_useAsyncUIKitInteractions;
+    visuallyContiguousBidiTextSelectionEnabled = SETTING_DEFAULT_VALUE_FOR_visuallyContiguousBidiTextSelectionEnabled;
+#endif
+#if PLATFORM(MAC)
+    inputMethodUsesCorrectKeyEventOrder = SETTING_DEFAULT_VALUE_FOR_inputMethodUsesCorrectKeyEventOrder;
+#endif
+#if PLATFORM(MAC) && USE(RUNNINGBOARD)
+    backgroundWebContentRunningBoardThrottlingEnabled = SETTING_DEFAULT_VALUE_FOR_backgroundWebContentRunningBoardThrottlingEnabled;
+#endif
+#if PLATFORM(VISION)
+    fullscreenSceneAspectRatioLockingEnabled = SETTING_DEFAULT_VALUE_FOR_fullscreenSceneAspectRatioLockingEnabled;
+    fullscreenSceneDimmingEnabled = SETTING_DEFAULT_VALUE_FOR_fullscreenSceneDimmingEnabled;
+#endif
+#if PLATFORM(VISION) && ENABLE(MODEL_PROCESS)
+    modelNoPortalAttributeEnabled = SETTING_DEFAULT_VALUE_FOR_modelNoPortalAttributeEnabled;
+#endif
+#if USE(CA) || USE(SKIA)
+    canvasUsesAcceleratedDrawing = SETTING_DEFAULT_VALUE_FOR_canvasUsesAcceleratedDrawing;
+#endif
+#if USE(CORE_IMAGE)
+    acceleratedFiltersEnabled = SETTING_DEFAULT_VALUE_FOR_acceleratedFiltersEnabled;
+#endif
+#if USE(GRAPHICS_CONTEXT_FILTERS)
+    graphicsContextFiltersEnabled = SETTING_DEFAULT_VALUE_FOR_graphicsContextFiltersEnabled;
+#endif
+#if USE(MODERN_AVCONTENTKEYSESSION)
+    shouldUseModernAVContentKeySession = SETTING_DEFAULT_VALUE_FOR_shouldUseModernAVContentKeySession;
+#endif
+#if USE(MODERN_AVCONTENTKEYSESSION_WITH_VTDECOMPRESSIONSESSION)
+    videoRendererProtectedFallbackDisabled = SETTING_DEFAULT_VALUE_FOR_videoRendererProtectedFallbackDisabled;
+    videoRendererUseDecompressionSessionForProtected = SETTING_DEFAULT_VALUE_FOR_videoRendererUseDecompressionSessionForProtected;
+#endif
+#if USE(SYSTEM_PREVIEW)
+    systemPreviewEnabled = SETTING_DEFAULT_VALUE_FOR_systemPreviewEnabled;
+#endif
+}
+
+SettingsValues SettingsValues::isolatedCopy() const
+{
+    return {
+        crossThreadCopy(authorAndUserStylesEnabledInspectorOverride),
+        crossThreadCopy(iceCandidateFilteringEnabledInspectorOverride),
+        crossThreadCopy(imagesEnabledInspectorOverride),
+        crossThreadCopy(mediaCaptureRequiresSecureConnectionInspectorOverride),
+        crossThreadCopy(mockCaptureDevicesEnabledInspectorOverride),
+        crossThreadCopy(needsSiteSpecificQuirksInspectorOverride),
+        crossThreadCopy(scriptEnabledInspectorOverride),
+        crossThreadCopy(showDebugBordersInspectorOverride),
+        crossThreadCopy(showFrameProcessBordersInspectorOverride),
+        crossThreadCopy(showRepaintCounterInspectorOverride),
+        crossThreadCopy(webSecurityEnabledInspectorOverride),
+        crossThreadCopy(fontGenericFamilies),
+        crossThreadCopy(backForwardCacheExpirationInterval),
+        crossThreadCopy(clipboardAccessPolicy),
+        crossThreadCopy(defaultFixedFontSize),
+        crossThreadCopy(defaultFontSize),
+        crossThreadCopy(defaultTextEncodingName),
+        crossThreadCopy(defaultVideoPosterURL),
+        crossThreadCopy(deviceHeight),
+        crossThreadCopy(deviceWidth),
+        crossThreadCopy(downloadableBinaryFontTrustedTypes),
+        crossThreadCopy(editableLinkBehavior),
+        crossThreadCopy(editingBehaviorType),
+        crossThreadCopy(fontLoadTimingOverride),
+        crossThreadCopy(forcedColorsAreInvertedAccessibilityValue),
+        crossThreadCopy(forcedDisplayIsMonochromeAccessibilityValue),
+        crossThreadCopy(forcedPrefersContrastAccessibilityValue),
+        crossThreadCopy(forcedPrefersReducedMotionAccessibilityValue),
+        crossThreadCopy(forcedSupportsHighDynamicRangeValue),
+        crossThreadCopy(ftpDirectoryTemplatePath),
+        crossThreadCopy(htmlParserScriptingFlagPolicy),
+        crossThreadCopy(incrementalRenderingSuppressionTimeoutInSeconds),
+        crossThreadCopy(inspectorMaximumResourcesContentSize),
+        crossThreadCopy(interactionRegionInlinePadding),
+        crossThreadCopy(interactionRegionMinimumCornerRadius),
+        crossThreadCopy(javaScriptRuntimeFlags),
+        crossThreadCopy(layoutFallbackWidth),
+        crossThreadCopy(layoutViewportHeightExpansionFactor),
+        crossThreadCopy(localStorageDatabasePath),
+        crossThreadCopy(maxParseDuration),
+        crossThreadCopy(maximumHTMLParserDOMTreeDepth),
+        crossThreadCopy(mediaKeysStorageDirectory),
+        crossThreadCopy(mediaPreferredFullscreenWidth),
+        crossThreadCopy(mediaTypeOverride),
+        crossThreadCopy(minimumAccelerated2DContextArea),
+        crossThreadCopy(minimumFontSize),
+        crossThreadCopy(minimumLogicalFontSize),
+        crossThreadCopy(passwordEchoDurationInSeconds),
+        crossThreadCopy(pitchCorrectionAlgorithm),
+        crossThreadCopy(sampledPageTopColorMaxDifference),
+        crossThreadCopy(sampledPageTopColorMinHeight),
+        crossThreadCopy(sessionStorageQuota),
+        crossThreadCopy(storageBlockingPolicy),
+        crossThreadCopy(systemLayoutDirection),
+        crossThreadCopy(textDirectionSubmenuInclusionBehavior),
+        crossThreadCopy(timeWithoutMouseMovementBeforeHidingControls),
+        crossThreadCopy(userInterfaceDirectionPolicy),
+        crossThreadCopy(userStyleSheetLocation),
+        crossThreadCopy(validationMessageTimerMagnification),
+        crossThreadCopy(visibleDebugOverlayRegions),
+#if ENABLE(DATA_DETECTION)
+        crossThreadCopy(dataDetectorTypes),
+#endif
+#if ENABLE(MEDIA_SOURCE)
+        crossThreadCopy(managedMediaSourceHighThreshold),
+        crossThreadCopy(managedMediaSourceLowThreshold),
+        crossThreadCopy(maximumSourceBufferSize),
+#endif
+#if ENABLE(TEXT_AUTOSIZING)
+        crossThreadCopy(minimumZoomFontSize),
+        crossThreadCopy(textAutosizingWindowSizeOverrideHeight),
+        crossThreadCopy(textAutosizingWindowSizeOverrideWidth),
+#endif
+#if ENABLE(WEB_RTC)
+        crossThreadCopy(webRTCUDPPortRange),
+#endif
+        crossThreadCopy(acceleratedCompositingEnabled),
+        crossThreadCopy(acceleratedCompositingForFixedPositionEnabled),
+        crossThreadCopy(acceleratedDrawingEnabled),
+        crossThreadCopy(accentColorEnabled),
+        crossThreadCopy(accessHandleEnabled),
+        crossThreadCopy(aggressiveTileRetentionEnabled),
+        crossThreadCopy(allowAnimationControlsOverride),
+        crossThreadCopy(allowContentSecurityPolicySourceStarToMatchAnyProtocol),
+        crossThreadCopy(allowDisplayOfInsecureContent),
+        crossThreadCopy(allowFileAccessFromFileURLs),
+        crossThreadCopy(allowMediaContentTypesRequiringHardwareSupportAsFallback),
+        crossThreadCopy(allowMultiElementImplicitSubmission),
+        crossThreadCopy(allowPrivacySensitiveOperationsInNonPersistentDataStores),
+        crossThreadCopy(allowRunningOfInsecureContent),
+        crossThreadCopy(allowTopNavigationToDataURLs),
+        crossThreadCopy(allowUniversalAccessFromFileURLs),
+        crossThreadCopy(allowsInlineMediaPlayback),
+        crossThreadCopy(allowsInlineMediaPlaybackAfterFullscreen),
+        crossThreadCopy(allowsPictureInPictureMediaPlayback),
+        crossThreadCopy(altitudeAngleEnabled),
+        crossThreadCopy(animatedImageAsyncDecodingEnabled),
+        crossThreadCopy(animatedImageDebugCanvasDrawingEnabled),
+        crossThreadCopy(appBadgeEnabled),
+        crossThreadCopy(appleMailPaginationQuirkEnabled),
+        crossThreadCopy(asyncClipboardAPIEnabled),
+        crossThreadCopy(asyncFrameScrollingEnabled),
+        crossThreadCopy(asyncOverflowScrollingEnabled),
+        crossThreadCopy(asynchronousSpellCheckingEnabled),
+        crossThreadCopy(audioControlsScaleWithPageZoom),
+        crossThreadCopy(authorAndUserStylesEnabled),
+        crossThreadCopy(automaticallyAdjustsViewScaleUsingMinimumEffectiveDeviceWidth),
+        crossThreadCopy(autoscrollForDragAndDropEnabled),
+        crossThreadCopy(auxclickEventEnabled),
+        crossThreadCopy(azimuthAngleEnabled),
+        crossThreadCopy(backgroundFetchAPIEnabled),
+        crossThreadCopy(backgroundShouldExtendBeyondPage),
+        crossThreadCopy(backspaceKeyNavigationEnabled),
+        crossThreadCopy(beaconAPIEnabled),
+        crossThreadCopy(bidiContentAwarePasteEnabled),
+        crossThreadCopy(blobFileAccessEnforcementEnabled),
+        crossThreadCopy(broadcastChannelEnabled),
+        crossThreadCopy(cacheAPIEnabled),
+        crossThreadCopy(canvasColorSpaceEnabled),
+        crossThreadCopy(canvasFiltersEnabled),
+        crossThreadCopy(canvasFingerprintingQuirkEnabled),
+        crossThreadCopy(canvasLayersEnabled),
+        crossThreadCopy(canvasPixelFormatEnabled),
+        crossThreadCopy(caretBrowsingEnabled),
+        crossThreadCopy(caretPositionFromPointEnabled),
+        crossThreadCopy(childProcessDebuggabilityEnabled),
+        crossThreadCopy(clearSiteDataExecutionContextsSupportEnabled),
+        crossThreadCopy(clearSiteDataHTTPHeaderEnabled),
+        crossThreadCopy(clientCoordinatesRelativeToLayoutViewport),
+        crossThreadCopy(closeWatcherEnabled),
+        crossThreadCopy(colorFilterEnabled),
+        crossThreadCopy(commandAttributesEnabled),
+        crossThreadCopy(compressionStreamEnabled),
+        crossThreadCopy(contactPickerAPIEnabled),
+        crossThreadCopy(contentDispositionAttachmentSandboxEnabled),
+        crossThreadCopy(contentInsetBackgroundFillEnabled),
+        crossThreadCopy(cookieConsentAPIEnabled),
+        crossThreadCopy(cookieEnabled),
+        crossThreadCopy(cookieStoreAPIEnabled),
+        crossThreadCopy(cookieStoreAPIExtendedAttributesEnabled),
+        crossThreadCopy(cookieStoreManagerEnabled),
+        crossThreadCopy(coreMathMLEnabled),
+        crossThreadCopy(crossDocumentViewTransitionsEnabled),
+        crossThreadCopy(crossOriginCheckInGetMatchedCSSRulesDisabled),
+        crossThreadCopy(crossOriginEmbedderPolicyEnabled),
+        crossThreadCopy(crossOriginOpenerPolicyEnabled),
+        crossThreadCopy(css3DTransformBackfaceVisibilityInteroperabilityEnabled),
+        crossThreadCopy(cssAnchorPositioningEnabled),
+        crossThreadCopy(cssAnchorPositioningPositionVisibilityEnabled),
+        crossThreadCopy(cssAppearanceBaseEnabled),
+        crossThreadCopy(cssAxisRelativePositionKeywordsEnabled),
+        crossThreadCopy(cssBackgroundClipBorderAreaEnabled),
+        crossThreadCopy(cssColorLayersEnabled),
+        crossThreadCopy(cssConstrainedDynamicRangeLimitEnabled),
+        crossThreadCopy(cssContrastColorEnabled),
+        crossThreadCopy(cssCornerShapeEnabled),
+        crossThreadCopy(cssCounterStyleAtRuleImageSymbolsEnabled),
+        crossThreadCopy(cssDPropertyEnabled),
+        crossThreadCopy(cssDynamicRangeLimitMixEnabled),
+        crossThreadCopy(cssFieldSizingEnabled),
+        crossThreadCopy(cssFontVariantEmojiEnabled),
+        crossThreadCopy(cssInputSecurityEnabled),
+        crossThreadCopy(cssLineClampEnabled),
+        crossThreadCopy(cssLineFitEdgeEnabled),
+        crossThreadCopy(cssPaintingAPIEnabled),
+        crossThreadCopy(cssProgressFunctionEnabled),
+        crossThreadCopy(cssRandomFunctionEnabled),
+        crossThreadCopy(cssRhythmicSizingEnabled),
+        crossThreadCopy(cssRubyAlignEnabled),
+        crossThreadCopy(cssRubyOverhangEnabled),
+        crossThreadCopy(cssScrollAnchoringEnabled),
+        crossThreadCopy(cssScrollbarColorEnabled),
+        crossThreadCopy(cssScrollbarGutterEnabled),
+        crossThreadCopy(cssScrollbarWidthEnabled),
+        crossThreadCopy(cssShapeFunctionEnabled),
+        crossThreadCopy(cssTextAutospaceEnabled),
+        crossThreadCopy(cssTextBoxTrimEnabled),
+        crossThreadCopy(cssTextGroupAlignEnabled),
+        crossThreadCopy(cssTextJustifyEnabled),
+        crossThreadCopy(cssTextSpacingTrimEnabled),
+        crossThreadCopy(cssTextUnderlinePositionLeftRightEnabled),
+        crossThreadCopy(cssTextWrapPrettyEnabled),
+        crossThreadCopy(cssTreeCountingFunctionsEnabled),
+        crossThreadCopy(cssTypedOMColorEnabled),
+        crossThreadCopy(cssURLIntegrityModifierEnabled),
+        crossThreadCopy(cssURLModifiersEnabled),
+        crossThreadCopy(cssUnprefixedBackdropFilterEnabled),
+        crossThreadCopy(cssWordBreakAutoPhraseEnabled),
+        crossThreadCopy(dataListElementEnabled),
+        crossThreadCopy(dataTransferItemsEnabled),
+        crossThreadCopy(dateTimeInputsEditableComponentsEnabled),
+        crossThreadCopy(deprecationReportingEnabled),
+        crossThreadCopy(detailsAutoExpandEnabled),
+        crossThreadCopy(developerExtrasEnabled),
+        crossThreadCopy(devolvableWidgetsEnabled),
+        crossThreadCopy(diagnosticLoggingEnabled),
+        crossThreadCopy(directoryUploadEnabled),
+        crossThreadCopy(disabledAdaptationsMetaTagEnabled),
+        crossThreadCopy(domPasteAccessRequestsEnabled),
+        crossThreadCopy(domPasteAllowed),
+        crossThreadCopy(domTestingAPIsEnabled),
+        crossThreadCopy(domTimersThrottlingEnabled),
+        crossThreadCopy(downloadAttributeEnabled),
+        crossThreadCopy(dynamicSiteInterventionsEnabled),
+        crossThreadCopy(embedElementEnabled),
+        crossThreadCopy(enableElementCurrentCSSZoom),
+        crossThreadCopy(enableInheritURIQueryComponent),
+        crossThreadCopy(enterKeyHintEnabled),
+        crossThreadCopy(eventHandlerDrivenSmoothKeyboardScrollingEnabled),
+        crossThreadCopy(eventTimingEnabled),
+        crossThreadCopy(fileReaderAPIEnabled),
+        crossThreadCopy(fileSystemEnabled),
+        crossThreadCopy(fileSystemWritableStreamEnabled),
+        crossThreadCopy(filterLinkDecorationByDefaultEnabled),
+        crossThreadCopy(fixedBackgroundsPaintRelativeToDocument),
+        crossThreadCopy(fixedElementsLayoutRelativeToFrame),
+        crossThreadCopy(flexFormattingContextIntegrationEnabled),
+        crossThreadCopy(fontFallbackPrefersPictographs),
+        crossThreadCopy(forceCompositingMode),
+        crossThreadCopy(forceFTPDirectoryListings),
+        crossThreadCopy(forceLockdownFontParserEnabled),
+        crossThreadCopy(forceWebGLUsesLowPower),
+        crossThreadCopy(ftpEnabled),
+        crossThreadCopy(fullscreenRequirementForScreenOrientationLockingEnabled),
+        crossThreadCopy(geolocationAPIEnabled),
+        crossThreadCopy(geolocationFloorLevelEnabled),
+        crossThreadCopy(getCoalescedEventsEnabled),
+        crossThreadCopy(getPredictedEventsEnabled),
+        crossThreadCopy(googleAntiFlickerOptimizationQuirkEnabled),
+        crossThreadCopy(hiddenPageCSSAnimationSuspensionEnabled),
+        crossThreadCopy(hiddenPageDOMTimerThrottlingAutoIncreases),
+        crossThreadCopy(hiddenPageDOMTimerThrottlingEnabled),
+        crossThreadCopy(hiddenUntilFoundEnabled),
+        crossThreadCopy(htmlLegacyAttributeValueSerializationEnabled),
+        crossThreadCopy(httpEquivEnabled),
+        crossThreadCopy(httpsByDefault),
+        crossThreadCopy(iOSurfaceLosslessCompressionEnabled),
+        crossThreadCopy(iPAddressAndLocalhostMixedContentUpgradeTestingEnabled),
+        crossThreadCopy(iceCandidateFilteringEnabled),
+        crossThreadCopy(ignoreIframeEmbeddingProtectionsEnabled),
+        crossThreadCopy(imageSubsamplingEnabled),
+        crossThreadCopy(imagesEnabled),
+        crossThreadCopy(inWindowFullscreenEnabled),
+        crossThreadCopy(incompleteImageBorderEnabled),
+        crossThreadCopy(indexedDBAPIEnabled),
+        crossThreadCopy(inlineMediaPlaybackRequiresPlaysInlineAttribute),
+        crossThreadCopy(inputTypeColorEnabled),
+        crossThreadCopy(inputTypeColorEnhancementsEnabled),
+        crossThreadCopy(inputTypeDateEnabled),
+        crossThreadCopy(inputTypeDateTimeLocalEnabled),
+        crossThreadCopy(inputTypeMonthEnabled),
+        crossThreadCopy(inputTypeTimeEnabled),
+        crossThreadCopy(inputTypeWeekEnabled),
+        crossThreadCopy(inspectorSupportsShowingCertificate),
+        crossThreadCopy(interactiveFormValidationEnabled),
+        crossThreadCopy(invisibleAutoplayNotPermitted),
+        crossThreadCopy(isFirstPartyWebsiteDataRemovalDisabled),
+        crossThreadCopy(isFirstPartyWebsiteDataRemovalLiveOnTestingEnabled),
+        crossThreadCopy(isFirstPartyWebsiteDataRemovalReproTestingEnabled),
+        crossThreadCopy(isPerActivityStateCPUUsageMeasurementEnabled),
+        crossThreadCopy(isPostBackgroundingCPUUsageMeasurementEnabled),
+        crossThreadCopy(isPostBackgroundingMemoryUsageMeasurementEnabled),
+        crossThreadCopy(isPostLoadCPUUsageMeasurementEnabled),
+        crossThreadCopy(isPostLoadMemoryUsageMeasurementEnabled),
+        crossThreadCopy(isSameSiteStrictEnforcementEnabled),
+        crossThreadCopy(isThirdPartyCookieBlockingDisabled),
+        crossThreadCopy(itpDebugModeEnabled),
+        crossThreadCopy(javaScriptCanAccessClipboard),
+        crossThreadCopy(javaScriptCanOpenWindowsAutomatically),
+        crossThreadCopy(langAttributeAwareFormControlUIEnabled),
+        crossThreadCopy(largeImageAsyncDecodingEnabled),
+        crossThreadCopy(layerBasedSVGEngineEnabled),
+        crossThreadCopy(lazyIframeLoadingEnabled),
+        crossThreadCopy(lazyImageLoadingEnabled),
+        crossThreadCopy(legacyLineLayoutVisualCoverageEnabled),
+        crossThreadCopy(legacyPluginQuirkForMailSignaturesEnabled),
+        crossThreadCopy(linkDNSPrefetchEnabled),
+        crossThreadCopy(linkPreconnectEarlyHintsEnabled),
+        crossThreadCopy(linkPreconnectEnabled),
+        crossThreadCopy(linkPrefetchEnabled),
+        crossThreadCopy(linkPreloadEnabled),
+        crossThreadCopy(linkSanitizerEnabled),
+        crossThreadCopy(loadDeferringEnabled),
+        crossThreadCopy(loadsImagesAutomatically),
+        crossThreadCopy(localFileContentSniffingEnabled),
+        crossThreadCopy(localNetworkAccessEnabled),
+        crossThreadCopy(localStorageEnabled),
+        crossThreadCopy(lockdownFontParserEnabled),
+        crossThreadCopy(loginStatusAPIEnabled),
+        crossThreadCopy(loginStatusAPIRequiresWebAuthnEnabled),
+        crossThreadCopy(logsPageMessagesToSystemConsoleEnabled),
+        crossThreadCopy(mainContentUserGestureOverrideEnabled),
+        crossThreadCopy(masonryEnabled),
+        crossThreadCopy(mediaCapabilitiesEnabled),
+        crossThreadCopy(mediaCapabilitiesExtensionsEnabled),
+        crossThreadCopy(mediaControlsScaleWithPageZoom),
+        crossThreadCopy(mediaDataLoadsAutomatically),
+        crossThreadCopy(mediaPlaybackEnabled),
+        crossThreadCopy(mediaPreloadingEnabled),
+        crossThreadCopy(mediaSessionCaptureToggleAPIEnabled),
+        crossThreadCopy(mediaSourceEnabled),
+        crossThreadCopy(mediaUserGestureInheritsFromDocument),
+        crossThreadCopy(metaViewportInteractiveWidgetEnabled),
+        crossThreadCopy(mockScrollbarsControllerEnabled),
+        crossThreadCopy(momentumScrollingAnimatorEnabled),
+        crossThreadCopy(mutationEventsEnabled),
+        crossThreadCopy(navigationAPIEnabled),
+        crossThreadCopy(navigatorUserAgentDataJavaScriptAPIEnabled),
+        crossThreadCopy(needsAdobeFrameReloadingQuirk),
+        crossThreadCopy(needsDeferKeyDownAndKeyPressTimersUntilNextEditingCommandQuirk),
+        crossThreadCopy(needsFrameNameFallbackToIdQuirk),
+        crossThreadCopy(needsKeyboardEventDisambiguationQuirks),
+        crossThreadCopy(needsSiteSpecificQuirks),
+        crossThreadCopy(needsStorageAccessFromFileURLsQuirk),
+        crossThreadCopy(observableEnabled),
+        crossThreadCopy(opportunisticSweepingAndGarbageCollectionEnabled),
+        crossThreadCopy(overlappingBackingStoreProvidersEnabled),
+        crossThreadCopy(overscrollBehaviorEnabled),
+        crossThreadCopy(pageAtRuleMarginDescriptorsEnabled),
+        crossThreadCopy(passiveTouchListenersAsDefaultOnDocument),
+        crossThreadCopy(passiveWheelListenersAsDefaultOnDocument),
+        crossThreadCopy(passwordEchoEnabled),
+        crossThreadCopy(permissionsAPIEnabled),
+        crossThreadCopy(popoverAttributeEnabled),
+        crossThreadCopy(preferMIMETypeForImages),
+        crossThreadCopy(preferPageRenderingUpdatesNear60FPSEnabled),
+        crossThreadCopy(preventKeyboardDOMEventDispatch),
+        crossThreadCopy(privateClickMeasurementDebugModeEnabled),
+        crossThreadCopy(privateClickMeasurementEnabled),
+        crossThreadCopy(privateClickMeasurementFraudPreventionEnabled),
+        crossThreadCopy(privateTokenUsageByThirdPartyEnabled),
+        crossThreadCopy(punchOutWhiteBackgroundsInDarkMode),
+        crossThreadCopy(pushAPIEnabled),
+        crossThreadCopy(remoteMediaSessionManagerEnabled),
+        crossThreadCopy(remoteSnapshottingEnabled),
+        crossThreadCopy(requestIdleCallbackEnabled),
+        crossThreadCopy(requestStorageAccessThrowsExceptionUntilReload),
+        crossThreadCopy(requestVideoFrameCallbackEnabled),
+        crossThreadCopy(requiresPageVisibilityToPlayAudio),
+        crossThreadCopy(requiresUserGestureForAudioPlayback),
+        crossThreadCopy(requiresUserGestureForVideoPlayback),
+        crossThreadCopy(requiresUserGestureToLoadVideo),
+        crossThreadCopy(resourceLoadSchedulingEnabled),
+        crossThreadCopy(respondToThermalPressureAggressively),
+        crossThreadCopy(sKAttributionEnabled),
+        crossThreadCopy(scopedCustomElementRegistryEnabled),
+        crossThreadCopy(screenOrientationAPIEnabled),
+        crossThreadCopy(screenOrientationLockingAPIEnabled),
+        crossThreadCopy(screenWakeLockAPIEnabled),
+        crossThreadCopy(scriptEnabled),
+        crossThreadCopy(scriptMarkupEnabled),
+        crossThreadCopy(scriptTrackingPrivacyLoggingEnabled),
+        crossThreadCopy(scrollAnimatorEnabled),
+        crossThreadCopy(scrollDrivenAnimationsEnabled),
+        crossThreadCopy(scrollToTextFragmentEnabled),
+        crossThreadCopy(scrollToTextFragmentFeatureDetectionEnabled),
+        crossThreadCopy(scrollToTextFragmentGenerationEnabled),
+        crossThreadCopy(scrollToTextFragmentIndicatorEnabled),
+        crossThreadCopy(scrollToTextFragmentMarkingEnabled),
+        crossThreadCopy(scrollendEventEnabled),
+        crossThreadCopy(scrollingCoordinatorEnabled),
+        crossThreadCopy(scrollingPerformanceTestingEnabled),
+        crossThreadCopy(scrollingTreeIncludesFrames),
+        crossThreadCopy(secureContextChecksEnabled),
+        crossThreadCopy(selectShowPickerEnabled),
+        crossThreadCopy(selectTrailingWhitespaceEnabled),
+        crossThreadCopy(serviceWorkerInstallEventEnabled),
+        crossThreadCopy(serviceWorkerNavigationPreloadEnabled),
+        crossThreadCopy(serviceWorkersEnabled),
+        crossThreadCopy(serviceWorkersUserGestureEnabled),
+        crossThreadCopy(shadowRootReferenceTargetEnabled),
+        crossThreadCopy(shadowRootReferenceTargetEnabledForAriaOwns),
+        crossThreadCopy(shapeDetection),
+        crossThreadCopy(sharedWorkerEnabled),
+        crossThreadCopy(shouldAllowUserInstalledFonts),
+        crossThreadCopy(shouldConvertInvalidURLsToBlank),
+        crossThreadCopy(shouldConvertPositionStyleOnCopy),
+        crossThreadCopy(shouldDecidePolicyBeforeLoadingQuickLookPreview),
+        crossThreadCopy(shouldDeferAsynchronousScriptsUntilAfterDocumentLoadOrFirstPaint),
+        crossThreadCopy(shouldDispatchSyntheticMouseEventsWhenModifyingSelection),
+        crossThreadCopy(shouldDispatchSyntheticMouseOutAfterSyntheticClick),
+        crossThreadCopy(shouldDropNearSuspendedAssertionAfterDelay),
+        crossThreadCopy(shouldIgnoreFontLoadCompletions),
+        crossThreadCopy(shouldIgnoreMetaViewport),
+        crossThreadCopy(shouldInjectUserScriptsInInitialEmptyDocument),
+        crossThreadCopy(shouldPrintBackgrounds),
+        crossThreadCopy(shouldRespectImageOrientation),
+        crossThreadCopy(shouldRestrictBaseURLSchemes),
+        crossThreadCopy(shouldSuppressTextInputFromEditingDuringProvisionalNavigation),
+        crossThreadCopy(shouldTakeNearSuspendedAssertions),
+        crossThreadCopy(shouldUseServiceWorkerShortTimeout),
+        crossThreadCopy(showDebugBorders),
+        crossThreadCopy(showFrameProcessBorders),
+        crossThreadCopy(showMediaStatsContextMenuItemEnabled),
+        crossThreadCopy(showModalDialogEnabled),
+        crossThreadCopy(showRepaintCounter),
+        crossThreadCopy(showTiledScrollingIndicator),
+        crossThreadCopy(showsToolTipOverTruncatedText),
+        crossThreadCopy(showsURLsInToolTips),
+        crossThreadCopy(shrinksStandaloneImagesToFit),
+        crossThreadCopy(sidewaysWritingModesEnabled),
+        crossThreadCopy(siteIsolationEnabled),
+        crossThreadCopy(siteIsolationSharedProcessEnabled),
+        crossThreadCopy(smartInsertDeleteEnabled),
+        crossThreadCopy(spatialNavigationEnabled),
+        crossThreadCopy(speechRecognitionEnabled),
+        crossThreadCopy(speechSynthesisAPIEnabled),
+        crossThreadCopy(springTimingFunctionEnabled),
+        crossThreadCopy(standalone),
+        crossThreadCopy(storageAPIEnabled),
+        crossThreadCopy(storageAPIEstimateEnabled),
+        crossThreadCopy(storageAccessAPIPerPageScopeEnabled),
+        crossThreadCopy(supportHDRCompositorTonemappingEnabled),
+        crossThreadCopy(supportHDRDisplayEnabled),
+        crossThreadCopy(suppressHDRShouldBeAllowedInFullscreenVideo),
+        crossThreadCopy(suppressesIncrementalRendering),
+        crossThreadCopy(switchControlEnabled),
+        crossThreadCopy(targetTextPseudoElementEnabled),
+        crossThreadCopy(telephoneNumberParsingEnabled),
+        crossThreadCopy(temporaryTileCohortRetentionEnabled),
+        crossThreadCopy(textAreasAreResizable),
+        crossThreadCopy(textInteractionEnabled),
+        crossThreadCopy(thumbAndTrackPseudoElementsEnabled),
+        crossThreadCopy(topContentInsetBackgroundCanChangeAfterScrolling),
+        crossThreadCopy(trackConfigurationEnabled),
+        crossThreadCopy(treatIPAddressAsDomain),
+        crossThreadCopy(treatsAnyTextCSSLinkAsStylesheet),
+        crossThreadCopy(trustedTypesEnabled),
+        crossThreadCopy(uAVisualTransitionDetectionEnabled),
+        crossThreadCopy(undoManagerAPIEnabled),
+        crossThreadCopy(unhandledPromiseRejectionToConsoleEnabled),
+        crossThreadCopy(unifiedTextCheckerEnabled),
+        crossThreadCopy(upgradeMixedContentEnabled),
+        crossThreadCopy(urlPatternAPIEnabled),
+        crossThreadCopy(useAnonymousModeWhenFetchingMaskImages),
+        crossThreadCopy(useGiantTiles),
+        crossThreadCopy(useIFCForSVGText),
+        crossThreadCopy(useImageDocumentForSubframePDF),
+        crossThreadCopy(usePreHTML5ParserQuirks),
+        crossThreadCopy(useSystemAppearance),
+        crossThreadCopy(userActivationAPIEnabled),
+        crossThreadCopy(userGesturePromisePropagationEnabled),
+        crossThreadCopy(usesBackForwardCache),
+        crossThreadCopy(usesEncodingDetector),
+        crossThreadCopy(verifyWindowOpenUserGestureFromUIProcess),
+        crossThreadCopy(verticalFormControlsEnabled),
+        crossThreadCopy(videoPresentationManagerEnabled),
+        crossThreadCopy(videoPresentationModeAPIEnabled),
+        crossThreadCopy(viewTransitionClassesEnabled),
+        crossThreadCopy(viewTransitionTypesEnabled),
+        crossThreadCopy(viewTransitionsEnabled),
+        crossThreadCopy(visualViewportAPIEnabled),
+        crossThreadCopy(visualViewportEnabled),
+        crossThreadCopy(wantsBalancedSetDefersLoadingBehavior),
+        crossThreadCopy(webAPIStatisticsEnabled),
+        crossThreadCopy(webAPIsInShadowRealmEnabled),
+        crossThreadCopy(webAnimationsCustomEffectsEnabled),
+        crossThreadCopy(webAnimationsCustomFrameRateEnabled),
+        crossThreadCopy(webAnimationsOverallProgressPropertyEnabled),
+        crossThreadCopy(webCryptoSafeCurvesEnabled),
+        crossThreadCopy(webCryptoX25519Enabled),
+        crossThreadCopy(webGLDraftExtensionsEnabled),
+        crossThreadCopy(webGLEnabled),
+        crossThreadCopy(webGLErrorsToConsoleEnabled),
+        crossThreadCopy(webGLTimerQueriesEnabled),
+        crossThreadCopy(webGPUEnabled),
+        crossThreadCopy(webGPUHDREnabled),
+        crossThreadCopy(webInspectorEngineeringSettingsAllowed),
+        crossThreadCopy(webLocksAPIEnabled),
+        crossThreadCopy(webRTCEncryptionEnabled),
+        crossThreadCopy(webRTCMediaPipelineAdditionalLoggingEnabled),
+        crossThreadCopy(webSecurityEnabled),
+        crossThreadCopy(webShareEnabled),
+        crossThreadCopy(webShareFileAPIEnabled),
+        crossThreadCopy(webSocketEnabled),
+        crossThreadCopy(webTransportEnabled),
+        crossThreadCopy(webXRWebGPUBindingsEnabled),
+        crossThreadCopy(webkitImageReadyEventEnabled),
+        crossThreadCopy(wheelEventGesturesBecomeNonBlocking),
+        crossThreadCopy(windowFocusRestricted),
+        crossThreadCopy(wirelessPlaybackTargetAPIEnabled),
+        crossThreadCopy(workerAsynchronousURLErrorHandlingEnabled),
+#if ENABLE(ACCESSIBILITY_ANIMATION_CONTROL)
+        crossThreadCopy(imageAnimationControlEnabled),
+#endif
+#if ENABLE(APPLE_PAY)
+        crossThreadCopy(applePayCapabilityDisclosureAllowed),
+        crossThreadCopy(applePayEnabled),
+#endif
+#if ENABLE(APP_HIGHLIGHTS)
+        crossThreadCopy(appHighlightsEnabled),
+#endif
+#if ENABLE(ATTACHMENT_ELEMENT)
+        crossThreadCopy(attachmentWideLayoutEnabled),
+#endif
+#if ENABLE(CONTENT_CHANGE_OBSERVER)
+        crossThreadCopy(contentChangeObserverEnabled),
+#endif
+#if ENABLE(CONTENT_EXTENSIONS)
+        crossThreadCopy(iFrameResourceMonitoringEnabled),
+        crossThreadCopy(iFrameResourceMonitoringTestingSettingsEnabled),
+#endif
+#if ENABLE(CONTEXT_MENU_QR_CODE_DETECTION)
+        crossThreadCopy(contextMenuQRCodeDetectionEnabled),
+#endif
+#if ENABLE(DAMAGE_TRACKING)
+        crossThreadCopy(propagateDamagingInformation),
+        crossThreadCopy(unifyDamagedRegions),
+        crossThreadCopy(useDamagingInformationForCompositing),
+#endif
+#if ENABLE(DECLARATIVE_WEB_PUSH)
+        crossThreadCopy(declarativeWebPush),
+#endif
+#if ENABLE(DEVICE_ORIENTATION)
+        crossThreadCopy(deviceOrientationEventEnabled),
+        crossThreadCopy(deviceOrientationPermissionAPIEnabled),
+#endif
+#if ENABLE(DOM_AUDIO_SESSION)
+        crossThreadCopy(domAudioSessionEnabled),
+        crossThreadCopy(domAudioSessionFullEnabled),
+#endif
+#if ENABLE(ENCRYPTED_MEDIA)
+        crossThreadCopy(encryptedMediaAPIEnabled),
+#endif
+#if ENABLE(EXTENSION_CAPABILITIES)
+        crossThreadCopy(mediaCapabilityGrantsEnabled),
+#endif
+#if ENABLE(FORM_CONTROL_REFRESH)
+        crossThreadCopy(formControlRefreshEnabled),
+#endif
+#if ENABLE(FULLSCREEN_API)
+        crossThreadCopy(fullScreenEnabled),
+        crossThreadCopy(fullScreenKeyboardLock),
+        crossThreadCopy(videoFullsceenPrefersMostVisibleHeuristic),
+        crossThreadCopy(videoFullscreenRequiresElementFullscreen),
+#endif
+#if ENABLE(GAMEPAD)
+        crossThreadCopy(gamepadTriggerRumbleEnabled),
+        crossThreadCopy(gamepadVibrationActuatorEnabled),
+        crossThreadCopy(gamepadsEnabled),
+#endif
+#if ENABLE(GPU_PROCESS)
+        crossThreadCopy(blockMediaLayerRehostingInWebContentProcess),
+#endif
+#if ENABLE(GPU_PROCESS) && ENABLE(WEBGL)
+        crossThreadCopy(useGPUProcessForWebGLEnabled),
+#endif
+#if ENABLE(IMAGE_ANALYSIS)
+        crossThreadCopy(imageAnalysisDuringFindInPageEnabled),
+        crossThreadCopy(visualTranslationEnabled),
+#endif
+#if ENABLE(IMAGE_ANALYSIS) && ENABLE(VIDEO)
+        crossThreadCopy(textRecognitionInVideosEnabled),
+#endif
+#if ENABLE(IMAGE_ANALYSIS_ENHANCEMENTS)
+        crossThreadCopy(removeBackgroundEnabled),
+#endif
+#if ENABLE(INCLUDE_IGNORED_IN_CORE_AX_TREE)
+        crossThreadCopy(includeIgnoredInCoreAXTree),
+#endif
+#if ENABLE(INTERACTION_REGIONS_IN_EVENT_REGION)
+        crossThreadCopy(interactionRegionsEnabled),
+#endif
+#if ENABLE(LEGACY_ENCRYPTED_MEDIA)
+        crossThreadCopy(legacyEncryptedMediaAPIEnabled),
+#endif
+#if ENABLE(LINEAR_MEDIA_PLAYER)
+        crossThreadCopy(linearMediaPlayerEnabled),
+#endif
+#if ENABLE(MATHML)
+        crossThreadCopy(mathMLEnabled),
+#endif
+#if ENABLE(MEDIA_CONTROLS_CONTEXT_MENUS)
+        crossThreadCopy(mediaControlsContextMenusEnabled),
+#endif
+#if ENABLE(MEDIA_RECORDER)
+        crossThreadCopy(mediaRecorderEnabled),
+#endif
+#if ENABLE(MEDIA_RECORDER_WEBM)
+        crossThreadCopy(limitedMatroskaSupportEnabled),
+        crossThreadCopy(mediaRecorderEnabledWebM),
+#endif
+#if ENABLE(MEDIA_SESSION)
+        crossThreadCopy(mediaSessionEnabled),
+#endif
+#if ENABLE(MEDIA_SESSION_COORDINATOR)
+        crossThreadCopy(mediaSessionCoordinatorEnabled),
+#endif
+#if ENABLE(MEDIA_SESSION_COORDINATOR) && ENABLE(MEDIA_SESSION_PLAYLIST)
+        crossThreadCopy(mediaSessionPlaylistEnabled),
+#endif
+#if ENABLE(MEDIA_SOURCE)
+        crossThreadCopy(detachableMediaSourceEnabled),
+        crossThreadCopy(managedMediaSourceEnabled),
+        crossThreadCopy(sourceBufferChangeTypeEnabled),
+        crossThreadCopy(textTracksInMSEEnabled),
+#endif
+#if ENABLE(MEDIA_SOURCE) && ENABLE(WIRELESS_PLAYBACK_TARGET)
+        crossThreadCopy(managedMediaSourceNeedsAirPlay),
+#endif
+#if ENABLE(MEDIA_SOURCE) && USE(AVFOUNDATION)
+        crossThreadCopy(mediaSourcePrefersDecompressionSession),
+#endif
+#if ENABLE(MEDIA_SOURCE_IN_WORKERS)
+        crossThreadCopy(mediaSourceInWorkerEnabled),
+#endif
+#if ENABLE(MEDIA_STREAM)
+        crossThreadCopy(exposeCaptureDevicesAfterCaptureEnabled),
+        crossThreadCopy(exposeDefaultSpeakerAsSpecificDeviceEnabled),
+        crossThreadCopy(exposeSpeakersEnabled),
+        crossThreadCopy(exposeSpeakersWithoutMicrophoneEnabled),
+        crossThreadCopy(getUserMediaRequiresFocus),
+        crossThreadCopy(imageCaptureEnabled),
+        crossThreadCopy(interruptAudioOnPageVisibilityChangeEnabled),
+        crossThreadCopy(interruptVideoOnPageVisibilityChangeEnabled),
+        crossThreadCopy(mediaCaptureRequiresSecureConnection),
+        crossThreadCopy(mediaDevicesEnabled),
+        crossThreadCopy(mediaStreamTrackProcessingEnabled),
+        crossThreadCopy(mockCaptureDevicesEnabled),
+        crossThreadCopy(muteCameraOnMicrophoneInterruptionEnabled),
+        crossThreadCopy(perElementSpeakerSelectionEnabled),
+        crossThreadCopy(screenCaptureEnabled),
+        crossThreadCopy(speakerSelectionRequiresUserGesture),
+        crossThreadCopy(useMicrophoneMuteStatusAPI),
+#endif
+#if ENABLE(MEDIA_STREAM) && PLATFORM(IOS_FAMILY)
+        crossThreadCopy(manageCaptureStatusBarInGPUProcessEnabled),
+#endif
+#if ENABLE(MODEL_ELEMENT)
+        crossThreadCopy(modelElementEnabled),
+#endif
+#if ENABLE(MODEL_PROCESS)
+        crossThreadCopy(modelProcessEnabled),
+#endif
+#if ENABLE(NOTIFICATIONS)
+        crossThreadCopy(notificationsEnabled),
+#endif
+#if ENABLE(NOTIFICATION_EVENT)
+        crossThreadCopy(notificationEventEnabled),
+#endif
+#if ENABLE(OFFSCREEN_CANVAS)
+        crossThreadCopy(offscreenCanvasEnabled),
+#endif
+#if ENABLE(OFFSCREEN_CANVAS_IN_WORKERS)
+        crossThreadCopy(offscreenCanvasInWorkersEnabled),
+#endif
+#if ENABLE(PAYMENT_REQUEST)
+        crossThreadCopy(paymentRequestEnabled),
+#endif
+#if ENABLE(PDFJS)
+        crossThreadCopy(pdfJSViewerEnabled),
+#endif
+#if ENABLE(PDF_PAGE_NUMBER_INDICATOR)
+        crossThreadCopy(pdfPluginPageNumberIndicatorEnabled),
+#endif
+#if ENABLE(PICTURE_IN_PICTURE_API)
+        crossThreadCopy(pictureInPictureAPIEnabled),
+#endif
+#if ENABLE(POINTER_LOCK)
+        crossThreadCopy(pointerLockEnabled),
+        crossThreadCopy(pointerLockOptionsEnabled),
+#endif
+#if ENABLE(REQUIRES_PAGE_VISIBILITY_FOR_NOW_PLAYING)
+        crossThreadCopy(requiresPageVisibilityForVideoToBeNowPlaying),
+#endif
+#if ENABLE(RESOURCE_USAGE)
+        crossThreadCopy(resourceUsageOverlayVisible),
+#endif
+#if ENABLE(SCREEN_TIME)
+        crossThreadCopy(screenTimeEnabled),
+#endif
+#if ENABLE(SERVICE_CONTROLS)
+        crossThreadCopy(imageControlsEnabled),
+        crossThreadCopy(serviceControlsEnabled),
+#endif
+#if ENABLE(SPATIAL_IMAGE_CONTROLS)
+        crossThreadCopy(spatialImageControlsEnabled),
+#endif
+#if ENABLE(TEXT_AUTOSIZING)
+        crossThreadCopy(idempotentModeAutosizingOnlyHonorsPercentages),
+        crossThreadCopy(shouldEnableTextAutosizingBoost),
+        crossThreadCopy(textAutosizingEnabled),
+        crossThreadCopy(textAutosizingEnabledAtLargeInitialScale),
+        crossThreadCopy(textAutosizingUsesIdempotentMode),
+#endif
+#if ENABLE(THREADED_ANIMATION_RESOLUTION)
+        crossThreadCopy(threadedAnimationResolutionEnabled),
+#endif
+#if ENABLE(TOUCH_EVENTS)
+        crossThreadCopy(mouseEventsSimulationEnabled),
+        crossThreadCopy(touchEventDOMAttributesEnabled),
+        crossThreadCopy(touchEventEmulationEnabled),
+#endif
+#if ENABLE(UNIFIED_PDF)
+        crossThreadCopy(unifiedPDFEnabled),
+#endif
+#if ENABLE(VIDEO)
+        crossThreadCopy(audioDescriptionsEnabled),
+        crossThreadCopy(extendedAudioDescriptionsEnabled),
+        crossThreadCopy(genericCueAPIEnabled),
+        crossThreadCopy(mediaEnabled),
+        crossThreadCopy(shouldDisplayCaptions),
+        crossThreadCopy(shouldDisplaySubtitles),
+        crossThreadCopy(shouldDisplayTextDescriptions),
+        crossThreadCopy(videoQualityIncludesDisplayCompositingEnabled),
+#endif
+#if ENABLE(VP9)
+        crossThreadCopy(vp9DecoderEnabled),
+#endif
+#if ENABLE(WEBASSEMBLY)
+        crossThreadCopy(webAssemblyESMIntegrationEnabled),
+#endif
+#if ENABLE(WEBGL)
+        crossThreadCopy(allowWebGLInWorkers),
+#endif
+#if ENABLE(WEBKIT_OVERFLOW_SCROLLING_CSS_PROPERTY)
+        crossThreadCopy(legacyOverflowScrollingTouchEnabled),
+#endif
+#if ENABLE(WEBXR)
+        crossThreadCopy(touchInputCompatibilityEnabled),
+        crossThreadCopy(webXRAugmentedRealityModuleEnabled),
+        crossThreadCopy(webXREnabled),
+        crossThreadCopy(webXRGamepadsModuleEnabled),
+#endif
+#if ENABLE(WEBXR_HANDS)
+        crossThreadCopy(webXRHandInputModuleEnabled),
+#endif
+#if ENABLE(WEBXR_LAYERS)
+        crossThreadCopy(webXRLayersAPIEnabled),
+#endif
+#if ENABLE(WEB_ARCHIVE)
+        crossThreadCopy(alwaysAllowLocalWebarchive),
+        crossThreadCopy(loadWebArchiveWithEphemeralStorageEnabled),
+        crossThreadCopy(webArchiveDebugModeEnabled),
+        crossThreadCopy(webArchiveTestingModeEnabled),
+#endif
+#if ENABLE(WEB_AUDIO)
+        crossThreadCopy(webAudioEnabled),
+#endif
+#if ENABLE(WEB_AUTHN)
+        crossThreadCopy(digitalCredentialsEnabled),
+        crossThreadCopy(webAuthenticationEnabled),
+#endif
+#if ENABLE(WEB_CODECS)
+        crossThreadCopy(webCodecsAV1Enabled),
+        crossThreadCopy(webCodecsAudioEnabled),
+        crossThreadCopy(webCodecsHEVCEnabled),
+        crossThreadCopy(webCodecsVideoEnabled),
+#endif
+#if ENABLE(WEB_PAGE_SPATIAL_BACKDROP)
+        crossThreadCopy(webPageSpatialBackdropEnabled),
+#endif
+#if ENABLE(WEB_RTC)
+        crossThreadCopy(legacyWebRTCOfferOptionsEnabled),
+        crossThreadCopy(peerConnectionEnabled),
+        crossThreadCopy(peerConnectionVideoScalingAdaptationDisabled),
+        crossThreadCopy(webRTCAV1CodecEnabled),
+        crossThreadCopy(webRTCDTMFEnabled),
+        crossThreadCopy(webRTCEncodedTransformEnabled),
+        crossThreadCopy(webRTCH265CodecEnabled),
+        crossThreadCopy(webRTCL4SEnabled),
+        crossThreadCopy(webRTCPlatformCodecsInGPUProcessEnabled),
+        crossThreadCopy(webRTCRemoteVideoFrameEnabled),
+        crossThreadCopy(webRTCSFrameTransformEnabled),
+        crossThreadCopy(webRTCSocketsProxyingEnabled),
+        crossThreadCopy(webRTCVP9Profile0CodecEnabled),
+        crossThreadCopy(webRTCVP9Profile2CodecEnabled),
+#endif
+#if ENABLE(WEB_RTC) && PLATFORM(COCOA)
+        crossThreadCopy(webRTCInterfaceMonitoringViaNWEnabled),
+#endif
+#if ENABLE(WIRELESS_PLAYBACK_TARGET)
+        crossThreadCopy(allowsAirPlayForMediaPlayback),
+        crossThreadCopy(remotePlaybackEnabled),
+#endif
+#if ENABLE(WK_WEB_EXTENSIONS_BOOKMARKS)
+        crossThreadCopy(webExtensionBookmarksEnabled),
+#endif
+#if ENABLE(WK_WEB_EXTENSIONS_SIDEBAR)
+        crossThreadCopy(webExtensionSidebarEnabled),
+#endif
+#if ENABLE(WRITING_SUGGESTIONS)
+        crossThreadCopy(writingSuggestionsAttributeEnabled),
+#endif
+#if ENABLE(WRITING_TOOLS)
+        crossThreadCopy(textAnimationsEnabled),
+#endif
+#if ENABLE(XSLT)
+        crossThreadCopy(xsltEnabled),
+#endif
+#if HAVE(ALLOW_ONLY_PARTITIONED_COOKIES) && 0
+        crossThreadCopy(optInPartitionedCookiesEnabled),
+#endif
+#if HAVE(AVKIT_CONTENT_SOURCE)
+        crossThreadCopy(aVKitContentSourceEnabled),
+#endif
+#if HAVE(CORE_ANIMATION_SEPARATED_LAYERS)
+        crossThreadCopy(cssTransformStyleSeparatedEnabled),
+#endif
+#if HAVE(INCREMENTAL_PDF_APIS)
+        crossThreadCopy(incrementalPDFLoadingEnabled),
+#endif
+#if HAVE(MATERIAL_HOSTING)
+        crossThreadCopy(hostedBlurMaterialInMediaControlsEnabled),
+#endif
+#if HAVE(PIP_SKIP_PREROLL)
+        crossThreadCopy(pictureInPicturePlaybackStateEnabled),
+#endif
+#if HAVE(RUBBER_BANDING)
+        crossThreadCopy(rubberBandingForSubScrollableRegionsEnabled),
+#endif
+#if HAVE(SC_CONTENT_SHARING_PICKER)
+        crossThreadCopy(requireUAGetDisplayMediaPrompt),
+#endif
+#if HAVE(SPATIAL_AUDIO_EXPERIENCE)
+        crossThreadCopy(preferSpatialAudioExperience),
+#endif
+#if HAVE(WEB_AUTHN_AS_MODERN)
+        crossThreadCopy(webAuthenticationASEnabled),
+#endif
+#if PLATFORM(COCOA)
+        crossThreadCopy(pdfPluginEnabled),
+        crossThreadCopy(pdfPluginHUDEnabled),
+        crossThreadCopy(writeRichTextDataWhenCopyingOrDragging),
+#endif
+#if PLATFORM(IOS_FAMILY)
+        crossThreadCopy(allowViewportShrinkToFitContent),
+        crossThreadCopy(alternateFullScreenControlDesignEnabled),
+        crossThreadCopy(selectionHonorsOverflowScrolling),
+        crossThreadCopy(useAsyncUIKitInteractions),
+        crossThreadCopy(visuallyContiguousBidiTextSelectionEnabled),
+#endif
+#if PLATFORM(MAC)
+        crossThreadCopy(inputMethodUsesCorrectKeyEventOrder),
+#endif
+#if PLATFORM(MAC) && USE(RUNNINGBOARD)
+        crossThreadCopy(backgroundWebContentRunningBoardThrottlingEnabled),
+#endif
+#if PLATFORM(VISION)
+        crossThreadCopy(fullscreenSceneAspectRatioLockingEnabled),
+        crossThreadCopy(fullscreenSceneDimmingEnabled),
+#endif
+#if PLATFORM(VISION) && ENABLE(MODEL_PROCESS)
+        crossThreadCopy(modelNoPortalAttributeEnabled),
+#endif
+#if USE(CA) || USE(SKIA)
+        crossThreadCopy(canvasUsesAcceleratedDrawing),
+#endif
+#if USE(CORE_IMAGE)
+        crossThreadCopy(acceleratedFiltersEnabled),
+#endif
+#if USE(GRAPHICS_CONTEXT_FILTERS)
+        crossThreadCopy(graphicsContextFiltersEnabled),
+#endif
+#if USE(MODERN_AVCONTENTKEYSESSION)
+        crossThreadCopy(shouldUseModernAVContentKeySession),
+#endif
+#if USE(MODERN_AVCONTENTKEYSESSION_WITH_VTDECOMPRESSIONSESSION)
+        crossThreadCopy(videoRendererProtectedFallbackDisabled),
+        crossThreadCopy(videoRendererUseDecompressionSessionForProtected),
+#endif
+#if USE(SYSTEM_PREVIEW)
+        crossThreadCopy(systemPreviewEnabled),
+#endif
+    };
+}
+
+Settings::~Settings() = default;
+
+void Settings::disableUnstableFeaturesForModernWebKit()
+{
+#if HAVE(AVKIT_CONTENT_SOURCE)
+    setAVKitContentSourceEnabled(false);
+#endif
+#if USE(CORE_IMAGE)
+    setAcceleratedFiltersEnabled(false);
+#endif
+    setAllowUniversalAccessFromFileURLs(false);
+    setAppBadgeEnabled(false);
+#if ENABLE(APP_HIGHLIGHTS)
+    setAppHighlightsEnabled(false);
+#endif
+#if ENABLE(VIDEO)
+    setAudioDescriptionsEnabled(false);
+#endif
+    setBackgroundFetchAPIEnabled(false);
+#if PLATFORM(MAC) && USE(RUNNINGBOARD)
+    setBackgroundWebContentRunningBoardThrottlingEnabled(false);
+#endif
+    setCSS3DTransformBackfaceVisibilityInteroperabilityEnabled(false);
+    setCSSAnchorPositioningPositionVisibilityEnabled(false);
+    setCSSAppearanceBaseEnabled(false);
+    setCSSColorLayersEnabled(false);
+    setCSSConstrainedDynamicRangeLimitEnabled(false);
+    setCSSCornerShapeEnabled(false);
+    setCSSCounterStyleAtRuleImageSymbolsEnabled(false);
+    setCSSDPropertyEnabled(false);
+    setCSSDynamicRangeLimitMixEnabled(false);
+    setCSSFieldSizingEnabled(false);
+    setCSSFontVariantEmojiEnabled(false);
+    setCSSInputSecurityEnabled(false);
+    setCSSLineClampEnabled(false);
+    setCSSLineFitEdgeEnabled(false);
+    setCSSPaintingAPIEnabled(false);
+    setCSSRandomFunctionEnabled(false);
+    setCSSRhythmicSizingEnabled(false);
+    setCSSScrollAnchoringEnabled(false);
+    setCSSScrollbarColorEnabled(false);
+    setCSSTextGroupAlignEnabled(false);
+    setCSSTextJustifyEnabled(false);
+    setCSSTextSpacingTrimEnabled(false);
+#if HAVE(CORE_ANIMATION_SEPARATED_LAYERS)
+    setCSSTransformStyleSeparatedEnabled(false);
+#endif
+    setCSSTypedOMColorEnabled(false);
+    setCSSURLIntegrityModifierEnabled(false);
+    setCSSUnprefixedBackdropFilterEnabled(false);
+    setCSSWordBreakAutoPhraseEnabled(false);
+    setCanvasFiltersEnabled(false);
+    setCanvasLayersEnabled(false);
+    setCanvasPixelFormatEnabled(false);
+    setCaretPositionFromPointEnabled(false);
+    setClearSiteDataExecutionContextsSupportEnabled(false);
+    setCloseWatcherEnabled(false);
+    setCommandAttributesEnabled(false);
+    setContactPickerAPIEnabled(false);
+    setCookieConsentAPIEnabled(false);
+    setCookieStoreAPIExtendedAttributesEnabled(false);
+    setCookieStoreManagerEnabled(false);
+    setCoreMathMLEnabled(false);
+#if ENABLE(DOM_AUDIO_SESSION)
+    setDOMAudioSessionFullEnabled(false);
+#endif
+    setDeprecationReportingEnabled(false);
+#if ENABLE(MEDIA_SOURCE)
+    setDetachableMediaSourceEnabled(false);
+#endif
+    setDetailsAutoExpandEnabled(false);
+    setDynamicSiteInterventionsEnabled(false);
+    setEnableElementCurrentCSSZoom(false);
+    setEventTimingEnabled(false);
+#if ENABLE(VIDEO)
+    setExtendedAudioDescriptionsEnabled(false);
+#endif
+    setFTPEnabled(false);
+    setFilterLinkDecorationByDefaultEnabled(false);
+#if ENABLE(FULLSCREEN_API)
+    setFullScreenKeyboardLock(false);
+#endif
+#if ENABLE(GAMEPAD)
+    setGamepadTriggerRumbleEnabled(false);
+#endif
+    setHttpsByDefault(false);
+    setHiddenUntilFoundEnabled(false);
+    setIPAddressAndLocalhostMixedContentUpgradeTestingEnabled(false);
+#if ENABLE(IMAGE_ANALYSIS)
+    setImageAnalysisDuringFindInPageEnabled(false);
+#endif
+#if ENABLE(SERVICE_CONTROLS)
+    setImageControlsEnabled(false);
+#endif
+#if PLATFORM(MAC)
+    setInputMethodUsesCorrectKeyEventOrder(false);
+#endif
+    setIsFirstPartyWebsiteDataRemovalDisabled(false);
+    setIsFirstPartyWebsiteDataRemovalLiveOnTestingEnabled(false);
+    setIsFirstPartyWebsiteDataRemovalReproTestingEnabled(false);
+    setIsSameSiteStrictEnforcementEnabled(false);
+    setIsThirdPartyCookieBlockingDisabled(false);
+    setItpDebugModeEnabled(false);
+    setLayerBasedSVGEngineEnabled(false);
+#if ENABLE(MEDIA_RECORDER_WEBM)
+    setLimitedMatroskaSupportEnabled(false);
+#endif
+    setLinkPrefetchEnabled(false);
+    setLinkSanitizerEnabled(false);
+    setLocalNetworkAccessEnabled(false);
+    setLoginStatusAPIEnabled(false);
+    setMasonryEnabled(false);
+    setMetaViewportInteractiveWidgetEnabled(false);
+#if ENABLE(MODEL_ELEMENT)
+    setModelElementEnabled(false);
+#endif
+#if PLATFORM(VISION) && ENABLE(MODEL_PROCESS)
+    setModelNoPortalAttributeEnabled(false);
+#endif
+    setMutationEventsEnabled(false);
+    setNavigationAPIEnabled(false);
+    setNavigatorUserAgentDataJavaScriptAPIEnabled(false);
+    setObservableEnabled(false);
+#if HAVE(ALLOW_ONLY_PARTITIONED_COOKIES) && 0
+    setOptInPartitionedCookiesEnabled(false);
+#endif
+#if ENABLE(PDFJS)
+    setPDFJSViewerEnabled(false);
+#endif
+    setPrivateClickMeasurementDebugModeEnabled(false);
+#if ENABLE(DAMAGE_TRACKING)
+    setPropagateDamagingInformation(false);
+#endif
+    setRemoteMediaSessionManagerEnabled(false);
+    setRemoteSnapshottingEnabled(false);
+    setRequestIdleCallbackEnabled(false);
+    setRequestStorageAccessThrowsExceptionUntilReload(false);
+    setScreenOrientationLockingAPIEnabled(false);
+    setScrollendEventEnabled(false);
+    setSelectShowPickerEnabled(false);
+    setServiceWorkerInstallEventEnabled(false);
+    setShadowRootReferenceTargetEnabled(false);
+    setShadowRootReferenceTargetEnabledForAriaOwns(false);
+    setShapeDetection(false);
+    setShowMediaStatsContextMenuItemEnabled(false);
+    setShowModalDialogEnabled(false);
+    setSiteIsolationEnabled(false);
+    setSiteIsolationSharedProcessEnabled(false);
+#if ENABLE(SPATIAL_IMAGE_CONTROLS)
+    setSpatialImageControlsEnabled(false);
+#endif
+    setSpringTimingFunctionEnabled(false);
+    setSupportHDRCompositorTonemappingEnabled(false);
+    setSupportHDRDisplayEnabled(false);
+#if ENABLE(MEDIA_SOURCE)
+    setTextTracksInMSEEnabled(false);
+#endif
+#if ENABLE(THREADED_ANIMATION_RESOLUTION)
+    setThreadedAnimationResolutionEnabled(false);
+#endif
+    setThumbAndTrackPseudoElementsEnabled(false);
+#if ENABLE(WEBXR)
+    setTouchInputCompatibilityEnabled(false);
+#endif
+    setTrackConfigurationEnabled(false);
+    setUndoManagerAPIEnabled(false);
+#if ENABLE(DAMAGE_TRACKING)
+    setUnifyDamagedRegions(false);
+#endif
+#if ENABLE(DAMAGE_TRACKING)
+    setUseDamagingInformationForCompositing(false);
+#endif
+#if ENABLE(MEDIA_STREAM)
+    setUseMicrophoneMuteStatusAPI(false);
+#endif
+    setVerifyWindowOpenUserGestureFromUIProcess(false);
+#if ENABLE(FULLSCREEN_API)
+    setVideoFullsceenPrefersMostVisibleHeuristic(false);
+#endif
+#if USE(MODERN_AVCONTENTKEYSESSION_WITH_VTDECOMPRESSIONSESSION)
+    setVideoRendererUseDecompressionSessionForProtected(false);
+#endif
+    setWebAPIStatisticsEnabled(false);
+    setWebAPIsInShadowRealmEnabled(false);
+    setWebAnimationsCustomEffectsEnabled(false);
+    setWebAnimationsCustomFrameRateEnabled(false);
+#if ENABLE(WEBASSEMBLY)
+    setWebAssemblyESMIntegrationEnabled(false);
+#endif
+#if ENABLE(WEB_CODECS)
+    setWebCodecsAV1Enabled(false);
+#endif
+#if ENABLE(WK_WEB_EXTENSIONS_BOOKMARKS)
+    setWebExtensionBookmarksEnabled(false);
+#endif
+#if ENABLE(WK_WEB_EXTENSIONS_SIDEBAR)
+    setWebExtensionSidebarEnabled(false);
+#endif
+    setWebGLDraftExtensionsEnabled(false);
+    setWebGLTimerQueriesEnabled(false);
+    setWebGPUEnabled(false);
+    setWebGPUHDREnabled(false);
+#if ENABLE(WEB_PAGE_SPATIAL_BACKDROP)
+    setWebPageSpatialBackdropEnabled(false);
+#endif
+#if ENABLE(WEB_RTC)
+    setWebRTCAV1CodecEnabled(false);
+#endif
+#if ENABLE(WEB_RTC)
+    setWebRTCL4SEnabled(false);
+#endif
+#if ENABLE(WEB_RTC)
+    setWebRTCSFrameTransformEnabled(false);
+#endif
+    setWebTransportEnabled(false);
+#if ENABLE(WEBXR)
+    setWebXRAugmentedRealityModuleEnabled(false);
+#endif
+#if ENABLE(WEBXR_LAYERS)
+    setWebXRLayersAPIEnabled(false);
+#endif
+    setWebXRWebGPUBindingsEnabled(false);
+    setWorkerAsynchronousURLErrorHandlingEnabled(false);
+}
+
+void Settings::disableGlobalUnstableFeaturesForModernWebKit()
+{
+#if ENABLE(WEB_PUSH_NOTIFICATIONS)
+    DeprecatedGlobalSettings::setBuiltInNotificationsEnabled(false);
+#endif
+#if ENABLE(MODEL_ELEMENT)
+    DeprecatedGlobalSettings::setModelDocumentEnabled(false);
+#endif
+    DeprecatedGlobalSettings::setReadableByteStreamAPIEnabled(false);
+}
+
+void Settings::disableFeaturesForLockdownMode()
+{
+    setAllowsPictureInPictureMediaPlayback(false);
+    setCacheAPIEnabled(false);
+    setCanvasPixelFormatEnabled(false);
+#if ENABLE(WEB_AUTHN)
+    setDigitalCredentialsEnabled(false);
+#endif
+    setEmbedElementEnabled(false);
+    setFileReaderAPIEnabled(false);
+    setFileSystemEnabled(false);
+    setFileSystemWritableStreamEnabled(false);
+#if ENABLE(GAMEPAD)
+    setGamepadsEnabled(false);
+#endif
+    setIndexedDBAPIEnabled(false);
+#if ENABLE(MATHML)
+    setMathMLEnabled(false);
+#endif
+#if ENABLE(MEDIA_STREAM)
+    setMediaDevicesEnabled(false);
+#endif
+#if ENABLE(MODEL_ELEMENT)
+    setModelElementEnabled(false);
+#endif
+#if PLATFORM(VISION) && ENABLE(MODEL_PROCESS)
+    setModelNoPortalAttributeEnabled(false);
+#endif
+#if ENABLE(MODEL_PROCESS)
+    setModelProcessEnabled(false);
+#endif
+#if ENABLE(NOTIFICATIONS)
+    setNotificationsEnabled(false);
+#endif
+#if ENABLE(PDFJS)
+    setPDFJSViewerEnabled(false);
+#endif
+#if ENABLE(WEB_RTC)
+    setPeerConnectionEnabled(false);
+#endif
+#if ENABLE(PICTURE_IN_PICTURE_API)
+    setPictureInPictureAPIEnabled(false);
+#endif
+#if HAVE(PIP_SKIP_PREROLL)
+    setPictureInPicturePlaybackStateEnabled(false);
+#endif
+    setPushAPIEnabled(false);
+    setRemoteMediaSessionManagerEnabled(false);
+#if ENABLE(WIRELESS_PLAYBACK_TARGET)
+    setRemotePlaybackEnabled(false);
+#endif
+    setServiceWorkerInstallEventEnabled(false);
+    setServiceWorkerNavigationPreloadEnabled(false);
+    setServiceWorkersEnabled(false);
+    setSpeechRecognitionEnabled(false);
+    setSpeechSynthesisAPIEnabled(false);
+#if USE(SYSTEM_PREVIEW)
+    setSystemPreviewEnabled(false);
+#endif
+#if ENABLE(WEB_AUDIO)
+    setWebAudioEnabled(false);
+#endif
+#if ENABLE(WEB_CODECS)
+    setWebCodecsAV1Enabled(false);
+#endif
+#if ENABLE(WEB_CODECS)
+    setWebCodecsVideoEnabled(false);
+#endif
+    setWebGLEnabled(false);
+    setWebGPUEnabled(false);
+    setWebGPUHDREnabled(false);
+    setWebLocksAPIEnabled(false);
+#if ENABLE(WEB_PAGE_SPATIAL_BACKDROP)
+    setWebPageSpatialBackdropEnabled(false);
+#endif
+#if ENABLE(WEB_RTC)
+    setWebRTCEncodedTransformEnabled(false);
+#endif
+    setWebShareEnabled(false);
+    setWebTransportEnabled(false);
+#if ENABLE(WEBXR)
+    setWebXRAugmentedRealityModuleEnabled(false);
+#endif
+#if ENABLE(WEBXR)
+    setWebXREnabled(false);
+#endif
+    setWebXRWebGPUBindingsEnabled(false);
+#if ENABLE(XSLT)
+    setXsltEnabled(false);
+#endif
+}
+
+bool Settings::authorAndUserStylesEnabled() const
+{
+    if (m_values.authorAndUserStylesEnabledInspectorOverride) [[unlikely]] {
+        ASSERT(InspectorInstrumentation::hasFrontends());
+        return m_values.authorAndUserStylesEnabledInspectorOverride.value();
+    }
+    return m_values.authorAndUserStylesEnabled;
+}
+bool Settings::iceCandidateFilteringEnabled() const
+{
+    if (m_values.iceCandidateFilteringEnabledInspectorOverride) [[unlikely]] {
+        ASSERT(InspectorInstrumentation::hasFrontends());
+        return m_values.iceCandidateFilteringEnabledInspectorOverride.value();
+    }
+    return m_values.iceCandidateFilteringEnabled;
+}
+bool Settings::areImagesEnabled() const
+{
+    if (m_values.imagesEnabledInspectorOverride) [[unlikely]] {
+        ASSERT(InspectorInstrumentation::hasFrontends());
+        return m_values.imagesEnabledInspectorOverride.value();
+    }
+    return m_values.imagesEnabled;
+}
+bool Settings::needsSiteSpecificQuirks() const
+{
+    if (m_values.needsSiteSpecificQuirksInspectorOverride) [[unlikely]] {
+        ASSERT(InspectorInstrumentation::hasFrontends());
+        return m_values.needsSiteSpecificQuirksInspectorOverride.value();
+    }
+    return m_values.needsSiteSpecificQuirks;
+}
+bool Settings::isScriptEnabled() const
+{
+    if (m_values.scriptEnabledInspectorOverride) [[unlikely]] {
+        ASSERT(InspectorInstrumentation::hasFrontends());
+        return m_values.scriptEnabledInspectorOverride.value();
+    }
+    return m_values.scriptEnabled;
+}
+bool Settings::showDebugBorders() const
+{
+    if (m_values.showDebugBordersInspectorOverride) [[unlikely]] {
+        ASSERT(InspectorInstrumentation::hasFrontends());
+        return m_values.showDebugBordersInspectorOverride.value();
+    }
+    return m_values.showDebugBorders;
+}
+bool Settings::showFrameProcessBorders() const
+{
+    if (m_values.showFrameProcessBordersInspectorOverride) [[unlikely]] {
+        ASSERT(InspectorInstrumentation::hasFrontends());
+        return m_values.showFrameProcessBordersInspectorOverride.value();
+    }
+    return m_values.showFrameProcessBorders;
+}
+bool Settings::showRepaintCounter() const
+{
+    if (m_values.showRepaintCounterInspectorOverride) [[unlikely]] {
+        ASSERT(InspectorInstrumentation::hasFrontends());
+        return m_values.showRepaintCounterInspectorOverride.value();
+    }
+    return m_values.showRepaintCounter;
+}
+bool Settings::webSecurityEnabled() const
+{
+    if (m_values.webSecurityEnabledInspectorOverride) [[unlikely]] {
+        ASSERT(InspectorInstrumentation::hasFrontends());
+        return m_values.webSecurityEnabledInspectorOverride.value();
+    }
+    return m_values.webSecurityEnabled;
+}
+
+void Settings::setAcceleratedCompositingEnabled(bool acceleratedCompositingEnabled)
+{
+    if (m_values.acceleratedCompositingEnabled == acceleratedCompositingEnabled)
+        return;
+    m_values.acceleratedCompositingEnabled = acceleratedCompositingEnabled;
+    setNeedsRecalcStyleInAllFrames();
+}
+void Settings::setAsyncFrameScrollingEnabled(bool asyncFrameScrollingEnabled)
+{
+    if (m_values.asyncFrameScrollingEnabled == asyncFrameScrollingEnabled)
+        return;
+    m_values.asyncFrameScrollingEnabled = asyncFrameScrollingEnabled;
+    setNeedsRelayoutAllFrames();
+}
+void Settings::setAsyncOverflowScrollingEnabled(bool asyncOverflowScrollingEnabled)
+{
+    if (m_values.asyncOverflowScrollingEnabled == asyncOverflowScrollingEnabled)
+        return;
+    m_values.asyncOverflowScrollingEnabled = asyncOverflowScrollingEnabled;
+    setNeedsRelayoutAllFrames();
+}
+void Settings::setAuthorAndUserStylesEnabled(bool authorAndUserStylesEnabled)
+{
+    if (m_values.authorAndUserStylesEnabled == authorAndUserStylesEnabled)
+        return;
+    m_values.authorAndUserStylesEnabled = authorAndUserStylesEnabled;
+    setNeedsRecalcStyleInAllFrames();
+}
+void Settings::setBackgroundShouldExtendBeyondPage(bool backgroundShouldExtendBeyondPage)
+{
+    if (m_values.backgroundShouldExtendBeyondPage == backgroundShouldExtendBeyondPage)
+        return;
+    m_values.backgroundShouldExtendBeyondPage = backgroundShouldExtendBeyondPage;
+    backgroundShouldExtendBeyondPageChanged();
+}
+void Settings::setCanvasFiltersEnabled(bool canvasFiltersEnabled)
+{
+    if (m_values.canvasFiltersEnabled == canvasFiltersEnabled)
+        return;
+    m_values.canvasFiltersEnabled = canvasFiltersEnabled;
+    setNeedsRelayoutAllFrames();
+}
+void Settings::setClientCoordinatesRelativeToLayoutViewport(bool clientCoordinatesRelativeToLayoutViewport)
+{
+    if (m_values.clientCoordinatesRelativeToLayoutViewport == clientCoordinatesRelativeToLayoutViewport)
+        return;
+    m_values.clientCoordinatesRelativeToLayoutViewport = clientCoordinatesRelativeToLayoutViewport;
+    setNeedsRecalcStyleInAllFrames();
+}
+void Settings::setColorFilterEnabled(bool colorFilterEnabled)
+{
+    if (m_values.colorFilterEnabled == colorFilterEnabled)
+        return;
+    m_values.colorFilterEnabled = colorFilterEnabled;
+    setNeedsRecalcStyleInAllFrames();
+}
+void Settings::setCoreMathMLEnabled(bool coreMathMLEnabled)
+{
+    if (m_values.coreMathMLEnabled == coreMathMLEnabled)
+        return;
+    m_values.coreMathMLEnabled = coreMathMLEnabled;
+    setNeedsRecalcStyleInAllFrames();
+}
+void Settings::setCSSWordBreakAutoPhraseEnabled(bool cssWordBreakAutoPhraseEnabled)
+{
+    if (m_values.cssWordBreakAutoPhraseEnabled == cssWordBreakAutoPhraseEnabled)
+        return;
+    m_values.cssWordBreakAutoPhraseEnabled = cssWordBreakAutoPhraseEnabled;
+    setNeedsRecalcStyleInAllFrames();
+}
+void Settings::setDefaultFixedFontSize(double defaultFixedFontSize)
+{
+    if (m_values.defaultFixedFontSize == defaultFixedFontSize)
+        return;
+    m_values.defaultFixedFontSize = defaultFixedFontSize;
+    setNeedsRecalcStyleInAllFrames();
+}
+void Settings::setDefaultFontSize(double defaultFontSize)
+{
+    if (m_values.defaultFontSize == defaultFontSize)
+        return;
+    m_values.defaultFontSize = defaultFontSize;
+    setNeedsRecalcStyleInAllFrames();
+}
+void Settings::setFontFallbackPrefersPictographs(bool fontFallbackPrefersPictographs)
+{
+    if (m_values.fontFallbackPrefersPictographs == fontFallbackPrefersPictographs)
+        return;
+    m_values.fontFallbackPrefersPictographs = fontFallbackPrefersPictographs;
+    fontFallbackPrefersPictographsChanged();
+}
+void Settings::setForcedSupportsHighDynamicRangeValue(ForcedAccessibilityValue forcedSupportsHighDynamicRangeValue)
+{
+    if (m_values.forcedSupportsHighDynamicRangeValue == forcedSupportsHighDynamicRangeValue)
+        return;
+    m_values.forcedSupportsHighDynamicRangeValue = forcedSupportsHighDynamicRangeValue;
+    setNeedsRecalcStyleInAllFrames();
+}
+void Settings::setHiddenPageCSSAnimationSuspensionEnabled(bool hiddenPageCSSAnimationSuspensionEnabled)
+{
+    if (m_values.hiddenPageCSSAnimationSuspensionEnabled == hiddenPageCSSAnimationSuspensionEnabled)
+        return;
+    m_values.hiddenPageCSSAnimationSuspensionEnabled = hiddenPageCSSAnimationSuspensionEnabled;
+    hiddenPageCSSAnimationSuspensionEnabledChanged();
+}
+void Settings::setHiddenPageDOMTimerThrottlingAutoIncreases(bool hiddenPageDOMTimerThrottlingAutoIncreases)
+{
+    if (m_values.hiddenPageDOMTimerThrottlingAutoIncreases == hiddenPageDOMTimerThrottlingAutoIncreases)
+        return;
+    m_values.hiddenPageDOMTimerThrottlingAutoIncreases = hiddenPageDOMTimerThrottlingAutoIncreases;
+    hiddenPageDOMTimerThrottlingStateChanged();
+}
+void Settings::setHiddenPageDOMTimerThrottlingEnabled(bool hiddenPageDOMTimerThrottlingEnabled)
+{
+    if (m_values.hiddenPageDOMTimerThrottlingEnabled == hiddenPageDOMTimerThrottlingEnabled)
+        return;
+    m_values.hiddenPageDOMTimerThrottlingEnabled = hiddenPageDOMTimerThrottlingEnabled;
+    hiddenPageDOMTimerThrottlingStateChanged();
+}
+void Settings::setICECandidateFilteringEnabled(bool iceCandidateFilteringEnabled)
+{
+    if (m_values.iceCandidateFilteringEnabled == iceCandidateFilteringEnabled)
+        return;
+    m_values.iceCandidateFilteringEnabled = iceCandidateFilteringEnabled;
+    iceCandidateFilteringEnabledChanged();
+}
+void Settings::setImagesEnabled(bool imagesEnabled)
+{
+    if (m_values.imagesEnabled == imagesEnabled)
+        return;
+    m_values.imagesEnabled = imagesEnabled;
+    imagesEnabledChanged();
+}
+void Settings::setLayerBasedSVGEngineEnabled(bool layerBasedSVGEngineEnabled)
+{
+    if (m_values.layerBasedSVGEngineEnabled == layerBasedSVGEngineEnabled)
+        return;
+    m_values.layerBasedSVGEngineEnabled = layerBasedSVGEngineEnabled;
+    layerBasedSVGEngineEnabledChanged();
+}
+void Settings::setLayoutViewportHeightExpansionFactor(double layoutViewportHeightExpansionFactor)
+{
+    if (m_values.layoutViewportHeightExpansionFactor == layoutViewportHeightExpansionFactor)
+        return;
+    m_values.layoutViewportHeightExpansionFactor = layoutViewportHeightExpansionFactor;
+    setNeedsRecalcStyleInAllFrames();
+}
+void Settings::setLegacyLineLayoutVisualCoverageEnabled(bool legacyLineLayoutVisualCoverageEnabled)
+{
+    if (m_values.legacyLineLayoutVisualCoverageEnabled == legacyLineLayoutVisualCoverageEnabled)
+        return;
+    m_values.legacyLineLayoutVisualCoverageEnabled = legacyLineLayoutVisualCoverageEnabled;
+    setNeedsRecalcStyleInAllFrames();
+}
+void Settings::setLoadsImagesAutomatically(bool loadsImagesAutomatically)
+{
+    if (m_values.loadsImagesAutomatically == loadsImagesAutomatically)
+        return;
+    m_values.loadsImagesAutomatically = loadsImagesAutomatically;
+    imagesEnabledChanged();
+}
+void Settings::setMediaTypeOverride(const String& mediaTypeOverride)
+{
+    if (m_values.mediaTypeOverride == mediaTypeOverride)
+        return;
+    m_values.mediaTypeOverride = mediaTypeOverride;
+    mediaTypeOverrideChanged();
+}
+void Settings::setMinimumFontSize(double minimumFontSize)
+{
+    if (m_values.minimumFontSize == minimumFontSize)
+        return;
+    m_values.minimumFontSize = minimumFontSize;
+    setNeedsRecalcStyleInAllFrames();
+}
+void Settings::setMinimumLogicalFontSize(double minimumLogicalFontSize)
+{
+    if (m_values.minimumLogicalFontSize == minimumLogicalFontSize)
+        return;
+    m_values.minimumLogicalFontSize = minimumLogicalFontSize;
+    setNeedsRecalcStyleInAllFrames();
+}
+void Settings::setPunchOutWhiteBackgroundsInDarkMode(bool punchOutWhiteBackgroundsInDarkMode)
+{
+    if (m_values.punchOutWhiteBackgroundsInDarkMode == punchOutWhiteBackgroundsInDarkMode)
+        return;
+    m_values.punchOutWhiteBackgroundsInDarkMode = punchOutWhiteBackgroundsInDarkMode;
+    setNeedsRecalcStyleInAllFrames();
+}
+void Settings::setScrollingPerformanceTestingEnabled(bool scrollingPerformanceTestingEnabled)
+{
+    if (m_values.scrollingPerformanceTestingEnabled == scrollingPerformanceTestingEnabled)
+        return;
+    m_values.scrollingPerformanceTestingEnabled = scrollingPerformanceTestingEnabled;
+    scrollingPerformanceTestingEnabledChanged();
+}
+void Settings::setShouldAllowUserInstalledFonts(bool shouldAllowUserInstalledFonts)
+{
+    if (m_values.shouldAllowUserInstalledFonts == shouldAllowUserInstalledFonts)
+        return;
+    m_values.shouldAllowUserInstalledFonts = shouldAllowUserInstalledFonts;
+    setNeedsRecalcStyleInAllFrames();
+}
+void Settings::setShowDebugBorders(bool showDebugBorders)
+{
+    if (m_values.showDebugBorders == showDebugBorders)
+        return;
+    m_values.showDebugBorders = showDebugBorders;
+    setNeedsRecalcStyleInAllFrames();
+}
+void Settings::setShowFrameProcessBorders(bool showFrameProcessBorders)
+{
+    if (m_values.showFrameProcessBorders == showFrameProcessBorders)
+        return;
+    m_values.showFrameProcessBorders = showFrameProcessBorders;
+    setNeedsRecalcStyleInAllFrames();
+}
+void Settings::setShowRepaintCounter(bool showRepaintCounter)
+{
+    if (m_values.showRepaintCounter == showRepaintCounter)
+        return;
+    m_values.showRepaintCounter = showRepaintCounter;
+    setNeedsRecalcStyleInAllFrames();
+}
+void Settings::setStorageBlockingPolicy(StorageBlockingPolicy storageBlockingPolicy)
+{
+    if (m_values.storageBlockingPolicy == storageBlockingPolicy)
+        return;
+    m_values.storageBlockingPolicy = storageBlockingPolicy;
+    storageBlockingPolicyChanged();
+}
+void Settings::setSupportHDRCompositorTonemappingEnabled(bool supportHDRCompositorTonemappingEnabled)
+{
+    if (m_values.supportHDRCompositorTonemappingEnabled == supportHDRCompositorTonemappingEnabled)
+        return;
+    m_values.supportHDRCompositorTonemappingEnabled = supportHDRCompositorTonemappingEnabled;
+    updateDisplayEDRHeadroom();
+}
+void Settings::setSupportHDRDisplayEnabled(bool supportHDRDisplayEnabled)
+{
+    if (m_values.supportHDRDisplayEnabled == supportHDRDisplayEnabled)
+        return;
+    m_values.supportHDRDisplayEnabled = supportHDRDisplayEnabled;
+    setNeedsRelayoutAllFrames();
+}
+void Settings::setTextAreasAreResizable(bool textAreasAreResizable)
+{
+    if (m_values.textAreasAreResizable == textAreasAreResizable)
+        return;
+    m_values.textAreasAreResizable = textAreasAreResizable;
+    setNeedsRecalcStyleInAllFrames();
+}
+void Settings::setUseSystemAppearance(bool useSystemAppearance)
+{
+    if (m_values.useSystemAppearance == useSystemAppearance)
+        return;
+    m_values.useSystemAppearance = useSystemAppearance;
+    useSystemAppearanceChanged();
+}
+void Settings::setUserStyleSheetLocation(const URL& userStyleSheetLocation)
+{
+    if (m_values.userStyleSheetLocation == userStyleSheetLocation)
+        return;
+    m_values.userStyleSheetLocation = userStyleSheetLocation;
+    userStyleSheetLocationChanged();
+}
+void Settings::setUsesBackForwardCache(bool usesBackForwardCache)
+{
+    if (m_values.usesBackForwardCache == usesBackForwardCache)
+        return;
+    m_values.usesBackForwardCache = usesBackForwardCache;
+    usesBackForwardCacheChanged();
+}
+void Settings::setVisualViewportEnabled(bool visualViewportEnabled)
+{
+    if (m_values.visualViewportEnabled == visualViewportEnabled)
+        return;
+    m_values.visualViewportEnabled = visualViewportEnabled;
+    setNeedsRecalcStyleInAllFrames();
+}
+#if ENABLE(MEDIA_STREAM)
+bool Settings::mediaCaptureRequiresSecureConnection() const
+{
+    if (m_values.mediaCaptureRequiresSecureConnectionInspectorOverride) [[unlikely]] {
+        ASSERT(InspectorInstrumentation::hasFrontends());
+        return m_values.mediaCaptureRequiresSecureConnectionInspectorOverride.value();
+    }
+    return m_values.mediaCaptureRequiresSecureConnection;
+}
+bool Settings::mockCaptureDevicesEnabled() const
+{
+    if (m_values.mockCaptureDevicesEnabledInspectorOverride) [[unlikely]] {
+        ASSERT(InspectorInstrumentation::hasFrontends());
+        return m_values.mockCaptureDevicesEnabledInspectorOverride.value();
+    }
+    return m_values.mockCaptureDevicesEnabled;
+}
+
+void Settings::setMockCaptureDevicesEnabled(bool mockCaptureDevicesEnabled)
+{
+    if (m_values.mockCaptureDevicesEnabled == mockCaptureDevicesEnabled)
+        return;
+    m_values.mockCaptureDevicesEnabled = mockCaptureDevicesEnabled;
+    mockCaptureDevicesEnabledChanged();
+}
+#endif
+#if ENABLE(RESOURCE_USAGE)
+
+void Settings::setResourceUsageOverlayVisible(bool resourceUsageOverlayVisible)
+{
+    if (m_values.resourceUsageOverlayVisible == resourceUsageOverlayVisible)
+        return;
+    m_values.resourceUsageOverlayVisible = resourceUsageOverlayVisible;
+    resourceUsageOverlayVisibleChanged();
+}
+#endif
+#if ENABLE(TEXT_AUTOSIZING)
+
+void Settings::setShouldEnableTextAutosizingBoost(bool shouldEnableTextAutosizingBoost)
+{
+    if (m_values.shouldEnableTextAutosizingBoost == shouldEnableTextAutosizingBoost)
+        return;
+    m_values.shouldEnableTextAutosizingBoost = shouldEnableTextAutosizingBoost;
+    shouldEnableTextAutosizingBoostChanged();
+}
+void Settings::setTextAutosizingEnabled(bool textAutosizingEnabled)
+{
+    if (m_values.textAutosizingEnabled == textAutosizingEnabled)
+        return;
+    m_values.textAutosizingEnabled = textAutosizingEnabled;
+    setNeedsRecalcStyleInAllFrames();
+}
+void Settings::setTextAutosizingEnabledAtLargeInitialScale(bool textAutosizingEnabledAtLargeInitialScale)
+{
+    if (m_values.textAutosizingEnabledAtLargeInitialScale == textAutosizingEnabledAtLargeInitialScale)
+        return;
+    m_values.textAutosizingEnabledAtLargeInitialScale = textAutosizingEnabledAtLargeInitialScale;
+    setNeedsRecalcStyleInAllFrames();
+}
+void Settings::setTextAutosizingUsesIdempotentMode(bool textAutosizingUsesIdempotentMode)
+{
+    if (m_values.textAutosizingUsesIdempotentMode == textAutosizingUsesIdempotentMode)
+        return;
+    m_values.textAutosizingUsesIdempotentMode = textAutosizingUsesIdempotentMode;
+    textAutosizingUsesIdempotentModeChanged();
+}
+void Settings::setTextAutosizingWindowSizeOverrideHeight(uint32_t textAutosizingWindowSizeOverrideHeight)
+{
+    if (m_values.textAutosizingWindowSizeOverrideHeight == textAutosizingWindowSizeOverrideHeight)
+        return;
+    m_values.textAutosizingWindowSizeOverrideHeight = textAutosizingWindowSizeOverrideHeight;
+    setNeedsRecalcStyleInAllFrames();
+}
+void Settings::setTextAutosizingWindowSizeOverrideWidth(uint32_t textAutosizingWindowSizeOverrideWidth)
+{
+    if (m_values.textAutosizingWindowSizeOverrideWidth == textAutosizingWindowSizeOverrideWidth)
+        return;
+    m_values.textAutosizingWindowSizeOverrideWidth = textAutosizingWindowSizeOverrideWidth;
+    setNeedsRecalcStyleInAllFrames();
+}
+#endif
+#if ENABLE(WEBKIT_OVERFLOW_SCROLLING_CSS_PROPERTY)
+
+void Settings::setLegacyOverflowScrollingTouchEnabled(bool legacyOverflowScrollingTouchEnabled)
+{
+    if (m_values.legacyOverflowScrollingTouchEnabled == legacyOverflowScrollingTouchEnabled)
+        return;
+    m_values.legacyOverflowScrollingTouchEnabled = legacyOverflowScrollingTouchEnabled;
+    setNeedsRelayoutAllFrames();
+}
+#endif
+#if USE(CORE_IMAGE)
+
+void Settings::setAcceleratedFiltersEnabled(bool acceleratedFiltersEnabled)
+{
+    if (m_values.acceleratedFiltersEnabled == acceleratedFiltersEnabled)
+        return;
+    m_values.acceleratedFiltersEnabled = acceleratedFiltersEnabled;
+    setNeedsRelayoutAllFrames();
+}
+#endif
+#if USE(GRAPHICS_CONTEXT_FILTERS)
+
+void Settings::setGraphicsContextFiltersEnabled(bool graphicsContextFiltersEnabled)
+{
+    if (m_values.graphicsContextFiltersEnabled == graphicsContextFiltersEnabled)
+        return;
+    m_values.graphicsContextFiltersEnabled = graphicsContextFiltersEnabled;
+    setNeedsRelayoutAllFrames();
+}
+#endif
+#if USE(MODERN_AVCONTENTKEYSESSION)
+
+void Settings::setShouldUseModernAVContentKeySession(bool shouldUseModernAVContentKeySession)
+{
+    if (m_values.shouldUseModernAVContentKeySession == shouldUseModernAVContentKeySession)
+        return;
+    m_values.shouldUseModernAVContentKeySession = shouldUseModernAVContentKeySession;
+    shouldUseModernAVContentKeySessionChanged();
+}
+#endif
+
+void Settings::setAuthorAndUserStylesEnabledInspectorOverride(std::optional<bool> authorAndUserStylesEnabledInspectorOverride)
+{
+    if (m_values.authorAndUserStylesEnabledInspectorOverride == authorAndUserStylesEnabledInspectorOverride)
+        return;
+    m_values.authorAndUserStylesEnabledInspectorOverride = authorAndUserStylesEnabledInspectorOverride;
+    setNeedsRecalcStyleInAllFrames();
+}
+
+void Settings::setICECandidateFilteringEnabledInspectorOverride(std::optional<bool> iceCandidateFilteringEnabledInspectorOverride)
+{
+    if (m_values.iceCandidateFilteringEnabledInspectorOverride == iceCandidateFilteringEnabledInspectorOverride)
+        return;
+    m_values.iceCandidateFilteringEnabledInspectorOverride = iceCandidateFilteringEnabledInspectorOverride;
+    iceCandidateFilteringEnabledChanged();
+}
+
+void Settings::setImagesEnabledInspectorOverride(std::optional<bool> imagesEnabledInspectorOverride)
+{
+    if (m_values.imagesEnabledInspectorOverride == imagesEnabledInspectorOverride)
+        return;
+    m_values.imagesEnabledInspectorOverride = imagesEnabledInspectorOverride;
+    imagesEnabledChanged();
+}
+
+void Settings::setMockCaptureDevicesEnabledInspectorOverride(std::optional<bool> mockCaptureDevicesEnabledInspectorOverride)
+{
+    if (m_values.mockCaptureDevicesEnabledInspectorOverride == mockCaptureDevicesEnabledInspectorOverride)
+        return;
+    m_values.mockCaptureDevicesEnabledInspectorOverride = mockCaptureDevicesEnabledInspectorOverride;
+#if ENABLE(MEDIA_STREAM)
+    mockCaptureDevicesEnabledChanged();
+#endif
+}
+
+void Settings::setShowDebugBordersInspectorOverride(std::optional<bool> showDebugBordersInspectorOverride)
+{
+    if (m_values.showDebugBordersInspectorOverride == showDebugBordersInspectorOverride)
+        return;
+    m_values.showDebugBordersInspectorOverride = showDebugBordersInspectorOverride;
+    setNeedsRecalcStyleInAllFrames();
+}
+
+void Settings::setShowFrameProcessBordersInspectorOverride(std::optional<bool> showFrameProcessBordersInspectorOverride)
+{
+    if (m_values.showFrameProcessBordersInspectorOverride == showFrameProcessBordersInspectorOverride)
+        return;
+    m_values.showFrameProcessBordersInspectorOverride = showFrameProcessBordersInspectorOverride;
+    setNeedsRecalcStyleInAllFrames();
+}
+
+void Settings::setShowRepaintCounterInspectorOverride(std::optional<bool> showRepaintCounterInspectorOverride)
+{
+    if (m_values.showRepaintCounterInspectorOverride == showRepaintCounterInspectorOverride)
+        return;
+    m_values.showRepaintCounterInspectorOverride = showRepaintCounterInspectorOverride;
+    setNeedsRecalcStyleInAllFrames();
+}
+
+}

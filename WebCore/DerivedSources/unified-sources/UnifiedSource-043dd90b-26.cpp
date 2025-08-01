@@ -1,0 +1,8 @@
+#include "rendering/style/StyleInheritedData.cpp"
+#include "rendering/style/StyleInvalidImage.cpp"
+#include "rendering/style/StyleMarqueeData.cpp"
+#include "rendering/style/StyleMiscNonInheritedData.cpp"
+#include "rendering/style/StyleMultiColData.cpp"
+#include "rendering/style/StyleMultiImage.cpp"
+#include "rendering/style/StyleNamedImage.cpp"
+#include "rendering/style/StyleNonInheritedData.cpp"

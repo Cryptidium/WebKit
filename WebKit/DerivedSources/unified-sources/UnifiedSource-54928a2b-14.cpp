@@ -1,0 +1,8 @@
+#include "WebProcess/InjectedBundle/API/c/WKBundleBackForwardListItem.cpp"
+#include "WebProcess/InjectedBundle/API/c/WKBundleDOMWindowExtension.cpp"
+#include "WebProcess/InjectedBundle/API/c/WKBundleFrame.cpp"
+#include "WebProcess/InjectedBundle/API/c/WKBundleHitTestResult.cpp"
+#include "WebProcess/InjectedBundle/API/c/WKBundleNavigationAction.cpp"
+#include "WebProcess/InjectedBundle/API/c/WKBundleNodeHandle.cpp"
+#include "WebProcess/InjectedBundle/API/c/WKBundlePage.cpp"
+#include "WebProcess/InjectedBundle/API/c/WKBundlePageOverlay.cpp"

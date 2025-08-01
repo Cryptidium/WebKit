@@ -1,0 +1,8 @@
+#include "JSShadowRealmGlobalScope.cpp"
+#include "JSShadowRoot.cpp"
+#include "JSShadowRootInit.cpp"
+#include "JSShadowRootMode.cpp"
+#include "JSShareData.cpp"
+#include "JSSharedWorker.cpp"
+#include "JSSharedWorkerGlobalScope.cpp"
+#include "JSSlotAssignmentMode.cpp"

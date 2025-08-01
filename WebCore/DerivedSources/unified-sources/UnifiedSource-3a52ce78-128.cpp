@@ -1,0 +1,8 @@
+#include "JSRTCPeerConnectionState.cpp"
+#include "JSRTCPriorityType.cpp"
+#include "JSRTCRtcpParameters.cpp"
+#include "JSRTCRtpCapabilities.cpp"
+#include "JSRTCRtpCodecCapability.cpp"
+#include "JSRTCRtpCodecParameters.cpp"
+#include "JSRTCRtpContributingSource.cpp"
+#include "JSRTCRtpEncodingParameters.cpp"

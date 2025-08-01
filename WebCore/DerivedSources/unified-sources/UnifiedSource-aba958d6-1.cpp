@@ -1,0 +1,8 @@
+#include "accessibility/AXCoreObject.cpp"
+#include "accessibility/AXGeometryManager.cpp"
+#include "accessibility/AXImage.cpp"
+#include "accessibility/AXLogger.cpp"
+#include "accessibility/AXObjectCache.cpp"
+#include "accessibility/AXRemoteFrame.cpp"
+#include "accessibility/AXSearchManager.cpp"
+#include "accessibility/AXTextMarker.cpp"

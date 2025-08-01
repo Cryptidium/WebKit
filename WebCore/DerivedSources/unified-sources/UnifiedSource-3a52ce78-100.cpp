@@ -1,0 +1,8 @@
+#include "JSMediaSessionCoordinator.cpp"
+#include "JSMediaSessionCoordinatorState.cpp"
+#include "JSMediaSessionPlaybackState.cpp"
+#include "JSMediaSessionReadyState.cpp"
+#include "JSMediaSettingsRange.cpp"
+#include "JSMediaSource.cpp"
+#include "JSMediaSourceHandle.cpp"
+#include "JSMediaSourceInit.cpp"

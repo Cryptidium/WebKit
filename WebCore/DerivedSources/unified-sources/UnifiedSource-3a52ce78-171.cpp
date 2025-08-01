@@ -1,0 +1,8 @@
+#include "JSWakeLockType.cpp"
+#include "JSWaveShaperNode.cpp"
+#include "JSWaveShaperOptions.cpp"
+#include "JSWebAnimation.cpp"
+#include "JSWebCodecsAlphaOption.cpp"
+#include "JSWebCodecsAudioData.cpp"
+#include "JSWebCodecsAudioDataOutputCallback.cpp"
+#include "JSWebCodecsAudioDecoder.cpp"

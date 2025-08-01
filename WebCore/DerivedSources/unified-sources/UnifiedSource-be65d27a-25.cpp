@@ -1,0 +1,8 @@
+#include "dom/Traversal.cpp"
+#include "dom/TreeScope.cpp"
+#include "dom/TreeScopeOrderedMap.cpp"
+#include "dom/TreeWalker.cpp"
+#include "dom/TrustedHTML.cpp"
+#include "dom/TrustedScript.cpp"
+#include "dom/TrustedScriptURL.cpp"
+#include "dom/TrustedType.cpp"

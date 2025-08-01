@@ -1,0 +1,8 @@
+#include "platform/graphics/WidthIterator.cpp"
+#include "platform/graphics/adwaita/Adwaita.cpp"
+#include "platform/graphics/adwaita/ButtonControlAdwaita.cpp"
+#include "platform/graphics/adwaita/ControlAdwaita.cpp"
+#include "platform/graphics/adwaita/ControlFactoryAdwaita.cpp"
+#include "platform/graphics/adwaita/InnerSpinButtonAdwaita.cpp"
+#include "platform/graphics/adwaita/MenuListAdwaita.cpp"
+#include "platform/graphics/adwaita/ProgressBarAdwaita.cpp"

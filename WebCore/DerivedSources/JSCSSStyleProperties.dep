@@ -1,0 +1,2 @@
+JSCSSStyleProperties.h : CSSStyleDeclaration.idl
+CSSStyleDeclaration.idl :

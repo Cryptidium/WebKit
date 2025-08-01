@@ -1,0 +1,8 @@
+#include "Shared/SharedStringHashStore.cpp"
+#include "Shared/SharedStringHashTable.cpp"
+#include "Shared/SharedStringHashTableReadOnly.cpp"
+#include "Shared/UserData.cpp"
+#include "Shared/WebBackForwardListFrameItem.cpp"
+#include "Shared/WebBackForwardListItem.cpp"
+#include "Shared/WebCompiledContentRuleList.cpp"
+#include "Shared/WebCompiledContentRuleListData.cpp"

@@ -1,0 +1,7 @@
+#include "platform/text/SegmentedString.cpp"
+#include "platform/text/TextBoundaries.cpp"
+#include "platform/text/TextFlags.cpp"
+#include "platform/text/TextSpacing.cpp"
+#include "platform/text/UnicodeBidi.cpp"
+#include "platform/text/UnicodeHelpers.cpp"
+#include "platform/video-codecs/BitReader.cpp"

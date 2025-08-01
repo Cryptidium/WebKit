@@ -1,0 +1,8 @@
+#include "style/values/inline/StyleVerticalAlign.cpp"
+#include "style/values/lists/StyleListStyleType.cpp"
+#include "style/values/masking/StyleClip.cpp"
+#include "style/values/masking/StyleClipPath.cpp"
+#include "style/values/motion/StyleOffsetAnchor.cpp"
+#include "style/values/motion/StyleOffsetPath.cpp"
+#include "style/values/motion/StyleOffsetPosition.cpp"
+#include "style/values/motion/StyleOffsetRotate.cpp"

@@ -1,0 +1,8 @@
+#include "dom/LiveNodeList.cpp"
+#include "dom/LoadableClassicScript.cpp"
+#include "dom/LoadableModuleScript.cpp"
+#include "dom/LoadableScript.cpp"
+#include "dom/MessageChannel.cpp"
+#include "dom/MessageEvent.cpp"
+#include "dom/MessagePort.cpp"
+#include "dom/Microtasks.cpp"

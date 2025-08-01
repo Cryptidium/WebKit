@@ -1,0 +1,8 @@
+#include "Modules/webaudio/IIRDSPKernel.cpp"
+#include "Modules/webaudio/IIRFilterNode.cpp"
+#include "Modules/webaudio/IIRProcessor.cpp"
+#include "Modules/webaudio/MediaElementAudioSourceNode.cpp"
+#include "Modules/webaudio/MediaStreamAudioDestinationNode.cpp"
+#include "Modules/webaudio/MediaStreamAudioSource.cpp"
+#include "Modules/webaudio/MediaStreamAudioSourceNode.cpp"
+#include "Modules/webaudio/OfflineAudioCompletionEvent.cpp"

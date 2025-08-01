@@ -1,0 +1,8 @@
+#include "page/WindowOrWorkerGlobalScope.cpp"
+#include "page/WorkerNavigator.cpp"
+#include "page/csp/CSPViolationReportBody.cpp"
+#include "page/csp/ContentSecurityPolicy.cpp"
+#include "page/csp/ContentSecurityPolicyDirective.cpp"
+#include "page/csp/ContentSecurityPolicyDirectiveList.cpp"
+#include "page/csp/ContentSecurityPolicyDirectiveNames.cpp"
+#include "page/csp/ContentSecurityPolicyMediaListDirective.cpp"

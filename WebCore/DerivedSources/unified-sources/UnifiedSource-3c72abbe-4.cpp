@@ -1,0 +1,8 @@
+#include "platform/LengthBox.cpp"
+#include "platform/LengthFunctions.cpp"
+#include "platform/LengthPoint.cpp"
+#include "platform/LengthSize.cpp"
+#include "platform/LocalizedStrings.cpp"
+#include "platform/LogInitialization.cpp"
+#include "platform/Logging.cpp"
+#include "platform/LowPowerModeNotifier.cpp"

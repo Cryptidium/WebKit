@@ -1,0 +1,8 @@
+#include "loader/cache/CachedResource.cpp"
+#include "loader/cache/CachedResourceClient.cpp"
+#include "loader/cache/CachedResourceHandle.cpp"
+#include "loader/cache/CachedResourceLoader.cpp"
+#include "loader/cache/CachedResourceRequest.cpp"
+#include "loader/cache/CachedResourceRequestInitiatorTypes.cpp"
+#include "loader/cache/CachedSVGDocument.cpp"
+#include "loader/cache/CachedSVGDocumentReference.cpp"

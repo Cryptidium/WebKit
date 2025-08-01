@@ -1,0 +1,8 @@
+#include "JSOffscreenCanvasRenderingContext2D.cpp"
+#include "JSOpenID4VPRequest.cpp"
+#include "JSOptionalEffectTiming.cpp"
+#include "JSOpusEncoderConfig.cpp"
+#include "JSOscillatorNode.cpp"
+#include "JSOscillatorOptions.cpp"
+#include "JSOscillatorType.cpp"
+#include "JSOverSampleType.cpp"

@@ -1,0 +1,8 @@
+#include "rendering/shapes/BoxLayoutShape.cpp"
+#include "rendering/shapes/LayoutShape.cpp"
+#include "rendering/shapes/PolygonLayoutShape.cpp"
+#include "rendering/shapes/RasterLayoutShape.cpp"
+#include "rendering/shapes/RectangleLayoutShape.cpp"
+#include "rendering/shapes/ShapeOutsideInfo.cpp"
+#include "rendering/style/AutosizeStatus.cpp"
+#include "rendering/style/BorderData.cpp"

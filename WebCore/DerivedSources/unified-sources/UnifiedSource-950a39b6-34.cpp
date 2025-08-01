@@ -1,0 +1,8 @@
+#include "html/canvas/WebGLVertexArrayObject.cpp"
+#include "html/canvas/WebGLVertexArrayObjectBase.cpp"
+#include "html/canvas/WebGLVertexArrayObjectOES.cpp"
+#include "html/closewatcher/CloseWatcher.cpp"
+#include "html/closewatcher/CloseWatcherManager.cpp"
+#include "html/forms/FileIconLoader.cpp"
+#include "html/parser/CSSPreloadScanner.cpp"
+#include "html/parser/HTMLConstructionSite.cpp"

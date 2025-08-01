@@ -1,0 +1,8 @@
+#include "platform/graphics/AlphaPremultiplication.cpp"
+#include "platform/graphics/AnimationFrameRate.cpp"
+#include "platform/graphics/BifurcatedGraphicsContext.cpp"
+#include "platform/graphics/BitmapImage.cpp"
+#include "platform/graphics/BitmapImageDescriptor.cpp"
+#include "platform/graphics/BitmapImageSource.cpp"
+#include "platform/graphics/ByteArrayPixelBuffer.cpp"
+#include "platform/graphics/CachedSubimage.cpp"

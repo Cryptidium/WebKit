@@ -1,0 +1,8 @@
+#include "style/values/counter-styles/StyleCounterStyle.cpp"
+#include "style/values/easing/StyleCubicBezierEasingFunction.cpp"
+#include "style/values/easing/StyleEasingFunction.cpp"
+#include "style/values/easing/StyleLinearEasingFunction.cpp"
+#include "style/values/easing/StyleSpringEasingFunction.cpp"
+#include "style/values/easing/StyleStepsEasingFunction.cpp"
+#include "style/values/fill-stroke/StyleStrokeWidth.cpp"
+#include "style/values/filter-effects/StyleAppleColorFilterProperty.cpp"

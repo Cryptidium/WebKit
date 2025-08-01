@@ -1,0 +1,8 @@
+#include "Shared/WebGPU/WebGPUShaderModuleDescriptor.cpp"
+#include "Shared/WebGPU/WebGPUStencilFaceState.cpp"
+#include "Shared/WebGPU/WebGPUStorageTextureBindingLayout.cpp"
+#include "Shared/WebGPU/WebGPUSupportedFeatures.cpp"
+#include "Shared/WebGPU/WebGPUSupportedLimits.cpp"
+#include "Shared/WebGPU/WebGPUTextureBindingLayout.cpp"
+#include "Shared/WebGPU/WebGPUTextureDescriptor.cpp"
+#include "Shared/WebGPU/WebGPUTextureViewDescriptor.cpp"

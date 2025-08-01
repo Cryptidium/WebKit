@@ -1,0 +1,8 @@
+#include "Modules/mediastream/RTCIceCandidateFields.cpp"
+#include "Modules/mediastream/RTCIceTransport.cpp"
+#include "Modules/mediastream/RTCPeerConnection.cpp"
+#include "Modules/mediastream/RTCPeerConnectionIceErrorEvent.cpp"
+#include "Modules/mediastream/RTCPeerConnectionIceEvent.cpp"
+#include "Modules/mediastream/RTCRtpReceiver.cpp"
+#include "Modules/mediastream/RTCRtpSFrameTransform.cpp"
+#include "Modules/mediastream/RTCRtpSFrameTransformErrorEvent.cpp"

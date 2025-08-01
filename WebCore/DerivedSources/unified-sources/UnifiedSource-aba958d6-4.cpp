@@ -1,0 +1,8 @@
+#include "accessibility/AccessibilityRenderObject.cpp"
+#include "accessibility/AccessibilitySVGObject.cpp"
+#include "accessibility/AccessibilityScrollView.cpp"
+#include "accessibility/AccessibilityScrollbar.cpp"
+#include "accessibility/AccessibilitySlider.cpp"
+#include "accessibility/AccessibilitySpinButton.cpp"
+#include "accessibility/AccessibilitySpinButtonPart.cpp"
+#include "accessibility/AccessibilityTable.cpp"

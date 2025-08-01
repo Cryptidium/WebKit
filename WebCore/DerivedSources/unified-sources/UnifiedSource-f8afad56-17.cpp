@@ -1,0 +1,8 @@
+#include "Modules/geolocation/NavigatorGeolocation.cpp"
+#include "Modules/highlight/AppHighlightRangeData.cpp"
+#include "Modules/highlight/AppHighlightStorage.cpp"
+#include "Modules/highlight/Highlight.cpp"
+#include "Modules/highlight/HighlightRegistry.cpp"
+#include "Modules/identity/CredentialRequestCoordinator.cpp"
+#include "Modules/identity/DigitalCredential.cpp"
+#include "Modules/identity/dummy/DummyCredentialRequestCoordinatorClient.cpp"

@@ -1,0 +1,19 @@
+ARGS=--cmakeargs=-DCMAKE_C_COMPILER=C:/Dev/LLVM/bin/clang-cl.exe --release --skip-library-update --wincairo -DCLANG_BUILTINS_LIBRARY=C:/WebKit/clang_rt.builtins-x86_64.lib -DCMAKE_CXX_COMPILER=C:/Dev/LLVM/bin/clang-cl.exe -DENABLE_EXPERIMENTAL_FEATURES=ON
+AR=
+AS=
+CC=clang-cl
+CXX=clang-cl
+LD=
+NM=
+RANLIB=
+STRIP=
+CFLAGS=
+CXXFLAGS=
+CPPFLAGS=
+LDFLAGS=
+PKG_CONFIG_LIBDIR=
+PKG_CONFIG_PATH=
+CPATH=
+LIBRARY_PATH=
+CMAKE_MODULE_PATH=
+CMAKE_PREFIX_PATH=

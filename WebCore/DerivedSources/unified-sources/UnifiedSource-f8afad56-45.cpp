@@ -1,0 +1,8 @@
+#include "Modules/streams/WritableStream.cpp"
+#include "Modules/url-pattern/URLPattern.cpp"
+#include "Modules/url-pattern/URLPatternCanonical.cpp"
+#include "Modules/url-pattern/URLPatternComponent.cpp"
+#include "Modules/url-pattern/URLPatternConstructorStringParser.cpp"
+#include "Modules/url-pattern/URLPatternParser.cpp"
+#include "Modules/url-pattern/URLPatternTokenizer.cpp"
+#include "Modules/web-locks/WebLock.cpp"

@@ -1,0 +1,8 @@
+#include "JSOverconstrainedError.cpp"
+#include "JSOverconstrainedErrorEvent.cpp"
+#include "JSOverflowEvent.cpp"
+#include "JSPageRevealEvent.cpp"
+#include "JSPageSwapEvent.cpp"
+#include "JSPageTransitionEvent.cpp"
+#include "JSPaintRenderingContext2D.cpp"
+#include "JSPaintWorkletGlobalScope.cpp"

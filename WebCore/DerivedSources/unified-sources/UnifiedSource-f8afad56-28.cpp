@@ -1,0 +1,8 @@
+#include "Modules/mediasource/SourceBuffer.cpp"
+#include "Modules/mediasource/SourceBufferList.cpp"
+#include "Modules/mediasource/VideoPlaybackQuality.cpp"
+#include "Modules/mediastream/CanvasCaptureMediaStreamTrack.cpp"
+#include "Modules/mediastream/ImageCapture.cpp"
+#include "Modules/mediastream/InputDeviceInfo.cpp"
+#include "Modules/mediastream/MediaDeviceInfo.cpp"
+#include "Modules/mediastream/MediaDevices.cpp"

@@ -1,0 +1,8 @@
+#include "Modules/filesystem/FileSystemSyncAccessHandle.cpp"
+#include "Modules/filesystem/FileSystemWritableFileStream.cpp"
+#include "Modules/filesystem/FileSystemWritableFileStreamSink.cpp"
+#include "Modules/filesystem/WorkerFileSystemStorageConnection.cpp"
+#include "Modules/geolocation/GeoNotifier.cpp"
+#include "Modules/geolocation/Geolocation.cpp"
+#include "Modules/geolocation/GeolocationController.cpp"
+#include "Modules/geolocation/GeolocationCoordinates.cpp"

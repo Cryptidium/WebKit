@@ -1,0 +1,8 @@
+#include "JSAttr.cpp"
+#include "JSAudioBuffer.cpp"
+#include "JSAudioBufferCallback.cpp"
+#include "JSAudioBufferOptions.cpp"
+#include "JSAudioBufferSourceNode.cpp"
+#include "JSAudioBufferSourceOptions.cpp"
+#include "JSAudioConfiguration.cpp"
+#include "JSAudioContext.cpp"

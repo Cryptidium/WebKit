@@ -1,0 +1,8 @@
+#include "platform/mock/RTCNotifiersMock.cpp"
+#include "platform/mock/ScrollbarThemeMock.cpp"
+#include "platform/mock/ScrollbarsControllerMock.cpp"
+#include "platform/mock/mediasource/MockBox.cpp"
+#include "platform/mock/mediasource/MockMediaPlayerMediaSource.cpp"
+#include "platform/mock/mediasource/MockMediaSourcePrivate.cpp"
+#include "platform/mock/mediasource/MockSourceBufferPrivate.cpp"
+#include "platform/network/AuthenticationChallengeBase.cpp"

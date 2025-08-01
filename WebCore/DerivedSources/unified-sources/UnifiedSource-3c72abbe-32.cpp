@@ -1,0 +1,8 @@
+#include "platform/graphics/ImageBufferDisplayListBackend.cpp"
+#include "platform/graphics/ImageDecoder.cpp"
+#include "platform/graphics/ImageFrame.cpp"
+#include "platform/graphics/ImageFrameAnimator.cpp"
+#include "platform/graphics/ImageFrameWorkQueue.cpp"
+#include "platform/graphics/ImagePaintingOptions.cpp"
+#include "platform/graphics/ImageResolution.cpp"
+#include "platform/graphics/ImageSource.cpp"

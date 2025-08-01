@@ -1,0 +1,8 @@
+#include "Modules/webauthn/fido/U2fResponseConverter.cpp"
+#include "Modules/webcodecs/VideoColorSpace.cpp"
+#include "Modules/webcodecs/WebCodecsAudioData.cpp"
+#include "Modules/webcodecs/WebCodecsAudioDataAlgorithms.cpp"
+#include "Modules/webcodecs/WebCodecsAudioDecoder.cpp"
+#include "Modules/webcodecs/WebCodecsAudioEncoder.cpp"
+#include "Modules/webcodecs/WebCodecsBase.cpp"
+#include "Modules/webcodecs/WebCodecsEncodedAudioChunk.cpp"

@@ -1,0 +1,8 @@
+#include "Shared/WebPlatformTouchPoint.cpp"
+#include "Shared/WebPopupItem.cpp"
+#include "Shared/WebPreferencesDefaultValues.cpp"
+#include "Shared/WebPreferencesStore.cpp"
+#include "Shared/WebPushMessage.cpp"
+#include "Shared/WebTouchEvent.cpp"
+#include "Shared/WebWheelEvent.cpp"
+#include "Shared/WebWheelEventCoalescer.cpp"

@@ -1,0 +1,8 @@
+#include "JSSVGImageElement.cpp"
+#include "JSSVGLength.cpp"
+#include "JSSVGLengthList.cpp"
+#include "JSSVGLineElement.cpp"
+#include "JSSVGLinearGradientElement.cpp"
+#include "JSSVGMPathElement.cpp"
+#include "JSSVGMarkerElement.cpp"
+#include "JSSVGMaskElement.cpp"

@@ -1,0 +1,8 @@
+#include "html/canvas/WebGLShaderPrecisionFormat.cpp"
+#include "html/canvas/WebGLStencilTexturing.cpp"
+#include "html/canvas/WebGLSync.cpp"
+#include "html/canvas/WebGLTexture.cpp"
+#include "html/canvas/WebGLTimerQueryEXT.cpp"
+#include "html/canvas/WebGLTransformFeedback.cpp"
+#include "html/canvas/WebGLUniformLocation.cpp"
+#include "html/canvas/WebGLUtilities.cpp"

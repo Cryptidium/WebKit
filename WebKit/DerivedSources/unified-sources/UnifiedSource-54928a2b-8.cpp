@@ -1,0 +1,8 @@
+#include "WebProcess/GPU/graphics/WebGPU/RemoteXRProjectionLayerProxy.cpp"
+#include "WebProcess/GPU/graphics/WebGPU/RemoteXRSubImageProxy.cpp"
+#include "WebProcess/GPU/graphics/WebGPU/RemoteXRViewProxy.cpp"
+#include "WebProcess/GPU/graphics/WebGPU/WebGPUDowncastConvertToBackingContext.cpp"
+#include "WebProcess/GPU/media/AudioTrackPrivateRemote.cpp"
+#include "WebProcess/GPU/media/MediaPlayerPrivateRemote.cpp"
+#include "WebProcess/GPU/media/MediaSourcePrivateRemote.cpp"
+#include "WebProcess/GPU/media/RemoteAudioDestinationProxy.cpp"

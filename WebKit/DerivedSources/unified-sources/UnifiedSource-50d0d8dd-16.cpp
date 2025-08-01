@@ -1,0 +1,8 @@
+#include "Shared/WebGPU/WebGPUExternalTextureBindingLayout.cpp"
+#include "Shared/WebGPU/WebGPUExternalTextureDescriptor.cpp"
+#include "Shared/WebGPU/WebGPUFragmentState.cpp"
+#include "Shared/WebGPU/WebGPUImageCopyBuffer.cpp"
+#include "Shared/WebGPU/WebGPUImageCopyExternalImage.cpp"
+#include "Shared/WebGPU/WebGPUImageCopyTexture.cpp"
+#include "Shared/WebGPU/WebGPUImageCopyTextureTagged.cpp"
+#include "Shared/WebGPU/WebGPUImageDataLayout.cpp"

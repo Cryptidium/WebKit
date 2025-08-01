@@ -1,0 +1,8 @@
+#include "rendering/RenderView.cpp"
+#include "rendering/RenderViewTransitionCapture.cpp"
+#include "rendering/RenderWidget.cpp"
+#include "rendering/StyledMarkedText.cpp"
+#include "rendering/TableLayout.cpp"
+#include "rendering/TextBoxPainter.cpp"
+#include "rendering/TextBoxTrimmer.cpp"
+#include "rendering/TextDecorationPainter.cpp"

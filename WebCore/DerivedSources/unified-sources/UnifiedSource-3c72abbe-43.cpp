@@ -1,0 +1,8 @@
+#include "platform/graphics/displaylists/DisplayListItem.cpp"
+#include "platform/graphics/displaylists/DisplayListItems.cpp"
+#include "platform/graphics/displaylists/DisplayListRecorder.cpp"
+#include "platform/graphics/displaylists/DisplayListRecorderImpl.cpp"
+#include "platform/graphics/filters/DistantLightSource.cpp"
+#include "platform/graphics/filters/FEBlend.cpp"
+#include "platform/graphics/filters/FEColorMatrix.cpp"
+#include "platform/graphics/filters/FEComponentTransfer.cpp"

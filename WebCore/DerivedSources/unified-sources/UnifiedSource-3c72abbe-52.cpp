@@ -1,0 +1,8 @@
+#include "platform/graphics/skia/FloatRectSkia.cpp"
+#include "platform/graphics/skia/FloatRoundedRectSkia.cpp"
+#include "platform/graphics/skia/FontCacheSkia.cpp"
+#include "platform/graphics/skia/FontCascadeSkia.cpp"
+#include "platform/graphics/skia/FontCustomPlatformDataSkia.cpp"
+#include "platform/graphics/skia/FontDescriptionSkia.cpp"
+#include "platform/graphics/skia/FontPlatformDataSkia.cpp"
+#include "platform/graphics/skia/FontRenderOptionsSkia.cpp"

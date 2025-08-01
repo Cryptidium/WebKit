@@ -1,0 +1,8 @@
+#include "JSMouseEvent.cpp"
+#include "JSMouseEventInit.cpp"
+#include "JSMultiCacheQueryOptions.cpp"
+#include "JSMutationCallback.cpp"
+#include "JSMutationEvent.cpp"
+#include "JSMutationObserver.cpp"
+#include "JSMutationRecord.cpp"
+#include "JSNVShaderNoperspectiveInterpolation.cpp"

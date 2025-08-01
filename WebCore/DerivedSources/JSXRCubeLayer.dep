@@ -1,0 +1,4 @@
+JSXRCubeLayer.h : XRCompositionLayer.idl WebXRLayer.idl EventTarget.idl
+XRCompositionLayer.idl :
+WebXRLayer.idl :
+EventTarget.idl :

@@ -1,0 +1,8 @@
+#include "platform/graphics/InbandGenericCue.cpp"
+#include "platform/graphics/IntPoint.cpp"
+#include "platform/graphics/IntRect.cpp"
+#include "platform/graphics/IntSize.cpp"
+#include "platform/graphics/LayoutPoint.cpp"
+#include "platform/graphics/LayoutRect.cpp"
+#include "platform/graphics/LayoutRoundedRect.cpp"
+#include "platform/graphics/LayoutSize.cpp"

@@ -1,0 +1,8 @@
+#include "platform/graphics/controls/EmptyControlFactory.cpp"
+#include "platform/graphics/controls/MeterPart.cpp"
+#include "platform/graphics/controls/ProgressBarPart.cpp"
+#include "platform/graphics/controls/SliderTrackPart.cpp"
+#include "platform/graphics/cpu/arm/filters/FEBlendNeonApplier.cpp"
+#include "platform/graphics/cpu/arm/filters/FECompositeNeonArithmeticApplier.cpp"
+#include "platform/graphics/cpu/arm/filters/FELightingNeonParallelApplier.cpp"
+#include "platform/graphics/displaylists/DisplayList.cpp"

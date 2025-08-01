@@ -1,0 +1,8 @@
+#include "runtime/JSIteratorConstructor.cpp"
+#include "runtime/JSIteratorHelper.cpp"
+#include "runtime/JSIteratorHelperPrototype.cpp"
+#include "runtime/JSIteratorPrototype.cpp"
+#include "runtime/JSLexicalEnvironment.cpp"
+#include "runtime/JSLock.cpp"
+#include "runtime/JSMap.cpp"
+#include "runtime/JSMapIterator.cpp"

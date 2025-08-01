@@ -1,0 +1,8 @@
+#include "dom/TextDecoderStreamDecoder.cpp"
+#include "dom/TextEncoder.cpp"
+#include "dom/TextEncoderStreamEncoder.cpp"
+#include "dom/TextEvent.cpp"
+#include "dom/TextNodeTraversal.cpp"
+#include "dom/ToggleEvent.cpp"
+#include "dom/ToggleEventTask.cpp"
+#include "dom/TransformSourceLibxslt.cpp"

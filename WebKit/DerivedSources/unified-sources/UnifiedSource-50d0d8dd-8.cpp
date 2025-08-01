@@ -1,0 +1,8 @@
+#include "Shared/WebsiteAutoplayPolicy.cpp"
+#include "Shared/WebsitePoliciesData.cpp"
+#include "Shared/API/APIArray.cpp"
+#include "Shared/API/APIData.cpp"
+#include "Shared/API/APIDictionary.cpp"
+#include "Shared/API/APIError.cpp"
+#include "Shared/API/APIObject.cpp"
+#include "Shared/API/APISerializedScriptValue.cpp"

@@ -1,0 +1,8 @@
+#include "rendering/style/StylePaintImage.cpp"
+#include "rendering/style/StylePathData.cpp"
+#include "rendering/style/StyleRareInheritedData.cpp"
+#include "rendering/style/StyleRareNonInheritedData.cpp"
+#include "rendering/style/StyleScrollSnapPoints.cpp"
+#include "rendering/style/StyleSelfAlignmentData.cpp"
+#include "rendering/style/StyleSurroundData.cpp"
+#include "rendering/style/StyleTextEdge.cpp"

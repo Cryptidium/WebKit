@@ -1,0 +1,8 @@
+#include "rendering/RenderScrollbar.cpp"
+#include "rendering/RenderScrollbarPart.cpp"
+#include "rendering/RenderScrollbarTheme.cpp"
+#include "rendering/RenderSearchField.cpp"
+#include "rendering/RenderSelection.cpp"
+#include "rendering/RenderSelectionGeometry.cpp"
+#include "rendering/RenderSlider.cpp"
+#include "rendering/RenderTable.cpp"

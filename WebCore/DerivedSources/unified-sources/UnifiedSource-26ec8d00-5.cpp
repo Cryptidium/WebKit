@@ -1,0 +1,8 @@
+#include "style/StylePendingResources.cpp"
+#include "style/StyleRelations.cpp"
+#include "style/StyleResolveForDocument.cpp"
+#include "style/StyleResolveForFont.cpp"
+#include "style/StyleResolver.cpp"
+#include "style/StyleScope.cpp"
+#include "style/StyleScopeRuleSets.cpp"
+#include "style/StyleSheetContentsCache.cpp"

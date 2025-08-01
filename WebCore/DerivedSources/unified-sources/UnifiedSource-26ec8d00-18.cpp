@@ -1,0 +1,8 @@
+#include "style/values/sizing/StyleContainIntrinsicSize.cpp"
+#include "style/values/sizing/StylePreferredSize.cpp"
+#include "style/values/svg/StyleSVGBaselineShift.cpp"
+#include "style/values/svg/StyleSVGPaint.cpp"
+#include "style/values/svg/StyleSVGStrokeDasharray.cpp"
+#include "style/values/svg/StyleSVGStrokeDashoffset.cpp"
+#include "style/values/text/StyleTextIndent.cpp"
+#include "style/values/text-decoration/StyleTextDecorationThickness.cpp"

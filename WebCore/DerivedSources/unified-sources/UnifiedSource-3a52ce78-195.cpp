@@ -1,0 +1,8 @@
+#include "JSXRVisibilityState.cpp"
+#include "JSXRWebGLBinding.cpp"
+#include "JSXRWebGLLayerInit.cpp"
+#include "JSXRWebGLSubImage.cpp"
+#include "JSXSLTProcessor.cpp"
+#include "MathMLElementFactory.cpp"
+#include "ProcessSyncClient.cpp"
+#include "SVGElementFactory.cpp"

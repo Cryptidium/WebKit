@@ -1,0 +1,8 @@
+#include "runtime/JSGlobalObjectDebuggable.cpp"
+#include "runtime/JSGlobalObjectFunctions.cpp"
+#include "runtime/JSGlobalProxy.cpp"
+#include "runtime/JSImmutableButterfly.cpp"
+#include "runtime/JSInternalPromise.cpp"
+#include "runtime/JSInternalPromiseConstructor.cpp"
+#include "runtime/JSInternalPromisePrototype.cpp"
+#include "runtime/JSIterator.cpp"

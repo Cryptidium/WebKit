@@ -1,0 +1,8 @@
+#include "JSWebCodecsEncodedAudioChunkOutputCallback.cpp"
+#include "JSWebCodecsEncodedAudioChunkType.cpp"
+#include "JSWebCodecsEncodedVideoChunk.cpp"
+#include "JSWebCodecsEncodedVideoChunkMetadata.cpp"
+#include "JSWebCodecsEncodedVideoChunkOutputCallback.cpp"
+#include "JSWebCodecsEncodedVideoChunkType.cpp"
+#include "JSWebCodecsErrorCallback.cpp"
+#include "JSWebCodecsSvcOutputMetadata.cpp"

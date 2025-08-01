@@ -1,0 +1,8 @@
+#include "page/ImageAnalysisQueue.cpp"
+#include "page/ImageOverlayController.cpp"
+#include "page/IntelligenceTextEffectsSupport.cpp"
+#include "page/InteractionRegion.cpp"
+#include "page/IntersectionObserver.cpp"
+#include "page/IntersectionObserverEntry.cpp"
+#include "page/LocalDOMWindow.cpp"
+#include "page/LocalDOMWindowProperty.cpp"

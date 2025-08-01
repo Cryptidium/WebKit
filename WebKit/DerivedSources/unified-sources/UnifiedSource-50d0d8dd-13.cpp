@@ -1,0 +1,8 @@
+#include "Shared/Extensions/WebExtensionUtilities.cpp"
+#include "Shared/Gamepad/GamepadData.cpp"
+#include "Shared/WebGPU/WebGPUBindGroupDescriptor.cpp"
+#include "Shared/WebGPU/WebGPUBindGroupEntry.cpp"
+#include "Shared/WebGPU/WebGPUBindGroupLayoutDescriptor.cpp"
+#include "Shared/WebGPU/WebGPUBindGroupLayoutEntry.cpp"
+#include "Shared/WebGPU/WebGPUBlendComponent.cpp"
+#include "Shared/WebGPU/WebGPUBlendState.cpp"

@@ -1,0 +1,8 @@
+#include "Modules/mediastream/RTCDataChannelRemoteSource.cpp"
+#include "Modules/mediastream/RTCDtlsTransport.cpp"
+#include "Modules/mediastream/RTCEncodedAudioFrame.cpp"
+#include "Modules/mediastream/RTCEncodedFrame.cpp"
+#include "Modules/mediastream/RTCEncodedVideoFrame.cpp"
+#include "Modules/mediastream/RTCError.cpp"
+#include "Modules/mediastream/RTCErrorEvent.cpp"
+#include "Modules/mediastream/RTCIceCandidate.cpp"

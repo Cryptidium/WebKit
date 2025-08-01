@@ -1,0 +1,8 @@
+#include "rendering/RenderHTMLCanvas.cpp"
+#include "rendering/RenderHighlight.cpp"
+#include "rendering/RenderIFrame.cpp"
+#include "rendering/RenderImage.cpp"
+#include "rendering/RenderImageResource.cpp"
+#include "rendering/RenderImageResourceStyleImage.cpp"
+#include "rendering/RenderInline.cpp"
+#include "rendering/RenderLayer.cpp"

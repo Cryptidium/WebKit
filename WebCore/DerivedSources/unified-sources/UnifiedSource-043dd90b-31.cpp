@@ -1,0 +1,8 @@
+#include "rendering/svg/RenderSVGResourcePattern.cpp"
+#include "rendering/svg/RenderSVGResourceRadialGradient.cpp"
+#include "rendering/svg/RenderSVGRoot.cpp"
+#include "rendering/svg/RenderSVGShape.cpp"
+#include "rendering/svg/RenderSVGTSpan.cpp"
+#include "rendering/svg/RenderSVGText.cpp"
+#include "rendering/svg/RenderSVGTextPath.cpp"
+#include "rendering/svg/RenderSVGTransformableContainer.cpp"

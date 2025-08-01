@@ -1,0 +1,8 @@
+#include "JSAudioTrackConfiguration.cpp"
+#include "JSAudioTrackList.cpp"
+#include "JSAudioWorklet.cpp"
+#include "JSAudioWorkletGlobalScope.cpp"
+#include "JSAudioWorkletNode.cpp"
+#include "JSAudioWorkletNodeOptions.cpp"
+#include "JSAudioWorkletProcessor.cpp"
+#include "JSAudioWorkletProcessorConstructor.cpp"

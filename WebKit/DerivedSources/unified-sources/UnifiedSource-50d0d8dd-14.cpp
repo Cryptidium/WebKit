@@ -1,0 +1,8 @@
+#include "Shared/WebGPU/WebGPUBufferBinding.cpp"
+#include "Shared/WebGPU/WebGPUBufferBindingLayout.cpp"
+#include "Shared/WebGPU/WebGPUBufferDescriptor.cpp"
+#include "Shared/WebGPU/WebGPUCanvasConfiguration.cpp"
+#include "Shared/WebGPU/WebGPUColor.cpp"
+#include "Shared/WebGPU/WebGPUColorTargetState.cpp"
+#include "Shared/WebGPU/WebGPUCommandBufferDescriptor.cpp"
+#include "Shared/WebGPU/WebGPUCommandEncoderDescriptor.cpp"

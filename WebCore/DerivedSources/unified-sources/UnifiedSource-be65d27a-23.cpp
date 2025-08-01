@@ -1,0 +1,8 @@
+#include "dom/StaticRange.cpp"
+#include "dom/StringCallback.cpp"
+#include "dom/StyledElement.cpp"
+#include "dom/Subscriber.cpp"
+#include "dom/TagCollection.cpp"
+#include "dom/TemplateContentDocumentFragment.cpp"
+#include "dom/Text.cpp"
+#include "dom/TextDecoder.cpp"

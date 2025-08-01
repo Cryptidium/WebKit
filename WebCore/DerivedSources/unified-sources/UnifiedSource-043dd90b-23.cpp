@@ -1,0 +1,8 @@
+#include "rendering/style/PositionTryOrder.cpp"
+#include "rendering/style/ReferenceFilterOperation.cpp"
+#include "rendering/style/RenderStyle.cpp"
+#include "rendering/style/RenderStyleConstants.cpp"
+#include "rendering/style/SVGRenderStyle.cpp"
+#include "rendering/style/SVGRenderStyleDefs.cpp"
+#include "rendering/style/StyleBackgroundData.cpp"
+#include "rendering/style/StyleBoxData.cpp"

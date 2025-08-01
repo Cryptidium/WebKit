@@ -1,0 +1,8 @@
+#include "html/URLSearchParams.cpp"
+#include "html/UserActivation.cpp"
+#include "html/ValidatedFormListedElement.cpp"
+#include "html/ValidationMessage.cpp"
+#include "html/WeekInputType.cpp"
+#include "html/canvas/ANGLEInstancedArrays.cpp"
+#include "html/canvas/CanvasFilterContextSwitcher.cpp"
+#include "html/canvas/CanvasGradient.cpp"

@@ -1,0 +1,8 @@
+#include "UIProcess/Inspector/WebInspectorUIProxy.cpp"
+#include "UIProcess/Inspector/WebInspectorUtilities.cpp"
+#include "UIProcess/Inspector/WebPageDebuggable.cpp"
+#include "UIProcess/Inspector/WebPageInspectorController.cpp"
+#include "UIProcess/Inspector/Agents/InspectorBrowserAgent.cpp"
+#include "UIProcess/Media/AudioSessionRoutingArbitratorProxy.cpp"
+#include "UIProcess/Media/MediaUsageManager.cpp"
+#include "UIProcess/Media/RemoteMediaSessionCoordinatorProxy.cpp"

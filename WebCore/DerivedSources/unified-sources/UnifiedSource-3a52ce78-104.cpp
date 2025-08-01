@@ -1,0 +1,8 @@
+#include "JSNamedNodeMap.cpp"
+#include "JSNavigateEvent.cpp"
+#include "JSNavigation.cpp"
+#include "JSNavigationActivation.cpp"
+#include "JSNavigationCurrentEntryChangeEvent.cpp"
+#include "JSNavigationDestination.cpp"
+#include "JSNavigationHistoryEntry.cpp"
+#include "JSNavigationInterceptHandler.cpp"

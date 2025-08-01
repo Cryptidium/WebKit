@@ -1,0 +1,8 @@
+#include "platform/SharedStringHash.cpp"
+#include "platform/SimpleCaretAnimator.cpp"
+#include "platform/Site.cpp"
+#include "platform/SleepDisabler.cpp"
+#include "platform/SleepDisablerClient.cpp"
+#include "platform/StaticPasteboard.cpp"
+#include "platform/StyleAppearance.cpp"
+#include "platform/SystemSoundManager.cpp"

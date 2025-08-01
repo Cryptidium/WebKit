@@ -1,0 +1,8 @@
+#include "loader/appcache/ApplicationCacheHost.cpp"
+#include "loader/appcache/ApplicationCacheManifestParser.cpp"
+#include "loader/appcache/ApplicationCacheResource.cpp"
+#include "loader/appcache/ApplicationCacheResourceLoader.cpp"
+#include "loader/appcache/ApplicationCacheStorage.cpp"
+#include "loader/archive/Archive.cpp"
+#include "loader/archive/ArchiveFactory.cpp"
+#include "loader/archive/ArchiveResource.cpp"

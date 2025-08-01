@@ -1,0 +1,8 @@
+#include "UIProcess/FindStringCallbackAggregator.cpp"
+#include "UIProcess/FrameLoadState.cpp"
+#include "UIProcess/FrameProcess.cpp"
+#include "UIProcess/GeolocationPermissionRequestManagerProxy.cpp"
+#include "UIProcess/GeolocationPermissionRequestProxy.cpp"
+#include "UIProcess/LegacyGlobalSettings.cpp"
+#include "UIProcess/MediaKeySystemPermissionRequestManagerProxy.cpp"
+#include "UIProcess/MediaKeySystemPermissionRequestProxy.cpp"

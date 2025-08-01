@@ -1,0 +1,8 @@
+#include "platform/ScrollAnimator.cpp"
+#include "platform/ScrollSnapAnimatorState.cpp"
+#include "platform/ScrollTypes.cpp"
+#include "platform/ScrollView.cpp"
+#include "platform/ScrollableArea.cpp"
+#include "platform/Scrollbar.cpp"
+#include "platform/ScrollbarTheme.cpp"
+#include "platform/ScrollbarThemeComposite.cpp"

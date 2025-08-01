@@ -1,0 +1,8 @@
+#include "dom/ViewTransitionTypeSet.cpp"
+#include "dom/ViewportArguments.cpp"
+#include "dom/VisitedLinkState.cpp"
+#include "dom/WheelEvent.cpp"
+#include "dom/WindowEventLoop.cpp"
+#include "dom/WindowOrWorkerGlobalScopeTrustedTypes.cpp"
+#include "dom/XMLDocument.cpp"
+#include "dom/messageports/MessagePortChannel.cpp"

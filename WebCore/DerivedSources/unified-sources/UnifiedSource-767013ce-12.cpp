@@ -1,0 +1,8 @@
+#include "page/PointerLockController.cpp"
+#include "page/PrintContext.cpp"
+#include "page/ProcessWarming.cpp"
+#include "page/Quirks.cpp"
+#include "page/RemoteDOMWindow.cpp"
+#include "page/RemoteFrame.cpp"
+#include "page/RemoteFrameGeometryTransformer.cpp"
+#include "page/RemoteFrameView.cpp"

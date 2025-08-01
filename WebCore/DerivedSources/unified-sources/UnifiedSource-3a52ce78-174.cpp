@@ -1,0 +1,8 @@
+#include "JSWebCodecsVideoDecoder.cpp"
+#include "JSWebCodecsVideoDecoderConfig.cpp"
+#include "JSWebCodecsVideoDecoderSupport.cpp"
+#include "JSWebCodecsVideoEncoder.cpp"
+#include "JSWebCodecsVideoEncoderConfig.cpp"
+#include "JSWebCodecsVideoEncoderEncodeOptions.cpp"
+#include "JSWebCodecsVideoEncoderSupport.cpp"
+#include "JSWebCodecsVideoFrame.cpp"

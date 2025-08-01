@@ -1,0 +1,8 @@
+#include "Shared/WebGPU/WebGPUInternalError.cpp"
+#include "Shared/WebGPU/WebGPUMultisampleState.cpp"
+#include "Shared/WebGPU/WebGPUObjectDescriptorBase.cpp"
+#include "Shared/WebGPU/WebGPUOrigin2D.cpp"
+#include "Shared/WebGPU/WebGPUOrigin3D.cpp"
+#include "Shared/WebGPU/WebGPUOutOfMemoryError.cpp"
+#include "Shared/WebGPU/WebGPUPipelineDescriptorBase.cpp"
+#include "Shared/WebGPU/WebGPUPipelineLayoutDescriptor.cpp"

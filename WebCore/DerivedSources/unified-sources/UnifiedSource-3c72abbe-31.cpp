@@ -1,0 +1,8 @@
+#include "platform/graphics/HEVCUtilities.cpp"
+#include "platform/graphics/Icon.cpp"
+#include "platform/graphics/Image.cpp"
+#include "platform/graphics/ImageAdapter.cpp"
+#include "platform/graphics/ImageBuffer.cpp"
+#include "platform/graphics/ImageBufferAllocator.cpp"
+#include "platform/graphics/ImageBufferBackend.cpp"
+#include "platform/graphics/ImageBufferContextSwitcher.cpp"

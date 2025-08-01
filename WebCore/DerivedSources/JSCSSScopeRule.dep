@@ -1,0 +1,3 @@
+JSCSSScopeRule.h : CSSGroupingRule.idl CSSRule.idl
+CSSGroupingRule.idl :
+CSSRule.idl :

@@ -1,0 +1,8 @@
+#include "JSRTCIceTransportState.cpp"
+#include "JSRTCLocalSessionDescriptionInit.cpp"
+#include "JSRTCLogsCallback.cpp"
+#include "JSRTCOfferAnswerOptions.cpp"
+#include "JSRTCOfferOptions.cpp"
+#include "JSRTCPeerConnection.cpp"
+#include "JSRTCPeerConnectionIceErrorEvent.cpp"
+#include "JSRTCPeerConnectionIceEvent.cpp"

@@ -1,0 +1,8 @@
+#include "JSWebCodecsVideoFrameOutputCallback.cpp"
+#include "JSWebGL2RenderingContext.cpp"
+#include "JSWebGLActiveInfo.cpp"
+#include "JSWebGLBlendFuncExtended.cpp"
+#include "JSWebGLBuffer.cpp"
+#include "JSWebGLClipCullDistance.cpp"
+#include "JSWebGLColorBufferFloat.cpp"
+#include "JSWebGLCompressedTextureASTC.cpp"

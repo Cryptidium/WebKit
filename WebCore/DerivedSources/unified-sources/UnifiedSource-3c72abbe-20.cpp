@@ -1,0 +1,8 @@
+#include "platform/calc/CalculationOperator.cpp"
+#include "platform/calc/CalculationTree+Copy.cpp"
+#include "platform/calc/CalculationTree+Evaluation.cpp"
+#include "platform/calc/CalculationTree.cpp"
+#include "platform/calc/CalculationValue.cpp"
+#include "platform/calc/CalculationValueMap.cpp"
+#include "platform/encryptedmedia/CDMFactory.cpp"
+#include "platform/encryptedmedia/CDMLogging.cpp"

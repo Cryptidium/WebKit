@@ -1,0 +1,8 @@
+#include "RemoteComputePipelineMessageReceiver.cpp"
+#include "RemoteDeviceMessageReceiver.cpp"
+#include "RemoteDisplayListRecorderMessageReceiver.cpp"
+#include "RemoteExternalTextureMessageReceiver.cpp"
+#include "RemoteFaceDetectorMessageReceiver.cpp"
+#include "RemoteGPUMessageReceiver.cpp"
+#include "RemoteGPUProxyMessageReceiver.cpp"
+#include "RemoteGraphicsContextGLMessageReceiver.cpp"

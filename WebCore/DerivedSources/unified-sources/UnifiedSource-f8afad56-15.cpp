@@ -1,0 +1,8 @@
+#include "Modules/fetch/FetchRequest.cpp"
+#include "Modules/fetch/FetchResponse.cpp"
+#include "Modules/fetch/FormDataConsumer.cpp"
+#include "Modules/fetch/WindowOrWorkerGlobalScopeFetch.cpp"
+#include "Modules/filesystem/FileSystemDirectoryHandle.cpp"
+#include "Modules/filesystem/FileSystemFileHandle.cpp"
+#include "Modules/filesystem/FileSystemHandle.cpp"
+#include "Modules/filesystem/FileSystemStorageConnection.cpp"

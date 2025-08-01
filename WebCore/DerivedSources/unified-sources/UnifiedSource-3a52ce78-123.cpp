@@ -1,0 +1,8 @@
+#include "JSPushSubscriptionChangeEvent.cpp"
+#include "JSPushSubscriptionChangeEventInit.cpp"
+#include "JSPushSubscriptionJSON.cpp"
+#include "JSPushSubscriptionOptions.cpp"
+#include "JSPushSubscriptionOptionsInit.cpp"
+#include "JSRTCAnswerOptions.cpp"
+#include "JSRTCCertificate.cpp"
+#include "JSRTCConfiguration.cpp"

@@ -1,0 +1,8 @@
+#include "Shared/API/c/WKSecurityOriginRef.cpp"
+#include "Shared/API/c/WKSerializedScriptValue.cpp"
+#include "Shared/API/c/WKString.cpp"
+#include "Shared/API/c/WKType.cpp"
+#include "Shared/API/c/WKURL.cpp"
+#include "Shared/API/c/WKURLRequest.cpp"
+#include "Shared/API/c/WKURLResponse.cpp"
+#include "Shared/API/c/WKUserContentURLPattern.cpp"

@@ -1,0 +1,8 @@
+#include "Modules/mediastream/RTCTrackEvent.cpp"
+#include "Modules/mediastream/RTCTransformEvent.cpp"
+#include "Modules/mediastream/SFrameUtils.cpp"
+#include "Modules/mediastream/STUNMessageParsing.cpp"
+#include "Modules/mediastream/UserMediaController.cpp"
+#include "Modules/mediastream/UserMediaRequest.cpp"
+#include "Modules/mediastream/VideoTrackGenerator.cpp"
+#include "Modules/model-element/HTMLModelElement.cpp"

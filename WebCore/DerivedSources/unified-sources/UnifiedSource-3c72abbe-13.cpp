@@ -1,0 +1,8 @@
+#include "platform/VideoEncoder.cpp"
+#include "platform/VideoFrame.cpp"
+#include "platform/VideoPixelFormat.cpp"
+#include "platform/WebCorePersistentCoders.cpp"
+#include "platform/Widget.cpp"
+#include "platform/adwaita/ScrollbarThemeAdwaita.cpp"
+#include "platform/adwaita/ThemeAdwaita.cpp"
+#include "platform/animation/AcceleratedEffect.cpp"

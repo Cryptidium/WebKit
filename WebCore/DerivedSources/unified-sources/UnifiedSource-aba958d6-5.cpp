@@ -1,0 +1,8 @@
+#include "accessibility/AccessibilityTableCell.cpp"
+#include "accessibility/AccessibilityTableColumn.cpp"
+#include "accessibility/AccessibilityTableHeaderContainer.cpp"
+#include "accessibility/AccessibilityTableRow.cpp"
+#include "accessibility/AccessibilityTree.cpp"
+#include "accessibility/AccessibilityTreeItem.cpp"
+#include "accessibility/isolatedtree/AXIsolatedObject.cpp"
+#include "accessibility/isolatedtree/AXIsolatedTree.cpp"

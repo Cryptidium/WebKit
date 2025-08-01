@@ -1,0 +1,8 @@
+#include "platform/graphics/PlatformDynamicRangeLimit.cpp"
+#include "platform/graphics/PlatformTimeRanges.cpp"
+#include "platform/graphics/Region.cpp"
+#include "platform/graphics/RenderingMode.cpp"
+#include "platform/graphics/RotationDirection.cpp"
+#include "platform/graphics/ShadowBlur.cpp"
+#include "platform/graphics/ShareableBitmap.cpp"
+#include "platform/graphics/ShareableBitmapHandle.cpp"

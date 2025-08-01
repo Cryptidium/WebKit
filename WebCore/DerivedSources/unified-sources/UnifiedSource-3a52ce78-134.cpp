@@ -1,0 +1,8 @@
+#include "JSRequestAnimationFrameCallback.cpp"
+#include "JSRequestCookieConsentOptions.cpp"
+#include "JSRequestPriority.cpp"
+#include "JSResidentKeyRequirement.cpp"
+#include "JSResizeObserver.cpp"
+#include "JSResizeObserverBoxOptions.cpp"
+#include "JSResizeObserverCallback.cpp"
+#include "JSResizeObserverEntry.cpp"

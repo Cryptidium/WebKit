@@ -1,0 +1,8 @@
+#include "style/values/scroll-snap/StyleScrollMargin.cpp"
+#include "style/values/scroll-snap/StyleScrollPadding.cpp"
+#include "style/values/scrollbars/StyleScrollbarColor.cpp"
+#include "style/values/shapes/StyleBasicShape.cpp"
+#include "style/values/shapes/StyleCircleFunction.cpp"
+#include "style/values/shapes/StyleEllipseFunction.cpp"
+#include "style/values/shapes/StyleInsetFunction.cpp"
+#include "style/values/shapes/StylePathFunction.cpp"

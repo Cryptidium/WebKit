@@ -1,0 +1,8 @@
+#include "UIProcess/Extensions/WebExtension.cpp"
+#include "UIProcess/Extensions/WebExtensionAlarm.cpp"
+#include "UIProcess/Extensions/WebExtensionContext.cpp"
+#include "UIProcess/Extensions/WebExtensionController.cpp"
+#include "UIProcess/Extensions/WebExtensionControllerConfiguration.cpp"
+#include "UIProcess/Extensions/WebExtensionDataRecord.cpp"
+#include "UIProcess/Extensions/WebExtensionMatchPattern.cpp"
+#include "UIProcess/Extensions/WebExtensionStorageSQLiteStore.cpp"

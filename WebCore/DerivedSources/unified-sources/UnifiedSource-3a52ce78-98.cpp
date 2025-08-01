@@ -1,0 +1,8 @@
+#include "JSMediaKeySystemConfiguration.cpp"
+#include "JSMediaKeySystemMediaCapability.cpp"
+#include "JSMediaKeys.cpp"
+#include "JSMediaKeysRequirement.cpp"
+#include "JSMediaList.cpp"
+#include "JSMediaMetadata.cpp"
+#include "JSMediaMetadataInit.cpp"
+#include "JSMediaPositionState.cpp"

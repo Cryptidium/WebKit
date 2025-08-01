@@ -1,0 +1,8 @@
+#include "html/canvas/WebGLProvokingVertex.cpp"
+#include "html/canvas/WebGLQuery.cpp"
+#include "html/canvas/WebGLRenderSharedExponent.cpp"
+#include "html/canvas/WebGLRenderbuffer.cpp"
+#include "html/canvas/WebGLRenderingContext.cpp"
+#include "html/canvas/WebGLRenderingContextBase.cpp"
+#include "html/canvas/WebGLSampler.cpp"
+#include "html/canvas/WebGLShader.cpp"

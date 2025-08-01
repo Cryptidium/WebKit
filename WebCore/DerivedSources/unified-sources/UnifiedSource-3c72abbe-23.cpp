@@ -1,0 +1,8 @@
+#include "platform/graphics/CodecUtilities.cpp"
+#include "platform/graphics/Color.cpp"
+#include "platform/graphics/ColorBlending.cpp"
+#include "platform/graphics/ColorConversion.cpp"
+#include "platform/graphics/ColorInterpolation.cpp"
+#include "platform/graphics/ColorInterpolationMethod.cpp"
+#include "platform/graphics/ColorLuminance.cpp"
+#include "platform/graphics/ColorSerialization.cpp"

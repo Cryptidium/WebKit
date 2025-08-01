@@ -1,0 +1,6 @@
+#include "page/scrolling/ScrollingTreeViewportConstrainedNode.cpp"
+#include "page/scrolling/ThreadedScrollingCoordinator.cpp"
+#include "page/scrolling/ThreadedScrollingTree.cpp"
+#include "page/scrolling/ThreadedScrollingTreeScrollingNodeDelegate.cpp"
+#include "page/skia/MemoryReleaseSkia.cpp"
+#include "page/text-extraction/TextExtraction.cpp"

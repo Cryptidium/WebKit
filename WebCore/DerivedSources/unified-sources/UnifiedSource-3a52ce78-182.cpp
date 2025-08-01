@@ -1,0 +1,8 @@
+#include "JSWebLockManagerSnapshot.cpp"
+#include "JSWebLockMode.cpp"
+#include "JSWebSocket.cpp"
+#include "JSWebTransport.cpp"
+#include "JSWebTransportBidirectionalStream.cpp"
+#include "JSWebTransportCloseInfo.cpp"
+#include "JSWebTransportCongestionControl.cpp"
+#include "JSWebTransportDatagramDuplexStream.cpp"

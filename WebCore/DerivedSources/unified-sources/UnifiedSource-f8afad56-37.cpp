@@ -1,0 +1,8 @@
+#include "Modules/paymentrequest/PaymentAddress.cpp"
+#include "Modules/paymentrequest/PaymentHandler.cpp"
+#include "Modules/paymentrequest/PaymentMethodChangeEvent.cpp"
+#include "Modules/paymentrequest/PaymentRequest.cpp"
+#include "Modules/paymentrequest/PaymentRequestUpdateEvent.cpp"
+#include "Modules/paymentrequest/PaymentRequestUtilities.cpp"
+#include "Modules/paymentrequest/PaymentResponse.cpp"
+#include "Modules/permissions/MainThreadPermissionObserver.cpp"

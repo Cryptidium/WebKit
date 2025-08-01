@@ -1,0 +1,8 @@
+#include "platform/graphics/adwaita/SliderThumbAdwaita.cpp"
+#include "platform/graphics/adwaita/SliderTrackAdwaita.cpp"
+#include "platform/graphics/adwaita/TextFieldAdwaita.cpp"
+#include "platform/graphics/adwaita/ToggleButtonAdwaita.cpp"
+#include "platform/graphics/controls/ApplePayButtonPart.cpp"
+#include "platform/graphics/controls/ControlFactory.cpp"
+#include "platform/graphics/controls/ControlPart.cpp"
+#include "platform/graphics/controls/ControlStyle.cpp"

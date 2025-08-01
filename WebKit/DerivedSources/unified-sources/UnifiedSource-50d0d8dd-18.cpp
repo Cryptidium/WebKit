@@ -1,0 +1,8 @@
+#include "Shared/WebGPU/WebGPUPresentationContextDescriptor.cpp"
+#include "Shared/WebGPU/WebGPUPrimitiveState.cpp"
+#include "Shared/WebGPU/WebGPUProgrammableStage.cpp"
+#include "Shared/WebGPU/WebGPUQuerySetDescriptor.cpp"
+#include "Shared/WebGPU/WebGPURenderBundleDescriptor.cpp"
+#include "Shared/WebGPU/WebGPURenderBundleEncoderDescriptor.cpp"
+#include "Shared/WebGPU/WebGPURenderPassColorAttachment.cpp"
+#include "Shared/WebGPU/WebGPURenderPassDepthStencilAttachment.cpp"

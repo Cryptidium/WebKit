@@ -1,0 +1,8 @@
+#include "dom/TrustedTypePolicy.cpp"
+#include "dom/TrustedTypePolicyFactory.cpp"
+#include "dom/UIEvent.cpp"
+#include "dom/UIEventWithKeyState.cpp"
+#include "dom/UserActionElementSet.cpp"
+#include "dom/UserGestureIndicator.cpp"
+#include "dom/UserTypingGestureIndicator.cpp"
+#include "dom/ViewTransition.cpp"

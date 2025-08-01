@@ -1,0 +1,7 @@
+Package: zlib
+Version: zlib-ng
+Depends: zlib-ng
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: c925900a52ad3772550c33b1c19a41fdf0d726a3540722e5498f343e9a9f3297
+Description: A compression library

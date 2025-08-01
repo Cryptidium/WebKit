@@ -1,0 +1,5 @@
+x64-windows-webkit/
+x64-windows-webkit/share/
+x64-windows-webkit/share/openssl/
+x64-windows-webkit/share/openssl/vcpkg.spdx.json
+x64-windows-webkit/share/openssl/vcpkg_abi_info.txt

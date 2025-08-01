@@ -1,0 +1,21 @@
+Package: libxslt
+Version: 1.1.42
+Port-Version: 2
+Depends: libxml2, vcpkg-cmake:x64-windows, vcpkg-cmake-config:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: 8103091f125c6afd942c4b8922dc7b1471b7ea04745fdd2b795dd72555a95ebc
+Description: Libxslt is a XSLT library implemented in C for XSLT 1.0 and most of EXSLT
+Default-Features: profiler, thread
+
+Package: libxslt
+Feature: profiler
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: Build with profiling support
+
+Package: libxslt
+Feature: thread
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: Enable multi-threading support

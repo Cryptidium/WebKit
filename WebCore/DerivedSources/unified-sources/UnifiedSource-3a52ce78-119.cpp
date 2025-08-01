@@ -1,0 +1,8 @@
+#include "JSPoint2D.cpp"
+#include "JSPointerEvent.cpp"
+#include "JSPointerLockOptions.cpp"
+#include "JSPopStateEvent.cpp"
+#include "JSPositionCallback.cpp"
+#include "JSPositionErrorCallback.cpp"
+#include "JSPositionOptions.cpp"
+#include "JSPredefinedColorSpace.cpp"

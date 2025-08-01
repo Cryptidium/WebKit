@@ -1,0 +1,8 @@
+#include "UIProcess/UserMediaPermissionRequestManagerProxy.cpp"
+#include "UIProcess/UserMediaPermissionRequestProxy.cpp"
+#include "UIProcess/UserMediaProcessManager.cpp"
+#include "UIProcess/VisitedLinkStore.cpp"
+#include "UIProcess/WebBackForwardCache.cpp"
+#include "UIProcess/WebBackForwardCacheEntry.cpp"
+#include "UIProcess/WebBackForwardList.cpp"
+#include "UIProcess/WebColorPicker.cpp"

@@ -1,0 +1,7 @@
+Package: zlib-ng
+Version: 2.2.4
+Depends: vcpkg-cmake:x64-windows, vcpkg-cmake-config:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: e2408f41b8d3ec7e7649b93f1e902bb0ae3e17590f77131ec3caf74d5efb219f
+Description: zlib replacement with optimizations for 'next generation' systems

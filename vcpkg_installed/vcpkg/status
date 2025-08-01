@@ -1,0 +1,374 @@
+Package: vcpkg-cmake-config
+Version: 2024-05-23
+Architecture: x64-windows
+Multi-Arch: same
+Abi: 7657d6b517b41adfb8ba1a9a7bd67a5bbd920f98cef81de83a76e49de723af9c
+Status: install ok installed
+
+Package: vcpkg-cmake
+Version: 2024-04-23
+Architecture: x64-windows
+Multi-Arch: same
+Abi: a3298367da5775e73a0de0391347a2f9a93ceee18722ffa993cca0395137465e
+Status: install ok installed
+
+Package: icu
+Version: 77.1.0
+Depends: vcpkg-cmake:x64-windows, vcpkg-cmake-config:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: 3bde35d34d78b458a14298c89e5fa75184c32901814512f9f754669b3562b795
+Description: ICU is a mature, widely used set of C/C++ and Java libraries providing Unicode and Globalization support for software applications. ICU is widely portable and gives applications the same results on all platforms and between C/C++ and Java software.
+Status: install ok installed
+
+Package: vcpkg-cmake-get-vars
+Version: 2024-09-22
+Depends: vcpkg-cmake
+Architecture: x64-windows
+Multi-Arch: same
+Abi: 6837722110f978217169a1eeff24c1b8ec8951e1fde8f726792fb16c1ba37e79
+Status: install ok installed
+
+Package: vcpkg-tool-meson
+Version: 1.7.2
+Depends: vcpkg-cmake-get-vars
+Architecture: x64-windows
+Multi-Arch: same
+Abi: 7b217893e3fafc034752fd9b53b9de4a98000777a4db40411b850ae14fe749ba
+Description: Meson build system
+Status: install ok installed
+
+Package: lcms
+Version: 2.17
+Depends: vcpkg-tool-meson:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: 8bcff6a44a67f8d3b0a23f5fa34dbe50270700b062415d41696e82c31680f368
+Description: Little CMS.
+Status: install ok installed
+
+Package: highway
+Version: 1.2.0
+Depends: vcpkg-cmake:x64-windows, vcpkg-cmake-config:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: cfd52eaa2c15045ac38681d251d3c0271294b4f4758b0a987ecc15367d25ae6e
+Description: Performance-portable, length-agnostic SIMD with runtime dispatch
+Status: install ok installed
+
+Package: brotli
+Version: 1.1.0
+Port-Version: 1
+Depends: vcpkg-cmake:x64-windows, vcpkg-cmake-config:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: 289e7f21ea2ee98e1cf4a216fb6c4814cf1f0298d152d7c6715f21076ad70705
+Description: a generic-purpose lossless compression algorithm that compresses data using a combination of a modern variant of the LZ77 algorithm, Huffman coding and 2nd order context modeling.
+Status: install ok installed
+
+Package: libjxl
+Version: 0.11.1
+Port-Version: 1
+Depends: brotli, highway, lcms, vcpkg-cmake:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: 1509b74a8fd6ed05fb7628ea064c65b833f1c266bad9e8d3ec8bc05e4dfbac6f
+Description: JPEG XL image format reference implementation
+Status: install ok installed
+
+Package: harfbuzz
+Version: 10.2.0
+Port-Version: 4
+Depends: vcpkg-tool-meson:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: f3dc4de8816bc787c0f193a768b7a917dd822e9dc8b8b9ccb655feabe41747d7
+Description: HarfBuzz OpenType text shaping engine
+Default-Features: freetype
+Status: install ok installed
+
+Package: harfbuzz
+Feature: directwrite
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: Enable DirectWrite support on Windows
+Status: install ok installed
+
+Package: harfbuzz
+Feature: icu
+Depends: icu
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: icu support for harfbuzz
+Status: install ok installed
+
+Package: libressl
+Version: 4.1.0
+Depends: vcpkg-cmake:x64-windows, vcpkg-cmake-config:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: ecdc2ef7da1c1509e495e40623af65b06c297fa3577f9e9c9b9a99b8694f1cc9
+Description: LibreSSL is a TLS/crypto stack.
+    It was forked from OpenSSL in 2014 by the OpenBSD project, with goals of modernizing the codebase, improving security, and applying best practice development processes.
+    LibreSSL provides much of the OpenSSL 1.1 API. Incompatibilities between the projects exist and are unavoidable since both evolve with different goals and priorities.
+Status: install ok installed
+
+Package: openssl
+Version: libressl
+Depends: libressl
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: ce681ffad10d029c8c83b7fbb40a9d8ef8a738960533a71143a27615c7a370b7
+Description: LibreSSL is a TLS/crypto stack.
+    It was forked from OpenSSL in 2014 by the OpenBSD project, with goals of modernizing the codebase, improving security, and applying best practice development processes.
+    LibreSSL provides much of the OpenSSL 1.1 API. Incompatibilities between the projects exist and are unavoidable since both evolve with different goals and priorities.
+Status: install ok installed
+
+Package: ngtcp2
+Version: 1.12.0
+Depends: vcpkg-cmake:x64-windows, vcpkg-cmake-config:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: 84b3de7b34e0463be43e0948724da92627508c7c70fc32a1b2fca1fac8081fda
+Description: ngtcp2 project is an effort to implement RFC9000 QUIC protocol.
+Status: install ok installed
+
+Package: ngtcp2
+Feature: openssl
+Depends: openssl
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: Compile with openssl
+Status: install ok installed
+
+Package: nghttp3
+Version: 1.9.0
+Depends: vcpkg-cmake:x64-windows, vcpkg-cmake-config:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: 5fc8f1ccfe6f18374dc4ec1b7158d3ec9a284c2612e6094ee919a7dd4f486d72
+Description: Implementation of RFC 9114 HTTP/3 mapping over QUIC and RFC 9204 QPACK in C
+Status: install ok installed
+
+Package: zlib-ng
+Version: 2.2.4
+Depends: vcpkg-cmake:x64-windows, vcpkg-cmake-config:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: e2408f41b8d3ec7e7649b93f1e902bb0ae3e17590f77131ec3caf74d5efb219f
+Description: zlib replacement with optimizations for 'next generation' systems
+Status: install ok installed
+
+Package: zlib
+Version: zlib-ng
+Depends: zlib-ng
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: c925900a52ad3772550c33b1c19a41fdf0d726a3540722e5498f343e9a9f3297
+Description: A compression library
+Status: install ok installed
+
+Package: nghttp2
+Version: 1.65.0
+Depends: vcpkg-cmake:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: 59acacb7be43758c1761c210405483cd3a8421ccaed60eac68c7a71acb6da307
+Description: Implementation of the Hypertext Transfer Protocol version 2 in C
+Status: install ok installed
+
+Package: curl
+Version: 8.13.0
+Port-Version: 1
+Depends: brotli, nghttp2, vcpkg-cmake:x64-windows, vcpkg-cmake-config:x64-windows, zlib
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: 219f47f663e3e747df1770ce8df7114ffccdb79872de3f135fcd5d399e2fba8d
+Description: A library for transferring data with URLs
+Status: install ok installed
+
+Package: curl
+Feature: http3
+Depends: nghttp3, ngtcp2
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: Enable HTTP/3 support.
+Status: install ok installed
+
+Package: curl
+Feature: ipv6
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: Enable IPV6 support.
+Status: install ok installed
+
+Package: curl
+Feature: libressl
+Depends: libressl
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: SSL support through libressl. If no SSL libraries are specified then the system SSL library will be used.
+Status: install ok installed
+
+Package: libjpeg-turbo
+Version: 3.1.0
+Port-Version: 1
+Depends: vcpkg-cmake:x64-windows, vcpkg-cmake-config:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: 4448cc5dca72f56d9dbb0280b2b8d17e64718aeb31c6c12f716dcaa19bf4b9b6
+Description: libjpeg-turbo is a JPEG image codec that uses SIMD instructions (MMX, SSE2, NEON, AltiVec) to accelerate baseline JPEG compression and decompression on x86, x86-64, ARM, and PowerPC systems.
+Status: install ok installed
+
+Package: libpng
+Version: 1.6.46
+Depends: vcpkg-cmake:x64-windows, vcpkg-cmake-config:x64-windows, zlib
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: eeea026d8a728e6a03fe76e4512024301d3ae95d31a4f5dc57e7a9fea178acb2
+Description: libpng is a library implementing an interface for reading and writing PNG (Portable Network Graphics) format files
+Status: install ok installed
+
+Package: libpsl
+Version: 0.21.5
+Port-Version: 1
+Depends: vcpkg-tool-meson:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: be47f96b53a6ab431ad219899019e1ce9ed68d9a8c3764df5886783cc6cec6c6
+Description: C library for the Public Suffix List
+Default-Features: libicu
+Status: install ok installed
+
+Package: libpsl
+Feature: libicu
+Depends: icu
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: choose libicu as runtime
+Status: install ok installed
+
+Package: libwebp
+Version: 1.5.0
+Port-Version: 1
+Depends: vcpkg-cmake:x64-windows, vcpkg-cmake-config:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: 9d6d75cb63f80ab4d22d162bd0240c007f89db457bfe71d9663acc408dccd8e5
+Description: WebP codec: library to encode and decode images in WebP format
+Default-Features: libwebpmux, nearlossless, simd
+Status: install ok installed
+
+Package: libwebp
+Feature: libwebpmux
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: Build the libwebpmux library
+Status: install ok installed
+
+Package: libwebp
+Feature: nearlossless
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: Enable near-lossless encoding
+Status: install ok installed
+
+Package: libwebp
+Feature: simd
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: Enable any SIMD optimization.
+Status: install ok installed
+
+Package: libwebp
+Feature: unicode
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: Build Unicode executables. (Adds definition UNICODE and _UNICODE)
+Status: install ok installed
+
+Package: libxml2
+Version: 2.13.5
+Port-Version: 2
+Depends: vcpkg-cmake:x64-windows, vcpkg-cmake-config:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: 219f6d974143ff7c06e57d76bbf97f126442ffe53c7e742c41c59ba6d9e647bd
+Description: Libxml2 is the XML C parser and toolkit developed for the Gnome project (but usable outside of the Gnome platform).
+Default-Features: iconv, zlib
+Status: install ok installed
+
+Package: libxml2
+Feature: icu
+Depends: icu
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: Add ICU support
+Status: install ok installed
+
+Package: libxslt
+Version: 1.1.42
+Port-Version: 2
+Depends: libxml2, vcpkg-cmake:x64-windows, vcpkg-cmake-config:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: 8103091f125c6afd942c4b8922dc7b1471b7ea04745fdd2b795dd72555a95ebc
+Description: Libxslt is a XSLT library implemented in C for XSLT 1.0 and most of EXSLT
+Default-Features: profiler, thread
+Status: install ok installed
+
+Package: libxslt
+Feature: profiler
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: Build with profiling support
+Status: install ok installed
+
+Package: libxslt
+Feature: thread
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: Enable multi-threading support
+Status: install ok installed
+
+Package: sqlite3
+Version: 3.49.2
+Depends: vcpkg-cmake:x64-windows, vcpkg-cmake-config:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: c0b7b1118f662ae76a1cea58773319683b3c67182162c05f6b835ebb4eda86a4
+Description: SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.
+Default-Features: json1
+Status: install ok installed
+
+Package: sqlite3
+Feature: fts3
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: Enable the FTS3 extension
+Status: install ok installed
+
+Package: sqlite3
+Feature: json1
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: Enable JSON functionality for sqlite3
+Status: install ok installed
+
+Package: sqlite3
+Feature: rtree
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: Enable the RTREE extension
+Status: install ok installed
+
+Package: woff2
+Version: 1.0.2
+Port-Version: 5
+Depends: brotli, vcpkg-cmake:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: cacd92de846fb13702cff48269b8010dea7fdd3730f8814164588c148095eeab
+Description: font compression reference code
+Status: install ok installed
+

@@ -1,0 +1,8 @@
+#include "Modules/webxr/WebXRSession.cpp"
+#include "Modules/webxr/WebXRSpace.cpp"
+#include "Modules/webxr/WebXRSystem.cpp"
+#include "Modules/webxr/WebXRView.cpp"
+#include "Modules/webxr/WebXRViewerPose.cpp"
+#include "Modules/webxr/WebXRViewport.cpp"
+#include "Modules/webxr/WebXRWebGLLayer.cpp"
+#include "Modules/webxr/XRCompositionLayer.cpp"

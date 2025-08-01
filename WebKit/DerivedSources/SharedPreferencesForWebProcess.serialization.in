@@ -1,0 +1,207 @@
+# THIS FILE WAS AUTOMATICALLY GENERATED, DO NOT EDIT.
+#
+# Copyright (C) 2024 Apple Inc. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY APPLE INC. AND ITS CONTRIBUTORS ``AS IS''
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+# THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+# PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL APPLE INC. OR ITS CONTRIBUTORS
+# BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+# CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+# THE POSSIBILITY OF SUCH DAMAGE.
+
+struct WebKit::SharedPreferencesForWebProcess {
+    uint64_t version;
+    [BitField] bool allowTestOnlyIPC;
+    [BitField] bool webSocketEnabled;
+#if ENABLE(APPLE_PAY)
+    [BitField] bool applePayEnabled;
+#endif
+#if ENABLE(WEB_AUDIO)
+    [BitField] bool webAudioEnabled;
+#endif
+    [BitField] bool videoPresentationModeAPIEnabled;
+#if ENABLE(MEDIA_CONTROLS_CONTEXT_MENUS)
+    [BitField] bool mediaControlsContextMenusEnabled;
+#endif
+    [BitField] bool videoPresentationManagerEnabled;
+#if ENABLE(FULLSCREEN_API)
+    [BitField] bool videoFullscreenRequiresElementFullscreen;
+#endif
+    [BitField] bool usesSingleWebProcess;
+#if ENABLE(DEVICE_ORIENTATION)
+    [BitField] bool deviceOrientationEventEnabled;
+#endif
+#if ENABLE(DEVICE_ORIENTATION)
+    [BitField] bool deviceOrientationPermissionAPIEnabled;
+#endif
+#if USE(SYSTEM_PREVIEW)
+    [BitField] bool systemPreviewEnabled;
+#endif
+#if ENABLE(ENCRYPTED_MEDIA)
+    [BitField] bool encryptedMediaAPIEnabled;
+#endif
+    [BitField] bool allowPrivacySensitiveOperationsInNonPersistentDataStores;
+    [BitField] bool appBadgeEnabled;
+#if ENABLE(ATTACHMENT_ELEMENT)
+    [BitField] bool attachmentElementEnabled;
+#endif
+    [BitField] bool broadcastChannelEnabled;
+#if ENABLE(WEB_PUSH_NOTIFICATIONS)
+    [BitField] bool builtInNotificationsEnabled;
+#endif
+    [BitField] bool canvasPixelFormatEnabled;
+    [BitField] bool inputTypeColorEnabled;
+    [BitField] bool contactPickerAPIEnabled;
+    [BitField] bool cookieConsentAPIEnabled;
+    [BitField] bool cookieStoreManagerEnabled;
+#if PLATFORM(MAC)
+    [BitField] bool inputMethodUsesCorrectKeyEventOrder;
+#endif
+    [BitField] bool dataListElementEnabled;
+    [BitField] bool inputTypeDateEnabled;
+#if ENABLE(WEB_AUTHN)
+    [BitField] bool digitalCredentialsEnabled;
+#endif
+#if ENABLE(RE_DYNAMIC_CONTENT_SCALING)
+    [BitField] bool useCGDisplayListsForDOMRendering;
+#endif
+#if ENABLE(LEGACY_ENCRYPTED_MEDIA)
+    [BitField] bool legacyEncryptedMediaAPIEnabled;
+#endif
+#if ENABLE(MODEL_PROCESS)
+    [BitField] bool modelProcessEnabled;
+#endif
+    [BitField] bool backgroundFetchAPIEnabled;
+    [BitField] bool blobFileAccessEnforcementEnabled;
+#if ENABLE(MEDIA_SESSION_COORDINATOR)
+    [BitField] bool mediaSessionCoordinatorEnabled;
+#endif
+    [BitField] bool fileSystemEnabled;
+    [BitField] bool fileSystemWritableStreamEnabled;
+    [BitField] bool forceLockdownFontParserEnabled;
+#if ENABLE(FULLSCREEN_API)
+    [BitField] bool fullScreenEnabled;
+#endif
+#if ENABLE(GPU_PROCESS)
+    [BitField] bool useGPUProcessForDOMRenderingEnabled;
+#endif
+#if ENABLE(GPU_PROCESS)
+    [BitField] bool useGPUProcessForMediaEnabled;
+#endif
+#if ENABLE(GPU_PROCESS) && ENABLE(WEBGL)
+    [BitField] bool useGPUProcessForWebGLEnabled;
+#endif
+#if ENABLE(GAMEPAD)
+    [BitField] bool gamepadsEnabled;
+#endif
+    [BitField] bool geolocationAPIEnabled;
+#if ENABLE(MODEL_ELEMENT)
+    [BitField] bool modelElementEnabled;
+#endif
+    [BitField] bool inputTypeColorEnhancementsEnabled;
+    [BitField] bool ignoreIframeEmbeddingProtectionsEnabled;
+    [BitField] bool indexedDBAPIEnabled;
+    [BitField] bool lockdownFontParserEnabled;
+#if ENABLE(MEDIA_SOURCE)
+    [BitField] bool managedMediaSourceEnabled;
+#endif
+#if ENABLE(EXTENSION_CAPABILITIES)
+    [BitField] bool mediaCapabilityGrantsEnabled;
+#endif
+    [BitField] bool mediaPlaybackEnabled;
+#if ENABLE(MEDIA_SESSION)
+    [BitField] bool mediaSessionEnabled;
+#endif
+    [BitField] bool mediaSourceEnabled;
+#if ENABLE(MEDIA_RECORDER_WEBM)
+    [BitField] bool mediaRecorderEnabledWebM;
+#endif
+#if ENABLE(MEDIA_RECORDER)
+    [BitField] bool mediaRecorderEnabled;
+#endif
+#if ENABLE(MEDIA_SOURCE) && USE(AVFOUNDATION)
+    [BitField] bool mediaSourcePrefersDecompressionSession;
+#endif
+    [BitField] bool inputTypeMonthEnabled;
+#if ENABLE(NOTIFICATION_EVENT)
+    [BitField] bool notificationEventEnabled;
+#endif
+#if ENABLE(NOTIFICATIONS)
+    [BitField] bool notificationsEnabled;
+#endif
+    [BitField] bool permissionsAPIEnabled;
+#if HAVE(SPATIAL_AUDIO_EXPERIENCE)
+    [BitField] bool preferSpatialAudioExperience;
+#endif
+    [BitField] bool pushAPIEnabled;
+    [BitField] bool remoteMediaSessionManagerEnabled;
+    [BitField] bool loginStatusAPIRequiresWebAuthnEnabled;
+    [BitField] bool screenOrientationAPIEnabled;
+    [BitField] bool serviceWorkerNavigationPreloadEnabled;
+    [BitField] bool serviceWorkersEnabled;
+    [BitField] bool shapeDetection;
+    [BitField] bool siteIsolationSharedProcessEnabled;
+    [BitField] bool sharedWorkerEnabled;
+    [BitField] bool siteIsolationEnabled;
+    [BitField] bool speechRecognitionEnabled;
+    [BitField] bool speechSynthesisAPIEnabled;
+#if ENABLE(IMAGE_ANALYSIS) && ENABLE(VIDEO)
+    [BitField] bool textRecognitionInVideosEnabled;
+#endif
+    [BitField] bool inputTypeTimeEnabled;
+#if HAVE(AVCAPTUREDEVICEROTATIONCOORDINATOR)
+    [BitField] bool useAVCaptureDeviceRotationCoordinatorAPI;
+#endif
+#if HAVE(WEBCONTENTRESTRICTIONS)
+    [BitField] bool usesWebContentRestrictionsForFilter;
+#endif
+#if USE(MODERN_AVCONTENTKEYSESSION_WITH_VTDECOMPRESSIONSESSION)
+    [BitField] bool videoRendererProtectedFallbackDisabled;
+#endif
+#if USE(MODERN_AVCONTENTKEYSESSION_WITH_VTDECOMPRESSIONSESSION)
+    [BitField] bool videoRendererUseDecompressionSessionForProtected;
+#endif
+#if ENABLE(WEB_AUTHN)
+    [BitField] bool webAuthenticationEnabled;
+#endif
+    [BitField] bool webLocksAPIEnabled;
+    [BitField] bool webShareEnabled;
+#if ENABLE(WEB_CODECS)
+    [BitField] bool webCodecsVideoEnabled;
+#endif
+    [BitField] bool webGLEnabled;
+    [BitField] bool webGPUHDREnabled;
+    [BitField] bool webXRWebGPUBindingsEnabled;
+    [BitField] bool webGPUEnabled;
+#if ENABLE(WEB_RTC)
+    [BitField] bool peerConnectionEnabled;
+#endif
+#if ENABLE(WEB_RTC) && PLATFORM(COCOA)
+    [BitField] bool webRTCInterfaceMonitoringViaNWEnabled;
+#endif
+    [BitField] bool webTransportEnabled;
+#if ENABLE(WEBXR)
+    [BitField] bool webXREnabled;
+#endif
+#if ENABLE(WEB_PAGE_SPATIAL_BACKDROP)
+    [BitField] bool webPageSpatialBackdropEnabled;
+#endif
+    [BitField] bool inputTypeWeekEnabled;
+    [BitField] bool inputTypeDateTimeLocalEnabled;
+    [BitField] bool shadowRootReferenceTargetEnabledForAriaOwns;
+    [BitField] bool shadowRootReferenceTargetEnabled;
+};

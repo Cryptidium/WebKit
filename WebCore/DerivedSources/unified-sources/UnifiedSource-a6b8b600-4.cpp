@@ -1,0 +1,8 @@
+#include "animation/StyleOriginatedAnimation.cpp"
+#include "animation/StyleOriginatedAnimationEvent.cpp"
+#include "animation/StyleOriginatedTimelinesController.cpp"
+#include "animation/TimelineRange.cpp"
+#include "animation/ViewTimeline.cpp"
+#include "animation/WebAnimation.cpp"
+#include "animation/WebAnimationTime.cpp"
+#include "animation/WebAnimationTypes.cpp"

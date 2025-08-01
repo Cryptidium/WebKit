@@ -1,0 +1,8 @@
+#include "b3/B3OptimizeAssociativeExpressionTrees.cpp"
+#include "b3/B3Origin.cpp"
+#include "b3/B3OriginDump.cpp"
+#include "b3/B3PatchpointSpecial.cpp"
+#include "b3/B3PatchpointValue.cpp"
+#include "b3/B3PhaseScope.cpp"
+#include "b3/B3PhiChildren.cpp"
+#include "b3/B3Procedure.cpp"

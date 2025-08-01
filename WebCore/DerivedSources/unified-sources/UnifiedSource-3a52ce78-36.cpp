@@ -1,0 +1,8 @@
+#include "JSCustomEffectCallback.cpp"
+#include "JSCustomElementRegistry.cpp"
+#include "JSCustomEvent.cpp"
+#include "JSCustomStateSet.cpp"
+#include "JSCustomXPathNSResolver.cpp"
+#include "JSDOMAudioSession.cpp"
+#include "JSDOMCSSCustomPropertyDescriptor.cpp"
+#include "JSDOMCSSNamespace.cpp"

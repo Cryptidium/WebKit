@@ -1,0 +1,8 @@
+#include "UIProcess/WebPermissionControllerProxy.cpp"
+#include "UIProcess/WebPreferences.cpp"
+#include "UIProcess/WebProcessActivityState.cpp"
+#include "UIProcess/WebProcessCache.cpp"
+#include "UIProcess/WebProcessPool.cpp"
+#include "UIProcess/WebProcessProxy.cpp"
+#include "UIProcess/WebScreenOrientationManagerProxy.cpp"
+#include "UIProcess/WebURLSchemeHandler.cpp"

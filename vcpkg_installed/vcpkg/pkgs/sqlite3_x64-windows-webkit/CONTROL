@@ -1,0 +1,26 @@
+Package: sqlite3
+Version: 3.49.2
+Depends: vcpkg-cmake:x64-windows, vcpkg-cmake-config:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: c0b7b1118f662ae76a1cea58773319683b3c67182162c05f6b835ebb4eda86a4
+Description: SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.
+Default-Features: json1
+
+Package: sqlite3
+Feature: fts3
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: Enable the FTS3 extension
+
+Package: sqlite3
+Feature: json1
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: Enable JSON functionality for sqlite3
+
+Package: sqlite3
+Feature: rtree
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: Enable the RTREE extension

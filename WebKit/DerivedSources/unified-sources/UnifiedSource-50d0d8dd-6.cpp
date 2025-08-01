@@ -1,0 +1,8 @@
+#include "Shared/WebGeolocationPosition.cpp"
+#include "Shared/WebHitTestResultData.cpp"
+#include "Shared/WebImage.cpp"
+#include "Shared/WebKeyboardEvent.cpp"
+#include "Shared/WebKit2Initialize.cpp"
+#include "Shared/WebMemorySampler.cpp"
+#include "Shared/WebMouseEvent.cpp"
+#include "Shared/WebPageGroupData.cpp"

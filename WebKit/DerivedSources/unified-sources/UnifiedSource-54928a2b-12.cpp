@@ -1,0 +1,8 @@
+#include "WebProcess/Gamepad/WebGamepadProvider.cpp"
+#include "WebProcess/Geolocation/GeolocationPermissionRequestManager.cpp"
+#include "WebProcess/Geolocation/WebGeolocationManager.cpp"
+#include "WebProcess/InjectedBundle/InjectedBundle.cpp"
+#include "WebProcess/InjectedBundle/InjectedBundleClient.cpp"
+#include "WebProcess/InjectedBundle/InjectedBundleDOMWindowExtension.cpp"
+#include "WebProcess/InjectedBundle/InjectedBundleHitTestResult.cpp"
+#include "WebProcess/InjectedBundle/InjectedBundlePageContextMenuClient.cpp"

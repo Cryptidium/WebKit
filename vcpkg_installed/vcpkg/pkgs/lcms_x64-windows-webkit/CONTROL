@@ -1,0 +1,7 @@
+Package: lcms
+Version: 2.17
+Depends: vcpkg-tool-meson:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: 8bcff6a44a67f8d3b0a23f5fa34dbe50270700b062415d41696e82c31680f368
+Description: Little CMS.

@@ -1,0 +1,8 @@
+#include "rendering/TextPaintStyle.cpp"
+#include "rendering/TextPainter.cpp"
+#include "rendering/TransformOperationData.cpp"
+#include "rendering/adwaita/RenderThemeAdwaita.cpp"
+#include "rendering/line/LineBreaker.cpp"
+#include "rendering/line/LineInfo.cpp"
+#include "rendering/line/LineWidth.cpp"
+#include "rendering/line/TrailingObjects.cpp"

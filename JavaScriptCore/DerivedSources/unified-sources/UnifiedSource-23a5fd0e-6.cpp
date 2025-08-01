@@ -1,0 +1,8 @@
+#include "b3/B3LowerMacros.cpp"
+#include "b3/B3LowerMacrosAfterOptimizations.cpp"
+#include "b3/B3LowerToAir.cpp"
+#include "b3/B3LowerToAir32_64.cpp"
+#include "b3/B3MathExtras.cpp"
+#include "b3/B3MemoryValue.cpp"
+#include "b3/B3MoveConstants.cpp"
+#include "b3/B3Opcode.cpp"

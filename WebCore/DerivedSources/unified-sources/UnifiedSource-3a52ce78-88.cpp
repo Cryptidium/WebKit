@@ -1,0 +1,8 @@
+#include "JSIDBObjectStore.cpp"
+#include "JSIDBOpenDBRequest.cpp"
+#include "JSIDBRequest.cpp"
+#include "JSIDBTransaction.cpp"
+#include "JSIDBTransactionDurability.cpp"
+#include "JSIDBTransactionMode.cpp"
+#include "JSIDBVersionChangeEvent.cpp"
+#include "JSIIRFilterNode.cpp"

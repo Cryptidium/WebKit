@@ -1,0 +1,33 @@
+Package: libwebp
+Version: 1.5.0
+Port-Version: 1
+Depends: vcpkg-cmake:x64-windows, vcpkg-cmake-config:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: 9d6d75cb63f80ab4d22d162bd0240c007f89db457bfe71d9663acc408dccd8e5
+Description: WebP codec: library to encode and decode images in WebP format
+Default-Features: libwebpmux, nearlossless, simd
+
+Package: libwebp
+Feature: libwebpmux
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: Build the libwebpmux library
+
+Package: libwebp
+Feature: nearlossless
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: Enable near-lossless encoding
+
+Package: libwebp
+Feature: simd
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: Enable any SIMD optimization.
+
+Package: libwebp
+Feature: unicode
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: Build Unicode executables. (Adds definition UNICODE and _UNICODE)

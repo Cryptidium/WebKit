@@ -1,0 +1,14 @@
+Package: ngtcp2
+Version: 1.12.0
+Depends: vcpkg-cmake:x64-windows, vcpkg-cmake-config:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: 84b3de7b34e0463be43e0948724da92627508c7c70fc32a1b2fca1fac8081fda
+Description: ngtcp2 project is an effort to implement RFC9000 QUIC protocol.
+
+Package: ngtcp2
+Feature: openssl
+Depends: openssl
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: Compile with openssl

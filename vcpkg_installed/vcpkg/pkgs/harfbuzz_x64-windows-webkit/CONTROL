@@ -1,0 +1,22 @@
+Package: harfbuzz
+Version: 10.2.0
+Port-Version: 4
+Depends: vcpkg-tool-meson:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: f3dc4de8816bc787c0f193a768b7a917dd822e9dc8b8b9ccb655feabe41747d7
+Description: HarfBuzz OpenType text shaping engine
+Default-Features: freetype
+
+Package: harfbuzz
+Feature: directwrite
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: Enable DirectWrite support on Windows
+
+Package: harfbuzz
+Feature: icu
+Depends: icu
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: icu support for harfbuzz

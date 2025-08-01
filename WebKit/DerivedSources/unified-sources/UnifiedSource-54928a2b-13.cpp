@@ -1,0 +1,8 @@
+#include "WebProcess/InjectedBundle/InjectedBundlePageEditorClient.cpp"
+#include "WebProcess/InjectedBundle/InjectedBundlePageFormClient.cpp"
+#include "WebProcess/InjectedBundle/InjectedBundlePageLoaderClient.cpp"
+#include "WebProcess/InjectedBundle/InjectedBundlePageResourceLoadClient.cpp"
+#include "WebProcess/InjectedBundle/InjectedBundlePageUIClient.cpp"
+#include "WebProcess/InjectedBundle/InjectedBundleScriptWorld.cpp"
+#include "WebProcess/InjectedBundle/API/c/WKBundle.cpp"
+#include "WebProcess/InjectedBundle/API/c/WKBundleBackForwardList.cpp"

@@ -1,0 +1,16 @@
+Package: libxml2
+Version: 2.13.5
+Port-Version: 2
+Depends: vcpkg-cmake:x64-windows, vcpkg-cmake-config:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: 219f6d974143ff7c06e57d76bbf97f126442ffe53c7e742c41c59ba6d9e647bd
+Description: Libxml2 is the XML C parser and toolkit developed for the Gnome project (but usable outside of the Gnome platform).
+Default-Features: iconv, zlib
+
+Package: libxml2
+Feature: icu
+Depends: icu
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Description: Add ICU support

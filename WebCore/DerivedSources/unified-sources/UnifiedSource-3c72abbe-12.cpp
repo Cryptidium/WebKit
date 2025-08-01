@@ -1,0 +1,8 @@
+#include "platform/Theme.cpp"
+#include "platform/ThemeTypes.cpp"
+#include "platform/ThermalMitigationNotifier.cpp"
+#include "platform/ThreadGlobalData.cpp"
+#include "platform/ThreadTimers.cpp"
+#include "platform/Timer.cpp"
+#include "platform/UserActivity.cpp"
+#include "platform/VideoDecoder.cpp"

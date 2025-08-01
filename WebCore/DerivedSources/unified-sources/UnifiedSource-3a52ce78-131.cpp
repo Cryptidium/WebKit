@@ -1,0 +1,8 @@
+#include "JSRTCSessionDescriptionInit.cpp"
+#include "JSRTCSignalingState.cpp"
+#include "JSRTCStatsReport.cpp"
+#include "JSRTCTrackEvent.cpp"
+#include "JSRTCTransformEvent.cpp"
+#include "JSRadioNodeList.cpp"
+#include "JSRange.cpp"
+#include "JSReadableByteStreamController.cpp"

@@ -1,0 +1,8 @@
+#include "JSWebGLUniformLocation.cpp"
+#include "JSWebGLVertexArrayObject.cpp"
+#include "JSWebGLVertexArrayObjectOES.cpp"
+#include "JSWebKitMediaKeyError.cpp"
+#include "JSWebKitMediaKeyMessageEvent.cpp"
+#include "JSWebKitMediaKeyNeededEvent.cpp"
+#include "JSWebKitMediaKeySession.cpp"
+#include "JSWebKitMediaKeys.cpp"

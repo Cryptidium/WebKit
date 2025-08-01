@@ -1,0 +1,8 @@
+#include "html/RangeInputType.cpp"
+#include "html/ResetInputType.cpp"
+#include "html/SearchInputType.cpp"
+#include "html/StepRange.cpp"
+#include "html/SubmitEvent.cpp"
+#include "html/SubmitInputType.cpp"
+#include "html/TelephoneInputType.cpp"
+#include "html/TextDocument.cpp"

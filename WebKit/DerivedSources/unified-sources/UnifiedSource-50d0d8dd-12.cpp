@@ -1,0 +1,8 @@
+#include "Shared/Databases/IndexedDB/IDBUtilities.cpp"
+#include "Shared/Extensions/WebExtensionFrameIdentifier.cpp"
+#include "Shared/Extensions/WebExtensionLocalization.cpp"
+#include "Shared/Extensions/WebExtensionPermission.cpp"
+#include "Shared/Extensions/WebExtensionSQLiteDatabase.cpp"
+#include "Shared/Extensions/WebExtensionSQLiteRow.cpp"
+#include "Shared/Extensions/WebExtensionSQLiteStatement.cpp"
+#include "Shared/Extensions/WebExtensionSQLiteStore.cpp"

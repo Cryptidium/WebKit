@@ -1,0 +1,8 @@
+#include "dom/NamedNodeMap.cpp"
+#include "dom/NativeNodeFilter.cpp"
+#include "dom/Node.cpp"
+#include "dom/NodeFilterCondition.cpp"
+#include "dom/NodeIterator.cpp"
+#include "dom/NodeList.cpp"
+#include "dom/NodeRareData.cpp"
+#include "dom/NodeTraversal.cpp"

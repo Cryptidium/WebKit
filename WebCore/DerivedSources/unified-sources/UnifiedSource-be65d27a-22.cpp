@@ -1,0 +1,8 @@
+#include "dom/SerializedNode.cpp"
+#include "dom/ShadowRoot.cpp"
+#include "dom/SimpleRange.cpp"
+#include "dom/SimulatedClick.cpp"
+#include "dom/SlotAssignment.cpp"
+#include "dom/SpaceSplitString.cpp"
+#include "dom/SpatialBackdropSource.cpp"
+#include "dom/StaticNodeList.cpp"

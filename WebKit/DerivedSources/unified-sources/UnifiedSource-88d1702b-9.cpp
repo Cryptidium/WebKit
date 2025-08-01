@@ -1,0 +1,8 @@
+#include "UIProcess/WebOpenPanelResultListenerProxy.cpp"
+#include "UIProcess/WebPageDiagnosticLoggingClient.cpp"
+#include "UIProcess/WebPageGroup.cpp"
+#include "UIProcess/WebPageInjectedBundleClient.cpp"
+#include "UIProcess/WebPageProxy.cpp"
+#include "UIProcess/WebPageProxyMessageReceiverRegistration.cpp"
+#include "UIProcess/WebPageProxyTesting.cpp"
+#include "UIProcess/WebPasteboardProxy.cpp"

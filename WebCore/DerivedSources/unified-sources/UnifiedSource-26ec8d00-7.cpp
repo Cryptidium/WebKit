@@ -1,0 +1,8 @@
+#include "style/values/borders/StyleCornerShapeValue.cpp"
+#include "style/values/color/StyleColor.cpp"
+#include "style/values/color/StyleColorLayers.cpp"
+#include "style/values/color/StyleColorMix.cpp"
+#include "style/values/color/StyleColorOptions.cpp"
+#include "style/values/color/StyleContrastColor.cpp"
+#include "style/values/color/StyleCurrentColor.cpp"
+#include "style/values/color/StyleDynamicRangeLimit.cpp"

@@ -1,0 +1,2 @@
+XREquirectLayerInit.h : XRLayerInit.idl
+XRLayerInit.idl :

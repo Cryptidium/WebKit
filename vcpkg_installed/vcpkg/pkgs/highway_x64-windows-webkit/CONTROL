@@ -1,0 +1,7 @@
+Package: highway
+Version: 1.2.0
+Depends: vcpkg-cmake:x64-windows, vcpkg-cmake-config:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: cfd52eaa2c15045ac38681d251d3c0271294b4f4758b0a987ecc15367d25ae6e
+Description: Performance-portable, length-agnostic SIMD with runtime dispatch

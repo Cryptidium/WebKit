@@ -1,0 +1,8 @@
+#include "rendering/style/StyleFilterImage.cpp"
+#include "rendering/style/StyleFlexibleBoxData.cpp"
+#include "rendering/style/StyleFontData.cpp"
+#include "rendering/style/StyleGeneratedImage.cpp"
+#include "rendering/style/StyleGradientImage.cpp"
+#include "rendering/style/StyleGridData.cpp"
+#include "rendering/style/StyleGridItemData.cpp"
+#include "rendering/style/StyleImageSet.cpp"

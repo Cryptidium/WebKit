@@ -1,0 +1,8 @@
+#include "Modules/permissions/NavigatorPermissions.cpp"
+#include "Modules/permissions/PermissionController.cpp"
+#include "Modules/permissions/PermissionStatus.cpp"
+#include "Modules/permissions/Permissions.cpp"
+#include "Modules/permissions/WorkerNavigatorPermissions.cpp"
+#include "Modules/pictureinpicture/DocumentPictureInPicture.cpp"
+#include "Modules/pictureinpicture/HTMLVideoElementPictureInPicture.cpp"
+#include "Modules/pictureinpicture/PictureInPictureEvent.cpp"

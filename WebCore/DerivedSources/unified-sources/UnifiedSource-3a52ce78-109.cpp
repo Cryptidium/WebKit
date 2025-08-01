@@ -1,0 +1,8 @@
+#include "JSObservable.cpp"
+#include "JSObservableInspector.cpp"
+#include "JSObservableInspectorAbortCallback.cpp"
+#include "JSOfflineAudioCompletionEvent.cpp"
+#include "JSOfflineAudioCompletionEventInit.cpp"
+#include "JSOfflineAudioContext.cpp"
+#include "JSOfflineAudioContextOptions.cpp"
+#include "JSOffscreenCanvas.cpp"

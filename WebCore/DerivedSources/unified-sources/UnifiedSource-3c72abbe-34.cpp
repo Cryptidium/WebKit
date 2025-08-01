@@ -1,0 +1,8 @@
+#include "platform/graphics/MIMESniffer.cpp"
+#include "platform/graphics/MIMETypeCache.cpp"
+#include "platform/graphics/MediaPlayer.cpp"
+#include "platform/graphics/MediaPlayerPrivate.cpp"
+#include "platform/graphics/MediaResourceSniffer.cpp"
+#include "platform/graphics/MediaSourcePrivate.cpp"
+#include "platform/graphics/Model.cpp"
+#include "platform/graphics/ModelContext.cpp"

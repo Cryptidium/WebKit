@@ -1,0 +1,8 @@
+#include "JSPredicateCallback.cpp"
+#include "JSProcessingInstruction.cpp"
+#include "JSProgressEvent.cpp"
+#include "JSPromiseRejectionEvent.cpp"
+#include "JSPublicKeyCredential.cpp"
+#include "JSPublicKeyCredentialCreationOptions.cpp"
+#include "JSPublicKeyCredentialCreationOptionsJSON.cpp"
+#include "JSPublicKeyCredentialDescriptor.cpp"

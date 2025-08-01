@@ -1,0 +1,8 @@
+Package: woff2
+Version: 1.0.2
+Port-Version: 5
+Depends: brotli, vcpkg-cmake:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: cacd92de846fb13702cff48269b8010dea7fdd3730f8814164588c148095eeab
+Description: font compression reference code

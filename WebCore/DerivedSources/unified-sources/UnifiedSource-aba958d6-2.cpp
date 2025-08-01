@@ -1,0 +1,8 @@
+#include "accessibility/AXTextRun.cpp"
+#include "accessibility/AXTreeStore.cpp"
+#include "accessibility/AccessibilityAttachment.cpp"
+#include "accessibility/AccessibilityImageMapLink.cpp"
+#include "accessibility/AccessibilityLabel.cpp"
+#include "accessibility/AccessibilityList.cpp"
+#include "accessibility/AccessibilityListBox.cpp"
+#include "accessibility/AccessibilityListBoxOption.cpp"

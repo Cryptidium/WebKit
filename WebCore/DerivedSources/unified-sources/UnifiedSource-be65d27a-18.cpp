@@ -1,0 +1,8 @@
+#include "dom/Observable.cpp"
+#include "dom/OverflowEvent.cpp"
+#include "dom/PageRevealEvent.cpp"
+#include "dom/PageSwapEvent.cpp"
+#include "dom/PageTransitionEvent.cpp"
+#include "dom/PendingScript.cpp"
+#include "dom/PointerEvent.cpp"
+#include "dom/PointerEventTypeNames.cpp"

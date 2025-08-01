@@ -1,0 +1,8 @@
+#include "WebProcess/InjectedBundle/API/c/WKBundleRangeHandle.cpp"
+#include "WebProcess/InjectedBundle/API/c/WKBundleScriptWorld.cpp"
+#include "WebProcess/InjectedBundle/DOM/InjectedBundleCSSStyleDeclarationHandle.cpp"
+#include "WebProcess/Inspector/RemoteWebInspectorUI.cpp"
+#include "WebProcess/Inspector/WebInspectorBackendClient.cpp"
+#include "WebProcess/Inspector/WebInspectorInternal.cpp"
+#include "WebProcess/Inspector/WebInspectorInterruptDispatcher.cpp"
+#include "WebProcess/Inspector/WebInspectorUI.cpp"

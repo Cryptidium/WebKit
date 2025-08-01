@@ -1,0 +1,8 @@
+#include "JSCookieChangeEvent.cpp"
+#include "JSCookieChangeEventInit.cpp"
+#include "JSCookieInit.cpp"
+#include "JSCookieListItem.cpp"
+#include "JSCookieSameSite.cpp"
+#include "JSCookieStore.cpp"
+#include "JSCookieStoreDeleteOptions.cpp"
+#include "JSCookieStoreGetOptions.cpp"

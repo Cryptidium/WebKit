@@ -1,0 +1,8 @@
+#include "JSAuthenticationExtensionsClientInputs.cpp"
+#include "JSAuthenticationExtensionsClientInputsJSON.cpp"
+#include "JSAuthenticationExtensionsClientOutputs.cpp"
+#include "JSAuthenticationExtensionsClientOutputsJSON.cpp"
+#include "JSAuthenticationResponseJSON.cpp"
+#include "JSAuthenticatorAssertionResponse.cpp"
+#include "JSAuthenticatorAttachment.cpp"
+#include "JSAuthenticatorAttestationResponse.cpp"

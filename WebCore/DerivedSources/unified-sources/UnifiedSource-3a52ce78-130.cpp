@@ -1,0 +1,8 @@
+#include "JSRTCRtpSender.cpp"
+#include "JSRTCRtpSynchronizationSource.cpp"
+#include "JSRTCRtpTransceiver.cpp"
+#include "JSRTCRtpTransceiverDirection.cpp"
+#include "JSRTCSctpTransport.cpp"
+#include "JSRTCSctpTransportState.cpp"
+#include "JSRTCSdpType.cpp"
+#include "JSRTCSessionDescription.cpp"

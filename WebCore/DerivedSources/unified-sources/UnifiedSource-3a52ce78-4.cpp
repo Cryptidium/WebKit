@@ -1,0 +1,8 @@
+#include "JSAnalyserNode.cpp"
+#include "JSAnalyserOptions.cpp"
+#include "JSAnimationEffect.cpp"
+#include "JSAnimationFrameRatePreset.cpp"
+#include "JSAnimationPlaybackEvent.cpp"
+#include "JSAnimationPlaybackEventInit.cpp"
+#include "JSAnimationTimeline.cpp"
+#include "JSAttestationConveyancePreference.cpp"

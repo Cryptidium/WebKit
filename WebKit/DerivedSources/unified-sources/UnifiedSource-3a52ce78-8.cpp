@@ -1,0 +1,8 @@
+#include "WebFrameProxyMessageReceiver.cpp"
+#include "WebLockRegistryProxyMessageReceiver.cpp"
+#include "WebPermissionControllerMessageReceiver.cpp"
+#include "WebPermissionControllerProxyMessageReceiver.cpp"
+#include "WebScreenOrientationManagerMessageReceiver.cpp"
+#include "WebScreenOrientationManagerProxyMessageReceiver.cpp"
+#include "WebSharedWorkerContextManagerConnectionMessageReceiver.cpp"
+#include "WebSharedWorkerObjectConnectionMessageReceiver.cpp"

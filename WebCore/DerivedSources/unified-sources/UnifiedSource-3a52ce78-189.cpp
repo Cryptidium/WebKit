@@ -1,0 +1,8 @@
+#include "JSWritableStreamDefaultWriter.cpp"
+#include "JSWritableStreamSink.cpp"
+#include "JSX25519Params.cpp"
+#include "JSXMLDocument.cpp"
+#include "JSXMLHttpRequest.cpp"
+#include "JSXMLHttpRequestEventTarget.cpp"
+#include "JSXMLHttpRequestProgressEvent.cpp"
+#include "JSXMLHttpRequestUpload.cpp"

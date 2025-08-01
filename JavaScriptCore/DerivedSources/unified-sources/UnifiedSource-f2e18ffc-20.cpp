@@ -1,0 +1,8 @@
+#include "runtime/JSAsyncGenerator.cpp"
+#include "runtime/JSAsyncGeneratorFunction.cpp"
+#include "runtime/JSBigInt.cpp"
+#include "runtime/JSBoundFunction.cpp"
+#include "runtime/JSCBytecodeCacheVersion.cpp"
+#include "runtime/JSCConfig.cpp"
+#include "runtime/JSCJSValue.cpp"
+#include "runtime/JSCPtrTag.cpp"

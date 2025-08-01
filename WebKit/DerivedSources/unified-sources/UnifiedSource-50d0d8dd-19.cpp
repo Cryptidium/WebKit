@@ -1,0 +1,8 @@
+#include "Shared/WebGPU/WebGPURenderPassDescriptor.cpp"
+#include "Shared/WebGPU/WebGPURenderPassLayout.cpp"
+#include "Shared/WebGPU/WebGPURenderPassTimestampWrites.cpp"
+#include "Shared/WebGPU/WebGPURenderPipelineDescriptor.cpp"
+#include "Shared/WebGPU/WebGPURequestAdapterOptions.cpp"
+#include "Shared/WebGPU/WebGPUSamplerBindingLayout.cpp"
+#include "Shared/WebGPU/WebGPUSamplerDescriptor.cpp"
+#include "Shared/WebGPU/WebGPUShaderModuleCompilationHint.cpp"

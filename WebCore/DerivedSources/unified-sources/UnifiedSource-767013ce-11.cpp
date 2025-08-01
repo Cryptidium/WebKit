@@ -1,0 +1,8 @@
+#include "page/PerformanceNavigationTiming.cpp"
+#include "page/PerformanceObserver.cpp"
+#include "page/PerformanceObserverEntryList.cpp"
+#include "page/PerformanceResourceTiming.cpp"
+#include "page/PerformanceServerTiming.cpp"
+#include "page/PerformanceTiming.cpp"
+#include "page/PerformanceUserTiming.cpp"
+#include "page/PointerCaptureController.cpp"

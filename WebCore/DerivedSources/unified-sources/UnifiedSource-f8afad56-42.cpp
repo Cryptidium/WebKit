@@ -1,0 +1,8 @@
+#include "Modules/screen-wake-lock/WakeLockSentinel.cpp"
+#include "Modules/speech/LocalDOMWindowSpeechSynthesis.cpp"
+#include "Modules/speech/SpeechRecognition.cpp"
+#include "Modules/speech/SpeechRecognitionAlternative.cpp"
+#include "Modules/speech/SpeechRecognitionCaptureSource.cpp"
+#include "Modules/speech/SpeechRecognitionCaptureSourceImpl.cpp"
+#include "Modules/speech/SpeechRecognitionErrorEvent.cpp"
+#include "Modules/speech/SpeechRecognitionEvent.cpp"

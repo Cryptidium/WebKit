@@ -1,0 +1,8 @@
+#include "JSWebGLSampler.cpp"
+#include "JSWebGLShader.cpp"
+#include "JSWebGLShaderPrecisionFormat.cpp"
+#include "JSWebGLStencilTexturing.cpp"
+#include "JSWebGLSync.cpp"
+#include "JSWebGLTexture.cpp"
+#include "JSWebGLTimerQueryEXT.cpp"
+#include "JSWebGLTransformFeedback.cpp"

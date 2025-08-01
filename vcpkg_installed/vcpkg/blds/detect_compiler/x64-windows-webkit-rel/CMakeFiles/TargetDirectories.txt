@@ -1,0 +1,2 @@
+C:/WebKit/WebKitBuild/Release/vcpkg_installed/vcpkg/blds/detect_compiler/x64-windows-webkit-rel/CMakeFiles/edit_cache.dir
+C:/WebKit/WebKitBuild/Release/vcpkg_installed/vcpkg/blds/detect_compiler/x64-windows-webkit-rel/CMakeFiles/rebuild_cache.dir

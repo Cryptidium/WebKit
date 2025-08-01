@@ -1,0 +1,8 @@
+#include "WebProcess/GPU/graphics/WebGPU/RemoteDeviceProxy.cpp"
+#include "WebProcess/GPU/graphics/WebGPU/RemoteExternalTextureProxy.cpp"
+#include "WebProcess/GPU/graphics/WebGPU/RemoteGPUProxy.cpp"
+#include "WebProcess/GPU/graphics/WebGPU/RemotePipelineLayoutProxy.cpp"
+#include "WebProcess/GPU/graphics/WebGPU/RemotePresentationContextProxy.cpp"
+#include "WebProcess/GPU/graphics/WebGPU/RemoteQuerySetProxy.cpp"
+#include "WebProcess/GPU/graphics/WebGPU/RemoteQueueProxy.cpp"
+#include "WebProcess/GPU/graphics/WebGPU/RemoteRenderBundleEncoderProxy.cpp"

@@ -1,0 +1,8 @@
+#include "html/OffscreenCanvas.cpp"
+#include "html/PDFDocument.cpp"
+#include "html/PasswordInputType.cpp"
+#include "html/PermissionsPolicy.cpp"
+#include "html/PluginDocument.cpp"
+#include "html/PublicURLManager.cpp"
+#include "html/RadioInputType.cpp"
+#include "html/RadioNodeList.cpp"

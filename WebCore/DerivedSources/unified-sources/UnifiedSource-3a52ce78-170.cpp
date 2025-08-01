@@ -1,0 +1,8 @@
+#include "JSViewTransitionUpdateCallback.cpp"
+#include "JSVisibilityState.cpp"
+#include "JSVisitorCallback.cpp"
+#include "JSVisualViewport.cpp"
+#include "JSVoidCallback.cpp"
+#include "JSWGSLLanguageFeatures.cpp"
+#include "JSWakeLock.cpp"
+#include "JSWakeLockSentinel.cpp"

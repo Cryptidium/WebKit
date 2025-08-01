@@ -1,0 +1,8 @@
+#include "JSWebGLDebugShaders.cpp"
+#include "JSWebGLDepthTexture.cpp"
+#include "JSWebGLDrawBuffers.cpp"
+#include "JSWebGLDrawInstancedBaseVertexBaseInstance.cpp"
+#include "JSWebGLFramebuffer.cpp"
+#include "JSWebGLLoseContext.cpp"
+#include "JSWebGLMultiDraw.cpp"
+#include "JSWebGLMultiDrawInstancedBaseVertexBaseInstance.cpp"

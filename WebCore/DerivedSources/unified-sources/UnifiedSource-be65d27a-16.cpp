@@ -1,0 +1,8 @@
+#include "dom/MouseEvent.cpp"
+#include "dom/MouseRelatedEvent.cpp"
+#include "dom/MutationEvent.cpp"
+#include "dom/MutationObserver.cpp"
+#include "dom/MutationObserverInterestGroup.cpp"
+#include "dom/MutationObserverRegistration.cpp"
+#include "dom/MutationRecord.cpp"
+#include "dom/NameNodeList.cpp"

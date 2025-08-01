@@ -1,0 +1,8 @@
+#include "Modules/webaudio/ConstantSourceNode.cpp"
+#include "Modules/webaudio/ConvolverNode.cpp"
+#include "Modules/webaudio/DefaultAudioDestinationNode.cpp"
+#include "Modules/webaudio/DelayDSPKernel.cpp"
+#include "Modules/webaudio/DelayNode.cpp"
+#include "Modules/webaudio/DelayProcessor.cpp"
+#include "Modules/webaudio/DynamicsCompressorNode.cpp"
+#include "Modules/webaudio/GainNode.cpp"

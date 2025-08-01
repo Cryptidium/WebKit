@@ -1,0 +1,8 @@
+#include "page/PageConsoleClient.cpp"
+#include "page/PageDebuggable.cpp"
+#include "page/PageGroup.cpp"
+#include "page/PageGroupLoadDeferrer.cpp"
+#include "page/PageOverlay.cpp"
+#include "page/PageOverlayController.cpp"
+#include "page/PageSerializer.cpp"
+#include "page/Performance.cpp"

@@ -1,0 +1,7 @@
+Package: nghttp3
+Version: 1.9.0
+Depends: vcpkg-cmake:x64-windows, vcpkg-cmake-config:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: 5fc8f1ccfe6f18374dc4ec1b7158d3ec9a284c2612e6094ee919a7dd4f486d72
+Description: Implementation of RFC 9114 HTTP/3 mapping over QUIC and RFC 9204 QPACK in C

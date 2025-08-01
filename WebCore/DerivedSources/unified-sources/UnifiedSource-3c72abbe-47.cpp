@@ -1,0 +1,8 @@
+#include "platform/graphics/filters/SourceAlpha.cpp"
+#include "platform/graphics/filters/SourceGraphic.cpp"
+#include "platform/graphics/filters/SpotLightSource.cpp"
+#include "platform/graphics/filters/skia/FEColorMatrixSkiaApplier.cpp"
+#include "platform/graphics/filters/skia/FEComponentTransferSkiaApplier.cpp"
+#include "platform/graphics/filters/skia/FEDropShadowSkiaApplier.cpp"
+#include "platform/graphics/filters/skia/FEGaussianBlurSkiaApplier.cpp"
+#include "platform/graphics/filters/skia/SourceGraphicSkiaApplier.cpp"

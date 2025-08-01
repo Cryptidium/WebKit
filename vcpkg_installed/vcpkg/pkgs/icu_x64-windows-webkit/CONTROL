@@ -1,0 +1,7 @@
+Package: icu
+Version: 77.1.0
+Depends: vcpkg-cmake:x64-windows, vcpkg-cmake-config:x64-windows
+Architecture: x64-windows-webkit
+Multi-Arch: same
+Abi: 3bde35d34d78b458a14298c89e5fa75184c32901814512f9f754669b3562b795
+Description: ICU is a mature, widely used set of C/C++ and Java libraries providing Unicode and Globalization support for software applications. ICU is widely portable and gives applications the same results on all platforms and between C/C++ and Java software.

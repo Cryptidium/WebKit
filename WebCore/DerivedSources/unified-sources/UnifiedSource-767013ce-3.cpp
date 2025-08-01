@@ -1,0 +1,8 @@
+#include "page/DeviceController.cpp"
+#include "page/DiagnosticLoggingKeys.cpp"
+#include "page/DisabledAdaptations.cpp"
+#include "page/DragController.cpp"
+#include "page/ElementTargetingController.cpp"
+#include "page/EventCounts.cpp"
+#include "page/EventHandler.cpp"
+#include "page/EventSource.cpp"

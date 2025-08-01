@@ -1,0 +1,8 @@
+#include "dom/InternalObserverFromScript.cpp"
+#include "dom/InternalObserverInspect.cpp"
+#include "dom/InternalObserverLast.cpp"
+#include "dom/InternalObserverMap.cpp"
+#include "dom/InternalObserverReduce.cpp"
+#include "dom/InternalObserverSome.cpp"
+#include "dom/InternalObserverTake.cpp"
+#include "dom/KeyboardEvent.cpp"

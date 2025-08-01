@@ -1,0 +1,8 @@
+#include "rendering/style/StyleCachedImage.cpp"
+#include "rendering/style/StyleCanvasImage.cpp"
+#include "rendering/style/StyleContentAlignmentData.cpp"
+#include "rendering/style/StyleCrossfadeImage.cpp"
+#include "rendering/style/StyleCursorImage.cpp"
+#include "rendering/style/StyleCustomPropertyData.cpp"
+#include "rendering/style/StyleDeprecatedFlexibleBoxData.cpp"
+#include "rendering/style/StyleFilterData.cpp"

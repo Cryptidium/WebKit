@@ -1,0 +1,5 @@
+x64-windows-webkit/
+x64-windows-webkit/share/
+x64-windows-webkit/share/zlib/
+x64-windows-webkit/share/zlib/vcpkg.spdx.json
+x64-windows-webkit/share/zlib/vcpkg_abi_info.txt

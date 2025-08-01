@@ -1,0 +1,8 @@
+#include "JSXRReferenceSpaceType.cpp"
+#include "JSXRRenderStateInit.cpp"
+#include "JSXRSessionEvent.cpp"
+#include "JSXRSessionInit.cpp"
+#include "JSXRSessionMode.cpp"
+#include "JSXRSubImage.cpp"
+#include "JSXRTargetRayMode.cpp"
+#include "JSXRTextureType.cpp"

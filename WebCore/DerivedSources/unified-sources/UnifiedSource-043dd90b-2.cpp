@@ -1,0 +1,8 @@
+#include "rendering/BorderPainter.cpp"
+#include "rendering/BorderShape.cpp"
+#include "rendering/BreakLines.cpp"
+#include "rendering/CSSFilter.cpp"
+#include "rendering/CaretRectComputation.cpp"
+#include "rendering/ClipRect.cpp"
+#include "rendering/ContentfulPaintChecker.cpp"
+#include "rendering/CounterNode.cpp"

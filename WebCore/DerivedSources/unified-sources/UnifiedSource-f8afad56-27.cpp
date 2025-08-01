@@ -1,0 +1,8 @@
+#include "Modules/mediasource/ManagedMediaSource.cpp"
+#include "Modules/mediasource/ManagedSourceBuffer.cpp"
+#include "Modules/mediasource/MediaSource.cpp"
+#include "Modules/mediasource/MediaSourceHandle.cpp"
+#include "Modules/mediasource/MediaSourceInterfaceMainThread.cpp"
+#include "Modules/mediasource/MediaSourceInterfaceWorker.cpp"
+#include "Modules/mediasource/MediaSourceRegistry.cpp"
+#include "Modules/mediasource/SampleMap.cpp"

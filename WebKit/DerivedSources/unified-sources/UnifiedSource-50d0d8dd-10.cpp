@@ -1,0 +1,8 @@
+#include "Shared/API/c/WKGeometry.cpp"
+#include "Shared/API/c/WKImage.cpp"
+#include "Shared/API/c/WKMutableArray.cpp"
+#include "Shared/API/c/WKMutableDictionary.cpp"
+#include "Shared/API/c/WKNumber.cpp"
+#include "Shared/API/c/WKPluginInformation.cpp"
+#include "Shared/API/c/WKRenderLayer.cpp"
+#include "Shared/API/c/WKRenderObject.cpp"

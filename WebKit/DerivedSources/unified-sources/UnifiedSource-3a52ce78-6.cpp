@@ -1,0 +1,8 @@
+#include "RemoteRenderPipelineMessageReceiver.cpp"
+#include "RemoteSamplerMessageReceiver.cpp"
+#include "RemoteShaderModuleMessageReceiver.cpp"
+#include "RemoteTextDetectorMessageReceiver.cpp"
+#include "RemoteTextureMessageReceiver.cpp"
+#include "RemoteTextureViewMessageReceiver.cpp"
+#include "RemoteVideoFrameObjectHeapMessageReceiver.cpp"
+#include "RemoteVideoFrameObjectHeapProxyProcessorMessageReceiver.cpp"

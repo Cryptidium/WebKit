@@ -1,0 +1,2 @@
+JSFileSystemWritableFileStream.h : WritableStream.idl
+WritableStream.idl :

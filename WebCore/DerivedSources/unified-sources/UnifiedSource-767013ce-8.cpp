@@ -1,0 +1,8 @@
+#include "page/NavigatorLoginStatus.cpp"
+#include "page/NavigatorUAData.cpp"
+#include "page/OpportunisticTaskScheduler.cpp"
+#include "page/OriginAccessEntry.cpp"
+#include "page/OriginAccessPatterns.cpp"
+#include "page/Page.cpp"
+#include "page/PageColorSampler.cpp"
+#include "page/PageConfiguration.cpp"

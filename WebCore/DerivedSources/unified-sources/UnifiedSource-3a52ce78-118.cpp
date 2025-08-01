@@ -1,0 +1,8 @@
+#include "JSPermissionStatus.cpp"
+#include "JSPermissions.cpp"
+#include "JSPhotoCapabilities.cpp"
+#include "JSPhotoSettings.cpp"
+#include "JSPictureInPictureEvent.cpp"
+#include "JSPictureInPictureWindow.cpp"
+#include "JSPlaneLayout.cpp"
+#include "JSPlaybackDirection.cpp"

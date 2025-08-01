@@ -1,0 +1,8 @@
+#include "Shared/API/APIURLRequest.cpp"
+#include "Shared/API/c/WKArray.cpp"
+#include "Shared/API/c/WKCertificateInfo.cpp"
+#include "Shared/API/c/WKContextMenuItem.cpp"
+#include "Shared/API/c/WKData.cpp"
+#include "Shared/API/c/WKDeprecatedFunctions.cpp"
+#include "Shared/API/c/WKDictionary.cpp"
+#include "Shared/API/c/WKErrorRef.cpp"

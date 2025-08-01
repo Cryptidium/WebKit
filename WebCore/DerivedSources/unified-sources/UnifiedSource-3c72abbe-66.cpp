@@ -1,0 +1,8 @@
+#include "platform/network/ProtectionSpaceBase.cpp"
+#include "platform/network/RFC7230.cpp"
+#include "platform/network/RFC8941.cpp"
+#include "platform/network/ResourceErrorBase.cpp"
+#include "platform/network/ResourceHandle.cpp"
+#include "platform/network/ResourceHandleClient.cpp"
+#include "platform/network/ResourceRequestBase.cpp"
+#include "platform/network/ResourceResponseBase.cpp"

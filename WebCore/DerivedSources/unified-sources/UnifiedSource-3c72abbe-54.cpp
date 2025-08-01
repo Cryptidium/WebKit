@@ -1,0 +1,8 @@
+#include "platform/graphics/skia/ImageBufferSkiaSurfaceBackend.cpp"
+#include "platform/graphics/skia/ImageBufferSkiaUnacceleratedBackend.cpp"
+#include "platform/graphics/skia/ImageBufferUtilitiesSkia.cpp"
+#include "platform/graphics/skia/IntRectSkia.cpp"
+#include "platform/graphics/skia/NativeImageSkia.cpp"
+#include "platform/graphics/skia/PathSkia.cpp"
+#include "platform/graphics/skia/PatternSkia.cpp"
+#include "platform/graphics/skia/PlatformDisplaySkia.cpp"

@@ -1,0 +1,8 @@
+#include "JSVideoTrackConfiguration.cpp"
+#include "JSVideoTrackGenerator.cpp"
+#include "JSVideoTrackList.cpp"
+#include "JSVideoTransferCharacteristics.cpp"
+#include "JSViewTimeline.cpp"
+#include "JSViewTimelineOptions.cpp"
+#include "JSViewTransition.cpp"
+#include "JSViewTransitionTypeSet.cpp"

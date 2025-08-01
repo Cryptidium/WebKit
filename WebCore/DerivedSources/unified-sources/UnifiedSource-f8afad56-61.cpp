@@ -1,0 +1,8 @@
+#include "Modules/websockets/WebSocketFrame.cpp"
+#include "Modules/websockets/WebSocketHandshake.cpp"
+#include "Modules/websockets/WorkerThreadableWebSocketChannel.cpp"
+#include "Modules/webtransport/DatagramSink.cpp"
+#include "Modules/webtransport/DatagramSource.cpp"
+#include "Modules/webtransport/WebTransport.cpp"
+#include "Modules/webtransport/WebTransportBidirectionalStream.cpp"
+#include "Modules/webtransport/WebTransportBidirectionalStreamConstructionParameters.cpp"

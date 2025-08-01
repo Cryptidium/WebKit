@@ -1,0 +1,8 @@
+#include "JSMediaTrackConstraints.cpp"
+#include "JSMediaTrackSupportedConstraints.cpp"
+#include "JSMerchantValidationEvent.cpp"
+#include "JSMessageChannel.cpp"
+#include "JSMessageEvent.cpp"
+#include "JSMessagePort.cpp"
+#include "JSMeteringMode.cpp"
+#include "JSMobileDocumentRequest.cpp"
