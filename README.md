@@ -8,7 +8,7 @@ A pre compiled version of WebKit for Windows to save you time
 3. Use the x86_x64 Cross Tools Command Prompt for VS 2022
 4. Run the command prompt as administrator
 5. Don't bother with linux, its not gonna work
-6. Use the following build command since thats what worked for me
+6. Consider using the following build command since thats what worked for me
 ```bash
 perl Tools\Scripts\build-webkit ^
      --wincairo --release --skip-library-update ^
